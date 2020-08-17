@@ -1,0 +1,45 @@
+digraph g {
+0 -> 2 [label="0-9"];
+0 -> 5 [label="m"];
+0 -> 3 [label="r"];
+0 -> 7 [label="i"];
+0 -> 6 [label="'{'"];
+0 -> 4 [label="';'"];
+0 -> 9 [label="'('"];
+0 -> 1 [label="\\t, \\n, \\r, ' '"];
+0 -> 8 [label="')'"];
+0 -> 10 [label="'}'"];
+0[shape=circle, label="0"]
+1 -> 1 [label="\\t, \\n, \\r, ' '"];
+1[shape=doublecircle, label="1\nacc:9"]
+2 -> 2 [label="0-9"];
+2[shape=doublecircle, label="2\nacc:7"]
+3 -> 11 [label="e"];
+3[shape=circle, label="3"]
+4[shape=doublecircle, label="4\nacc:4"]
+5 -> 12 [label="a"];
+5[shape=circle, label="5"]
+6[shape=doublecircle, label="6\nacc:0"]
+7 -> 13 [label="n"];
+7[shape=circle, label="7"]
+8[shape=doublecircle, label="8\nacc:3"]
+9[shape=doublecircle, label="9\nacc:2"]
+10[shape=doublecircle, label="10\nacc:1"]
+11 -> 14 [label="t"];
+11[shape=circle, label="11"]
+12 -> 15 [label="i"];
+12[shape=circle, label="12"]
+13 -> 16 [label="t"];
+13[shape=circle, label="13"]
+14 -> 17 [label="u"];
+14[shape=circle, label="14"]
+15 -> 18 [label="n"];
+15[shape=circle, label="15"]
+16[shape=doublecircle, label="16\nacc:5"]
+17 -> 19 [label="r"];
+17[shape=circle, label="17"]
+18[shape=doublecircle, label="18\nacc:8"]
+19 -> 20 [label="n"];
+19[shape=circle, label="19"]
+20[shape=doublecircle, label="20\nacc:6"]
+}
