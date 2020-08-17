@@ -1,5 +1,5 @@
 
-# 编写minidecaf编译器-step1
+# Lab1：整数
 
 这是关于编写minidecaf编译器的第一个步骤。
 
@@ -37,7 +37,7 @@ $ echo $? # 检查return_2执行程序的执行结果，应该是 2
 2 
 ```
 
-你的编译器会产生risc-v汇编代码。我们不会自己将汇编文件转化为可执行文件--那是汇编器和链接器的工作（最好有个链接介绍汇编器和连接器）。为了看看这个程序在汇编中的样子，让我们用gcc[3](https://norasandler.com/2017/11/29/Write-a-Compiler.html#fn3)来编译它。
+你的编译器会产生risc-v汇编代码。我们不会自己将汇编文件转化为可执行文件--那是汇编器和链接器的工作（最好有个链接介绍汇编器和连接器）。为了看看这个程序在汇编中的样子，让我们用GCC来编译它。
 
 ```
 $ riscv64-unknown-elf-gcc -S -O3 return_2.c
@@ -131,7 +131,7 @@ if (a < b) {
 
 下面是这段代码的完整AST：
 
-![Image of diagram; text outline follows](./pics/AST.svg)
+![Image of diagram; text outline follows](./lab1-pics/AST.svg)
 
 - if statement
   - condition: binary operation (<)
@@ -186,7 +186,7 @@ statement = Return(exp) | Assign(variable, exp)
 
 这里是return_2.c的AST图。
 
-![Image of diagram; text outline follows](./pics/return_2_ast.svg)
+![Image of diagram; text outline follows](./Writing a C Compiler, Part 1_files/return_2_ast.svg)
 
 - Program
   - Function (name: main)
