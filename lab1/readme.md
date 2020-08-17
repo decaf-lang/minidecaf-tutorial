@@ -105,7 +105,7 @@ Spaces: \s+
 
 考虑了空白字符之后，上面这个列表翻译成的自动机是这样的：
 
-![](./pic/dfa.png)
+![](pic/dfa.png)
 
 其中初始状态为0，标有双环的状态为接受状态，接受状态中的`acc: 数字`表示返回对应的类型。状态之间的边上的字符表示可以接受的转移。从初始状态开始，依次读入字符，如果它存在于当前状态连出的某条边上，就转移到边的目标状态，并且读入下一个字符；否则就意味着转移进行不下去了：如果此时是在接受状态下，应该返回已经接受的标记，重新回到初始状态，并且还是考虑刚刚读入的字符，而不是下一个字符；如果是在非接受状态下，就意味着词法分析失败了，输入的程序没有办法解析成标记流。
 
@@ -143,7 +143,7 @@ if (a < b) {
 
 下面是这段代码的AST：
 
-![Image of diagram; text outline follows](pics/AST.svg)
+![Image of diagram; text outline follows](pic/AST.svg)
 
 这是构造这个AST的伪代码：
 
@@ -164,7 +164,7 @@ if = If(condition=cond, body=[assign, return], else=[assign_else])
 
 不过现在我们不需要担心变量或二元操作符等结构。现在，我们需要支持的AST节点只有程序(program)、函数声明(function declaration)、语句(statement)和表达式(expression)。这里是`return2.c`的AST：
 
-![Image of diagram; text outline follows](./pics/return2_ast.svg)
+![Image of diagram; text outline follows](pic/return2_ast.svg)
 
 ### 语法表示
 
