@@ -39,26 +39,27 @@ $ echo $? # 检查return_2执行程序的执行结果，应该是 2
 ```
 $ riscv64-unknown-elf-gcc -S -O3 return_2.c
 $ cat return_2.s
-    .section __TEXT,__text_startup,regular,pure_instructions
-    .align 4
-    .globl _main
-_main:
-    movl    $2, %eax
-    ret
-    .subsections_via_symbols
+	.file	"return_2.c"
+......
+	.globl	main
+	.type	main, @function
+main:
+	li	a0,2
+	ret
+......
 ```
 
-现在，让我们看看汇编程序本身。我们可以忽略`.section`、`.align`和`.subsections_via_symbols`指令，这些汇编原语可参加[这里的介绍](https://github.com/decaf-lang/minidecaf/blob/master/doc/riscv-assembly-directives.md)。--如果你删除它们，你仍然可以生成并运行return_2执行程序。`.globl main`表示`main`符号应该对链接器可见，否则它找不到程序的入口点。
+现在，让我们看看汇编程序本身。我们可以忽略`.section`、`.align`等指令，这些汇编原语可参加[这里的介绍](https://github.com/decaf-lang/minidecaf/blob/master/doc/riscv-assembly-directives.md)。--如果你删除它们，你仍然可以生成并运行return_2执行程序。`.globl main`表示`main`符号应该对链接器可见，否则它找不到程序的入口点。
 
 最后，我们有了实际的汇编指令。
 
 ```
 main:                  ; label for start of "main" function
-    movl    $2, %eax    ; move constant "2" into the EAX register
+    movl    $2, %eax    ; move constant "2" into the a0 register
     ret                 ; return from function
 ```
 
-这里最重要的一点是，当一个函数返回时，XXX寄存器[5](https://norasandler.com/2017/11/29/Write-a-Compiler.html#fn5)将包含其返回值。`main`函数的返回值将是程序的退出代码。在上面的汇编片段中，唯一可以改变的是返回值。
+这里最重要的一点是，当一个函数返回时，`a0`寄存器将包含其返回值。`main`函数的返回值将是程序的退出代码。在上面的汇编片段中，唯一可以改变的是返回值。
 
-> 注意：在实验指导中，将使用AT&T汇编语法。每当你在阅读汇编时，请确保你知道它使用的是什么语法!
+> 注意：每当你在阅读汇编时，请确保你知道它使用的是什么语法!
 

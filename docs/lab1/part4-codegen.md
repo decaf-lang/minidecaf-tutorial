@@ -1,26 +1,66 @@
-## 代码生成
+## 汇编代码生成
 
-现在我们已经建立了一个AST，我们已经准备好生成汇编代码了！就像我们之前看到的，我们只需生成四行汇编码。为此，我们将大致按照程序执行的顺序遍历AST。这意味着我们将按顺序访问：
+我们选择的目标平台是RISC-V 64，我们可以先看看常见的编译器生成的汇编代码是什么样的：
 
-- 函数名： function name  (不是真正的node，而是`function definition`node中的一个属性)
-- 返回值：return value
-- 返回语句：return statement
-
-> 注意，我们经常（虽然并不总是）以[post-order](https://en.wikipedia.org/wiki/Tree_traversal#Post-order)的方式遍历树，在其父类之前访问子类。例如，我们需要在返回语句中引用返回值之前生成它。在后面的s试验中，我们需要在生成对算术表达式进行操作的代码之前，生成算术表达式的操作数。
-
-下面是我们要生成汇编码：
-
-1. 要生成一个函数（如函数 "foo"）。
-
+```bash
+$ riscv64-linux-gnu-gcc return2.c -S -O3
+$ cat return2.s
+    .file   "return2.c"
+    .option nopic
+    .text
+    .section        .text.startup,"ax",@progbits
+    .align  1
+    .globl  main
+    .type   main, @function
+main:
+    li      a0,2
+    ret
+    .size   main, .-main
+    .ident  "GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
 ```
-    .globl foo
-   foo:
-    <FUNCTION BODY GOES HERE>
+
+其实这里有很多多余的信息，你可以自己尝试一下，只留下最关键的一些表示main函数的信息就可以经由汇编器和链接器生成正确的程序：
+
+```nasm
+    .globl  main
+main:
+    li      a0,2
+    ret
 ```
 
-2. 生成一个返回语句（如：`return 3;`）的汇编码
+这里做的事情倒是很直接，就是直接return一个常数了，不过跟我们上面描述的两条指令做到事情还是不太一样。为了能够模拟我们描述的PUSH和RET的操作，还是有必要了解一下RISC-V指令集和相关的调用约定的知识，不过为了减小大家的工作量，这个阶段我们不要求你们去自行查阅，而是把必要的知识都列出来：
 
+1. 我们假定整数都是64位的，因此运算栈中的一个元素占据8字节
+2. 我们可以用sp寄存器来表示栈，sp的值就是栈顶，但是这个栈是向地址低的地方生长的，所以如果sp的值减少8，就意味着栈增长了一个元素
+3. 我们可以用t开头的寄存器来进行一些临时的数据存储和运算
+4. 最终函数的返回值需要保存到a0寄存器中
+5. li指令用来加载一个常数到寄存器中，sd指令用来把一个寄存器中的值保存到一个内存地址，ld指令用来把一个内存地址中的值读入到一个寄存器，ret用来执行函数返回
+
+所以，对于一条PUSH指令，可以生成这样的代码：
+
+```asm
+li t0, <常数> # 用t0临时存储这个常数
+sd t0, -8(sp) # 把t0中的值保存在栈顶后的一个元素的位置
+add sp, sp, -8 # 栈增长一个元素，这一条和上面一条合起来就是压入一个元素
 ```
-    movl    $3, %eax
+
+对于一条RET指令，可以生成这样的代码：
+
+```asm
+ld a0, 0(sp) # 从栈顶读出值到表示返回值的寄存器
+add sp, sp, 8 # 栈减小一个元素，这一条和上面一条合起来就是弹出一个元素，并把值赋给a0
+ret # 函数返回
+```
+
+最终你为`return2.c`生成的整个汇编程序可以是这个样子的：
+
+```nasm
+    .globl  main
+main:
+    li t0, 2
+    sd t0, -8(sp)
+    add sp, sp, -8
+    ld a0, 0(sp)
+    add sp, sp, 8
     ret
 ```

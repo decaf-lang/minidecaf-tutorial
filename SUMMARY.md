@@ -18,6 +18,7 @@
   * [递归下降分析](docs/lab1/part2-1-rdp.md)
   * [任务](docs/lab1/part2-2-task.md)
   * [中间码](docs/lab1/part3-ir.md) 
+  * [任务](docs/lab1/part3-1-task.md)
   * [代码生成](docs/lab1/part4-codegen.md) 
   * [任务](docs/lab1/part4-1-task.md)
   * [小结](docs/lab1/summary.md)
