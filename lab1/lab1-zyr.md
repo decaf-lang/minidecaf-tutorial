@@ -12,25 +12,11 @@ int main() {
 
 ## 词法分析
 
-词法分析器（也叫扫描器或标记器）是编译器的一个阶段，它将一个字符串（源代码）分解成一个标记（token）列表，类似于断句。一个 token 是语法解析器（parser）能够理解的最小单位，token 的本质是一个更小的字符串，但我们会在其中记录更多的信息，如标记类型、（如果是数值）对应的值。
+下面是本阶段需要识别的所有标记，以及定义每个标记的正则表达式（regular expression）。`
 
-下面是词法分析器（lexer）需要识别的所有标记，以及定义每个标记的正则表达式（regular expression）。
-
-- Open brace `{`
-- Close brace `}`
-- Open parenthesis `(`
-- Close parenthesis `)`
-- Semicolon `;`
-- Int keyword `int`
-- Return keyword `return`
-- Identifier `[a-zA-Z]\w*`
-- Integer literal `[0-9]+`
-
-这些标记可以分为三类：
-
-* 保留字： 符号和关键字，如 `{`、 `int`、 `return`
-* 数值字面量：数字，如`2`
-* 标识符：主要是函数名和变量名（虽然现在还用不到）， 如 `main`
+- Reserved word `{`、`}`、`(`、`)`、`;`、`int`、`return` 
+- Identifier `[a-zA-Z]\w*`，如 x，var
+- Integer literal `[0-9]+`，如 2，0
 
 #### ☑任务：
 
@@ -94,28 +80,6 @@ List<Token> lex(String input_string) {
 
 ## 语法解析
 
-下一步是将我们的标记列表转化为抽象的语法树（Abstract  Syntax Tree，简称AST）。AST是表示程序结构的一种方式。在大多数编程语言中，像条件和函数声明这样的语言结构是由更简单的结构组成的，比如变量和常量。AST捕捉到了这种关系；AST的根将是整个程序，而每个节点将有子节点代表它的组成部分。让我们来看一个小例子。
-
-```
-if (a < b) {
-    c = 2;
-    return c;
-} else {
-    c = 3;
-}
-```
-
-这段代码是一个if语句，所以我们将AST的根标记为 "if statement"。它有三个子节点：
-
-- 表达式：condition (`a < b`)
-- 语句列表：if body (`c = 2; return c;`)
-- 语句列表：else body (`c = 3;`)
-
-这些节点都可以进一步分解。例如，condition (`a < b`)表达式是一个有两个操作数（operand ）子节点的`"<"`二元操作的AST节点：
-
-- first operand (variable `a`)
-- second operand (variable `b`)
-
 下面是我们对`return_2.c`给出的AST节点的定义：
 
 ```
@@ -133,7 +97,7 @@ exp = Constant(int)
       - return statement
         - constant (value: 2)
 
-最后，我们需要一个形式化的语法，它定义了一系列标记如何组合成语言构造。我们将基于[Backus-Naur Form](https://en.wikipedia.org/wiki/Backus-Naur_form-Naur_form)来定义：
+Backus-Naur Form定义：
 
 ```
 <program> ::= <function>
@@ -141,14 +105,6 @@ exp = Constant(int)
 <statement> ::= "return" <exp> ";"
 <exp> ::= <int>
 ```
-
-上面的每一行都是一个产生式（*production* ），定义了如何从一种形式语言（BNF）的构造和标记来建立另外一个语言（minidecaf）的构造。每一个出现在产生式左侧的符号（即`<program>`、`<function>`、`<statement>`）都是一个非终结符（non-terminal symbol）。个别标记（keywords、id、punctuation等）是终结符（terminal symbols）。这个语法告诉我们什么样的标记序列构成了一个有效的minidecaf程序。
-
-### 递归下降解析
-
-为了将一个标记列表转化为AST，我们将使用一种叫做递归下降解析的技术。我们将定义一个函数来解析语法中的每个非终结符，并返回一个相应的AST节点。解析符号`S`的函数应该从列表的开头删除标记，直到它到达*S*的有效派生。如果在它完成解析之前，碰到了一个不在*S*的产生式中的标记，它应该失败。如果 `S` 的产生式规则包含其他非终结符，它应该调用其他函数来解析它们。
-
-可以发现，产生式是递归的（例如一个算术表达式可以包含其他表达式），这意味着解析函数也将是递归的--因此这种技术被称为递归下降解析。
 
 #### ☑任务：
 
