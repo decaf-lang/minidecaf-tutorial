@@ -1,5 +1,4 @@
 # minidecaf教学实验文档
-
 * [实验简介](README.md)
 * [更新日志](docs/log.md)
 
@@ -69,3 +68,6 @@
 * 步骤十二
   * [摘要](docs/lab12/part0-intro.md)
   * [小结](docs/lab12/summary.md)
+
+## 参考资料
+* [参考资料](REFERENCE.md)
