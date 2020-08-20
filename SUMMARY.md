@@ -3,14 +3,13 @@
 * [实验简介](README.md)
 * [更新日志](docs/log.md)
 
-## 零：环境搭建
-* [环境搭建](docs/lab0/part0-intro.md)
-  * [设置环境](docs/lab0/part1-setenv.md)
-  * [测试](docs/lab0/part2-testing.md)
-  * [小结](docs/lab0/summary.md)
+## 零：前置准备
+* 配环境、跑测试
+  * [参考代码的环境配置](docs/lab0/env.md)
+  * [运行测试样例](docs/lab0/testing.md)
 
 ## 一：第一个编译器
-* 步骤一
+* 仅一个 return 的 main 函数
   * [摘要](docs/lab1/part0-intro.md)
   * [词法分析](docs/lab1/part1-lex.md)
   * [任务](docs/lab1/part1-1-task.md)

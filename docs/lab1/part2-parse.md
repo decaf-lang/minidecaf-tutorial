@@ -30,7 +30,7 @@ if (a < b) {
 
 下面是这段代码的完整AST：
 
-![Image of diagram; text outline follows](./lab1-pics/AST.svg)
+![Image of diagram; text outline follows](./pics/AST.svg)
 
 - if statement
   - condition: binary operation (<)

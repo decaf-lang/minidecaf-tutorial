@@ -32,7 +32,7 @@ cd $DEPLOY_DIR
 CURRENT_TIME=$(date +"%Y-%m-%d %H:%m:%S")
 git add *
 git commit -m "[Auto-deploy] Build $CURRENT_TIME"
-git push origin master
+#git push origin master
 
 # 返回当前目录
 cd $CURRENT_DIR
