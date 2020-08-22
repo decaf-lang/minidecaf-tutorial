@@ -4,7 +4,7 @@
 
 ## 零：前置准备
 * 配环境、跑测试
-  * [参考代码的环境配置](docs/lab0/env.md)
+  * [环境配置](docs/lab0/env.md)
   * [运行测试样例](docs/lab0/testing.md)
 
 ## 一：第一个编译器
