@@ -1,0 +1,56 @@
+digraph {
+  node [shape=plain]
+  rankdir=LR
+
+  c [label=<<table border="0" cellborder="1" cellspacing="0">
+    <tr><td port="2" align="left">50</td></tr>
+    <tr><td port="3" align="left">1226</td></tr>
+  </table>>]
+
+  b [label=<<table border="0" cellborder="1" cellspacing="0">
+    <tr><td port="0" align="left">1226</td></tr>
+    <tr><td port="2" align="left">50</td></tr>
+    <tr><td port="3" align="left">1176</td></tr>
+  </table>>]
+
+  a [label=<<table border="0" cellborder="1" cellspacing="0">
+    <tr><td port="0" align="left">50</td></tr>
+    <tr><td port="1" align="left">1176</td></tr>
+    <tr><td port="2" align="left">50</td></tr>
+    <tr><td port="3" align="left">1176</td></tr>
+  </table>>]
+
+  subgraph cluster_0 {
+    label = "before ADD"
+    a  
+    运算栈1 -> a:0
+    运算栈1 -> a:1
+    i1 -> a:2
+    sum1 -> a:3
+    运算栈1[label = "运算栈"]
+    i1[label = "i"]
+    sum1[label = "sum"]
+  }
+
+  subgraph cluster_1 {
+    label = "after ADD"
+    b  
+    运算栈2 -> b:0
+    i2 -> b:2
+    sum2-> b:3
+    运算栈2[label = "运算栈"]
+    i2[label = "i"]
+    sum2[label = "sum"]
+  }
+
+  subgraph cluster_2 {
+    label = "after STORE"
+    c
+    运算栈3
+    i3 -> c:2
+    sum3-> c:3
+    运算栈3[label = "运算栈(空)"]
+    i3[label = "i"]
+    sum3[label = "sum"]
+  }
+}
