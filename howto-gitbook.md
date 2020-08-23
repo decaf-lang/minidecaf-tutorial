@@ -10,3 +10,24 @@ gitbook build
 
 ## get help info
 gitbook help
+
+
+
+## gitbook 版本
+```
+$ gitbook -V
+CLI version: 2.3.2
+GitBook version: 3.2.3
+```
+## `gitbook build`生成的_book下html无法跳转问题
+
+在新版本的gitbook使用gitbook build生成的html在左侧栏是无法跳转菜单的。
+
+## 解决_book下html无法跳转
+
+在导出的文件夹目录下找到gitbook->theme.js文件.找到下面的代码搜索 if(m)for(n.handler&& 
+
+将if(m)改成if(false) 
+
+再次打开_book下的index.html页面，确认能够跳转页面。
+
