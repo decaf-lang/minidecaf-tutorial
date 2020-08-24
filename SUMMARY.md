@@ -48,16 +48,21 @@
   * [小结](docs/lab7/summary.md)
 * 步骤八
   * [摘要](docs/lab8/part0-intro.md)
+  * [代码生成](docs/lab8/part4-codegen.md)
+  * [任务](docs/lab8/part4-1-task.md)
   * [小结](docs/lab8/summary.md)
 
 ## 五：函数和全局变量
 * 步骤九
   * [摘要](docs/lab9/part0-intro.md)
-  * [调用约定](docs/lab9/cconv.md)
-  * [函数序言、尾声和调用](docs/lab9/prologue.md)
+  * [调用约定](docs/lab9/part4-1-cconv.md)
+  * [代码生成](docs/lab9/part4-2-codegen.md)
+  * [任务](docs/lab9/part4-3-task.md)
   * [小结](docs/lab9/summary.md)
 * 步骤十
   * [摘要](docs/lab10/part0-intro.md)
+  * [代码生成](docs/lab10/part4-codegen.md)
+  * [任务](docs/lab10/part4-1-task.md)
   * [小结](docs/lab10/summary.md)
 
 ## 六：指针和数组
