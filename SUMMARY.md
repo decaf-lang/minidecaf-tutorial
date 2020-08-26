@@ -77,6 +77,8 @@
 * 步骤十一
   * [摘要](docs/lab11/part0-intro.md)
   * [类型检查](docs/lab11/typeck.md)
+  * [代码生成](docs/lab11/part4-codegen.md)
+  * [任务](docs/lab11/part4-1-task.md)
   * [小结](docs/lab11/summary.md)
 * 步骤十二
   * [摘要](docs/lab12/part0-intro.md)

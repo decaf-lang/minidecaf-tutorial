@@ -18,7 +18,7 @@ int main() {
 使用以下命令编译出汇编代码：
 
 ```bash
-$ riscv64-unknown-elf-gcc test.c -S -o test.S
+$ riscv64-unknown-elf-gcc test.c -O3 -S -o test.S
 $ cat test.S
     .file   "test.c"
     .option nopic
