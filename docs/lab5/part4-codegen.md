@@ -10,7 +10,7 @@
 
 ```
 addi sp, sp, -framesize         #建立栈帧
-sd ra, framesize-8(sp)          #储存返回地址（已经出存在 ra 中，为什么再次储存？）
+sd ra, framesize-8(sp)          #储存返回地址（已经储存在 ra 中，为什么再次储存？）
 sd fp, framesize-16(sp)         #储存 fp
 addi fp, sp, framesize          #更新 fp
 ```
