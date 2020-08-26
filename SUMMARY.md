@@ -20,6 +20,10 @@
   * [代码生成](docs/lab1/part4-codegen.md)
   * [任务](docs/lab1/part4-1-task.md)
   * [小结](docs/lab1/summary.md)
+* [dzy] 仅一个 return 的 main 函数
+  * [第一部分：从零开始的词法语法分析和汇编生成](docs/lab1alt/part1.md)
+  * [(可选) 第二部分：词法语法分析工具](docs/lab1alt/part2.md)
+  * [第三部分：使用中间码](docs/lab1alt/part3.md)
 
 ## 二：常量表达式
 * 步骤二
