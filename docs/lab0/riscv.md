@@ -12,6 +12,7 @@ RISC-V 是一个 RISC 指令集架构，你实现的编译器要编译到 RISC-V
 使用时记得加这个参数，否则默认编译到 64 位汇编。
 
 * gcc 编译 `input.c` 到汇编 `input.s`，最高优化等级
+
 ```bash
 # input.c 的内容
 $ cat input.c
@@ -40,6 +41,7 @@ main:
 ```
 
 * gcc 编译 `input.s` 到可执行文件 `a.out`
+
 ```bash
 # input.s 的内容，就是上面汇编输出的简化版本
 $ cat input.s
@@ -58,6 +60,7 @@ a.out: ELF 32-bit LSB executable, UCB RISC-V, version 1 (SYSV), statically linke
 ```
 
 * qemu 运行 `a.out`，获取返回码
+
 ```bash
 # 运行 a.out
 $ qemu-riscv32 a.out

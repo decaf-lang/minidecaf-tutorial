@@ -3,7 +3,7 @@
 第一个方向是： **使用工具完成词法语法分析，而不是自己手写** 。
 
 本节内容非必做。
-如果你不做，那么你要自己实现 lexer/parser。
+如果你不做，那么你要自己实现 lexer/parser，请直接看[任务](#任务)。
 
 ## 概述
 从 minilexer/miniparser 的代码可以看出，lexer 和 parser 包含两部分：
@@ -22,5 +22,5 @@
 ANTLR 是一个比较易用的 parser generator，速成文档在[这里](./antlr.md)。
 
 # 任务
-1. 用工具描述 step1 的 MiniDecaf 词法语法，并参考第一部分的描述，生成汇编。
-
+1. **如果你选择使用工具**：按照你选择的工具，描述 step1 的 MiniDecaf 词法语法，并从 AST 生成汇编。
+2. **如果你不选择使用工具**：实现你自己的 lexer 和 parser，并生成汇编。

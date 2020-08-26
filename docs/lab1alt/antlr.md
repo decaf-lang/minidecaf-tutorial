@@ -4,7 +4,7 @@
 
 我们用一个简单的表达式语法 [^1] 来介绍 ANTLR，表达式由一系列整数通过加减乘除以及括号构成，例如 `(1+3)*4-3-3`。
 
-对于 ANTLR，词法和语法分析的规范都写在 .g4 [^2] 文件中，表达式语法的规范在[文法](./code/ExprLex.g4)和[语法](./code/Expr.g4)。
+对于 ANTLR，词法和语法分析的规范都写在 .g4 [^2] 文件中，例如我们的表达式的规范是[文法: ExprLex.g4](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/ExprLex.g4)和[语法: Expr.g4](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/Expr.g4)。
 无论是词法规范还是语法规范，它们的规范文件结构是一样的，如下。
 
 > 规范文件中，`//` 表示注释，规范是大小写敏感的，字符串常量用单引号括起。
@@ -36,10 +36,10 @@ atom
 ```
 
 ## 词法规范
-[词法规范](./code/ExprLex.g4)描述了 lexer 应该怎么生成，显然词法规范中规则的左边只能是终结符。
+[词法规范](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/ExprLex.g4)描述了 lexer 应该怎么生成，显然词法规范中规则的左边只能是终结符。
 除了上面所说的，词法规范还有一点是：规则的右手边是一个正则表达式。
 
-详细用法在 [这里](https://github.com/antlr/antlr4/blob/master/doc/lexer-rules.md)，一些常见用法如下：
+详细用法在[这里](https://github.com/antlr/antlr4/blob/master/doc/lexer-rules.md)，一些常见用法如下：
 ```antlr4
 // 1. 为了匹配字符串常量，用单引号把它括起来
 Lparen: '(';
@@ -58,7 +58,7 @@ Whitespace: WhitespaceChar+ -> skip;
 ```
 
 ## 语法规范
-[语法规范](./code/Expr.g4)描述了 parser 应该怎么生成。除了上面说的，还需注意：
+[语法规范](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/Expr.g4)描述了 parser 应该怎么生成。除了上面说的，还需注意：
 
 1. parser 依赖于 lexer，所以语法规范中需要 **导入词法规范**
 ```antlr4
@@ -141,13 +141,13 @@ $ grun Expr expr -gui input         # 输出如下图
 
 接下来，我们给出示例代码，叙述如何使用生成的 lexer 和 parser。
 
-1. [Main.java](./code/Main.java) 是 Java 的示例代码。做完上面步骤后，运行 Main：
+1. [Main.java](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/Main.java) 是 Java 的示例代码。做完上面步骤后，运行 Main：
 ```bash
 $ java Main < input
 (expr (add (add (add (mul (atom ( (expr (add (add (mul (atom 1))) + (mul (atom 3)))) )) (mulOp *) (atom 4))) - (mul (atom 3))) - (mul (atom 3))))
 ```
 
-2. [main.py](./code/main.py) 是 Python 的示例代码。为了运行它，除了安装 ANTLR 你还需要安装 Python 的 ANTLR API，见[这里](https://github.com/decaf-lang/minidecaf/blob/md-dzy/README.md#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE)。运行方法如下
+2. [main.py](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/main.py) 是 Python 的示例代码。为了运行它，除了安装 ANTLR 你还需要安装 Python 的 ANTLR API，见[这里](https://github.com/decaf-lang/minidecaf/blob/md-dzy/README.md#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE)。运行方法如下
 ```bash
 $ antlr4 Expr.g4 -Dlanguage=Python3
 $ ls ExprParser.py ExprLexer.py # 生成了 Python 的 lexer 和 parser
@@ -194,7 +194,7 @@ class ExprVisitor(ParseTreeVisitor):
     # ...
 ```
 
-[MainEval.java](./code/MainEval.java) 和 [maineval.py](./code/maineval.py) 通过表达式求值展现了 visitor 的用法，如上编译后如下运行即可。
+[MainEval.java](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/MainEval.java) 和 [maineval.py](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/maineval.py) 通过表达式求值展现了 visitor 的用法，如上编译后如下运行即可。
 输出的 10 就等于 `(1+3)*4-3-3`。
 ```
 $ python3 mainvisitor.py < input

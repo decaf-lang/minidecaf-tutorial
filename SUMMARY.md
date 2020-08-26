@@ -6,6 +6,7 @@
 * 配环境、跑测试
   * [环境配置](docs/lab0/env.md)
   * [运行测试样例](docs/lab0/testing.md)
+  * [RISC-V 的工具链使用](docs/lab0/riscv.md)
 
 ## 一：第一个编译器
 * 仅一个 return 的 main 函数
@@ -21,9 +22,12 @@
   * [任务](docs/lab1/part4-1-task.md)
   * [小结](docs/lab1/summary.md)
 * [dzy] 仅一个 return 的 main 函数
-  * [第一部分：从零开始的词法语法分析和汇编生成](docs/lab1alt/part1.md)
-  * [(可选) 第二部分：词法语法分析工具](docs/lab1alt/part2.md)
+  * [第一部分：从零开始的 lexer、parser 以及汇编生成](docs/lab1alt/part1.md)
+  * [第二部分：词法语法分析工具](docs/lab1alt/part2.md)
   * [第三部分：使用中间码](docs/lab1alt/part3.md)
+  * 其他
+    * [ANTLR 使用](docs/lab1alt/antlr.md)
+    * [Visitor 模式](docs/lab1alt/visitor.md)
 
 ## 二：常量表达式
 * 步骤二
@@ -52,16 +56,21 @@
   * [小结](docs/lab7/summary.md)
 * 步骤八
   * [摘要](docs/lab8/part0-intro.md)
+  * [代码生成](docs/lab8/part4-codegen.md)
+  * [任务](docs/lab8/part4-1-task.md)
   * [小结](docs/lab8/summary.md)
 
 ## 五：函数和全局变量
 * 步骤九
   * [摘要](docs/lab9/part0-intro.md)
-  * [调用约定](docs/lab9/cconv.md)
-  * [函数序言、尾声和调用](docs/lab9/prologue.md)
+  * [调用约定](docs/lab9/part4-1-cconv.md)
+  * [代码生成](docs/lab9/part4-2-codegen.md)
+  * [任务](docs/lab9/part4-3-task.md)
   * [小结](docs/lab9/summary.md)
 * 步骤十
   * [摘要](docs/lab10/part0-intro.md)
+  * [代码生成](docs/lab10/part4-codegen.md)
+  * [任务](docs/lab10/part4-1-task.md)
   * [小结](docs/lab10/summary.md)
 
 ## 六：指针和数组
