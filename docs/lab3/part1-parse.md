@@ -189,7 +189,7 @@ def parse_factor(toks)
 program = Program(function_declaration)
 function_declaration = Function(string, statement) //string is the function name
 statement = Return(exp)
-exp = BinOp(binary_operator, exp, exp)
+exp = BinOp(binary_operator, exp, exp)      // <- 看这里
     | UnOp(unary_operator, exp)
     | Constant(int)
 ```
