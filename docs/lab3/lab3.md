@@ -30,9 +30,9 @@
 - Bitwise complement `~`
 - Logical negation `!`
 - **Addition `+`**
-- **Multiplication `\*`**
+- **Multiplication `*`**
 - **Division `/`**
-- **Mod `/`**
+- **Mod `%`**
 
 #### ☑任务
 
