@@ -40,7 +40,7 @@ MiniDecaf 源文件 --------> 字节流 ----------> Tokens --> ...... --> RISC-V
 > 例如，“整数 token” 的字节串一定是 “包含一个或多个 '0' 到 '9' 之间的字节串”
 
 词法分析的正经算法会在理论课里讲解，但我们可以用暴力算法实现一个 lexer。
-例如我们实现的 [minilexer](./code/minilexer.py) 当中，
+例如我们实现了一个 minilexer（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/minilexer.py)）当中，
 用一个包含所有 token 种类的列表告诉 lexer 有哪几种 token（上面第 1. 点），
 对每种 token 用正则表达式描述它能被那些字节串构成（上面第 2. 点）。
 
@@ -102,7 +102,7 @@ expr : Integer
 > 并且我们用 `:` 而不是 `->` 隔开产生式左右两边。
 
 同样的，语法分析的正经算法会在课上讲到。
-但我们实现了一个暴力算法，在 [miniparser](./code/miniparser.py)。
+但我们实现了一个暴力算法 miniparser（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/miniparser.py)）。
 这个暴力算法不是通用的算法，但它足以解析上述语法。
 你可尝试运行，运行结果如下（下面输出就是语法树的先序遍历）
 
@@ -142,7 +142,7 @@ Prog(funcs=[
 2. 打印一个返回 X 的汇编程序
 
 针对第 1. 点，我们使用一个 Visitor 模式来完成 AST 的遍历。
-同样，我们有一个 [minivisitor](./code/minivisitor.py) 作为这个阶段的例子。
+同样，我们有一个 minivisitor（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/minivisitor.py)）作为这个阶段的例子。
 
 > Visitor 模式比简单的递归函数更强大，用它可以让以后的步骤更方便。
 > Visitor 模式速成请看 [这里](./visitor.md)
