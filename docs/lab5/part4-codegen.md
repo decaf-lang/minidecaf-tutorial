@@ -10,8 +10,8 @@
 
 ```
 addi sp, sp, -framesize         #建立栈帧
-sd ra, framesize-8(sp)          #储存返回地址（已经储存在 ra 中，为什么再次储存？）
-sd fp, framesize-16(sp)         #储存 fp
+sw ra, framesize-4(sp)          #储存返回地址（已经储存在 ra 中，为什么再次储存？）
+sw fp, framesize-8(sp)        #储存 fp
 addi fp, sp, framesize          #更新 fp
 ```
 
@@ -20,8 +20,8 @@ addi fp, sp, framesize          #更新 fp
 在`f`返回之前，它立即执行函数前序来删除这个栈帧，让一切都和函数前序执行之前一样。
 
 ```
-ld fp, framesize-16(sp)         #恢复 fp
-ld ra, framesize-8(sp)          #恢复 ra
+lw fp, framesize-8(sp)         #恢复 fp
+lw ra, framesize-4(sp)          #恢复 ra
 addi sp, sp, framesize          #恢复 sp
 ret
 ```
@@ -40,9 +40,9 @@ ret
 
 ### 变量声明
 
-碰到变量声明时，需将变量保存到栈中并设定它的偏移量。事实上，我们在函数前序中留下了变量的位置（注意栈帧的大小），也就隐式的“保存”了变量，我们还需要处理变量的偏移量。首先你需要一个数据结构来维护变量的信息，如：名称、类型（lab11）、声明位置、初始化语句等。至于偏移，你可以把偏移直接作为变量的属性，也可以建立一个变量到其偏移的映射，关键的问题是偏移量的确定。
+碰到变量声明时，需将变量保存到栈中并设定它的偏移量。事实上，我们在函数前序中留下了变量的位置（注意栈帧的大小），也就隐式的“保存”了变量。首先我们需要一个数据结构来维护变量的信息，如：名称、类型（lab11）、声明位置、初始化语句等。至于偏移，你可以把偏移直接作为变量的属性，也可以建立一个变量到其偏移的映射，关键的问题是偏移量的确定。
 
-目前阶段，你可以简单的使用一个简单的链表或者数组来保存以声明变量的信息。
+目前阶段，你可以简单的使用一个简单的链表或者数组来保存已声明变量的信息。
 
 #### 偏移量确定
 
@@ -57,7 +57,7 @@ ret
 目前只有变量才能作为左值，所以记得检查 assign 操作的类型（或许你已经在 parser 中进行了检查）。因为我们的变量相当于一个地址，可以通过 `sd` 指令完成变量赋值。
 
 ```
-visitAssign(IR assign) {
+visitAssign(Node assign) {
     visit(assign.rhs);                  //计算变量值，结果压入栈中
     emitStore(assign.lhs.offset);       //进行赋值
 }
@@ -65,25 +65,25 @@ visitAssign(IR assign) {
 `void emitStore(int offset)` 生成如下代码：
 
 ```asm
-ld t0, 0(sp)
-addi sp, sp, 8                     #pop 变量值                   
-sd t0, 8*{offset}(fp)              #变量赋值
-addi sp, sp, -8
-sd t0, 0(sp)                       #push 变量值，因为 assign 语句是有返回值的
+lw t0, 0(sp)
+addi sp, sp, 4                     #pop 变量值                   
+sw t0, 4*{offset}(fp)              #变量赋值
+addi sp, sp, -4
+sw t0, 0(sp)                       #push 变量值，因为 assign 语句是有返回值的
 ```
 
 显然，这段代码可以优化，不做赘述。
 
 > 注意，assign 语句存在返回值，也就会最终在栈中留下一个值。
 > 因此， `a = 0;` 语句会给 `a` 赋值并在栈中留下一个 `0`，必须将这个多余的值弹出。
-> \<statement\> ::= \<exp\> ";" 类型的 statement 都存在这个问题。
+> \<statement\> ::= \<expr\> ";" 类型的 statement 都存在这个问题。
 
 ### 变量引用
 
 要引用表达式中的变量，只需将其从堆栈中复制到栈顶即可：
 
 ```
-visitVar(IR var) {
+visitVar(Node var) {
     emitLoad(var.offset);
 }
 ```
@@ -91,7 +91,7 @@ visitVar(IR var) {
 emitLoad(var.offset)：
 
 ```asm
-ld t0, 8*{offset}(fp)           #取变量的值
-addi sp, sp, 8
-sd t0, (0)sp                    #push到栈顶
+lw t0, 4*{offset}(fp)           #取变量的值
+addi sp, sp, 4
+sw t0, 0(sp)                    #push到栈顶
 ```

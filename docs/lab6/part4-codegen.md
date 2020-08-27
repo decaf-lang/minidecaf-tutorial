@@ -50,7 +50,7 @@ beqz t0, label          #branch equal to zero; pc = (t0 == 0)? label : pc + 1;
 
 #### 标识
 
-标识(label)可以方便我们进行跳转，为了保证跳转的正确我们需要合适的方式生成 label。最简单的，我们可以用一个累加的数字来区分 label(比如上面的汇编例子)，但好的 label 生成方便我们后续实现 break, continue 等指令。目前，我们可以用一个累增数字和一个后缀(`.then`、`.else`、`.exit`)来生成标识。
+标识(label)可以方便我们进行跳转，为了保证跳转的正确我们需要合适的方式生成 label。最简单的，我们可以用一个累加的数字来区分 label(比如上面的汇编例子)，但好的 label 可以是的代码更加可读，有些时候也能方便我们编程。目前，我们可以用一个累增数字和一个后缀(`.then`、`.else`、`.exit`)来生成标识。
 
 ### 生成
 
@@ -69,7 +69,7 @@ beqz t0, label          #branch equal to zero; pc = (t0 == 0)? label : pc + 1;
 条件表达式与之类似，以下给出条件表达式伪代码。
 
 ```
-visitTern(IR tern) {
+visitTern(Node tern) {
     visit(tern.cond);
     #Label then = new Label("then");            #在这里，then分支是用不到的，可以删掉，但在后续的循环中会用到
     Label els = new Label("els");               #得到一个新的 else label

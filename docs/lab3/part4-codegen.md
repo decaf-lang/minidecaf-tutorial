@@ -32,7 +32,7 @@ rem t0, t1, t2          #t0 = t1 % t2
 我们依旧需要递归的生成汇编代码：
 
 ```
-visitAdd(IR add) {
+visitAdd(Node add) {
     visit(add.lhs);
     visit(add.rhs);
     emitAdd();
@@ -50,7 +50,7 @@ emitAdd() 应当消耗这两个结果并将最终结果压栈。
 
 ```asm
 ld t1, 0(sp)            #取右操作数
-ld t0, -8(sp)           #取左操作数
+ld t0, -4(sp)           #取左操作数
 add sp, sp, 8           #移动sp到合适位置
 add t0, t0, t1,         #执行add运算
 sd t0, 0(sp)            #储存结果
