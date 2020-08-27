@@ -15,7 +15,7 @@ sw fp, framesize-8(sp)        #储存 fp
 addi fp, sp, framesize          #更新 fp
 ```
 
-这些指令称为函数前序（function prologue）。目前, framesize = 变量数量 * 8 + 16（为什么？），注意，我们所有的变量长度都为8。
+这些指令称为函数前序（function prologue）。目前, framesize = 变量数量 * 4 + 8（为什么？），注意，我们所有的变量长度都为4。
 
 在`f`返回之前，它立即执行函数前序来删除这个栈帧，让一切都和函数前序执行之前一样。
 
