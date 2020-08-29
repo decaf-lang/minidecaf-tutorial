@@ -1,0 +1,5 @@
+#!/bin/bash
+rm *.{tokens,interp,class}
+rm *{Lexer,Parser,Listener,Visitor}*
+rm input
+rm __pycache__ -rf

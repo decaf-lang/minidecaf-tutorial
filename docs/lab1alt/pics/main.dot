@@ -1,0 +1,11 @@
+graph {
+    prog -- func
+
+    func -- {ty, Ident, Lparen, Rparen, Lbrace, stmt, Rbrace}
+    ty[label="Keyword(int)"]
+    Ident[label="Ident(\"main\")"]
+    stmt -- {Return, expr, Semicolon}
+    Return[label="keyword(\"return\")"]
+    expr -- Integer
+    Integer[label="Integer(0)"]
+}
