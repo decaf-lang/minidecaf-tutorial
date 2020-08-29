@@ -105,6 +105,8 @@
   * [小结](docs/lab11/summary.md)
 * 步骤十二
   * [摘要](docs/lab12/part0-intro.md)
+  * [代码生成](docs/lab12/part4-codegen.md)
+  * [任务](docs/lab12/part4-1-task.md)
   * [小结](docs/lab12/summary.md)
 
 ## 参考资料
