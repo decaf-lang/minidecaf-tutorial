@@ -88,9 +88,9 @@ visit(RET_STMT ret) {
 ```
 遍历 AST 只需 `visit(root)`
 
-#### 递归解析
+#### 解析 AST
 
-对 AST 的解析是一个递归的过程，以 return 语句为例，我们需要先生成计算汇编返回值的代码，然后再生成 `ret`。就像这样:
+对 AST 节点的解析往往需要先处理操作数（一定吗？）。以 return 语句为例，我们需要先生成计算汇编返回值的代码，然后再生成 `ret`。就像这样:
 
 ```
 visitRet(Node ret_stmt) {
