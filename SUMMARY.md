@@ -14,8 +14,6 @@
 * 仅一个 return 的 main 函数
   * [摘要](docs/lab1/part0-intro.md)
   * [词法语法分析](docs/lab1/part1-parse.md)
-  * [中间码](docs/lab1/part3-ir.md)
-  * [任务](docs/lab1/part3-1-task.md)
   * [代码生成](docs/lab1/part4-codegen.md)
   * [任务](docs/lab1/part4-1-task.md)
   * [小结](docs/lab1/summary.md)
