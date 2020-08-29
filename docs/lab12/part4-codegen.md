@@ -2,7 +2,7 @@
 
 ### 数组定义
 
-数据的内存空间是连续的，因此无论数组的原型是几维的，都可以看做是一个一维的大数组。例如，对于一个数组 $\mathtt{int}~a[d_1][d_2]\cdots[d_n]$，可看做是 $\mathtt{int}~a'[d_1d_2\cdots d_n]$。访问 $a[i_1][i_2]\cdots[i_n]$，就是访问 $a'[i_1d_2d_3\cdots d_n + i_2d_3d_4\cdots d_n + \cdots + i_n]$。
+数据的内存空间是连续的，因此无论数组的原型是几维的，都可以看做是一个一维的大数组。例如，对于一个数组 $$\mathtt{int}~a[d_1][d_2]\cdots[d_n]$$，可看做是 $$\mathtt{int}~a'[d_1d_2\cdots d_n]$$。访问 $$a[i_1][i_2]\cdots[i_n]$$，就是访问 $$a'[i_1d_2d_3\cdots d_n + i_2d_3d_4\cdots d_n + \cdots + i_n]$$。
 
 我们需要考虑定义数组时，是作为局部变量还是全局变量：
 
