@@ -9,12 +9,12 @@ MiniDecaf [^1] 是一个 C 的子集，去掉了如 include/define/多文件/str
 下面是 MiniDecaf 的快速排序，和 C 是一样的
 ```c
 int qsort(int *a, int l, int r) {
-    int i = l; int j = r; int p = *(a + (l+r)/2);
+    int i = l; int j = r; int p = a[(l+r)/2];
     while (i <= j) {
-        while (*(a+i) < p) i = i + 1;
-        while (*(a+j) > p) j = j - 1;
+        while (a[i] < p) i = i + 1;
+        while (a[j] > p) j = j - 1;
         if (i > j) break;
-        int u = *(a+i); *(a+i) = *(a+j); *(a+j) = u;
+        int u = a[i]; a[i] = a[j]; a[j] = u;
         i = i + 1;
         j = j - 1;
     }

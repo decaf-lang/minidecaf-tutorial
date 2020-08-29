@@ -1,4 +1,4 @@
-## 汇编代码生成
+## 代码生成
 
 本阶段代码生成的重点是处理 `*` 和 `&` 这两个运算符，而对于类型系统和强制类型转换属于语义检查，无需生成代码。
 
@@ -47,19 +47,18 @@ factor
 
 ```js
 function visitFactor(ctx) {
-    // ...
-    if (ctx ::= Ident) {                // <factor> ::= <Identifier>
-        if (isLValue(ctx)) {
-            emitAddress(Ident);         // 如果是左值，计算变量 Ident 的地址
+    if (ctx ::= Ident) {                // <factor> ::= Identifier
+        emitAddress(Ident);             // 计算变量 Ident 的地址
+        if (ctx.isLValue) {
+            // do nothing               // 如果是左值，直接返回其地址
         } else {
-            emitAddress(Ident);
             emitLoad();                 // 否则，再生成一条 Load 指令来取得变量的值
         }
     } else if (ctx ::= '*' factor) {    // <factor> ::= '*' <factor>
-        if (isLValue(ctx)) {
-            visitFactor(factor);        // 如果是左值，直接访问子 factor 以计算其值
+        visitFactor(factor);            // 访问子 factor 计算其值
+        if (ctx.isLValue) {
+            // do nothing               // 如果是左值，直接返回该值
         } else {
-            visitFactor(factor);
             emitLoad();                 // 否则，再生成一条 Load 指令来解引用
         }
     } else if (ctx ::= '&' factor) {    // <factor> ::= '&' <factor>
