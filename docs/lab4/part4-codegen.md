@@ -30,7 +30,7 @@ snez t0, t0             #set not equal to zero
 t0 = (t1 || t2) : 
 ```asm
 or t0, t1, t2
-snqz t0, t0
+snez t0, t0
 ```
 
 t0 = (t1 && t2) :
