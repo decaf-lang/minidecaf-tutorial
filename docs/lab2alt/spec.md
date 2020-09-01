@@ -5,6 +5,7 @@
 灰色部分表示相对上一节的修改。
 
 <pre id='vimCodeElement'>
+<code></code>
 <span class="SpecRuleStart">program</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">function</span>
 
@@ -27,7 +28,7 @@
 
 # step2 语义规范
 **2.1.** MiniDecaf 中，负数字面量不被整体作为一个 token。它被看成是一个取负符号、后面是它的绝对值。
-     这意味着我们无法用字面量表示 `2147483648`，但可以写成 `-2147483647-1`（待我们加上四则运算后）。
+     所以我们无法用字面量表示 `-2147483648`，但可以写成 `-2147483647-1`（待我们加上四则运算后）。
 
 **2.2.** 运算越界是未定义行为。例如 `-(-2147483647-1)` 是未定义行为。
 

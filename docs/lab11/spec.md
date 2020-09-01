@@ -4,6 +4,7 @@
 # step11 语法规范
 灰色部分表示相对上一节的修改。
 <pre id='vimCodeElement'>
+<code></code>
 <span class="SpecRuleStart">program</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">function</span> <span class="SpecOperator">|</span> <span class="SpecRule">declaration</span><span class="SpecOperator">)*</span>
 

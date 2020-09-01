@@ -4,6 +4,7 @@
 # step1 语法规范
 
 <pre id='vimCodeElement'>
+<code></code>
 <span class="SpecRuleStart">program</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">function</span>
 
