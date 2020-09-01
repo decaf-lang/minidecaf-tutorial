@@ -1,0 +1,1829 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>规范 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-click-reveal/click_reveal.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="summary.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    实验简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../log.html">
+            
+                <a href="../log.html">
+            
+                    
+                    更新日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">零：前置准备</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    配环境、跑测试
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../lab0/env.html">
+            
+                <a href="../lab0/env.html">
+            
+                    
+                    环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../lab0/testing.html">
+            
+                <a href="../lab0/testing.html">
+            
+                    
+                    运行测试样例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../lab0/riscv.html">
+            
+                <a href="../lab0/riscv.html">
+            
+                    
+                    RISC-V 的工具链使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    知识点参考
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../lab0/ir.html">
+            
+                <a href="../lab0/ir.html">
+            
+                    
+                    中间代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一个编译器</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    step1：仅一个 return 的 main 函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../lab1/part1.html">
+            
+                <a href="../lab1/part1.html">
+            
+                    
+                    第一部分：从零开始的 lexer、parser 以及汇编生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../lab1/part2.html">
+            
+                <a href="../lab1/part2.html">
+            
+                    
+                    第二部分：词法语法分析工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../lab1/part3.html">
+            
+                <a href="../lab1/part3.html">
+            
+                    
+                    第三部分：使用中间码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.4.1" data-path="../lab1/antlr.html">
+            
+                <a href="../lab1/antlr.html">
+            
+                    
+                    ANTLR 使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.2" data-path="../lab1/visitor.html">
+            
+                <a href="../lab1/visitor.html">
+            
+                    
+                    Visitor 模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../lab1/spec.html">
+            
+                <a href="../lab1/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常量表达式</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    step2：一元操作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../lab2alt/part1.html">
+            
+                <a href="../lab2alt/part1.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../lab2/part1-parse.html">
+            
+                <a href="../lab2/part1-parse.html">
+            
+                    
+                    TODO: 词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../lab2/part4-codegen.html">
+            
+                <a href="../lab2/part4-codegen.html">
+            
+                    
+                    TODO: 代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../lab2alt/spec.html">
+            
+                <a href="../lab2alt/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    step3：加减乘除模
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../lab3/part0-intro.html">
+            
+                <a href="../lab3/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../lab3/part1-parse.html">
+            
+                <a href="../lab3/part1-parse.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../lab3/part4-codegen.html">
+            
+                <a href="../lab3/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../lab3/part4-1-task.html">
+            
+                <a href="../lab3/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.5" data-path="../lab3/summary.html">
+            
+                <a href="../lab3/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.6" data-path="../lab3/spec.html">
+            
+                <a href="../lab3/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    step4：比较和逻辑表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../lab4/part0-intro.html">
+            
+                <a href="../lab4/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../lab4/part1-parse.html">
+            
+                <a href="../lab4/part1-parse.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../lab4/part4-codegen.html">
+            
+                <a href="../lab4/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../lab4/part4-1-task.html">
+            
+                <a href="../lab4/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="../lab4/summary.html">
+            
+                <a href="../lab4/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.6" data-path="../lab4/spec.html">
+            
+                <a href="../lab4/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">变量和语句</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    step5：局部变量和赋值
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../lab5/part0-intro.html">
+            
+                <a href="../lab5/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../lab5/part1-parse.html">
+            
+                <a href="../lab5/part1-parse.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../lab5/part1-1-task.html">
+            
+                <a href="../lab5/part1-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../lab5/part4-codegen.html">
+            
+                <a href="../lab5/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../lab5/part4-1-task.html">
+            
+                <a href="../lab5/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../lab5/summary.html">
+            
+                <a href="../lab5/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../lab5/spec.html">
+            
+                <a href="../lab5/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    step6：if 语句和条件表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../lab6/part0-intro.html">
+            
+                <a href="../lab6/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../lab6/part1-parse.html">
+            
+                <a href="../lab6/part1-parse.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../lab6/part1-1-task.html">
+            
+                <a href="../lab6/part1-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../lab6/part4-codegen.html">
+            
+                <a href="../lab6/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.5" data-path="../lab6/part4-1-task.html">
+            
+                <a href="../lab6/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.6" data-path="../lab6/summary.html">
+            
+                <a href="../lab6/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.7" data-path="../lab6/spec.html">
+            
+                <a href="../lab6/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">块语句和作用域和更多语句</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    step7：块语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../lab7/part0-intro.html">
+            
+                <a href="../lab7/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../lab7/part1-parse.html">
+            
+                <a href="../lab7/part1-parse.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../lab7/part1-1-task.html">
+            
+                <a href="../lab7/part1-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../lab7/part4-codegen.html">
+            
+                <a href="../lab7/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../lab7/part4-1-task.html">
+            
+                <a href="../lab7/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../lab7/summary.html">
+            
+                <a href="../lab7/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../lab7/spec.html">
+            
+                <a href="../lab7/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    step8：循环语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="part0-intro.html">
+            
+                <a href="part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="part1-parse.html">
+            
+                <a href="part1-parse.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="part1-1-task.html">
+            
+                <a href="part1-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.4" data-path="part4-codegen.html">
+            
+                <a href="part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.5" data-path="part4-1-task.html">
+            
+                <a href="part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.6" data-path="summary.html">
+            
+                <a href="summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.2.7" data-path="spec.html">
+            
+                <a href="spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">函数和全局变量</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    step9：函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../lab9/part0-intro.html">
+            
+                <a href="../lab9/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../lab9/part1-parser.html">
+            
+                <a href="../lab9/part1-parser.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../lab9/part1-1-task.html">
+            
+                <a href="../lab9/part1-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../lab9/part4-1-cconv.html">
+            
+                <a href="../lab9/part4-1-cconv.html">
+            
+                    
+                    调用约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.5" data-path="../lab9/part4-2-codegen.html">
+            
+                <a href="../lab9/part4-2-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.6" data-path="../lab9/part4-3-task.html">
+            
+                <a href="../lab9/part4-3-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.7" data-path="../lab9/summary.html">
+            
+                <a href="../lab9/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.8" data-path="../lab9/spec.html">
+            
+                <a href="../lab9/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    step10：全局变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../lab10/part0-intro.html">
+            
+                <a href="../lab10/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../lab10/part1-parser.html">
+            
+                <a href="../lab10/part1-parser.html">
+            
+                    
+                    词法语法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../lab10/part1-1-task.html">
+            
+                <a href="../lab10/part1-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="../lab10/part4-codegen.html">
+            
+                <a href="../lab10/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.5" data-path="../lab10/part4-1-task.html">
+            
+                <a href="../lab10/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.6" data-path="../lab10/summary.html">
+            
+                <a href="../lab10/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.7" data-path="../lab10/spec.html">
+            
+                <a href="../lab10/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">指针和数组</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" >
+            
+                <span>
+            
+                    
+                    step11：指针
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../lab11/part0-intro.html">
+            
+                <a href="../lab11/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../lab11/typeck.html">
+            
+                <a href="../lab11/typeck.html">
+            
+                    
+                    类型检查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../lab11/part4-codegen.html">
+            
+                <a href="../lab11/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../lab11/part4-1-task.html">
+            
+                <a href="../lab11/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.5" data-path="../lab11/summary.html">
+            
+                <a href="../lab11/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.6" data-path="../lab11/spec.html">
+            
+                <a href="../lab11/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" >
+            
+                <span>
+            
+                    
+                    step12：数组
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.1" data-path="../lab12/part0-intro.html">
+            
+                <a href="../lab12/part0-intro.html">
+            
+                    
+                    摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.2" data-path="../lab12/part4-codegen.html">
+            
+                <a href="../lab12/part4-codegen.html">
+            
+                    
+                    代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3" data-path="../lab12/part4-1-task.html">
+            
+                <a href="../lab12/part4-1-task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.4" data-path="../lab12/summary.html">
+            
+                <a href="../lab12/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.5" data-path="../lab12/spec.html">
+            
+                <a href="../lab12/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">参考资料</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../REFERENCE.html">
+            
+                <a href="../../REFERENCE.html">
+            
+                    
+                    参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >规范</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x89C4;&#x8303;">&#x89C4;&#x8303;</h1>
+<p>&#x6BCF;&#x4E2A;&#x6B65;&#x9AA4;&#x7ED3;&#x5C3E;&#x7684; <strong>&#x89C4;&#x8303;</strong> &#x4E00;&#x8282;&#x90FD;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;&#x6B65;&#x9AA4;&#x4E2D;&#x7684;&#x65B0;&#x7279;&#x6027;&#x7ED9;&#x51FA;&#x89C4;&#x8303;&#xFF0C;&#x65B9;&#x4FBF;&#x5927;&#x5BB6;&#x67E5;&#x9605;&#x3002;</p>
+<h1 id="step8-&#x8BED;&#x6CD5;&#x89C4;&#x8303;">step8 &#x8BED;&#x6CD5;&#x89C4;&#x8303;</h1>
+<p>&#x7070;&#x8272;&#x90E8;&#x5206;&#x8868;&#x793A;&#x76F8;&#x5BF9;&#x4E0A;&#x4E00;&#x8282;&#x7684;&#x4FEE;&#x6539;&#x3002;</p>
+<pre id="vimCodeElement">
+<span class="SpecRuleStart">program</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">function</span>
+
+<span class="SpecRuleStart">function</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">compound_statement</span>
+
+<span class="SpecRuleStart">type</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">&apos;int&apos;</span>
+
+<span class="SpecRuleStart">compound_statement</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">&apos;{&apos;</span> <span class="SpecRule">block_item</span><span class="SpecOperator">*</span> <span class="SpecToken">&apos;}&apos;</span>
+
+<span class="SpecRuleStart">block_item</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">declaration</span>
+
+<span class="SpecRuleStart">statement</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">&apos;return&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;;&apos;</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;if&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;else&apos;</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;for&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;for&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">declaration</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;while&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;do&apos;</span> <span class="SpecRule">statement</span> <span class="SpecToken">&apos;while&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecToken">&apos;;&apos;</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;break&apos;</span> <span class="SpecToken">&apos;;&apos;</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;continue&apos;</span> <span class="SpecToken">&apos;;&apos;</span>
+</div>
+<span class="SpecRuleStart">declaration</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;=&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">&apos;;&apos;</span>
+
+<span class="SpecRuleStart">expression</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">assignment</span>
+
+<span class="SpecRuleStart">assignment</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">conditional</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">&apos;=&apos;</span> <span class="SpecRule">expression</span>
+
+<span class="SpecRuleStart">conditional</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">logical_or</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">logical_or</span> <span class="SpecToken">&apos;?&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;:&apos;</span> <span class="SpecRule">conditional</span>
+
+<span class="SpecRuleStart">logical_or</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">logical_and</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">logical_or</span> <span class="SpecToken">&apos;||&apos;</span> <span class="SpecRule">logical_and</span>
+
+<span class="SpecRuleStart">logical_and</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">equality</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">logical_and</span> <span class="SpecToken">&apos;&amp;&amp;&apos;</span> <span class="SpecRule">equality</span>
+
+<span class="SpecRuleStart">equality</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">relational</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">equality</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;==&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;!=&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">relational</span>
+
+<span class="SpecRuleStart">relational</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">additive</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">relational</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;&lt;&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;&gt;&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;&lt;=&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;&gt;=&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">additive</span>
+
+<span class="SpecRuleStart">additive</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">multiplicative</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">additive</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;+&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">multiplicative</span>
+
+<span class="SpecRuleStart">multiplicative</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">unary</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">multiplicative</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;*&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;/&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;%&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
+
+<span class="SpecRuleStart">unary</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">primary</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;~&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;!&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
+
+<span class="SpecRuleStart">primary</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span>
+</pre>
+
+<h1 id="step8-&#x8BED;&#x4E49;&#x89C4;&#x8303;">step8 &#x8BED;&#x4E49;&#x89C4;&#x8303;</h1>
+<blockquote>
+<p>&#x4E3A;&#x65B9;&#x4FBF;&#xFF0C;&#x6211;&#x4EEC;&#x79F0; for &#x62EC;&#x53F7;&#x4E2D;&#x7684;&#x4E09;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;/&#x58F0;&#x660E;&#x4E3A;&#xFF1A;init&#xFF08;&#x6216; pre&#xFF09;&#x3001;ctrl&#x3001;post&#x3002;
+&#x4F8B;&#x5982; <code>for (i=0; i&lt;100; i=i+1);</code> &#x4E2D;&#xFF0C;<code>i=0</code> &#x662F; init&#xFF0C;<code>i&lt;100</code> &#x662F; ctrl&#xFF0C;<code>i=i+1</code> &#x662F; post&#x3002;</p>
+</blockquote>
+<p><strong>8.1.</strong> for &#x5FAA;&#x73AF;&#x7684;&#x63A7;&#x5236;&#x8868;&#x8FBE;&#x5F0F;&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;&#xFF0C;&#x8868;&#x793A;&#x5FAA;&#x73AF;&#x6761;&#x4EF6;&#x6C38;&#x8FDC;&#x4E3A;&#x771F;&#x3002;</p>
+<p><strong>8.2.</strong> for &#x8BED;&#x53E5;&#x81EA;&#x8EAB;&#x5E26;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x7ED9;&#x4F5C;&#x4E3A; init &#x7684;&#x58F0;&#x660E;&#x7528;&#x3002;
+    &#x5982;&#x679C; for &#x7684;&#x5FAA;&#x73AF;&#x4F53;&#x662F; block &#x8BED;&#x53E5;&#x5757;&#xFF0C;&#x90A3;&#x4E48;&#x5FAA;&#x73AF;&#x4F53;&#x518D;&#x5E26;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x3002;</p>
+<blockquote>
+<p>&#x56E0;&#x6B64; <code>for (int i=0;;i=i+1) { int i=1; return i; }</code> &#x662F;&#x5408;&#x6CD5;&#x4EE3;&#x7801;&#x3002;</p>
+</blockquote>
+<p><strong>8.3.</strong> &#x5728;&#x5FAA;&#x73AF;&#x5916;&#x4F7F;&#x7528; break &#x548C; continue &#x662F;&#x9519;&#x8BEF;&#x884C;&#x4E3A;&#x3002;</p>
+<p><strong>8.4.</strong> break &#x8DF3;&#x8F6C;&#x81F3;&#x6700;&#x8FD1;&#x7684;&#x5FAA;&#x73AF;&#x7684;&#x7ED3;&#x675F;&#x540E;&#x7B2C;&#x4E00;&#x6761;&#x8BED;&#x53E5;&#x3002;</p>
+<p><strong>8.5.</strong> &#x5982;&#x679C;&#x6700;&#x8FD1;&#x7684;&#x5FAA;&#x73AF;&#x8BED;&#x53E5;&#x662F; do &#x6216; while&#xFF0C;continue &#x8DF3;&#x8F6C;&#x5230;&#x6267;&#x884C;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#xFF1B;
+    &#x5982;&#x679C;&#x662F; for&#xFF0C;continue &#x8DF3;&#x8F6C;&#x5230;&#x6267;&#x884C; post&#xFF08;&#x7136;&#x540E;&#x518D;&#x8BA1;&#x7B97;&#x5FAA;&#x73AF;&#x6761;&#x4EF6;&#x3001;&#x7ED3;&#x675F;/&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;&#x2026;&#x2026;&#xFF09;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="summary.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 小结">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"规范","level":"6.2.7","depth":2,"next":{"title":"step9：函数","level":"7.1","depth":1,"ref":"","articles":[{"title":"摘要","level":"7.1.1","depth":2,"path":"docs/lab9/part0-intro.md","ref":"docs/lab9/part0-intro.md","articles":[]},{"title":"词法语法分析","level":"7.1.2","depth":2,"path":"docs/lab9/part1-parser.md","ref":"docs/lab9/part1-parser.md","articles":[]},{"title":"任务","level":"7.1.3","depth":2,"path":"docs/lab9/part1-1-task.md","ref":"docs/lab9/part1-1-task.md","articles":[]},{"title":"调用约定","level":"7.1.4","depth":2,"path":"docs/lab9/part4-1-cconv.md","ref":"docs/lab9/part4-1-cconv.md","articles":[]},{"title":"代码生成","level":"7.1.5","depth":2,"path":"docs/lab9/part4-2-codegen.md","ref":"docs/lab9/part4-2-codegen.md","articles":[]},{"title":"任务","level":"7.1.6","depth":2,"path":"docs/lab9/part4-3-task.md","ref":"docs/lab9/part4-3-task.md","articles":[]},{"title":"小结","level":"7.1.7","depth":2,"path":"docs/lab9/summary.md","ref":"docs/lab9/summary.md","articles":[]},{"title":"规范","level":"7.1.8","depth":2,"path":"docs/lab9/spec.md","ref":"docs/lab9/spec.md","articles":[]}]},"previous":{"title":"小结","level":"6.2.6","depth":2,"path":"docs/lab8/summary.md","ref":"docs/lab8/summary.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab8/spec.md","mtime":"2020-09-01T14:07:13.237Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-01T14:08:16.178Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-click-reveal/click_reveal.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+

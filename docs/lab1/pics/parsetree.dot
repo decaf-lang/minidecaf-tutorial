@@ -1,0 +1,26 @@
+graph {
+    e1 -- b1
+    b1 -- {b1e1, "*",  b1e2}
+    b1e1 -- b2
+    b1e2 -- i3
+    b2 -- {b2e1,  "-",  b2e2}
+    b2e1 -- i1
+    b2e2 -- i2
+    i1 -- ii1
+    i2 -- ii2
+    i3 -- ii3
+
+    e1[label=expr]
+    b1e1[label=expr]
+    b1e2[label=expr]
+    b2e1[label=expr]
+    b2e2[label=expr]
+    b1[label=binary]
+    b2[label=binary]
+    i1[label=int]
+    i2[label=int]
+    i3[label=int]
+    ii1[label=20]
+    ii2[label=13]
+    ii3[label=3]
+}
