@@ -37,7 +37,8 @@ MiniDecaf 源文件 --------> 字节流 ----------> Tokens --> ...... --> RISC-V
 > token *种类* 和 token 是不一样的，例如 Integer(0) 和 Integer(222) 不是一个 token，但都是一种 token：整数 token。
 
 2. 对于每种 token，它能由哪些字节串构成
-> 例如，“整数 token” 的字节串一定是 “包含一个或多个 '0' 到 '9' 之间的字节串”
+> 例如，“整数 token” 的字节串一定是 “包含一个或多个 '0' 到 '9' 之间的字节串”。
+> 不过这没考虑负数，后面 “语义检查” 会继续讨论。
 
 词法分析的正经算法会在理论课里讲解，但我们可以用暴力算法实现一个 lexer。
 例如我们实现了一个 minilexer（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/minilexer.py)）当中，
@@ -52,19 +53,20 @@ MiniDecaf 源文件 --------> 字节流 ----------> Tokens --> ...... --> RISC-V
 
 ```bash
 $ python3 minilexer.py
-Int        int
-Ident      main
-Lparen     (
-Rparen     )
-Lbrace     {
-Return     return
-Integer    123
-Semicolon  ;
-Rbrace     }
+token kind   text
+Int          int
+Identifier   main
+Lparen       (
+Rparen       )
+Lbrace       {
+Return       return
+Integer      123
+Semicolon    ;
+Rbrace       }
 ```
 
 本质上，token 是上下文无关语法的终结符，词法分析就是把一个字节串转换成上下文无关语法的 **终结符串** 的过程。
-不过 token 比单纯的终结符多一个属性，就是它的字符串（如 `Ident(main)` 的 `main`），你可以说 token 是有标注的终结符。
+不过 token 比单纯的终结符多一个属性，就是它的字符串（如 `Identifier(main)` 的 `main`），你可以说 token 是有标注的终结符。
 
 ## 语法分析
 ```
@@ -86,14 +88,14 @@ Rbrace     }
 有了语法分析，我们才知道了一个 `Integer(0)` token 到底是 return 的参数、if 的条件还是参与二元运算。
 
 为了完成语法分析，肯定要描述程序语言的语法，我们使用 **上下文无关语法** 描述 MiniDecaf。
-就这一步来说，MiniDecaf 的语法很简单，产生式大致如下，起始符号是 `prog`。
+就这一步来说，MiniDecaf 的语法很简单，产生式大致如下，起始符号是 `program`。
 
 ```
-prog : func
-func : ty Ident Lparen Rparen Lbrace stmt Rbrace
-ty   : Int
-stmt : Return expr Semicolon
-expr : Integer
+program    : function
+function   : type Identifier Lparen Rparen Lbrace statement Rbrace
+type       : Int
+statement  : Return expression Semicolon
+expression : Integer
 ```
 
 > 一些记号的区别：
@@ -108,7 +110,7 @@ expr : Integer
 
 ```bash
 $ python3 miniparser.py
-prog(func(ty(Int), Ident(main), Lparen, Rparen, Lbrace, stmt(Return, expr(Integer(123)), Semicolon), Rbrace))
+program(function(type(Int), Identifier(main), Lparen, Rparen, Lbrace, statement(Return, expression(Integer(123)), Semicolon), Rbrace))
 ```
 
 前面提到，语法树可以不像语法分析树那样严格。
@@ -125,11 +127,44 @@ Prog(funcs=[
 ])
 ```
 
+### 语义检查
+有时我们会用 **语法检查** 这个词，因为语法分析能发现输入程序的语法错误。
+对应语法检查，还有一个词叫 **语义检查**。
+它检查源程序是否满足 **语义规范**，是否有 **语义错误**，例如类型错误、使用未定义变量、重复定义等等。
+
+就 step1 来说，我们的语义规范如下。显然，我们要检查的就只是 `Integer` 字面量没有越界。
+
+> 1.1. MiniDecaf 的 int 类型具体指 32 位有符号整数类型，范围 [-2147483648, 2147483647]，补码表示。
+>
+> 1.2. 编译器应当只接受 [0, 2147483647] 范围内的整数（step2 会添加负数支持）。
+>      如果整数超过此范围，编译器应当报错。
+>
+> 1.3. 因为只有一个函数，故函数名必须是 main。
+
+完整的语义规范应包含如下几点。指导书只会包含关键点，避免叙述太冗长。
+1. 什么样的代码是 **不合法** 的。对于不合法的代码，编译器必须报错而不是生成汇编。
+> 例如 step1 中，如果程序中 int 字面量超过上面的范围，那编译器就应该报错 "int too large"。
+> 如果函数名不是 main，也应该报错。
+
+2. 合法程序中，每个操作的行为应该是什么样的。
+> 例如 return 执行结果是：对操作数求值并作为返回值，然后终止当前函数执行、返回 caller 或完成程序执行。
+>
+> 对于合法程序，你生成的汇编须和 gcc 生成的汇编运行结果一致。
+
+3. 什么样的行为是 **未定义** 的。如果代码在运行时展现未定义行为，编译器不用报错，但它后果是不确定的。
+> 例如有符号整数溢出、数组越界、除以零都是未定义行为。
+>
+> 测例代码不会有未定义行为，不必费心考虑。
+
+语义检查的实现方式很灵活，可以实现成单独的一个阶段，也可以嵌在其他阶段里面。
+第一种方式在后面的实验中有，但就 step1 而言，检查 int 范围的工作直接放进 parser 或 lexer 中就行了。
+例如我们就把他放到了下一个阶段：目标代码生成里。
+
 
 ## 目标代码生成
 ```
-        词法分析           语法分析          *目标代码生成*
-字节流 ----------> Tokens ----------> 语法树 -----------> RISC-V 汇编
+        词法分析           语法分析           *目标代码生成*
+字节流 ----------> Tokens ----------> 语法树 ----------------> RISC-V 汇编
 ```
 
 生成 AST 以后，我们就能够生成汇编了，所以 **目标代码生成（target code emission）** 是第三也是最后一个步骤，这里目标代码就指 RISC-V 汇编。
@@ -139,14 +174,14 @@ Prog(funcs=[
 
 这一步中，为了生成代码，我们只需要
 1. 遍历 AST，找到 return 语句对应的 `stmt` 结点，然后取得 return 的值, 设为 X [^2]
-2. 打印一个返回 X 的汇编程序
+2. [可选] 语义检查，若 X 不在 [-2147483648, 2147483647] 中则报错；并且检查函数名是否是 main。
+3. 打印一个返回 X 的汇编程序
 
 针对第 1. 点，我们使用一个 Visitor 模式来完成 AST 的遍历。
 同样，我们有一个 minivisitor（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/minivisitor.py)）作为这个阶段的例子。
 
 > Visitor 模式比简单的递归函数更强大，用它可以让以后的步骤更方便。
 > Visitor 模式速成请看 [这里](./visitor.md)
-
 
 针对第 2. 点，我们用 (RISC-V) gcc 编译一个 `int main(){return 233;}` 就能知道这个汇编程序什么样。
 gcc 的输出可以简化，去掉一些不必要的汇编指令以后，这个汇编程序长成下面这样。
@@ -165,13 +200,11 @@ main:
 运行 minivisitor，输出就是模板中的 X 被替换为了一个具体整数
 ```bash
 $ python minivisitor.py
-
         .text
         .globl  main
 main:
         li      a0,123
         ret
-
 ```
 
 至此，我们的编译器就完成了，它由三个阶段构成：词法分析、语法分析、目标代码生成。
@@ -192,11 +225,13 @@ main:
 6. 除了我们的暴力 miniparser，形式语言与自动机课中也描述了一种算法，可以用来计算语法分析树。请问它是什么算法，时间复杂度是多少？
 
 # 总结
-本节引入了概念
+本节引入了很多概念，请仔细消化
+
 * Lexer
 * Token
 * Parser
 * 抽象语法树
+* 语义检查
 * 目标代码生成
 * Visitor
 
