@@ -53,19 +53,20 @@ MiniDecaf 源文件 --------> 字节流 ----------> Tokens --> ...... --> RISC-V
 
 ```bash
 $ python3 minilexer.py
-Int        int
-Ident      main
-Lparen     (
-Rparen     )
-Lbrace     {
-Return     return
-Integer    123
-Semicolon  ;
-Rbrace     }
+token kind   text
+Int          int
+Identifier   main
+Lparen       (
+Rparen       )
+Lbrace       {
+Return       return
+Integer      123
+Semicolon    ;
+Rbrace       }
 ```
 
 本质上，token 是上下文无关语法的终结符，词法分析就是把一个字节串转换成上下文无关语法的 **终结符串** 的过程。
-不过 token 比单纯的终结符多一个属性，就是它的字符串（如 `Ident(main)` 的 `main`），你可以说 token 是有标注的终结符。
+不过 token 比单纯的终结符多一个属性，就是它的字符串（如 `Identifier(main)` 的 `main`），你可以说 token 是有标注的终结符。
 
 ## 语法分析
 ```
@@ -87,14 +88,14 @@ Rbrace     }
 有了语法分析，我们才知道了一个 `Integer(0)` token 到底是 return 的参数、if 的条件还是参与二元运算。
 
 为了完成语法分析，肯定要描述程序语言的语法，我们使用 **上下文无关语法** 描述 MiniDecaf。
-就这一步来说，MiniDecaf 的语法很简单，产生式大致如下，起始符号是 `prog`。
+就这一步来说，MiniDecaf 的语法很简单，产生式大致如下，起始符号是 `program`。
 
 ```
-prog : func
-func : ty Ident Lparen Rparen Lbrace stmt Rbrace
-ty   : Int
-stmt : Return expr Semicolon
-expr : Integer
+program    : function
+function   : type Identifier Lparen Rparen Lbrace statement Rbrace
+type       : Int
+statement  : Return expression Semicolon
+expression : Integer
 ```
 
 > 一些记号的区别：
@@ -109,7 +110,7 @@ expr : Integer
 
 ```bash
 $ python3 miniparser.py
-prog(func(ty(Int), Ident(main), Lparen, Rparen, Lbrace, stmt(Return, expr(Integer(123)), Semicolon), Rbrace))
+program(function(type(Int), Identifier(main), Lparen, Rparen, Lbrace, statement(Return, expression(Integer(123)), Semicolon), Rbrace))
 ```
 
 前面提到，语法树可以不像语法分析树那样严格。
@@ -137,10 +138,13 @@ Prog(funcs=[
 >
 > 1.2. 编译器应当只接受 [0, 2147483647] 范围内的整数（step2 会添加负数支持）。
 >      如果整数超过此范围，编译器应当报错。
+>
+> 1.3. 因为只有一个函数，故函数名必须是 main。
 
 完整的语义规范应包含如下几点。指导书只会包含关键点，避免叙述太冗长。
 1. 什么样的代码是 **不合法** 的。对于不合法的代码，编译器必须报错而不是生成汇编。
 > 例如 step1 中，如果程序中 int 字面量超过上面的范围，那编译器就应该报错 "int too large"。
+> 如果函数名不是 main，也应该报错。
 
 2. 合法程序中，每个操作的行为应该是什么样的。
 > 例如 return 执行结果是：对操作数求值并作为返回值，然后终止当前函数执行、返回 caller 或完成程序执行。
@@ -170,8 +174,8 @@ Prog(funcs=[
 
 这一步中，为了生成代码，我们只需要
 1. 遍历 AST，找到 return 语句对应的 `stmt` 结点，然后取得 return 的值, 设为 X [^2]
-2. [可选] 语义检查，若 X 不在 [-2147483648, 2147483647] 中则报错。
-2. 打印一个返回 X 的汇编程序
+2. [可选] 语义检查，若 X 不在 [-2147483648, 2147483647] 中则报错；并且检查函数名是否是 main。
+3. 打印一个返回 X 的汇编程序
 
 针对第 1. 点，我们使用一个 Visitor 模式来完成 AST 的遍历。
 同样，我们有一个 minivisitor（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/minivisitor.py)）作为这个阶段的例子。
@@ -196,13 +200,11 @@ main:
 运行 minivisitor，输出就是模板中的 X 被替换为了一个具体整数
 ```bash
 $ python minivisitor.py
-
         .text
         .globl  main
 main:
         li      a0,123
         ret
-
 ```
 
 至此，我们的编译器就完成了，它由三个阶段构成：词法分析、语法分析、目标代码生成。
