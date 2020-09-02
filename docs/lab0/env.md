@@ -16,7 +16,40 @@ MiniDecaf 源文件 ------------> RISC-V 汇编 -----> 可执行文件 -------->
 
 ### Windows 用户
 
-暂不支持 Windows，请自行配置好 WSL / 虚拟机。
+Win10 设置
+1. 参考https://blog.csdn.net/daybreak222/article/details/87968078， 设置“开发者模式”以及“启用子系统功能”。
+
+2. 打开Microsoft Store，搜索Ubuntu，选择ubuntu20.04.
+
+3. 更新源： 
+ sudo vi /etc/apt/sources.list  ,并在文件最前面加入
+ ```
+ # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+ # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+ # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+ # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+ # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+ # 预发布软件源，不建议启用
+ # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+ # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+ ```
+ 
+ 然后执行命令：
+
+ sudo apt-get update
+ sudo apt-get upgrade
+ 
+4. 安装qemu，执行命令： sudo apt-get install qemu-user
+
+5. 安装riscv64-gcc：  
+ 下载已编译的安装包 https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14.tar.gz
+ 把安装包解压，根据解压路径把riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14\bin 加入PATH环境变量
+配置结束
 
 ### Linux 用户
 
