@@ -3,6 +3,12 @@
 
 # step1 语法规范
 
+我们采用 **EBNF (extended Barkus-Naur form)** 记号书写语法规范，采用类似 [ANTLR](./antlr.md#语法规范) 的记号：
+* 小写字母打头的是非终结符（如 `program`），大写字母打头的是终结符（如 `Identifier`），可以用字符串字面量表示终结符（如 `'int'`）
+* 后面会用到：`(` 和 `)` 表示分组，`|` 表示选择，`*` 零或多次，`+` 一或多次，`?` 零或一次
+
+> EBNF 也有很多写法，另一种是用尖括号表示非终结符 `<program> ::= <function>` 等。
+
 <pre id='vimCodeElement'>
 <code></code>
 <span class="SpecRuleStart">program</span>

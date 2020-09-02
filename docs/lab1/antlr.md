@@ -10,13 +10,14 @@
 > 规范文件中，`//` 表示注释，规范是大小写敏感的，字符串常量用单引号括起。
 
 1. 开头声明 **规范名**，需要和文件名一致：
-```antlr4
-// [ExprLex.g4] 词法规范，用 lexer grammar 标识，行尾有分号。
-lexer grammar ExprLex;
 
-// [Expr.g4] 语法规范，用 grammar 标识，行尾有分号。
-grammar Expr;
-```
+    ```antlr4
+    // [ExprLex.g4] 词法规范，用 lexer grammar 标识，行尾有分号。
+    lexer grammar ExprLex;
+
+    // [Expr.g4] 语法规范，用 grammar 标识，行尾有分号。
+    grammar Expr;
+    ```
 
 2. 然后可能有一些 **规范自身的设置**，见后面 “语法规范”
 
@@ -24,16 +25,17 @@ grammar Expr;
   每条规则包含左右两边，用冒号隔开， *左边* 是一个符号，可以由 *右边* 规约而来。
   符号分为 **终结符** 和 **非终结符** ，终结符用大写字母打头，非终结符用小写字母。
   类似产生式，如果多条规则的左边相同，它们可以合并写在一起，它们的右手边用竖线隔开。
-```antlr4
-// [ExprLex.g4] 词法规则，规则末尾有分号。
-Integer: [0-9]+;
 
-// [Expr.g4] 语法规则，规则末尾有分号
-atom
-    : '(' expr ')'  // 一个括号括起来的表达式，它可以规约到 atom
-    | Integer       // 整数 token 可以规约到 atom
-    ;
-```
+    ```antlr4
+    // [ExprLex.g4] 词法规则，规则末尾有分号。
+    Integer: [0-9]+;
+
+    // [Expr.g4] 语法规则，规则末尾有分号
+    atom
+        : '(' expr ')'  // 一个括号括起来的表达式，它可以规约到 atom
+        | Integer       // 整数 token 可以规约到 atom
+        ;
+    ```
 
 ## 词法规范
 [词法规范](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/ExprLex.g4)描述了 lexer 应该怎么生成，显然词法规范中规则的左边只能是终结符。
@@ -61,68 +63,73 @@ Whitespace: WhitespaceChar+ -> skip;
 [语法规范](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/Expr.g4)描述了 parser 应该怎么生成。除了上面说的，还需注意：
 
 1. parser 依赖于 lexer，所以语法规范中需要 **导入词法规范**
-```antlr4
-// 导入词法规范
-import ExprLex;
-```
 
-> 其实 ANTLR 不要求你分开 lexer 和 parser，你可以直接把 import 语句换成 ExprLex 里面的所有规则，
-> 效果是一样的。
->
-> 但分开 lexer 和 parser 更干净，并且也方便 lexer 复用。
-> 各种语言虽然语法差别很大，词法（空白、整数、标识符、标点符号等）却没太大差别。
+    ```antlr4
+    // 导入词法规范
+    import ExprLex;
+    ```
+
+    > 其实 ANTLR 不要求你分开 lexer 和 parser，你可以直接把 import 语句换成 ExprLex 里面的所有规则，
+    > 效果是一样的。
+    >
+    > 但分开 lexer 和 parser 更干净，并且也方便 lexer 复用。
+    > 各种语言虽然语法差别很大，词法（空白、整数、标识符、标点符号等）却没太大差别。
 
 2. parser 规则的右手边除了符号以外，还可以有 **字符串常量**。
     如果它能被规约到词法规范里某个符号，那它就等价于那个符号；
     否则 ANTLR 内部会生成一个临时终结符 `T__xxx`，它的规则的右边是那个字符串常量。
-```antlr4
-mulOp : '*' | '/' ; // 等价于 mulOp : Mul | Div ;
-```
+
+    ```antlr4
+    mulOp : '*' | '/' ; // 等价于 mulOp : Mul | Div ;
+    ```
 
 3. 你可以手动给 **规则命名**。
     在生成的 AST 里，atom 对应的结点会被分为两类：atomParen 和 atomInteger，
     它们拥有的字段不同，也对应不同的 visit 函数。
-```antlr4
-atom
-    : '(' expr ')'      # atomParen
-    | Integer           # atomInteger
-    ;
-```
+
+    ```antlr4
+    atom
+        : '(' expr ')'      # atomParen
+        | Integer           # atomInteger
+        ;
+    ```
 
 4. 规则其实是用 **EBNF (extended Barkus-Naur form)** 记号书写的，EBNF 也是描述上下文无关语法的一种方式。
     相对普通的上下文无关语法记号，EBNF 允许你在规则内部使用 `|` 描述选择、`*` 或 `?` 或 `+` 描述重复，`(`和`)` 分组 [^3]。
     例如下面的用法：
-```antlr4
-add
-    // 1. 使用括号分组，分组内部使用 | 描述选择
-    // 2. 和 EBNF 无关，但 op 是给这个符号的命名，然后 add 的 AST 结点会有一个 op 字段。
-    : add op=(Add|Sub) mul
-    | mul
-    ;
 
-mul
-    // 3. 使用 * 描述零次或多次的重复。+ 和 ? 类似。
-    : atom (mul atom)*
-    ;
-```
+    ```antlr4
+    add
+        // 1. 使用括号分组，分组内部使用 | 描述选择
+        // 2. 和 EBNF 无关，但 op 是给这个符号的命名，然后 add 的 AST 结点会有一个 op 字段。
+        : add op=(Add|Sub) mul
+        | mul
+        ;
 
-关于 EBNF，再举一个例子：描述零个或多个用逗号隔开的 `expr` 列表，下面两种写法是等价的，但 EBNF 记号更简短。
-```antlr4
-// 传统写法
-exprList
-    :           # emptyExprList
-    | exprList2 # nonemptyExprList
-    ;
-exprList2
-    : expr
-    | expr ',' exprList2
-    ;
+    mul
+        // 3. 使用 * 描述零次或多次的重复。+ 和 ? 类似。
+        : atom (mul atom)*
+        ;
+    ```
 
-// EBNF 写法
-exprList
-    : (expr (',' expr)*)?
-    ;
-```
+    关于 EBNF，再举一个例子：描述零个或多个用逗号隔开的 `expr` 列表，下面两种写法是等价的，但 EBNF 记号更简短。
+
+    ```antlr4
+    // 传统写法
+    exprList
+        :           # emptyExprList
+        | exprList2 # nonemptyExprList
+        ;
+    exprList2
+        : expr
+        | expr ',' exprList2
+        ;
+
+    // EBNF 写法
+    exprList
+        : (expr (',' expr)*)?
+        ;
+    ```
 
 ## 运行 ANTLR
 安装 ANTLR，设置 `CLASSPATH` 环境变量，配置 `antlr4` 和 `grun` 的 alias 后，运行以下命令 [^4]：
