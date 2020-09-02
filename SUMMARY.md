@@ -7,17 +7,16 @@
   * [环境配置](docs/lab0/env.md)
   * [运行测试样例](docs/lab0/testing.md)
   * [RISC-V 的工具链使用](docs/lab0/riscv.md)
-* 知识点参考
-  * [中间代码](docs/lab0/ir.md)
 
 ## 第一个编译器
 * step1：仅一个 return 的 main 函数
-  * [第一部分：从零开始的 lexer、parser 以及汇编生成](docs/lab1/part1.md)
-  * [第二部分：词法语法分析工具](docs/lab1/part2.md)
-  * [第三部分：使用中间码](docs/lab1/part3.md)
+  * [从零开始的 lexer、parser 以及汇编生成](docs/lab1/part1.md)
+  * [词法语法分析工具](docs/lab1/part2.md)
+  * [使用中间码](docs/lab1/part3.md)
   * 其他
     * [ANTLR 使用](docs/lab1/antlr.md)
     * [Visitor 模式](docs/lab1/visitor.md)
+    * [IR 简明介绍](docs/lab1/ir.md)
   * [规范](docs/lab1/spec.md)
 
 ## 常量表达式

@@ -1,6 +1,6 @@
 # 中间代码
 
-中间代码([Intermediate Representation](https://en.wikipedia.org/wiki/Intermediate_representation), IR)是表示程序结构的一种方式，在后续的实验中，我们会先由AST生成IR，再由IR生成汇编代码。尽管直接由AST生成汇编代码在我们的实验中也是完全可行的，但是保留这个中间步骤更加符合真实的编译器的工作流程。一般真实的编译器都有IR这个中间步骤，这是因为IR一般比AST更加接近汇编，同时仍然保存了一些程序中的高级信息，更加适合进行各种优化。
+中间代码(也称中间表示，[Intermediate Representation](https://en.wikipedia.org/wiki/Intermediate_representation), IR)是表示程序结构的一种方式，在后续的实验中，我们会先由AST生成IR，再由IR生成汇编代码。尽管直接由AST生成汇编代码在我们的实验中也是完全可行的，但是保留这个中间步骤更加符合真实的编译器的工作流程。一般真实的编译器都有IR这个中间步骤，这是因为IR一般比AST更加接近汇编，同时仍然保存了一些程序中的高级信息，更加适合进行各种优化。
 
 IR有很多种类，包括三地址码([Three Address Code](https://en.wikipedia.org/wiki/Three-address_code), TAC)，静态单赋值形式([Static Single Assignment Form](https://en.wikipedia.org/wiki/Static_single_assignment_form), SSA)，基于栈的IR，等等。如果你感兴趣的话可以自行查阅了解，这里不做要求。
 
