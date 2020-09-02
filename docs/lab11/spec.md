@@ -90,6 +90,7 @@
 <span class="SpecRuleStart">primary</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span>
 </pre>
 
 # step11 语义规范

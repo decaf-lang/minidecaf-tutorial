@@ -3,7 +3,6 @@
 
 # step5 语法规范
 灰色部分表示相对上一节的修改。
-
 <pre id='vimCodeElement'>
 <code></code>
 <span class="SpecRuleStart">program</span>
@@ -15,9 +14,9 @@
 <span class="SpecRuleStart">type</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'int'</span>
 
-<div class="changed"><span class="SpecRuleStart">statement</span>
+<span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">declaration</span>
 
 <span class="SpecRuleStart">declaration</span>
@@ -61,8 +60,8 @@
 <span class="SpecRuleStart">primary</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span>
-</pre>
-
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span>
+</div></pre>
 
 # step5 语义规范
 **5.1.** 变量重复声明是错误，使用未声明的变量也是错误。

@@ -1,8 +1,7 @@
-pre { white-space: pre-wrap; font-family: monospace; color: #ffffff; background-color: #ffffff; }
-body { font-family: monospace; color: #ffffff; background-color: #ffffff; }
-* { font-size: 1em; }
-.SpecRuleStart { color: #af0087; }
+.SpecRuleStart { color: #af0087; font-style: italic; }
 .SpecRuleIndicator { color: #af0087; }
-.SpecToken { color: #af5f00; }
-.SpecRule { color: #8080ff; }
+.SpecOperator { color: red; }
+.Normal { background-color: #ffffff; padding-bottom: 1px; }
+.SpecToken { color: #af5f00; font-weight: bold; }
+.SpecRule { color: #8080ff; font-style: italic; }
 .changed { background: lightgrey; }
