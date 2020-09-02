@@ -22,9 +22,15 @@
 
 ## 常量表达式
 * step2：一元操作
-  * [任务概述](docs/lab2alt/part1.md)
+  * [摘要](docs/lab2/part0-intro.md)
   * [TODO: 词法语法分析](docs/lab2/part1-parse.md)
   * [TODO: 代码生成](docs/lab2/part4-codegen.md)
+  * [任务](docs/lab2/part4-1-task.md)
+  * [小结](docs/lab2/summary.md)
+
+* [dzy] step2：一元操作
+  * [任务概述](docs/lab2alt/intro.md)
+  * [实验指导](docs/lab2alt/guide.md)
   * [规范](docs/lab2alt/spec.md)
 
 * step3：加减乘除模
