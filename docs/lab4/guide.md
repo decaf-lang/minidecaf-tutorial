@@ -32,8 +32,8 @@
 
 | IR       | 汇编                                                |
 | ---      | ---                                                 |
-| `land` | `or t1,t1,t2  ;  snez t1,t1` |
-| `lor` | `snez t1,t1  ;  snez t2,t2  ;  and t1,t1,t2` |
+| `lor` | `or t1,t1,t2  ;  snez t1,t1` |
+| `land` | `snez t1,t1  ;  snez t2,t2  ;  and t1,t1,t2` |
 
 # 任务
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
