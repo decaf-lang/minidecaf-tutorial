@@ -37,12 +37,10 @@
 
 ## 变量和语句
 * step5：局部变量和赋值
-  * [摘要](docs/lab5/part0-intro.md)
-  * [词法语法分析](docs/lab5/part1-parse.md)
-  * [任务](docs/lab5/part1-1-task.md)
-  * [代码生成](docs/lab5/part4-codegen.md)
-  * [任务](docs/lab5/part4-1-task.md)
-  * [小结](docs/lab5/summary.md)
+  * [任务概述](docs/lab5/intro.md)
+  * [实验指导](docs/lab5/guide.md)
+  * 其他
+    * [栈帧](docs/lab5/stackframe.md)
   * [规范](docs/lab5/spec.md)
 
 * step6：if 语句和条件表达式
