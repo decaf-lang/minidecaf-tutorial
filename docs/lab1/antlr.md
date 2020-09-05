@@ -163,7 +163,19 @@ $ python3 main.py
 (expr (add (add (add (mul (atom ( (expr (add (add (mul (atom 1))) + (mul (atom 3)))) )) (mulOp *) (atom 4))) - (mul (atom 3))) - (mul (atom 3))))
 ```
 
+3. [main.cpp](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/main.cpp) 是 C++ 的示例代码。运行方法如下
+
+```bash
+$ antlr4 Expr.g4 -Dlanguage=Cpp
+$ ls ExprParser.cpp ExprLexer.cpp  # 生成了 C++ 的 lexer 和 parser
+ExprLexer.cpp  ExprParser.cpp
+$ g++ main.cpp ExprLexer.cpp ExprParser.cpp 你的antlr路径/antlr4-cpp-runtime/dist/libantlr4-runtime.a -I 你的antlr路径/antlr4-cpp-runtime/runtime/src -o main
+$ ./main <input
+(expr (add (add (add (mul (atom ( (expr (add (add (mul (atom 1))) + (mul (atom 3)))) )) (mulOp *) (atom 4))) - (mul (atom 3))) - (mul (atom 3))))
+```
+
 ## Visitor 的使用
+
 > ANTLR 默认生成 listener，它允许你在遍历 AST 过程进入结点和离开结点的时候运行一些代码，但我们不用 listener，我们使用 visitor。
 
 首先用参数 `-visitor` 告诉 ANTLR 生成 visitor 代码。

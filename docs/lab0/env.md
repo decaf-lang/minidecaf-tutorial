@@ -38,12 +38,12 @@ Win10 设置
  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
  ```
- 
+
  然后执行命令：
 
  sudo apt-get update
  sudo apt-get upgrade
- 
+
 4. 安装qemu，执行命令： sudo apt-get install qemu-user
 
 5. 安装riscv64-gcc：  
@@ -115,11 +115,6 @@ $ brew install riscv-isa-sim
 * clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-xxy`
 
 ### C++-ANTLR
-有两个，第一个：
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-tsz
-* clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-tsz`
-
-第二个：
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-zj
 * clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-zj`
 
