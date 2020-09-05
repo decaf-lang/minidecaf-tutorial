@@ -22,9 +22,9 @@
 2. 然后可能有一些 **规范自身的设置**，见后面 “语法规范”
 
 3. 然后是 **一系列规则**，规则类似上下文无关语法的产生式。
-  每条规则包含左右两边，用冒号隔开， *左边* 是一个符号，可以由 *右边* 规约而来。
-  符号分为 **终结符** 和 **非终结符** ，终结符用大写字母打头，非终结符用小写字母。
-  类似产生式，如果多条规则的左边相同，它们可以合并写在一起，它们的右手边用竖线隔开。
+    每条规则包含左右两边，用冒号隔开， *左边* 是一个符号，可以由 *右边* 规约而来。
+    符号分为 **终结符** 和 **非终结符** ，终结符用大写字母打头，非终结符用小写字母。
+    类似产生式，如果多条规则的左边相同，它们可以合并写在一起，它们的右手边用竖线隔开。
 
     ```antlr4
     // [ExprLex.g4] 词法规则，规则末尾有分号。
@@ -211,7 +211,79 @@ $ java MainVisitor < input
 10
 ```
 
+## 产生式动作
+
+除 Visitor 之外，你也可以通过产生式动作使用 ANTLR。在这两种方式中选择一种即可。
+
+若要使用产生式动作，你需要在产生式下方添加一对大括号，并在大括号里用你选择的编程语言编写动作。以 ANTLR for C++ 为例，产生式动作可以是：
+
+```antlr4
+atom
+    : '(' expr ')'      # atomParen
+      {
+        std::cout << "parenthese" << std::endl;
+      }
+    | Integer           # atomInteger
+      {
+        std::cout << "integer" << std::endl;
+      }
+    ;
+```
+
+按下述参数告诉 ANTLR 既不用生成 Visitor 也不用生成 Listener。编译运行后，上述代码会在解析括号时输出"parenthese"，在解析整数时输出"integer"。
+
+```sh
+$ antlr4 Expr.g4 -no-listener -no-visitor
+```
+
+当然，仅仅输出常量字符串当然是不够的，我们还可以通过 `$符号名.text` 获得相关符号对应的字符串，例如：
+
+```antlr4
+atom
+    : '(' expr ')'      # atomParen
+      {
+        std::cout << "(" << $expr.text << ")" << std::endl;
+      }
+    | Integer           # atomInteger
+      {
+        std::cout << $Integer.text << std::endl;
+      }
+    ;
+```
+
+当一个产生式里有两个相同符号时，可以通过别名指定其中之一，例如：
+
+```antlr4
+expr
+	: lhs=expr '+' rhs=expr
+	  {
+	    std::cout << $lhs.text << "+" << $rhs.text << std::endl;
+	  }
+	;
+```
+
+为了生成 AST，我们还可以给符号添加返回值。例如，我们定义类 `AddNode` 表示 AST 中的加法结点，它是 `ExprNode` 的子类，并具有一个通过左右子结点构造的构造器。我们给 `expr` 符号添加一个 `ExprNode*` 类型的返回值。在产生式中获取子符号的返回值，并以此生成当前符号的返回值，那么动作可以写作：
+
+```antlr4
+expr [returns ExprNode *node]
+	: lhs=expr '+' rhs=expr
+	  {
+	    $node = new AddNode($lhs.node, $rhs.node);
+	  }
+	;
+```
+
+> 为了使用你自己定义的 `AddNode` 结点，你可能还需要调用一些写在别的文件里面的代码，例如通过 C/C++ 中的 `#include`。在 ANTLR4 for C++ 中，这是通过在 Parser 的 `.g4` 文件头部添加 `@parser::postinclude { #include "你自己的头文件" }` 块来实现的，ANTLR4 对其它语言支持中可能有不同的使用方法。
+
+最后，我们可以在主程序中获取根节点的返回值。例如：
+
+```c++
+auto tree = parser.expr();  // 取得一棵以 expr 为根的 AST
+auto node = tree->node;  // 根符号的返回值
+```
+
 ## 常见问题
+
 * javac 报错一堆 `cannot find symbol`
   - 没有设置 `CLASSPATH`
 
