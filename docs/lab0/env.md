@@ -98,6 +98,8 @@ $ brew install riscv-isa-sim
 我们强烈推荐你选择一个参考实现，并且先测试运行（见下一节）一下，为此你需要配置参考实现的环境。
 现在已有如下的参考实现，请根据自己的喜好选择一个，`git clone` 到本地，然后按照它的 README 配置好它的环境。
 
+对于 git 的安装和使用请同学们自行查阅相关资料，也可以参考[这里](https://www.liaoxuefeng.com/wiki/896043488029600) 。每一个参考实现都是一个 git 分支，且都以 commit 的形式提供了每一个 lab 的参考实现。同学们可以通过 git log 查看提交历史，通过 git checkout 查看每一个 lab 的参考实现，或者通过 git diff 对比两个 lab 之间的差异。
+
 ### Python-ANTLR
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-dzy
 * clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-dzy`
