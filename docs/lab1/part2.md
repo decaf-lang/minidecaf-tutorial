@@ -1,31 +1,34 @@
 # 实验指导 step1：词法语法分析工具
-第一部分中，我们已经自己从零开始暴力实现了一个编译器，接下来我们就来改进它。
-第一个方向是： **使用工具完成词法语法分析，而不是自己手写** 。
+第一部分中，我们已经自己从零开始暴力实现了一个编译器，但是词法语法分析工具的编写效率和执行效率都很一般，接下来我们换成更成熟和通用的实现方法。
 
-当然你可以自己写 lexer 和 parser，但你就需要理解 lexer 和 parser 的算法，并且代码量更大。
+一个方向是： **使用工具辅助完成词法语法分析，而不是完全自己编写** 。
+
+另一个方向是不借助工具，完全自己编写，但你就需要理解 lexer 和 parser 的算法，并且代码量更大。
 请直接看[手写 lexer 和 parser](#手写 lexer 和 parser)。
 
 ## 工具概述
 从 minilexer/miniparser 的代码可以看出，lexer 和 parser 包含两部分：
-1. 被分析的词法/语法的描述。例如 minilexer 的那个 `TokenType` 列表，以及 miniparser 的 `rules` 字符串；
+1. 被分析的词法/语法的描述。例如 minilexer 的 `TokenType` 列表，以及 miniparser 的 `rules` 字符串；
 2. lexer 和 parser 的驱动代码。例如 `lex` 和 `parse` 函数。
 
 使用工具，我们只需要完成第一步，描述被分析的词法或者语法。
 然后工具从我们的描述，自动生成 lexer 或者 parser 供你使用，十分方便。
 
-> 所以这类工具被称为 lexer/parser generator，例子有：C 的 lex/yacc、往届使用的 JFlex / Jacc、mashplant 助教自己写的 lalr1。
+> 所以这类工具被称为 lexer/parser generator，例子有：C 的 lex/yacc、往届使用的 Java 的 JFlex / Jacc、MashPlant 助教自己写的 re2dfa/lalr1。
 >
 > 对有兴趣的同学：除了这类工具以外，还有一类工具称为 parser combinator，多在函数式语言中使用。
 > 最有名的如 Haskell 的 parsec、scala 的 fastparse，rust 的 nom。课程不涉及其中内容。
 
-下面是助教写的一些工具的速成介绍，你可从中选择一个学习使用，
+下面是助教写的一些工具的速成介绍，你可根据你选择的语言和实现方式，从中选择一个学习使用，
 你也可以自己另找其他工具自学使用。
 
 ## ANTLR
 ANTLR 是一个比较易用的 parser generator，速成文档在[这里](./antlr.md)。
 
-## LALR1
-TODO：如果较长，写在单独的文档里面
+## lalr1
+[lalr1](https://github.com/MashPlant/lalr1)是MashPlant自己编写的parser generator，它用Rust编写，可以生成多种目标语言（目前实现了Rust, C++, Java）。虽然还不能和那些常用的成熟工具链相比，但也已经在2019年的编译原理课程中经受住了考验，可靠性是有一定保证的。
+
+lalr1的使用指导在[这里](https://mashplant.online/2020/08/17/lalr1-introduction/)。
 
 ## 手写 lexer 和 parser
 TODO：如果较长，写在单独的文档里面
