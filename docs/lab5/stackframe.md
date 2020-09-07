@@ -55,13 +55,19 @@
 
 当然，开始执行函数时需要建立栈帧，结束执行时就需要销毁栈帧。
 函数末尾、用于销毁栈帧的一段汇编叫函数的 **epilogue**，它要做的是：
-1. 回收栈帧空间
-2. 恢复 `fp`，跳回返回地址（`ret` 就是 `jr ra`）
+1. 设置返回值
+2. 回收栈帧空间
+3. 恢复 `fp`，跳回返回地址（`ret` 就是 `jr ra`）
 
-下面是 epilogue 一种可能的写法。
+返回值我们可以直接放在 `a0` 中，也可以放在栈顶让 epilogue 去加载。
+如果是后者，那么上面“栈帧满足如下性质”的 1. 要把 return 作为例外了。
+
+把返回值放在栈顶的话，下面是 epilogue 一种可能的写法。
 > 前缀 `FUNCNAME` 是当前函数函数名，例如 `main`，加上前缀以区分不同函数的 epilogue。
 ```
 FUNCNAME_epilogue:                  # epilogue 标号，可作为跳转目的地
+    lw a0, 0(sp)                    # 从栈顶加载返回值，此时 sp = fp - FRAMESIZE - 4
+    addi sp, sp, 4                  # 弹出栈顶的返回值
     lw fp, FRAMESIZE-8(sp)          # 恢复 fp
     lw ra, FRAMESIZE-4(sp)          # 恢复 ra
     addi sp, sp, FRAMESIZE          # 回收空间

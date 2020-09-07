@@ -55,12 +55,8 @@
   * [规范](docs/lab7/spec.md)
 
 * step8：循环语句
-  * [摘要](docs/lab8/part0-intro.md)
-  * [词法语法分析](docs/lab8/part1-parse.md)
-  * [任务](docs/lab8/part1-1-task.md)
-  * [代码生成](docs/lab8/part4-codegen.md)
-  * [任务](docs/lab8/part4-1-task.md)
-  * [小结](docs/lab8/summary.md)
+  * [任务概述](docs/lab8/intro.md)
+  * [实验指导](docs/lab8/guide.md)
   * [规范](docs/lab8/spec.md)
 
 ## 函数和全局变量

@@ -97,3 +97,4 @@
 
 **8.5.** 如果最近的循环语句是 do 或 while，continue 跳转到执行条件判断；
     如果是 for，continue 跳转到执行 post（然后再计算循环条件、结束/继续循环……）。
+> 因此 `for (int i=0;i<100;i++) { s+=i; continue; }` 就等于 `for (int i=0;i<100;i++) { s+=i; }`
