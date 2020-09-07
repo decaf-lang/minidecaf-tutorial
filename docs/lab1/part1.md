@@ -78,7 +78,7 @@ Rbrace       }
 
 * *它的输入* 是 token 流
 > 就是 lexer 的输出，例子上面有
-* 如果输入没有语法错误，那么 *它的输出* 是一颗 **语法树（syntax tree）**
+* 如果输入没有语法错误，那么 *它的输出* 是一棵 **语法树（syntax tree）**
 > 比如上面的程序的语法树类似 ![](./pics/main.png)
 >
 > 编译原理的语法树就类似自动机的 **语法分析树**，不同的是语法树不必表示出实际语法中的全部细节。
@@ -116,7 +116,7 @@ program(function(type(Int), Identifier(main), Lparen, Rparen, Lbrace, statement(
 前面提到，语法树可以不像语法分析树那样严格。
 如果语法树里面抽象掉了程序的部分语法结构，仅保留底下的逻辑结构，那样的语法树可以称为 **抽象语法树（AST, abstract syntax tree）**；而和语法完全对应的树称为 **具体语法树**。
 当然，AST 和语法树的概念没有清楚的界限，它们也常常混用，不必扣概念字眼。
-上面 miniparser 的输出就是一颗具体语法树，而它的抽象语法树可能长成下面这样（取决于设计）
+上面 miniparser 的输出就是一棵具体语法树，而它的抽象语法树可能长成下面这样（取决于设计）
 
 ```bash
 $ python3 miniparser-ast.py # 假设有个好心人写了 miniparser-ast.py
@@ -168,7 +168,7 @@ Prog(funcs=[
 ```
 
 生成 AST 以后，我们就能够生成汇编了，所以 **目标代码生成（target code emission）** 是第三也是最后一个步骤，这里目标代码就指 RISC-V 汇编。
-* *它的输入* 是一颗 AST
+* *它的输入* 是一棵 AST
 * *它的输出* 是汇编代码
 
 

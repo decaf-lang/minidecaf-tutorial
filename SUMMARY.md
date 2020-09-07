@@ -44,22 +44,14 @@
   * [规范](docs/lab5/spec.md)
 
 * step6：if 语句和条件表达式
-  * [摘要](docs/lab6/part0-intro.md)
-  * [词法语法分析](docs/lab6/part1-parse.md)
-  * [任务](docs/lab6/part1-1-task.md)
-  * [代码生成](docs/lab6/part4-codegen.md)
-  * [任务](docs/lab6/part4-1-task.md)
-  * [小结](docs/lab6/summary.md)
+  * [任务概述](docs/lab6/intro.md)
+  * [实验指导](docs/lab6/guide.md)
   * [规范](docs/lab6/spec.md)
 
 ## 块语句和作用域和更多语句
-* step7：块语句
-  * [摘要](docs/lab7/part0-intro.md)
-  * [词法语法分析](docs/lab7/part1-parse.md)
-  * [任务](docs/lab7/part1-1-task.md)
-  * [代码生成](docs/lab7/part4-codegen.md)
-  * [任务](docs/lab7/part4-1-task.md)
-  * [小结](docs/lab7/summary.md)
+* step7：作用域和块语句
+  * [任务概述](docs/lab7/intro.md)
+  * [实验指导](docs/lab7/guide.md)
   * [规范](docs/lab7/spec.md)
 
 * step8：循环语句
