@@ -13,7 +13,7 @@
 
 ## 工具概述
 从 minilexer/miniparser 的代码可以看出，lexer 和 parser 包含两部分：
-1. 被分析的词法/语法的描述。例如 minilexer 的 `TokenType` 列表，以及 miniparser 的 `rules` 字符串；
+1. 被分析的词法/语法的描述。例如 minilexer 的 `TokenKind` 列表，以及 miniparser 的 `rules` 字符串；
 2. lexer 和 parser 的驱动代码。例如 `lex` 和 `parse` 函数。
 
 使用工具，我们只需要完成第 1. 步，描述被分析的词法或者语法。

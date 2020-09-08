@@ -35,7 +35,7 @@ MiniDecaf 源文件 --------> 字节流 ----------> Tokens --> ...... --> RISC-V
 1. 有哪几种 token
 > 如上，我们有：关键字，标识符，整数，空白，分号，左右括号花括号这几种 token
 >
-> token 种类（token type/kind）和 token 是不一样的。例如 Integer(0) 和 Integer(222) 不是一个 token，但都是一种 token：整数 token。
+> token 种类和 token 是不一样的。例如 Integer(0) 和 Integer(222) 不是一个 token，但都是一种 token：整数 token。
 >
 > 有些实现把所有关键字都作为一种 token，把关键字 `int` 和 `return` 当成 `Keyword(int)` 和 `Keyword(return)`，就像上面 `Integer(0)` 和 `Integer(222)`。
 > 但也可以把不同关键字作为不同种类的 token，`int` 是 `Int` 类型的 token，而 `return` 是 `Return` token。
@@ -52,14 +52,15 @@ MiniDecaf 源文件 --------> 字节流 ----------> Tokens --> ...... --> RISC-V
 > 如果你已经比较熟悉词法分析的概念，只是不知道怎么实现，那它对你不会有太大的帮助（但为了回答思考题还是要看）。
 
 > 细化到代码，Lexer 的构造函数的参数就包含了所有 token 种类。
-> 例如其中的 TokenType("Integer", f"{digitChar}+", ...) 就定义了 Integer 这种 token，
+> 例如其中的 TokenKind("Integer", f"{digitChar}+", ...) 就定义了 Integer 这种 token，
 > 并且要求每个 Integer token 的字符串要能匹配正则表达式 `[0-9]+`，和上面第 2. 点一样。
 
 你可尝试运行 minilexer，运行结果如下（我们忽略了空白）
 
-```bash
+```
 $ python3 minilexer.py
 token kind   text
+-----------  -------------------
 Int          int
 Identifier   main
 Lparen       (
@@ -120,7 +121,7 @@ expression : Integer
 
 ```bash
 $ python3 miniparser.py
-program(function(type(Int), Identifier(main), Lparen, Rparen, Lbrace, statement(Return, expression(Integer(123)), Semicolon), Rbrace))
+program(function(type(Int(int)), Identifier(main), Lparen((), Rparen()), Lbrace({), statement(Return(return), expression(Integer(123)), Semicolon(;)), Rbrace(})))
 ```
 
 前面提到，语法树可以不像语法分析树那样严格。
