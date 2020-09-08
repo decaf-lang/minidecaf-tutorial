@@ -35,6 +35,7 @@ step9 之前因为只有一个函数，所以一个 MiniDecaf 程序的 IR 就�
 
 ## 汇编生成
 `ret` 的汇编不变，`call` 的如下表。
+
 | IR       | 汇编                                                |
 | ---      | ---                                                 |
 | `call FUNC` | `call FUNC`，然后有几个参数就执行几次 `pop`，然后 `addi sp, sp, -4  ;  sw a0, 0(sp)` |
