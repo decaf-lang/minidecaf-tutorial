@@ -1,0 +1,7 @@
+.SpecRuleStart { color: #af0087; }
+.SpecRuleIndicator { color: #af0087; }
+.SpecOperator { color: red; }
+.Normal { background-color: #ffffff; padding-bottom: 1px; }
+.SpecToken { color: #af5f00; }
+.SpecRule { color: #8080ff; }
+.changed { background: lightgrey; }
