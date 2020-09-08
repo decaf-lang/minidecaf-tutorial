@@ -28,6 +28,8 @@
 * step3：加减乘除模
   * [任务概述](docs/lab3/intro.md)
   * [实验指导](docs/lab3/guide.md)
+  * 其他
+    * [优先级和结合性](docs/lab3/precedence.md)
   * [规范](docs/lab3/spec.md)
 
 * step4：比较和逻辑表达式
