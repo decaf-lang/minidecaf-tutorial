@@ -61,13 +61,10 @@
 
 ## 函数和全局变量
 * step9：函数
-  * [摘要](docs/lab9/part0-intro.md)
-  * [词法语法分析](docs/lab9/part1-parser.md)
-  * [任务](docs/lab9/part1-1-task.md)
-  * [调用约定](docs/lab9/part4-1-cconv.md)
-  * [代码生成](docs/lab9/part4-2-codegen.md)
-  * [任务](docs/lab9/part4-3-task.md)
-  * [小结](docs/lab9/summary.md)
+  * [任务概述](docs/lab9/intro.md)
+  * [实验指导](docs/lab9/guide.md)
+  * 其他
+    * [函数调用](docs/lab9/calling.md)
   * [规范](docs/lab9/spec.md)
 
 * step10：全局变量
