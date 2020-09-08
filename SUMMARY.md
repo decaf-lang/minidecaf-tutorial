@@ -7,95 +7,64 @@
   * [环境配置](docs/lab0/env.md)
   * [运行测试样例](docs/lab0/testing.md)
   * [RISC-V 的工具链使用](docs/lab0/riscv.md)
-* 知识点参考
-  * [中间代码](docs/lab0/ir.md)
 
 ## 第一个编译器
 * step1：仅一个 return 的 main 函数
-  * [第一部分：从零开始的 lexer、parser 以及汇编生成](docs/lab1/part1.md)
-  * [第二部分：词法语法分析工具](docs/lab1/part2.md)
-  * [第三部分：使用中间码](docs/lab1/part3.md)
+  * [从零开始的 lexer、parser 以及汇编生成](docs/lab1/part1.md)
+  * [词法语法分析工具](docs/lab1/part2.md)
+  * [使用中间码](docs/lab1/part3.md)
   * 其他
     * [ANTLR 使用](docs/lab1/antlr.md)
     * [Visitor 模式](docs/lab1/visitor.md)
+    * [IR 简明介绍](docs/lab1/ir.md)
   * [规范](docs/lab1/spec.md)
 
 ## 常量表达式
 * step2：一元操作
-  * [摘要](docs/lab2/part0-intro.md)
-  * [TODO: 词法语法分析](docs/lab2/part1-parse.md)
-  * [TODO: 代码生成](docs/lab2/part4-codegen.md)
-  * [任务](docs/lab2/part4-1-task.md)
-  * [小结](docs/lab2/summary.md)
-
-* [dzy] step2：一元操作
-  * [任务概述](docs/lab2alt/intro.md)
-  * [实验指导](docs/lab2alt/guide.md)
-  * [规范](docs/lab2alt/spec.md)
+  * [任务概述](docs/lab2/intro.md)
+  * [实验指导](docs/lab2/guide.md)
+  * [规范](docs/lab2/spec.md)
 
 * step3：加减乘除模
-  * [摘要](docs/lab3/part0-intro.md)
-  * [词法语法分析](docs/lab3/part1-parse.md)
-  * [代码生成](docs/lab3/part4-codegen.md)
-  * [任务](docs/lab3/part4-1-task.md)
-  * [小结](docs/lab3/summary.md)
+  * [任务概述](docs/lab3/intro.md)
+  * [实验指导](docs/lab3/guide.md)
   * [规范](docs/lab3/spec.md)
 
 * step4：比较和逻辑表达式
-  * [摘要](docs/lab4/part0-intro.md)
-  * [词法语法分析](docs/lab4/part1-parse.md)
-  * [代码生成](docs/lab4/part4-codegen.md)
-  * [任务](docs/lab4/part4-1-task.md)
-  * [小结](docs/lab4/summary.md)
+  * [任务概述](docs/lab4/intro.md)
+  * [实验指导](docs/lab4/guide.md)
   * [规范](docs/lab4/spec.md)
 
 ## 变量和语句
 * step5：局部变量和赋值
-  * [摘要](docs/lab5/part0-intro.md)
-  * [词法语法分析](docs/lab5/part1-parse.md)
-  * [任务](docs/lab5/part1-1-task.md)
-  * [代码生成](docs/lab5/part4-codegen.md)
-  * [任务](docs/lab5/part4-1-task.md)
-  * [小结](docs/lab5/summary.md)
+  * [任务概述](docs/lab5/intro.md)
+  * [实验指导](docs/lab5/guide.md)
+  * 其他
+    * [栈帧](docs/lab5/stackframe.md)
   * [规范](docs/lab5/spec.md)
 
 * step6：if 语句和条件表达式
-  * [摘要](docs/lab6/part0-intro.md)
-  * [词法语法分析](docs/lab6/part1-parse.md)
-  * [任务](docs/lab6/part1-1-task.md)
-  * [代码生成](docs/lab6/part4-codegen.md)
-  * [任务](docs/lab6/part4-1-task.md)
-  * [小结](docs/lab6/summary.md)
+  * [任务概述](docs/lab6/intro.md)
+  * [实验指导](docs/lab6/guide.md)
   * [规范](docs/lab6/spec.md)
 
 ## 块语句和作用域和更多语句
-* step7：块语句
-  * [摘要](docs/lab7/part0-intro.md)
-  * [词法语法分析](docs/lab7/part1-parse.md)
-  * [任务](docs/lab7/part1-1-task.md)
-  * [代码生成](docs/lab7/part4-codegen.md)
-  * [任务](docs/lab7/part4-1-task.md)
-  * [小结](docs/lab7/summary.md)
+* step7：作用域和块语句
+  * [任务概述](docs/lab7/intro.md)
+  * [实验指导](docs/lab7/guide.md)
   * [规范](docs/lab7/spec.md)
 
 * step8：循环语句
-  * [摘要](docs/lab8/part0-intro.md)
-  * [词法语法分析](docs/lab8/part1-parse.md)
-  * [任务](docs/lab8/part1-1-task.md)
-  * [代码生成](docs/lab8/part4-codegen.md)
-  * [任务](docs/lab8/part4-1-task.md)
-  * [小结](docs/lab8/summary.md)
+  * [任务概述](docs/lab8/intro.md)
+  * [实验指导](docs/lab8/guide.md)
   * [规范](docs/lab8/spec.md)
 
 ## 函数和全局变量
 * step9：函数
-  * [摘要](docs/lab9/part0-intro.md)
-  * [词法语法分析](docs/lab9/part1-parser.md)
-  * [任务](docs/lab9/part1-1-task.md)
-  * [调用约定](docs/lab9/part4-1-cconv.md)
-  * [代码生成](docs/lab9/part4-2-codegen.md)
-  * [任务](docs/lab9/part4-3-task.md)
-  * [小结](docs/lab9/summary.md)
+  * [任务概述](docs/lab9/intro.md)
+  * [实验指导](docs/lab9/guide.md)
+  * 其他
+    * [函数调用](docs/lab9/calling.md)
   * [规范](docs/lab9/spec.md)
 
 * step10：全局变量
