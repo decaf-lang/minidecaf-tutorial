@@ -21,7 +21,7 @@ Win10 设置
 
 2. 打开Microsoft Store，搜索Ubuntu，选择ubuntu20.04.
 
-3. 更新源： 
+3. 更新源：
  sudo vi /etc/apt/sources.list  ,并在文件最前面加入
  ```
  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
@@ -46,7 +46,7 @@ Win10 设置
 
 4. 安装qemu，执行命令： sudo apt-get install qemu-user
 
-5. 安装riscv64-gcc：  
+5. 安装riscv64-gcc：
  下载已编译的安装包 https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14.tar.gz
  把安装包解压，根据解压路径把riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14\bin 加入PATH环境变量
 配置结束
@@ -95,35 +95,10 @@ $ brew install riscv-isa-sim
 4. 测试你 GCC 和 Spike 是否成功安装，详见[RISC-V 的工具链使用](./riscv.md)。
 
 ## 推荐：参考实现的环境
-我们强烈推荐你选择一个参考实现，并且先测试运行（见下一节）一下，为此你需要配置参考实现的环境。
-现在已有如下的参考实现，请根据自己的喜好选择一个，`git clone` 到本地，然后按照它的 README 配置好它的环境。
 
-对于 git 的安装和使用请同学们自行查阅相关资料，也可以参考[这里](https://www.liaoxuefeng.com/wiki/896043488029600) 。每一个参考实现都是一个 git 分支，且都以 commit 的形式提供了每一个 lab 的参考实现。同学们可以通过 git log 查看提交历史，通过 git checkout 查看每一个 lab 的参考实现，或者通过 git diff 对比两个 lab 之间的差异。
+我们强烈推荐你选择一个[参考实现](../ref/intro.md)，并且先测试运行（见下一节）一下，为此你需要配置参考实现的环境。请根据自己的喜好选择一个，`git clone` 到本地，然后按照它的 README 配置好它的环境。
 
-### Python-ANTLR
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-dzy
-* clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-dzy`
-
-### Rust-lalr1
-* 地址 https://github.com/decaf-lang/minidecaf/tree/mashplant
-* clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b mashplant`
-
-### Rust-manual
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-cy
-* clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-cy`
-
-### Java-ANTLR
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-xxy
-* clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-xxy`
-
-### C++-ANTLR
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-zj
-* clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-zj`
-
-### C++-manual
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-zyr
-* clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-zyr`
-
+对于 git 的安装和使用请同学们自行查阅相关资料，也可以参考[这里](https://www.liaoxuefeng.com/wiki/896043488029600) 。每一个参考实现都是一个 git 分支，且都以 commit 的形式提供了每一个 lab 的参考实现。同学们可以通过 `git log` 查看提交历史，通过 `git checkout` 查看每一个 lab 的参考实现，或者通过 git diff 对比两个 lab 之间的差异。
 
 # 备注
 [^1]: 开头的 `$ ` 表示接下来是一条命令，记得运行的时候去掉 `$ `。例如，让你运行 `$ echo x`，那你最终敲到终端里的是 `echo x`（然后回车）。如果开头没有 `$ `，那么这一行是上一条命令的输出（除非我们特别说明，这一行是你要输入的内容）。
