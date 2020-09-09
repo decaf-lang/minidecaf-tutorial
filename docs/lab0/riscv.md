@@ -59,7 +59,7 @@ $ file a.out
 a.out: ELF 32-bit LSB executable, UCB RISC-V, version 1 (SYSV), statically linked, not stripped
 ```
 
-*【Linux 用户】qemu 运行 `a.out`，获取返回码
+* 【Linux 用户】qemu 运行 `a.out`，获取返回码
 
 ```bash
 # 运行 a.out
@@ -70,7 +70,7 @@ $ echo $?
 233
 ```
 
-*【macOS 用户】Spike 模拟器运行 `a.out`，获取返回码
+* 【macOS 用户】Spike 模拟器运行 `a.out`，获取返回码
 
 ```bash
 # 运行 a.out
