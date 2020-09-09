@@ -6,9 +6,9 @@
 
     ```c++
     struct NodeKind {
-        ND_NEG,
-        ND_NOT,
-        ND_BITNOT,
+    +    ND_NEG,
+    +    ND_NOT,
+    +    ND_BITNOT,
     }
     ```
 
@@ -16,26 +16,8 @@
 
 * parse 过程变化
 
-  `expr()` 解析一个单目操作。
+  按照产生式变化对应修改即可，很简单。
 
-  ```c++
-  Node* expr() {
-  	return unary();
-  }
-  
-  Node* unary() {
-      if(parse_reserved("-")) {
-          Node* neg = new Node(ND_NEG);
-          neg->expr = unary()
-          return neg;
-      }
-      //...
-      return num();
-  }
-  ```
-
-  注意，`unary()`的解析是递归的，参照生成式：
-  
   ```c++
   expression
       : unary
@@ -44,5 +26,23 @@
       : Integer
       | ('-'|'!'|'~') unary
   ```
+  
+  ```c++
+  Node* expr() {
+  	return unary();
+  }
+  
+  Node* unary() {
+    if(parse_reserved("-")) {
+          Node* neg = new Node(ND_NEG);
+          neg->expr = unary();
+          return neg;
+      }
+      //...　`!``~`同理
+      return num();
+  }
+  ```
+  
+  注意，`unary()`的解析是递归的，这与产生式是一致的。
   
   

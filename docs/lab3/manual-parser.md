@@ -14,7 +14,7 @@ struct Node {
 
 ### parse 过程变化
 
-按照 grammer 变化对应修改即可，很简单
+按照产生式变化对应修改即可，很简单。
 
 ```c++
 expression
