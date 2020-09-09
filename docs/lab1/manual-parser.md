@@ -39,7 +39,7 @@ struct Func {
 
 enum NodeKind{
     ND_RETURN,      // return 语句
-    ND_NUM,         // 数值字面亮
+    ND_NUM,         // 数值字面量
 };
 
 struct Node {
@@ -68,16 +68,39 @@ void next_token();
 
 ### 2. 框架
 
+解析的过程是对产生式的还原。
+
+```
+program
+    : function
+
+function
+    : type Identifier '(' ')' '{' statement '}'
+
+type
+    : 'int'
+
+statement
+    : 'return' expression ';'
+
+expression
+    : Integer
+```
+
 最上层函数为解析一个 `Prog`，目前相当与解析一个函数。
 
 ```c++
-Program* parse(token_list) {
+Program* parse() {
     Program* prog = new Program();
     Function *fn = function();
     prog->func = fn;
     return prog;
 }
 ```
+
+###　非终结符解析函数
+
+`parse()`中，`function()`函数代表解析一个非终结符 function，即：从当前的 token 开始，消耗若干个 token，直到解析完成一个function（一个非终极符）。该函数没有输入，返回一个 AST 结点，过程中消耗了 token。接下来本文中类似函数（名称与产生式中非终结符一致）都是类似的含义。
 
 按照生成式，解析一个 `function` 需要依次解析 `type` `Identifier` `(` `）` `{` `statement` `}`，如下：
 
@@ -86,8 +109,7 @@ Function *function() {
     parse_reserved("int"); 	// 应该为 type(), 这里做了简化
     char *name;
     parse_ident(name);
-    Function *fn = new Function();
-    fn->name = name;
+    Function *fn = new Function(name);
     parse_reserved("(");
     parse_reserved(")");
     parse_reserved("{");
@@ -98,9 +120,11 @@ Function *function() {
 }
 ```
 
-其中 `parser_xxx()`为直接访问 token 的函数，近处理一个 token，其数量与 token 类别一致，其他所有的解析函数都由这些最基础的解析函数组成。`stmt()` 为从当前 token 开始，消耗一系列 token，知道解析一条语句的函数。
+其中 `parser_xxx()`代表解析一个终结符。为直接访问 token 的函数，仅仅处理一个 token，与 token 类别一一对应。正如上方的说明，`stmt()` 表示，消耗一系列 token，解析出一条语句。
 
-#### parser_xxx()
+对非终极符的解析函数是由其他的非终结符函数、终结符函数和处理AST节点的语句构成，如果你同时完成了名称解析或者类型检查等，你还需要其他功能语句。
+
+#### 终结符解析函数：parser_xxx()
 
 ```c++
 // 解析成功返回 true, 否则为 false
@@ -124,7 +148,7 @@ Function *function() {
 
 当然，也可以输出一些错误信息。如果你想得到报错位置，可以令 `parse_xxx()`返回 token 位置信息。
 
-#### stmt()
+##### stmt()
 
 类似 `function()`的思路，对语句的解析也可以按照生成式进行，目前仅需要解析 return 一种类型的语句。
 
