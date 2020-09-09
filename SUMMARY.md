@@ -70,21 +70,17 @@
   * [规范](docs/lab9/spec.md)
 
 * step10：全局变量
-  * [摘要](docs/lab10/part0-intro.md)
-  * [词法语法分析](docs/lab10/part1-parser.md)
-  * [任务](docs/lab10/part1-1-task.md)
-  * [代码生成](docs/lab10/part4-codegen.md)
-  * [任务](docs/lab10/part4-1-task.md)
-  * [小结](docs/lab10/summary.md)
+  * [任务概述](docs/lab10/intro.md)
+  * [实验指导](docs/lab10/guide.md)
   * [规范](docs/lab10/spec.md)
 
 ## 指针和数组
 * step11：指针
-  * [摘要](docs/lab11/part0-intro.md)
-  * [类型检查](docs/lab11/typeck.md)
-  * [代码生成](docs/lab11/part4-codegen.md)
-  * [任务](docs/lab11/part4-1-task.md)
-  * [小结](docs/lab11/summary.md)
+  * [任务概述](docs/lab11/intro.md)
+  * [实验指导](docs/lab11/guide.md)
+  * 其他
+    * [左值](docs/lab11/lvalue.md)
+    * [类型检查](docs/lab11/typeck.md)
   * [规范](docs/lab11/spec.md)
 
 * step12：数组
