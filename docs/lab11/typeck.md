@@ -19,6 +19,7 @@
 > 回顾 step1，我们也说过 `Integer` 不是一个 `Token` 而是一个 `Token` 种类（`TokenKind`）。
 > 同样的，指针类型是类型的类型，每个 `PointerType` 的实例对象才真正表示一个具体的指针类型。
 > 有一门专门研究类型的理论叫 type theory，其中类型（type）的类型称为 kind，有兴趣的同学可以参考 *Types and Programming Languages*、*Proofs and Types* 等书。
+> 在 step12 的某几条类型规则中，其实就蕴涵了上面的思想。
 
 类型检查阶段是由一系列 **类型规则** 指导进行的，源代码中操作如果需要类型检查，那它需要先声明自己的类型规则。
 对于某个操作，其类型规则包含两个部分：
