@@ -4,3 +4,4 @@
 
 * [An Incremental Approach to Compiler Construction : by Abdulaziz Ghuloum](http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf)
 
+* [C99 标准草案](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf)（和正式标准差不多，用于课程足矣。正式标准需要找 ISO 购买）

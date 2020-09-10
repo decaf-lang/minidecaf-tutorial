@@ -90,7 +90,6 @@
 * step12：数组
   * [任务概述](docs/lab12/intro.md)
   * [实验指导](docs/lab12/guide.md)
-  * 其他
   * [规范](docs/lab12/spec.md)
 
 
