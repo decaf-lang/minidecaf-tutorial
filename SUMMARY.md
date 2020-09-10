@@ -88,11 +88,10 @@
   * [规范](docs/lab11/spec.md)
 
 * step12：数组
-  * [摘要](docs/lab12/part0-intro.md)
-  * [代码生成](docs/lab12/part4-codegen.md)
-  * [任务](docs/lab12/part4-1-task.md)
-  * [小结](docs/lab12/summary.md)
+  * [任务概述](docs/lab12/intro.md)
+  * [实验指导](docs/lab12/guide.md)
   * [规范](docs/lab12/spec.md)
+
 
 ## 参考资料
 * [参考资料](REFERENCE.md)
