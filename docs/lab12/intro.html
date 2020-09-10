@@ -852,9 +852,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="6.2.1" data-path="intro.html">
+        <li class="chapter " data-level="6.2.1" data-path="../lab8/intro.html">
             
-                <a href="intro.html">
+                <a href="../lab8/intro.html">
             
                     
                     任务概述
@@ -865,9 +865,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2.2" data-path="guide.html">
+        <li class="chapter " data-level="6.2.2" data-path="../lab8/guide.html">
             
-                <a href="guide.html">
+                <a href="../lab8/guide.html">
             
                     
                     实验指导
@@ -878,9 +878,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2.3" data-path="spec.html">
+        <li class="chapter " data-level="6.2.3" data-path="../lab8/spec.html">
             
-                <a href="spec.html">
+                <a href="../lab8/spec.html">
             
                     
                     规范
@@ -1175,9 +1175,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="8.2.1" data-path="../lab12/intro.html">
+        <li class="chapter active" data-level="8.2.1" data-path="intro.html">
             
-                <a href="../lab12/intro.html">
+                <a href="intro.html">
             
                     
                     任务概述
@@ -1188,9 +1188,9 @@
             
         </li>
     
-        <li class="chapter " data-level="8.2.2" data-path="../lab12/guide.html">
+        <li class="chapter " data-level="8.2.2" data-path="guide.html">
             
-                <a href="../lab12/guide.html">
+                <a href="guide.html">
             
                     
                     实验指导
@@ -1214,9 +1214,9 @@
             
         </li>
     
-        <li class="chapter " data-level="8.2.4" data-path="../lab12/spec.html">
+        <li class="chapter " data-level="8.2.4" data-path="spec.html">
             
-                <a href="../lab12/spec.html">
+                <a href="spec.html">
             
                     
                     规范
@@ -1300,24 +1300,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step8&#xFF1A;&#x5FAA;&#x73AF;&#x8BED;&#x53E5;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step8&#xFF1A;&#x5FAA;&#x73AF;&#x8BED;&#x53E5;</h1>
-<p>step8 &#x6211;&#x4EEC;&#x8981;&#x589E;&#x52A0;&#x5BF9;&#x5FAA;&#x73AF;&#x8BED;&#x53E5;&#xFF0C;&#x4EE5;&#x53CA; break/continue &#x7684;&#x652F;&#x6301;&#xFF1A;</p>
-<pre id="vimCodeElement"><code></code><div class="changed">
-<span class="SpecRuleStart">statement</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">&apos;return&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;;&apos;</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;if&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;else&apos;</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
-<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;for&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;for&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">declaration</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;while&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;do&apos;</span> <span class="SpecRule">statement</span> <span class="SpecToken">&apos;while&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecToken">&apos;;&apos;</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;break&apos;</span> <span class="SpecToken">&apos;;&apos;</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;continue&apos;</span> <span class="SpecToken">&apos;;&apos;</span>
-</div>
+                                <h1 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step12&#xFF1A;&#x6570;&#x7EC4;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step12&#xFF1A;&#x6570;&#x7EC4;</h1>
+<p>step12 &#x652F;&#x6301;&#x7684;&#x662F;&#x6570;&#x7EC4;&#x548C;&#x6307;&#x9488;&#x7B97;&#x672F;&#xFF1A;</p>
+<p>&#x8BED;&#x6CD5;&#x4E0A;&#x6CA1;&#x6709;&#x592A;&#x5927;&#x6539;&#x52A8;&#xFF0C;</p>
+<ol>
+<li><p>&#x6570;&#x7EC4;&#x7684;&#x58F0;&#x660E;&#xFF1A;</p>
+<pre id="vimCodeElement"><code></code>
+<span class="SpecRuleStart">declaration</span>
+<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;[&apos;</span> <span class="SpecToken">Integer</span> <span class="SpecToken">&apos;]&apos;</span><span class="SpecOperator">)*</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;=&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">&apos;;&apos;</span>
 </div></pre>
-
-<p>&#x5FAA;&#x73AF;&#x8BED;&#x53E5;&#x7684;&#x8BED;&#x4E49;&#x548C; C &#x7684;&#x4E5F;&#x76F8;&#x540C;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x8981;&#x68C0;&#x67E5; break/continue &#x4E0D;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x5FAA;&#x73AF;&#x5916;&#x3002;</p>
+</li>
+<li><p>&#x6570;&#x7EC4;&#x548C;&#x6307;&#x9488;&#x7684;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;</p>
+<pre id="vimCodeElement"><code></code>
+<span class="SpecRuleStart">postfix</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">primary</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression_list</span> <span class="SpecToken">&apos;)&apos;</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">postfix</span> <span class="SpecToken">&apos;[&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;]&apos;</span>
+</div></pre>
+</li>
+<li><p>&#x6307;&#x9488;&#x7B97;&#x672F;&#xFF1A;&#x8BED;&#x6CD5;&#x4E0D;&#x53D8;&#xFF0C;&#x4F46;&#x5141;&#x8BB8;&#xFF1A;&#x6307;&#x9488;&#x52A0;/&#x51CF;&#x6574;&#x6570;&#x3001;&#x6574;&#x6570;&#x52A0;&#x6307;&#x9488;&#x3001;&#x6307;&#x9488;&#x51CF;&#x6307;&#x9488;&#x4E86;&#x3002;</p>
+</li>
+</ol>
+<p>step12 &#x96BE;&#x5EA6;&#x4E0D;&#x5927;&#xFF0C;&#x4F46;&#x6709;&#x4E86;&#x6570;&#x7EC4;&#x8BA9;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x5199;&#x5F88;&#x591A;&#x6709;&#x610F;&#x601D;&#x7684;&#x7A0B;&#x5E8F;&#x4E86;&#xFF0C;step12 &#x4E4B;&#x524D;&#x751A;&#x81F3; MiniDecaf &#x8FDE;&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x90FD;&#x5199;&#x4E0D;&#x4E86;&#x3002;</p>
 
                                 
                                 </section>
@@ -1373,7 +1377,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"任务概述","level":"6.2.1","depth":2,"next":{"title":"实验指导","level":"6.2.2","depth":2,"path":"docs/lab8/guide.md","ref":"docs/lab8/guide.md","articles":[]},"previous":{"title":"step8：循环语句","level":"6.2","depth":1,"ref":"","articles":[{"title":"任务概述","level":"6.2.1","depth":2,"path":"docs/lab8/intro.md","ref":"docs/lab8/intro.md","articles":[]},{"title":"实验指导","level":"6.2.2","depth":2,"path":"docs/lab8/guide.md","ref":"docs/lab8/guide.md","articles":[]},{"title":"规范","level":"6.2.3","depth":2,"path":"docs/lab8/spec.md","ref":"docs/lab8/spec.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab8/intro.md","mtime":"2020-09-10T14:07:16.755Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-10T14:08:16.123Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"任务概述","level":"8.2.1","depth":2,"next":{"title":"实验指导","level":"8.2.2","depth":2,"path":"docs/lab12/guide.md","ref":"docs/lab12/guide.md","articles":[]},"previous":{"title":"step12：数组","level":"8.2","depth":1,"ref":"","articles":[{"title":"任务概述","level":"8.2.1","depth":2,"path":"docs/lab12/intro.md","ref":"docs/lab12/intro.md","articles":[]},{"title":"实验指导","level":"8.2.2","depth":2,"path":"docs/lab12/guide.md","ref":"docs/lab12/guide.md","articles":[]},{"title":"其他","level":"8.2.3","depth":2,"ref":"","articles":[]},{"title":"规范","level":"8.2.4","depth":2,"path":"docs/lab12/spec.md","ref":"docs/lab12/spec.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab12/intro.md","mtime":"2020-09-10T14:07:16.751Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-10T14:08:16.123Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
