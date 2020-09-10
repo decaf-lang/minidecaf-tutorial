@@ -5,10 +5,14 @@
 ## Python-ANTLR
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-dzy
 * clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b md-dzy`
+* 演示网址：https://hoblovski.github.io/minidecaf-web/
+  - 请耐心加载，可能要一分钟，加载好以后第一次编译要十秒，之后就快了
+  - 因为要动态把 py 翻译成 js 然后执行，三重的缓慢
 
 ## Rust-lalr1
 * 地址 https://github.com/decaf-lang/minidecaf/tree/mashplant
 * clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b mashplant`
+* 演示网址：https://mashplant.online/minidecaf-frontend/
 
 ## Rust-manual
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-cy
