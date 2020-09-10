@@ -130,7 +130,7 @@ Function *function() {
 // 解析成功返回 true, 否则为 false
 bool parse_int_literal(int &val); 		// 解析一个数字字面量，结果通过 val 返回
 bool parse_reserved(const char* str);   // 解析一个保留字 str
-bool parse_ident(char* ident);			// 解析一个标识符，结果通过 ident 返回
+bool parse_ident(char* &ident);			// 解析一个标识符，结果通过 ident 返回
 ```
 
 这些底层的解析函数会处理当前的 token（通过 `take_token()`）拿到，如果成功会跳过当前 token（也就是调用 `next_token()`）。
