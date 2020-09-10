@@ -5,7 +5,7 @@
 
 语义检查无需修改。
 
-如果你是手写分析，TODO
+如果你是手写分析，参见[这里](./manual-parser.md)。
 
 注意 step6 引入 `block_item` 后，`declaration` 不再是语句，所以 `if (a) int b;` 也不是合法代码了。
 这是 C 标准中一个设定。

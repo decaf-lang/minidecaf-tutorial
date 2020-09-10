@@ -8,7 +8,7 @@
 遇到变量声明（`declaration`）和使用（`primary` 和 `assignment`）时检查即可。
 可以把这个要求和后面提到的符号表结合，放到 IR 生成去做。
 
-如果你是手写分析，TODO
+如果你是手写分析，参见[这里](./manual-parser.md)。
 
 ## IR 生成
 为了完成 step5 的 IR 生成，我们需要确定 IR 的栈帧布局，请看 [这里](./stackframe.md)。

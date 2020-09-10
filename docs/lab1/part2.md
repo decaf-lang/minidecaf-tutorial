@@ -36,7 +36,9 @@
 lalr1的使用指导在[这里](https://mashplant.online/2020/08/17/lalr1-introduction/)。
 
 ## 手写 lexer 和 parser
-TODO：如果较长，写在单独的文档里面
+手写 lexer: TODO
+
+手写 parser: 参见[这里](./manual-parser.md)。
 
 
 # 任务
