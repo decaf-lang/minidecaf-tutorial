@@ -7,7 +7,7 @@
 
 本参考实现基于 [TypeScript](https://www.typescriptlang.org/) 语言，使用 [ANTLR](https://www.antlr.org/) 工具进行语法分析。可以直接转换为 JavaScript，原生支持在浏览器上运行。
 
-本参考代码具有以下特点：
+本参考实现具有以下特点：
 
 * **基于 ANTLR 的词法语法分析**。使用了 ANTLR 工具进行词法和语法分析，详见 [ANTLR 使用](../lab1/antlr.md)。
 * **网页版编译器**。通过将 TypeScript 翻译到 JavaScript，可直接在浏览器中运行 MiniDecaf 编译器，生成 RISC-V 汇编。
@@ -19,7 +19,7 @@
 
 ### TypeScript 是什么？
 
-TypeScript 是 JavaScript 的超集（类似于 C++ 是 C 的超集），顾名思义就是加了类型的 JavaScript。除了类型系统外，还增加了接口、枚举、泛型等众多新特性，比 JavaScript 更加面向对象，更加容易编写，更能发现潜在的错误。
+TypeScript 是 JavaScript 的超集（类似于 C++ 是 C 的超集），顾名思义就是加了类型的 JavaScript。除了类型系统外，还增加了接口、枚举、泛型等众多新特性，比 JavaScript 更加面向对象，更加容易编写，更能发现潜在的错误，更适合开发大型应用。
 
 TypeScript 可以被直接翻译到 JavaScript，因此不仅能使用 [Node.js](https://nodejs.org/en/) 在命令行里运行，还支持在浏览器里运行。本参考代码就是通过这种方式，先用更加友好的 TypeScript 进行开发，再转成 JavaScript，实现了能在浏览器里运行的编译器。
 
@@ -27,7 +27,7 @@ TypeScript 可以被直接翻译到 JavaScript，因此不仅能使用 [Node.js]
 
 ### 要不要选择用 TypeScript 写编译器？
 
-如果你熟悉 TypeScript/JavaScript 语言，或对 Web 开发感兴趣，或只是想要一个自己亲手制作的炫酷的网页版编译器，可以选择此版本作为参考。如果不太熟悉也没关系，作为一门脚本语言，TypeScript/JavaScript 的上手非常容易。
+如果你已经会了 TypeScript 语言，或对 Web 开发感兴趣，或想要一个自己亲手制作的炫酷的网页版编译器，强烈建议使用 TypeScript 语言进行实验。如果你只是会 JavaScript，那么上手 TypeScript 是很容易的，当然你也可以直接用 JavaScript 进行开发。如果两者都不熟悉也没关系，作为脚本语言，它们都非常简单易学。
 
 关于 TypeScript 的入门教程与文档，详见：
 

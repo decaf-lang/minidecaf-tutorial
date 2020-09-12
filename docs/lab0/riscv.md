@@ -11,6 +11,8 @@ RISC-V 是一个 RISC 指令集架构，你实现的编译器要编译到 RISC-V
 但我们加上参数 `-march=rv32im -mabi=ilp32` 以后就能编译到 32 位汇编 [^1]。
 使用时记得加这个参数，否则默认编译到 64 位汇编。
 
+我们假设你已经正确设置好了环境变量，否则运行 `riscv64-unknown-elf-gcc` 或 `qemu-riscv32` 或 `spike` 时请用完整路径。
+
 * gcc 编译 `input.c` 到汇编 `input.s`，最高优化等级
 
 ```bash
@@ -74,7 +76,7 @@ $ echo $?
 
 ```bash
 # 运行 a.out
-$ spike --isa=RV32G /path/to/pk a.out
+$ spike --isa=RV32G /path/to/pk a.out	# /path/to/pk 替换为你自己的 pk 路径
 bbl loader
 
 # $? 是 spike 的返回码，也就是我们 main 所 return 的那个值
