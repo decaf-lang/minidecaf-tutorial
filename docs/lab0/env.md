@@ -3,8 +3,13 @@
 ## 必做：RISC-V 的 gcc 和 qemu
 
 我们的编译器只生成 RISC-V 汇编，然后再使用 gcc 把 RISC-V 汇编变成 RISC-V 可执行文件，最后用 qemu 等模拟器来运行 RISC-V 可执行文件。
-
-我们不能直接使用有些系统自带的 gcc，这种 gcc 生成的可执行程序只能在你本机（x86）上运行。我们需要的是 riscv64-unknown-elf-gcc，用来生成 RISC-V 可执行程序。
+> 这里的 gcc 和常说的 gcc 不一样。
+> 常说的 gcc 运行在我们的 x86 机器上、把 C 编译到 x86 可执行文件；
+> 而这里的 gcc 虽然也运行在我们的 x86 机器上，却要编译到 RISC-V 可执行文件。
+> 这种 gcc 跑在 x86 却编译 RISC-V 代码的操作被称为交叉编译（cross compilation）。
+>
+> 因此我们不能直接使用有些系统自带的 gcc，这种 gcc 生成的可执行程序只能在你本机（x86）上运行。
+> 我们需要下载安装 riscv64-unknown-elf-gcc，用来生成 RISC-V 可执行程序。
 
 我们提供了预编译的 riscv64-unknown-elf-gcc 和 qemu 模拟器，不过只能在 Linux/Mac 下运行，Windows 的同学可以使用 WSL，或者运行一个虚拟机。
 

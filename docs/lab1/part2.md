@@ -28,7 +28,12 @@
 你也可以自己另找其他工具自学使用。
 
 ### ANTLR
-[ANTLR](https://www.antlr.org/) 的特点是方便易用人性化，速成文档在[这里](./antlr.md)。
+[ANTLR](https://www.antlr.org/) 的特点是方便易用人性化，请先仿照[官网](./antlr.md)的 “Quick Start” 安装。
+> ![](./pics/antlr.png)
+> 上面官网截图是 MacOS 的用法，Linux 的用法如下：
+> ![](./pics/antlr2.png)
+
+速成文档在[这里](./antlr.md)。
 
 ### lalr1
 [lalr1](https://github.com/MashPlant/lalr1)是 MashPlant 自己编写的 parser generator，它用 Rust 编写，可以生成多种目标语言（目前实现了 Rust, C++, Java）。虽然还不能和那些常用的成熟工具链相比，但也已经在 2019 年的编译原理课程中经受住了考验，可靠性是有一定保证的。

@@ -20,6 +20,7 @@ int qsort(int *a, int l, int r) {
     }
     if (i < r) qsort(a, i, r);
     if (j > l) qsort(a, l, j);
+    return 0;
 }
 ```
 
