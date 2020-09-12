@@ -18,12 +18,12 @@ MiniDecaf 源文件 ------------> RISC-V 汇编 -----> 可执行文件 -------->
 ### Windows 用户
 
 Win10 设置
-1. 参考 https://blog.csdn.net/daybreak222/article/details/87968078，设置“开发者模式”以及“启用子系统功能”。
+1. 参考 https://blog.csdn.net/daybreak222/article/details/87968078 ，设置“开发者模式”以及“启用子系统功能”。
 
 2. 打开Microsoft Store，搜索Ubuntu，选择ubuntu20.04.
 
 3. 更新源：
- sudo vi /etc/apt/sources.list  ,并在文件最前面加入
+ `sudo vi /etc/apt/sources.list`，并在文件最前面加入
  ```
  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
