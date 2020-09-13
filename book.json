@@ -11,7 +11,8 @@
         "search-pro",
         "click-reveal",
         "expandable-chapters-interactive",
-        "localized-footer"
+        "localized-footer",
+        "intopic-toc"
       ],
     "pluginsConfig": {
       "fontsettings": {
