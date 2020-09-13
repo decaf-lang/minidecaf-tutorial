@@ -1331,16 +1331,6 @@
 <h2 id="ir-&#x751F;&#x6210;">IR &#x751F;&#x6210;</h2>
 <p>&#x6211;&#x4EEC;&#x540C;&#x6837;&#x5F15;&#x5165;&#x4E00;&#x7C7B; IR &#x8868;&#x793A;&#x4E8C;&#x5143;&#x64CD;&#x4F5C;&#x3002;
 &#x6267;&#x884C;&#x4E8C;&#x5143;&#x64CD;&#x4F5C;&#x7684; IR &#x65F6;&#xFF0C;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x9700;&#x8981;&#x4F4D;&#x4E8E;&#x6808;&#x9876;&#xFF0C;&#x7136;&#x540E;&#x5B83;&#x4EEC;&#x88AB;&#x5F39;&#x51FA;&#x3001;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x64CD;&#x4F5C;&#xFF0C;&#x518D;&#x628A;&#x7ED3;&#x679C;&#x538B;&#x5165;&#x6808;&#x9876;&#x3002;</p>
-<p>&#x4E0D;&#x59A8;&#x89C4;&#x5B9A;&#x4E8C;&#x5143;&#x64CD;&#x4F5C;&#x7684;&#x53F3;&#x64CD;&#x4F5C;&#x6570;&#x5728;&#x6808;&#x9876;&#xFF0C;&#x5DE6;&#x64CD;&#x4F5C;&#x6570;&#x5728;&#x53F3;&#x64CD;&#x4F5C;&#x6570;&#x4E0B;&#x9762;&#xFF0C;&#x90A3;&#x4E48;&#x6709;&#x5982;&#x4E0B;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<blockquote>
-<p><code>3-10</code> &#x7FFB;&#x8BD1;&#x6210; <code>push 3 ; push 10 ; sub</code> &#x4E09;&#x6761;&#x6307;&#x4EE4;&#x3002;</p>
-<pre><code>    +------------+ &#x6808;&#x9876;
-    |     10     |
-    +------------+    ----------&gt;   +------------+ &#x6808;&#x9876;
-    |     3      |     &#x6267;&#x884C; sub     |     -7     |
-    +------------+                  +------------+
-    |   ......   |                  |   ......   |
-</code></pre></blockquote>
 <table>
 <thead>
 <tr>
@@ -1371,6 +1361,12 @@
 </tr>
 </tbody>
 </table>
+<p>&#x5176;&#x4E2D;&#x6211;&#x4EEC;&#x89C4;&#x5B9A;&#x4E8C;&#x5143;&#x64CD;&#x4F5C;&#x7684;&#x53F3;&#x64CD;&#x4F5C;&#x6570;&#x5728;&#x6808;&#x9876;&#xFF0C;&#x5DE6;&#x64CD;&#x4F5C;&#x6570;&#x5728;&#x53F3;&#x64CD;&#x4F5C;&#x6570;&#x4E0B;&#x9762;&#x3002;</p>
+<blockquote>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;<code>(10-3)%5</code> &#x7FFB;&#x8BD1;&#x6210; IR &#x662F; <code>[push 10 ; push 3 ; sub ; push 5 ; rem]</code> &#x4E94;&#x6761;&#x6307;&#x4EE4;&#xFF0C;
+&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6808;&#x53D8;&#x5316;&#x5982;&#x56FE;&#x3002;
+<img src="pics/ops.svg" alt=""></p>
+</blockquote>
 <p>&#x7C7B;&#x6BD4; step2&#xFF0C;&#x751F;&#x6210; IR &#x65F6; Visitor &#x904D;&#x5386; AST &#x9047;&#x5230;&#x4E8C;&#x5143;&#x64CD;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#xFF08;&#x6CE8;&#x610F; 1. &#x548C; 2. &#x7684;&#x987A;&#x5E8F;&#xFF09;</p>
 <ol>
 <li>&#x9996;&#x5148;&#x751F;&#x6210;&#x5DE6;&#x64CD;&#x4F5C;&#x6570;&#x7684; IR&#xFF08;&#x5DE6;&#x64CD;&#x4F5C;&#x6570;&#x5165;&#x6808;&#xFF0C;&#x6808;&#x9876;&#x662F;&#x5DE6;&#x64CD;&#x4F5C;&#x6570;&#xFF09;</li>
@@ -1465,7 +1461,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实验指导","level":"4.2.2","depth":2,"next":{"title":"其他","level":"4.2.3","depth":2,"ref":"","articles":[{"title":"优先级和结合性","level":"4.2.3.1","depth":3,"path":"docs/lab3/precedence.md","ref":"docs/lab3/precedence.md","articles":[]}]},"previous":{"title":"任务概述","level":"4.2.1","depth":2,"path":"docs/lab3/intro.md","ref":"docs/lab3/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab3/guide.md","mtime":"2020-09-13T08:43:23.694Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-13T08:44:28.225Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实验指导","level":"4.2.2","depth":2,"next":{"title":"其他","level":"4.2.3","depth":2,"ref":"","articles":[{"title":"优先级和结合性","level":"4.2.3.1","depth":3,"path":"docs/lab3/precedence.md","ref":"docs/lab3/precedence.md","articles":[]}]},"previous":{"title":"任务概述","level":"4.2.1","depth":2,"path":"docs/lab3/intro.md","ref":"docs/lab3/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab3/guide.md","mtime":"2020-09-13T13:05:30.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-13T13:06:31.036Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
