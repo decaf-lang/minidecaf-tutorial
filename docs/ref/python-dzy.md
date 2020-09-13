@@ -10,7 +10,8 @@ Python-ANTLR 参考实现使用 python 语言（python >= 3.6），使用 [ANTLR
 Python-ANTLR 的特点，以及一些注意事项是
 * 用 **ANTLR** 做语法词法分析，所以词法语法分析很简单。
 * **真·多遍**，词法语法分析、名称解析（step7）、类型检查（step11）、IR 生成、汇编生成几个过程都是独立的。
-* 前面的几个 step 是 64 位的，在 commit: 49aecac 中修正。所以前面 commit 不能通过最新测例。
+* 前面的几个 step 是 64 位的，在 commit: 49aecac 中修正，
+  并且前面 step 也有 bug 到后面才被修正。
     > 因此代码 **仅供参考** ，如果你直接切到前面的 commit 是不能通过测试的。
 * 每个 step 都是一个或多个 commit，可以一个一个 commit 来看每个步骤到底改了什么
 
