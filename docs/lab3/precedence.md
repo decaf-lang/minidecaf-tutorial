@@ -13,10 +13,10 @@
 
 <pre id='vimCodeElement'><code></code><div class="changed">
 <span class="SpecRuleStart">expression</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span> <span class="SpecOperator">(</span><span class="SpecToken">'+'</span><span class="SpecOperator">|</span><span class="SpecToken">'-'</span><span class="SpecOperator">)</span> <span class="SpecRule">expression</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">expression</span> <span class="SpecOperator">(</span><span class="SpecToken">'+'</span><span class="SpecOperator">|</span><span class="SpecToken">'-'</span><span class="SpecOperator">)</span> <span class="SpecRule">expression</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span> <span class="SpecOperator">(</span><span class="SpecToken">'*'</span><span class="SpecOperator">|</span><span class="SpecToken">'/'</span><span class="SpecOperator">|</span><span class="SpecToken">'%'</span><span class="SpecOperator">)</span> <span class="SpecRule">expression</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecOperator">(</span><span class="SpecToken">'-'</span><span class="SpecOperator">|</span><span class="SpecToken">'~'</span><span class="SpecOperator">|</span><span class="SpecToken">'!'</span><span class="SpecOperator">)</span> <span class="SpecRule">expression</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Integer</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span>
 </div></pre>
 
