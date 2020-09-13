@@ -14,6 +14,7 @@
 * 地址 https://github.com/decaf-lang/minidecaf/tree/mashplant
 * clone 命令：`git clone git@github.com:decaf-lang/minidecaf.git -b mashplant`
 * 演示网址：https://mashplant.online/minidecaf-frontend/
+  - 除了加载可能因为网络原因稍慢，之后的运行都非常快。原理是Rust编译到[WASM](http://webassembly.org.cn/)在网页中执行，感兴趣的同学可以自行了解
 
 ## Rust-manual
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-cy
