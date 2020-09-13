@@ -160,7 +160,7 @@ $ java Main < input
 $ antlr4 Expr.g4 -Dlanguage=Python3
 $ ls ExprParser.py ExprLexer.py # 生成了 Python 的 lexer 和 parser
 ExprLexer.py  ExprParser.py
-$ python3 main.py
+$ python3 main.py < input
 (expr (add (add (add (mul (atom ( (expr (add (add (mul (atom 1))) + (mul (atom 3)))) )) (mulOp *) (atom 4))) - (mul (atom 3))) - (mul (atom 3))))
 ```
 

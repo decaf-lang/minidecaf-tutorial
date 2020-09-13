@@ -101,7 +101,7 @@ npm run serve                   # 启动简易的 HTTP 静态服务器
 在 clone 整个仓库后，切换到 `skeleton` 分支，即可开始实验。
 
 ```bash
-git clone git@github.com:equation314/minidecaf.git --recursive
+git clone https://github.com/equation314/minidecaf.git --recursive
 git checkout skeleton
 ```
 

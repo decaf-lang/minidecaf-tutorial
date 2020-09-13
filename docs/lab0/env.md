@@ -66,6 +66,7 @@ Win10 设置
 > 在第 2. 步，你可以选择不安装到系统目录下。相应的，你需要设置环境变量：
 > `export PATH=$PATH:/path/to/riscv-prebuilt/bin`，把 `/path/to` 替换为你的解压目录。
 > 把上面这条命令加到你的 `~/.bashrc` 文件中，这样不用每次打开终端都要重新设置。
+> 每次改完 `~/.bashrc` 你都需要重启终端，以便改动生效。
 > （如果你不用系统自带的 bash 而是用 zsh 之类的 shell，那加到 `~/.zshrc` 等 shell 配置文件里）
 
 ### macOS 用户环境配置指南
