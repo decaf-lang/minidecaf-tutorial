@@ -29,6 +29,7 @@
 
 ### ANTLR
 [ANTLR](https://www.antlr.org/) 的特点是方便易用人性化，请先仿照官网的 “Quick Start” 安装。
+和前面[环境配置](../lab0/env.md)一样，强烈推荐你把 `export CLASSPATH...` 和 `alias...` 那几条命令放进 `~/.bashrc` 里。
 > ![](./pics/antlr.png)
 > 上面官网截图是 MacOS 的用法，Linux 的用法如下：
 > ![](./pics/antlr2.png)

@@ -135,7 +135,7 @@ Whitespace: WhitespaceChar+ -> skip;
 安装 ANTLR，设置 `CLASSPATH` 环境变量，配置 `antlr4` 和 `grun` 的 alias 后，运行以下命令 [^4]：
 
 ```bash
-$ antlr4 Expr.g4                    # 会自动拉取 import 的 ExprLex.g4
+$ antlr4 Expr.g4 -visitor           # 会自动拉取 import 的 ExprLex.g4。visitor 见后面一小节。
 $ ls ExprLexer.java ExprParser.java # 默认生成 Java 的 lexer 和 parser，其他文件不用管
 ExprLexer.java  ExprParser.java
 $ javac *.java
@@ -143,6 +143,7 @@ $ echo "(1+3)*4-3-3" > input        # 输入文件内容是 (1+3)*4-3-3
 $ grun Expr expr -gui input         # 输出如下图
 ```
 ![](./pics/grun.png)
+
 
 你可以尝试把最后一步的 `-gui` 换成 `-tokens`、`-tree` 看看。
 
@@ -297,7 +298,8 @@ auto node = tree->node;  // 根符号的返回值
 ## 常见问题
 
 * javac 报错一堆 `cannot find symbol`
-  - 没有设置 `CLASSPATH`
+  - 没有设置 `CLASSPATH`，按官网 Quick Start 重新配置。
+    特别注意 `CLASSPATH` 最开始有个 `.:`，表示当前目录也是 classpath。
 
 * grun 报错 `Can't load Expr as lexer or parser`
   - 你 `antlr4` 以后没有编译 java 文件
