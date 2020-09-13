@@ -63,7 +63,7 @@ B loop # 回到loop的位置，又一次判断循环条件，执行循环体
 LABEL end
 ```
 
-我们有一个 ir.py（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step0/ir.py)）能运行上面程序，结果的确是 1+2+...+100=5050.
+我们有一个 ir.py（[代码](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/ir.py)）能运行上面程序，结果的确是 1+2+...+100=5050.
 
 ```bash
 $ python3 ir.py

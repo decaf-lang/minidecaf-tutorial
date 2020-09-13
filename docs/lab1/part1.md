@@ -216,7 +216,7 @@ main:
 
 运行 minivisitor，输出就是模板中的 X 被替换为了一个具体整数
 ```bash
-$ python minivisitor.py
+$ python3 minivisitor.py
         .text
         .globl  main
 main:

@@ -30,7 +30,7 @@ Visitor 模式只考虑某个确定的语法分析树。
 
 ![图](./pics/parsetree.svg)
 
-我们在代码里这样定义这个语法分析树（python 3.6）：
+我们在代码里这样定义这个语法分析树（python>=3.6）：
 
 ```python
 class Node:

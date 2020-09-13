@@ -33,6 +33,7 @@
 > ![](./pics/antlr.png)
 > 上面官网截图是 MacOS 的用法，Linux 的用法如下：
 > ![](./pics/antlr2.png)
+> 上面的 `wget` 如果有 permission error，请运行 `sudo wget ...`。`curl` 也一样。
 
 速成文档在[这里](./antlr.md)。
 

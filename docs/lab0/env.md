@@ -92,7 +92,7 @@ int main() { printf("Hello world!\n"); }
 
 2. 编译 `test.c` 文件，`gcc` 应该输出一个可执行文件 `a.out`。但 `a.out` 是 RISC-V 可执行文件，所以我们的 X86 计算机无法运行。
 ```bash
-$ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -O3 -S test.c
+$ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -O3 test.c
 $ ls a.out
 a.out
 $ ./a.out
