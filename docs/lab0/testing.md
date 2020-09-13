@@ -1,14 +1,15 @@
-# 运行测试样例
-测试相关的文件在 [minidecaf-tests](https://github.com/decaf-lang/minidecaf-tests) 里面，其中 `testcases/` 是各个步骤的输入输出，测试脚本是 `check.sh`。
+## 推荐：运行一个参考实现
+配好环境以后，我们强烈推荐你选择一个[参考实现](../ref/intro.md)先测试运行一下（见下一节）。
+> 接下来我们会用到 git。
+> git 的安装和使用会在今年软件工程课上讲述，同学们也自行查阅相关资料，也可以参考[这里](https://www.liaoxuefeng.com/wiki/896043488029600) 。
+> 每一个参考实现都是一个 git 分支，且都以 commit 的形式提供了每一个 step 的参考实现。
+> 同学们可以通过 `git log` 查看提交历史，通过 `git checkout` 查看每一个 step 的参考实现，或者通过 `git diff` 对比两个 step 之间的差异。
 
-**测试的运行步骤** 如下
-1. 用 `git clone` 把 minidecaf-tests 和一个参考实现克隆到同一个目录下面。
-2. 进入 minidecaf-tests/，修改 `check.sh` 的 `gen_asm`，根据你选择的参考代码反注释某条命令
-3. [可选] `sudo apt install parallel` 安装 parallel 以便并行测试，测试时间可缩短百分之七八十
-4. [可选] 修改 `check.sh` 里面的 `JOBS`，控制要运行哪些测试点
-5. 运行 `./check.sh` 即可。
+1. 通过 `git clone` 把[测例](https://github.com/decaf-lang/minidecaf-tests)和某个参考实现克隆到同一个目录下面。
+2. 按照参考实现的 README 配置好它的环境。
+3. 按照[测例](https://github.com/decaf-lang/minidecaf-tests)的 README 运行测试
 
-测试运行的 **输出结果** 如下。OK 表示通过，FAIL 表示 qemu 运行结果不对，ERR 表示编译器出错或输出了不合法的汇编。
+测试运行的 **输出结果** 大致如下。
 
 ```bash
 $ ./check.sh
@@ -18,7 +19,5 @@ parallel found
 OK testcases/step1/multi_digit.c
 OK testcases/step1/newlines.c
 ...... 其他测试点，太长省略
-OK testcases/step12/matmul.c
-OK testcases/step12/quicksort.c
 ```
 

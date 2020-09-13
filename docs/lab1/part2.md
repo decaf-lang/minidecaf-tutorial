@@ -4,10 +4,10 @@
 2. 算法太弱，尤其是 miniparser，处理不了越来越复杂的 MiniDecaf。
 
 接下来我们选择更成熟通用的方法，这里你有两种选择
-1. 使用工具辅助完成词法语法分析，而不是完全自己编写：请看 [工具概述](工具概述)；
+1. 使用工具辅助完成词法语法分析，而不是完全自己编写：请看下面的【工具概述】；
     > * 优点：代码量很少，方便。
     > * 缺点：要学工具，不能更深入理解 lexer/parser 底层。
-2. 完全自己编写 lexer/parser，请看 [手写 lexer 和 parser](手写 lexer 和 parser)。
+2. 完全自己编写 lexer/parser，请看下面的【手写 lexer 和 parser】。
     > * 优点：完整理解 lexer/parser。
     > * 缺点：要学算法，代码量更大。
 
@@ -28,7 +28,7 @@
 你也可以自己另找其他工具自学使用。
 
 ### ANTLR
-[ANTLR](https://www.antlr.org/) 的特点是方便易用人性化，请先仿照[官网](./antlr.md)的 “Quick Start” 安装。
+[ANTLR](https://www.antlr.org/) 的特点是方便易用人性化，请先仿照官网的 “Quick Start” 安装。
 > ![](./pics/antlr.png)
 > 上面官网截图是 MacOS 的用法，Linux 的用法如下：
 > ![](./pics/antlr2.png)

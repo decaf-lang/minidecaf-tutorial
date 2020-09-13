@@ -6,6 +6,7 @@
 * 配环境、跑测试
   * [环境配置](docs/lab0/env.md)
   * [运行测试样例](docs/lab0/testing.md)
+  * [常见问题](docs/lab0/faq.md)
   * [RISC-V 的工具链使用](docs/lab0/riscv.md)
 
 * 参考实现
