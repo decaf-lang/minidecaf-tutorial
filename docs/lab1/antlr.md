@@ -182,6 +182,7 @@ $ ./main <input
 首先用参数 `-visitor` 告诉 ANTLR 生成 visitor 代码。
 ```bash
 $ antlr4 Expr.g4 -visitor
+$ javac *.java
 ```
 
 visitor 代码在 ExprVisitor.java 和 ExprBaseVisitor.java 中。
@@ -217,10 +218,10 @@ class ExprVisitor(ParseTreeVisitor):
 [MainEval.java](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/MainEval.java) 和 [maineval.py](https://github.com/decaf-lang/minidecaf-tutorial-code/blob/master/step1/maineval.py) 通过表达式求值展现了 visitor 的用法，如上编译后如下运行即可。
 输出的 10 就等于 `(1+3)*4-3-3`。
 ```
-$ python3 mainvisitor.py < input
+$ python3 maineval.py < input
 10
 
-$ java MainVisitor < input
+$ java MainEval < input
 10
 ```
 
