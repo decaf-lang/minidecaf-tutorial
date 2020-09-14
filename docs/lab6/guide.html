@@ -1319,16 +1319,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="step5-&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;">step5 &#x5B9E;&#x9A8C;&#x6307;&#x5BFC;</h1>
+                                <h1 id="step6-&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;">step6 &#x5B9E;&#x9A8C;&#x6307;&#x5BFC;</h1>
 <h2 id="&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;">&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;</h2>
 <p>&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x5DE5;&#x5177;&#x5B8C;&#x6210;&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#xFF0C;&#x4FEE;&#x6539;&#x4F60;&#x7684;&#x8BED;&#x6CD5;&#x89C4;&#x8303;&#x4EE5;&#x6EE1;&#x8DB3;&#x8981;&#x6C42;&#xFF0C;&#x81EA;&#x884C;&#x4FEE;&#x6539;&#x8BCD;&#x6CD5;&#x89C4;&#x8303;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x4EA4;&#x7ED9;&#x5DE5;&#x5177;&#x5373;&#x53EF;&#x3002;</p>
 <p>&#x8BED;&#x4E49;&#x68C0;&#x67E5;&#x65E0;&#x9700;&#x4FEE;&#x6539;&#x3002;</p>
 <p>&#x5982;&#x679C;&#x4F60;&#x662F;&#x624B;&#x5199;&#x5206;&#x6790;&#xFF0C;&#x53C2;&#x89C1;<a href="manual-parser.md">&#x8FD9;&#x91CC;</a>&#x3002;</p>
-<p>&#x6CE8;&#x610F; step6 &#x5F15;&#x5165; <code>block_item</code> &#x540E;&#xFF0C;<code>declaration</code> &#x4E0D;&#x518D;&#x662F;&#x8BED;&#x53E5;&#xFF0C;&#x6240;&#x4EE5; <code>if (a) int b;</code> &#x4E5F;&#x4E0D;&#x662F;&#x5408;&#x6CD5;&#x4EE3;&#x7801;&#x4E86;&#x3002;
-&#x8FD9;&#x662F; C &#x6807;&#x51C6;&#x4E2D;&#x4E00;&#x4E2A;&#x8BBE;&#x5B9A;&#x3002;</p>
+<p>&#x6CE8;&#x610F; step6 &#x5F15;&#x5165; <code>block_item</code> &#x540E;&#xFF0C;<code>declaration</code> &#x4E0D;&#x518D;&#x662F;&#x8BED;&#x53E5;&#xFF0C;&#x6240;&#x4EE5; <code>if (a) int b;</code> &#x4E0D;&#x662F;&#x7684;&#x5408;&#x6CD5;&#x4EE3;&#x7801;&#x3002;
+&#x8FD9;&#x548C; C &#x6807;&#x51C6;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF08;&#x4E0D;&#x8FC7;&#x5728;C++&#x4E2D;&#x8FD9;&#x6837;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x4E5F;&#x8BB8;&#x8FD9;&#x66F4;&#x52A0;&#x7B26;&#x5408;&#x4F60;&#x7684;&#x5E38;&#x8BC6;&#xFF09;&#x3002;</p>
 <h2 id="&#x60AC;&#x540A;-else-&#x95EE;&#x9898;">&#x60AC;&#x540A; else &#x95EE;&#x9898;</h2>
 <p>&#x8FD9;&#x4E00;&#x8282;&#x5F15;&#x5165;&#x7684; if &#x8BED;&#x53E5;&#x65E2;&#x53EF;&#x4EE5;&#x5E26; else &#x5B50;&#x53E5;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x5E26;&#xFF0C;&#x4F46;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x8BED;&#x6CD5;&#x4E8C;&#x4E49;&#x6027;&#xFF1A;<code>else</code> &#x5230;&#x5E95;&#x548C;&#x54EA;&#x4E00;&#x4E2A; <code>if</code> &#x7ED3;&#x5408;&#xFF1F;
-&#x4F8B;&#x5982; <code>if(a) if(b) c=0; else d=0;</code>&#xFF0C;&#x5230;&#x5E95;&#x662F; <code>if(a) {if(b) c=0; else d=0;}</code> &#x8FD8;&#x662F;  <code>if(a) {if(b) c=0;} else d=0;</code>&#xFF08;&#x5176;&#x4E2D;&#x6709;&#x5927;&#x62EC;&#x53F7;&#xFF0C;&#x73B0;&#x5728;&#x8FD8;&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F; step7 &#x5185;&#x5BB9;&#xFF09;&#xFF1F;
+&#x4F8B;&#x5982; <code>if(a) if(b) c=0; else d=0;</code>&#xFF0C;&#x5230;&#x5E95;&#x662F; <code>if(a) {if(b) c=0; else d=0;}</code> &#x8FD8;&#x662F;  <code>if(a) {if(b) c=0;} else d=0;</code>&#xFF08;&#x5176;&#x4E2D;&#x6709;&#x5927;&#x62EC;&#x53F7;&#xFF0C;step7&#x4E2D;&#x4F1A;&#x652F;&#x6301;&#xFF0C;&#x4E0D;&#x8FC7;&#x610F;&#x601D;&#x4E0D;&#x96BE;&#x7406;&#x89E3;&#xFF09;&#xFF1F;
 &#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x88AB;&#x79F0;&#x4E3A; <strong>&#x60AC;&#x540A; else&#xFF08;dangling else&#xFF09;</strong> &#x95EE;&#x9898;&#x3002;</p>
 <p>&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x5458;&#x6CA1;&#x6709;&#x52A0;&#x5927;&#x62EC;&#x53F7;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x89C4;&#x5B9A;&#x6765;&#x89E3;&#x51B3;&#x6B67;&#x4E49;&#x3002;
 &#x6211;&#x4EEC;&#x4EBA;&#x4E3A;&#x89C4;&#x5B9A;&#xFF1A;<code>else</code> &#x548C;&#x6700;&#x8FD1;&#x7684; <code>if</code> &#x7ED3;&#x5408;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E0A;&#x9762;&#x4E24;&#x79CD;&#x7406;&#x89E3;&#x4E2D;&#x53EA;&#x6709;&#x524D;&#x8005;&#x5408;&#x6CD5;&#x3002;
@@ -1356,26 +1356,26 @@
 </tr>
 <tr>
 <td><code>beqz</code></td>
-<td>&#x6807;&#x53F7;&#x5B57;&#x7B26;&#x4E32;</td>
+<td>&#x540C;&#x4E0A;</td>
 <td>&#x5F39;&#x51FA;&#x6808;&#x9876;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x5B83;&#x7B49;&#x4E8E;&#x96F6;&#xFF0C;&#x90A3;&#x4E48;&#x8DF3;&#x8F6C;&#x5230;&#x53C2;&#x6570;&#x6807;&#x8BC6;&#x7684; <code>label</code> &#x5F00;&#x59CB;&#x6267;&#x884C;</td>
 <td>&#x51CF;&#x5C11; 1</td>
 </tr>
 <tr>
 <td><code>bnez</code></td>
-<td>&#x6807;&#x53F7;&#x5B57;&#x7B26;&#x4E32;</td>
+<td>&#x540C;&#x4E0A;</td>
 <td>&#x5F39;&#x51FA;&#x6808;&#x9876;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x5B83;&#x4E0D;&#x7B49;&#x4E8E;&#x96F6;&#xFF0C;&#x90A3;&#x4E48;&#x8DF3;&#x8F6C;&#x5230;&#x53C2;&#x6570;&#x6807;&#x8BC6;&#x7684; <code>label</code> &#x5F00;&#x59CB;&#x6267;&#x884C;</td>
 <td>&#x51CF;&#x5C11; 1</td>
 </tr>
 <tr>
 <td><code>br</code></td>
-<td>&#x6807;&#x53F7;&#x5B57;&#x7B26;&#x4E32;</td>
+<td>&#x540C;&#x4E0A;</td>
 <td>&#x65E0;&#x6761;&#x4EF6;&#x8DF3;&#x8F6C;&#x5230;&#x53C2;&#x6570;&#x6807;&#x8BC6;&#x7684; <code>label</code> &#x5F00;&#x59CB;&#x6267;&#x884C;</td>
 <td>&#x4E0D;&#x53D8;</td>
 </tr>
 </tbody>
 </table>
 <p>&#x6CE8;&#x610F;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x6807;&#x53F7;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>label</code> &#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5FC5;&#x987B;&#x552F;&#x4E00;&#xFF0C;&#x5426;&#x5219;&#x8DF3;&#x8F6C;&#x76EE;&#x7684;&#x5730;&#x5C31;&#x4E0D;&#x552F;&#x4E00;&#x4E86;&#x3002;
-&#x7B80;&#x5355;&#x5730;&#x540E;&#x7F00;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x5668;&#x5373;&#x53EF;&#xFF0C;&#x4F8B;&#x5982; <code>label l1</code>, <code>label l2</code>, <code>label l3</code> ...</p>
+&#x7B80;&#x5355;&#x5730;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x5668;&#x5373;&#x53EF;&#xFF0C;&#x4F8B;&#x5982; <code>label l1</code>, <code>label l2</code>, <code>label l3</code> ...</p>
 <p>Visitor &#x904D;&#x5386; AST &#x9047;&#x5230;&#x4E00;&#x4E2A;&#x6709; else &#x7684; if &#x8BED;&#x53E5;&#xFF0C;&#x4E3A;&#x4E86;&#x751F;&#x6210;&#x5176; IR&#xFF0C;&#x8981;&#x751F;&#x6210;&#x7684;&#x662F;</p>
 <ol>
 <li>&#x9996;&#x5148;&#x662F; <code>&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x7684; IR</code>&#xFF1A;&#x8BA1;&#x7B97;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</li>
@@ -1401,7 +1401,7 @@
 <p><strong>6.4.</strong> &#x548C; 3.2 &#x4E0D;&#x540C;&#xFF0C;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x89C4;&#x5B9A;&#x4E86;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6C42;&#x503C;&#x987A;&#x5E8F;&#x3002;
     &#x9996;&#x5148;&#x5BF9;&#x6761;&#x4EF6;&#x6C42;&#x503C;&#x3002;&#x5982;&#x679C;&#x6761;&#x4EF6;&#x503C;&#x4E3A;&#x771F;&#xFF0C;&#x7136;&#x540E;&#x4EC5;&#x5BF9; <code>?</code> &#x548C; <code>:</code> &#x4E4B;&#x95F4;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#xFF0C;&#x4F5C;&#x4E3A;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#xFF0C;
     &#x4E0D;&#x5F97;&#x5BF9; <code>:</code> &#x4E4B;&#x540E;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x3002;
-    &#x5982;&#x679C;&#x6761;&#x4EF6;&#x4E3A;&#x5047;&#xFF0C;&#x7C7B;&#x4F3C;&#x4EC5;&#x5BF9; <code>:</code> &#x4E4B;&#x540E;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x3002;</p>
+    &#x5982;&#x679C;&#x6761;&#x4EF6;&#x4E3A;&#x5047;&#xFF0C;&#x7C7B;&#x4F3C;&#x5730;&#xFF0C;&#x4EC5;&#x5BF9; <code>:</code> &#x4E4B;&#x540E;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x3002;</p>
 </blockquote>
 <p>&#x7C7B;&#x4F3C;&#xFF0C;&#x65E0; else &#x7684; if &#x8BED;&#x53E5;&#x7684; IR &#x5305;&#x542B;</p>
 <ol>
@@ -1511,7 +1511,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实验指导","level":"5.2.2","depth":2,"next":{"title":"规范","level":"5.2.3","depth":2,"path":"docs/lab6/spec.md","ref":"docs/lab6/spec.md","articles":[]},"previous":{"title":"任务概述","level":"5.2.1","depth":2,"path":"docs/lab6/intro.md","ref":"docs/lab6/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab6/guide.md","mtime":"2020-09-14T05:29:45.894Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-14T05:30:50.353Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实验指导","level":"5.2.2","depth":2,"next":{"title":"规范","level":"5.2.3","depth":2,"path":"docs/lab6/spec.md","ref":"docs/lab6/spec.md","articles":[]},"previous":{"title":"任务概述","level":"5.2.1","depth":2,"path":"docs/lab6/intro.md","ref":"docs/lab6/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab6/guide.md","mtime":"2020-09-14T06:13:22.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-14T06:14:26.974Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
