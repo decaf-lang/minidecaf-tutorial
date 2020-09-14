@@ -23,12 +23,15 @@
     * [ANTLR 使用](docs/lab1/antlr.md)
     * [Visitor 模式](docs/lab1/visitor.md)
     * [IR 简明介绍](docs/lab1/ir.md)
+    * [手写简单 parser](docs/lab1/manual-parser.md)
   * [规范](docs/lab1/spec.md)
 
 ## 常量表达式
 * step2：一元操作
   * [任务概述](docs/lab2/intro.md)
   * [实验指导](docs/lab2/guide.md)
+  * 其他
+    * [手写简单 parser](docs/lab2/manual-parser.md)
   * [规范](docs/lab2/spec.md)
 
 * step3：加减乘除模
@@ -36,6 +39,7 @@
   * [实验指导](docs/lab3/guide.md)
   * 其他
     * [优先级和结合性](docs/lab3/precedence.md)
+    * [手写简单 parser](docs/lab3/manual-parser.md)
   * [规范](docs/lab3/spec.md)
 
 * step4：比较和逻辑表达式
@@ -49,17 +53,22 @@
   * [实验指导](docs/lab5/guide.md)
   * 其他
     * [栈帧](docs/lab5/stackframe.md)
+    * [手写简单 parser](docs/lab5/manual-parser.md)
   * [规范](docs/lab5/spec.md)
 
 * step6：if 语句和条件表达式
   * [任务概述](docs/lab6/intro.md)
   * [实验指导](docs/lab6/guide.md)
+  * 其他
+    * [手写简单 parser](docs/lab6/manual-parser.md)
   * [规范](docs/lab6/spec.md)
 
 ## 块语句和作用域和更多语句
 * step7：作用域和块语句
   * [任务概述](docs/lab7/intro.md)
   * [实验指导](docs/lab7/guide.md)
+  * 其他
+    * [手写简单 parser](docs/lab7/manual-parser.md)
   * [规范](docs/lab7/spec.md)
 
 * step8：循环语句
@@ -73,11 +82,14 @@
   * [实验指导](docs/lab9/guide.md)
   * 其他
     * [函数调用](docs/lab9/calling.md)
+    * [手写简单 parser](docs/lab9/manual-parser.md)
   * [规范](docs/lab9/spec.md)
 
 * step10：全局变量
   * [任务概述](docs/lab10/intro.md)
   * [实验指导](docs/lab10/guide.md)
+  * 其他
+    * [手写简单 parser](docs/lab10/manual-parser.md)
   * [规范](docs/lab10/spec.md)
 
 ## 指针和数组
@@ -87,11 +99,14 @@
   * 其他
     * [左值](docs/lab11/lvalue.md)
     * [类型检查](docs/lab11/typeck.md)
+    * [手写简单 parser](docs/lab11/manual-parser.md)
   * [规范](docs/lab11/spec.md)
 
 * step12：数组
   * [任务概述](docs/lab12/intro.md)
   * [实验指导](docs/lab12/guide.md)
+  * 其他
+    * [手写简单 parser](docs/lab12/manual-parser.md)
   * [规范](docs/lab12/spec.md)
 
 
