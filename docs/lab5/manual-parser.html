@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>任务概述 · GitBook</title>
+        <title>手写简单 parser · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -107,8 +107,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="guide.html" />
+    <link rel="next" href="spec.html" />
     
+    
+    <link rel="prev" href="stackframe.html" />
     
 
     </head>
@@ -469,9 +471,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="4.1.1" data-path="intro.html">
+        <li class="chapter " data-level="4.1.1" data-path="../lab2/intro.html">
             
-                <a href="intro.html">
+                <a href="../lab2/intro.html">
             
                     
                     任务概述
@@ -482,9 +484,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2" data-path="guide.html">
+        <li class="chapter " data-level="4.1.2" data-path="../lab2/guide.html">
             
-                <a href="guide.html">
+                <a href="../lab2/guide.html">
             
                     
                     实验指导
@@ -509,9 +511,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1.3.1" data-path="manual-parser.html">
+        <li class="chapter " data-level="4.1.3.1" data-path="../lab2/manual-parser.html">
             
-                <a href="manual-parser.html">
+                <a href="../lab2/manual-parser.html">
             
                     
                     手写简单 parser
@@ -527,9 +529,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.4" data-path="spec.html">
+        <li class="chapter " data-level="4.1.4" data-path="../lab2/spec.html">
             
-                <a href="spec.html">
+                <a href="../lab2/spec.html">
             
                     
                     规范
@@ -727,9 +729,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1.1" data-path="../lab5/intro.html">
+        <li class="chapter " data-level="5.1.1" data-path="intro.html">
             
-                <a href="../lab5/intro.html">
+                <a href="intro.html">
             
                     
                     任务概述
@@ -740,9 +742,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.1.2" data-path="../lab5/guide.html">
+        <li class="chapter " data-level="5.1.2" data-path="guide.html">
             
-                <a href="../lab5/guide.html">
+                <a href="guide.html">
             
                     
                     实验指导
@@ -767,9 +769,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1.3.1" data-path="../lab5/stackframe.html">
+        <li class="chapter " data-level="5.1.3.1" data-path="stackframe.html">
             
-                <a href="../lab5/stackframe.html">
+                <a href="stackframe.html">
             
                     
                     栈帧
@@ -780,9 +782,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.1.3.2" data-path="../lab5/manual-parser.html">
+        <li class="chapter active" data-level="5.1.3.2" data-path="manual-parser.html">
             
-                <a href="../lab5/manual-parser.html">
+                <a href="manual-parser.html">
             
                     
                     手写简单 parser
@@ -798,9 +800,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.1.4" data-path="../lab5/spec.html">
+        <li class="chapter " data-level="5.1.4" data-path="spec.html">
             
-                <a href="../lab5/spec.html">
+                <a href="spec.html">
             
                     
                     规范
@@ -1524,7 +1526,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >任务概述</a>
+        <a href="../.." >手写简单 parser</a>
     </h1>
 </div>
 
@@ -1542,20 +1544,78 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step2&#xFF1A;&#x4E00;&#x5143;&#x8FD0;&#x7B97;&#x7B26;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step2&#xFF1A;&#x4E00;&#x5143;&#x8FD0;&#x7B97;&#x7B26;</h1>
-<p>step2 &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x7ED9;&#x6574;&#x6570;&#x5E38;&#x91CF;&#x589E;&#x52A0;&#x4E00;&#x5143;&#x8FD0;&#x7B97;&#xFF1A;&#x53D6;&#x8D1F; <code>-</code>&#x3001;&#x6309;&#x4F4D;&#x53D6;&#x53CD; <code>~</code> &#x4EE5;&#x53CA;&#x903B;&#x8F91;&#x975E; <code>!</code>&#x3002;</p>
-<p>&#x8BED;&#x6CD5;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539; <code>expression</code> &#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4ECE; <code>expression : Integer</code> &#x53D8;&#x6210;&#xFF1A;</p>
-<pre id="vimCodeElement"><code></code><div class="changed">
-<span class="SpecRuleStart">expression</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">unary</span>
+                                <h2 id="&#x624B;&#x5199;-parser-&#x7B80;&#x5355;&#x5B9E;&#x4F8B;">&#x624B;&#x5199; parser &#x7B80;&#x5355;&#x5B9E;&#x4F8B;</h2>
+<p>&#x63A8;&#x8350;&#x4F60;&#x5148;&#x9605;&#x8BFB;&#x672C;&#x8282;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#xFF0C;&#x4E86;&#x89E3;&#x6808;&#x5E27;&#x548C;&#x5BF9;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x3002;</p>
+<h3 id="&#x5B9A;&#x4E49;&#x53D8;&#x5316;">&#x5B9A;&#x4E49;&#x53D8;&#x5316;</h3>
+<pre><code class="lang-c++"><span class="hljs-keyword">struct</span> Node {
++    Var* var;
+}
 
-<span class="SpecRuleStart">unary</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;!&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;~&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
-</div></pre>
-
-<p>&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x8BED;&#x4E49;&#x548C; C &#x4EE5;&#x53CA;&#x5E38;&#x8BC6;&#x76F8;&#x540C;&#xFF0C;&#x4F8B;&#x5982; <code>~0 == -1</code>&#xFF0C;<code>!!2 == 1</code>&#x3002;
-&#x7A0D;&#x5FAE;&#x4E00;&#x63D0;&#xFF0C;&#x5173;&#x4E8E;&#x6309;&#x4F4D;&#x53D6;&#x53CD;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x8865;&#x7801;&#x5B58;&#x50A8; int&#xFF1B;&#x5173;&#x4E8E;&#x903B;&#x8F91;&#x975E;&#xFF0C;&#x53EA;&#x6709; 0 &#x8868;&#x793A;&#x903B;&#x8F91;&#x5047;&#xFF0C;&#x5176;&#x4ED6;&#x7684; int &#x90FD;&#x662F;&#x903B;&#x8F91;&#x771F;&#x3002;</p>
+<span class="hljs-comment">// &#x4E3A;&#x4E86;&#x7EF4;&#x62A4;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x7684;&#x7ED3;&#x6784;&#x4F53;</span>
++ <span class="hljs-keyword">struct</span> Var {
++     <span class="hljs-keyword">char</span>* name;
++     <span class="hljs-keyword">int</span> offset;        <span class="hljs-comment">// &#x5728;&#x6808;&#x4E2D;&#x8DDD;&#x79BB; fp &#x7684; offset</span>
++     Node* init;        <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;&#x7684;&#x503C;</span>
++ }
+</code></pre>
+<h3 id="parse-&#x53D8;&#x5316;">parse &#x53D8;&#x5316;</h3>
+<p>&#x8BED;&#x53E5;&#x7C7B;&#x522B;&#x53D8;&#x591A;&#x4E86;&#xFF1A;</p>
+<pre><code class="lang-c++"><span class="hljs-function">Node* <span class="hljs-title">stmt</span><span class="hljs-params">()</span> </span>{
+    Node* node = <span class="hljs-literal">NULL</span>;
+    Type* ty;
+    <span class="hljs-comment">// Return statement</span>
+    <span class="hljs-keyword">if</span> (parse_reserved(<span class="hljs-string">&quot;return&quot;</span>)) {   
+        node = new_stmt(ND_RETURN, expr());
+        assert(parse_reserved(<span class="hljs-string">&quot;;&quot;</span>));
+        <span class="hljs-keyword">return</span> node;
+    }
+    <span class="hljs-comment">// &#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x58F0;&#x660E;</span>
+    <span class="hljs-keyword">if</span> (type()) {
+        <span class="hljs-keyword">return</span> declaration();
+    }
+    <span class="hljs-comment">// &#x76F4;&#x63A5;&#x7531;&#x8868;&#x8FBE;&#x5F0F;&#x6784;&#x6210;&#x7684;&#x8BED;&#x53E5;&#xFF0C;&#x6CE8;&#x610F; a = 1; &#x5C31;&#x662F;&#x6B64;&#x7C7B;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x6CA1;&#x6709;&#x7528;&#x5230;</span>
+    node = expr();
+    assert(parse_reserved(<span class="hljs-string">&quot;;&quot;</span>));
+    <span class="hljs-keyword">return</span> new_stmt(ND_UNUSED_EXPR, node);
+}
+</code></pre>
+<p>&#x5177;&#x4F53;&#x7684; <code>declaration()</code>&#x7B49;&#x6309;&#x7167;&#x751F;&#x6210;&#x5F0F;&#x5F88;&#x5BB9;&#x6613;&#x5199;&#x51FA;&#x6765;&#x3002;</p>
+<pre><code>declaration
+    : type Identifier (&apos;=&apos; expression)? &apos;;&apos;
+</code></pre><pre><code class="lang-c++"><span class="hljs-function">Node* <span class="hljs-title">declaration</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// type() &#x5DF2;&#x7ECF;&#x5728; stmt() &#x4E2D;&#x5B8C;&#x6210;</span>
+    <span class="hljs-keyword">char</span>* name;
+    assert(parse_ident(name));
+    Var* var = <span class="hljs-keyword">new</span> Var(name);
+    <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x50A8;&#x5B58;&#x5DF2;&#x7ECF;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4E3A;&#x540D;&#x79F0;&#x89E3;&#x6790;&#x505A;&#x51C6;&#x5907;</span>
+    add_local(var);                
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x8FDB;&#x884C;&#x4E86;&#x521D;&#x59CB;&#x5316;</span>
+    <span class="hljs-keyword">if</span> (parse_reserved(<span class="hljs-string">&quot;=&quot;</span>)) {
+        var-&gt;init = expr();
+    }
+    assert(parse_reserved(<span class="hljs-string">&quot;;&quot;</span>));
+    Node* node = new_stmt(ND_DECL);
+    node-&gt;var = var;
+    <span class="hljs-keyword">return</span> node;
+}
+</code></pre>
+<p>&#x5728;&#x88AB;&#x5F15;&#x7528;&#x65F6;&#xFF1A;</p>
+<pre><code class="lang-c++"><span class="hljs-function">Node* <span class="hljs-title">primary</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">char</span>* name;
+    <span class="hljs-keyword">if</span> (parse_ident(name)) {
+        <span class="hljs-comment">// find_var &#x8D1F;&#x8D23;&#x5BFB;&#x627E;&#x540C;&#x540D;&#x53D8;&#x91CF;, &#x5728; add_local &#x7EF4;&#x62A4;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x5BFB;&#x627E;&#x5373;&#x53EF;</span>
+        Var* var = find_var(name);
+        <span class="hljs-comment">// &#x5F15;&#x7528;&#x672A;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x7684;&#x68C0;&#x67E5;</span>
+        assert(var);
+        <span class="hljs-keyword">return</span> new_var_node(var);
+    }
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h3 id="&#x53EF;&#x9009;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x7EF4;&#x62A4;">[&#x53EF;&#x9009;]&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x7EF4;&#x62A4;</h3>
+<p>&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x7684;&#x7EF4;&#x62A4;&#x53EF;&#x4EE5;&#x5728; IR &#x751F;&#x6210;&#x4E2D;&#x8FDB;&#x884C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728; parser &#x7684;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#xFF08;&#x672C;&#x6587;&#x4E2D;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x505A;&#x7684;&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E13;&#x95E8;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6B65;&#x9AA4;&#x8FDB;&#x884C;&#x3002;</p>
+<p>&#x5728;&#x5904;&#x7406;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#x65F6;&#x9700;&#x8981;&#x7EF4;&#x62A4;&#x5DF2;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;(<code>add_local()</code>)&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x94FE;&#x8868;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4F60;&#x559C;&#x6B22;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6765;&#x7EF4;&#x62A4;&#x5B83;&#x3002;&#x4E0D;&#x8FC7;&#x8981;&#x6CE8;&#x610F; <code>add_local()</code>&#x4E2D;&#x5E94;&#x8BE5;&#x540C;&#x65F6;&#x5B8C;&#x6210; offset  &#x7684;&#x786E;&#x5B9A;&#x548C;&#x53D8;&#x91CF;&#x91CD;&#x590D;&#x5B9A;&#x4E49;&#x7684;&#x68C0;&#x67E5;&#x3002;&#x5728;&#x53D8;&#x91CF;&#x88AB;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x540D;&#x79F0;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x3002;</p>
 
                                 
                                 </section>
@@ -1599,8 +1659,12 @@
 
             
                 
+                <a href="stackframe.html" class="navigation navigation-prev " aria-label="Previous page: 栈帧">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="guide.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 实验指导">
+                
+                <a href="spec.html" class="navigation navigation-next " aria-label="Next page: 规范">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1611,7 +1675,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"任务概述","level":"4.1.1","depth":2,"next":{"title":"实验指导","level":"4.1.2","depth":2,"path":"docs/lab2/guide.md","ref":"docs/lab2/guide.md","articles":[]},"previous":{"title":"step2：一元操作","level":"4.1","depth":1,"ref":"","articles":[{"title":"任务概述","level":"4.1.1","depth":2,"path":"docs/lab2/intro.md","ref":"docs/lab2/intro.md","articles":[]},{"title":"实验指导","level":"4.1.2","depth":2,"path":"docs/lab2/guide.md","ref":"docs/lab2/guide.md","articles":[]},{"title":"其他","level":"4.1.3","depth":2,"ref":"","articles":[{"title":"手写简单 parser","level":"4.1.3.1","depth":3,"path":"docs/lab2/manual-parser.md","ref":"docs/lab2/manual-parser.md","articles":[]}]},{"title":"规范","level":"4.1.4","depth":2,"path":"docs/lab2/spec.md","ref":"docs/lab2/spec.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab2/intro.md","mtime":"2020-09-14T06:54:18.137Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-14T06:55:16.863Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"手写简单 parser","level":"5.1.3.2","depth":3,"next":{"title":"规范","level":"5.1.4","depth":2,"path":"docs/lab5/spec.md","ref":"docs/lab5/spec.md","articles":[]},"previous":{"title":"栈帧","level":"5.1.3.1","depth":3,"path":"docs/lab5/stackframe.md","ref":"docs/lab5/stackframe.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab5/manual-parser.md","mtime":"2020-09-14T06:54:18.137Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-14T06:55:16.863Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
