@@ -7,7 +7,7 @@
 
 如果你是手写分析，参见[这里](./manual-parser.md)。
 
-注意 step6 引入 `block_item` 后，`declaration` 不再是语句，所以 `if (a) int b;` 也不是合法代码了。
+注意 step6 引入 `block_item` 后，`declaration` 不再是语句，所以 `if (a) int b;` 不是的合法代码。
 这和 C 标准是一致的（不过在C++中这样的代码是合法的，也许这更加符合你的常识）。
 
 ## 悬吊 else 问题
