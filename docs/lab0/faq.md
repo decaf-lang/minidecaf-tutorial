@@ -32,3 +32,20 @@ Cannot write to ‘antlr-4.8-complete.jar’ (Success).
 ```
 
 运行 `sudo wget https://www.antlr.org/download/antlr-4.8-complete.jar`。
+
+## Spike pk 卡死
+
+执行 `spike pk` 直接卡死，需要按多次 Ctrl-C 后才能退出。
+
+可能是忘加了 `--isa=RV32G` 选项，在用 64 位的 Spike 跑 32 位 pk。
+
+如果你加了该选项也有这个问题，可能是你安装了 64 位的 pk 然后再用 32 位的 Spike 跑，请使用我们预编译的 32 位 pk。
+
+## Spike 运行报错
+
+```
+$ spike --isa=RV32G pk
+libc++abi.dylib: terminating with uncaught exception of type std::runtime_error: could not open pk (did you misspell it? If VCS, did you forget +permissive/+permissive-off?)
+```
+
+Spike 找不到 pk，请输入 pk 的完整路径。
