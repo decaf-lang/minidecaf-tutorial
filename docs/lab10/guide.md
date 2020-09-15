@@ -12,8 +12,11 @@
 
 全局变量相关的语义检查有：
 1. 初始值只能是整数字面量。
-    > 最简单的实现办法是，直接取得初始值对应源代码的字符串，按整数解析（`int(text)` 或 `Integer.parse(text)`）即可。
-    > 你也可以修改语法，全局变量是一个新的 `global_declaration : type Identifier ('=' Integer)? ';'`。
+    > 有以下几种可行的实现方法：
+		>
+		> 1. 直接取得初始值对应源代码的字符串，按整数解析（`int(text)` 或 `Integer.parse(text)`）即可。
+    > 2. 修改语法，全局变量是一个新的 `global_declaration : type Identifier ('=' Integer)? ';'`。
+		> 3. 判断这个expr节点的具体类型，要求它必须是整数常量，并且获取常量值。各种语言中都有相应的机制，只是语法不太一样。
 2. 不能重复声明：step7 已经要求同一作用域中不能重复声明变量了。
 
 ## IR 生成
