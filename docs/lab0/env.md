@@ -21,6 +21,8 @@ MiniDecaf 源文件 ------------> RISC-V 汇编 -----> 可执行文件 -------->
 ```
 
 ### Windows 用户环境配置指南
+下面描述了 WSL 的一种参考方法。
+你还可以开一个 Linux 虚拟机，使用 Virtualbox 或 VMWare 等，然后参考下面 Linux 配置。
 
 Win10 设置
 1. 参考 https://blog.csdn.net/daybreak222/article/details/87968078 ，设置“开发者模式”以及“启用子系统功能”。
