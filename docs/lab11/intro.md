@@ -25,5 +25,10 @@ step11 支持的是指针：
 <span class="SpecRuleIndicator">    :</span> ...
 <div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'('</span> <span class="SpecRule">type</span> <span class="SpecToken">')'</span> <span class="SpecRule">unary</span></div></pre>
 
+<<<<<<< HEAD
 step11 相当复杂，需要我们引入类型系统、左值的概念，并且加入类型检查以及一大堆语义检查。
 
+=======
+step11 相当复杂，代码量不小。
+需要我们引入类型系统、左值的概念，并且加入类型检查以及一大堆语义检查。
+>>>>>>> 5e0dce7f39a799dc9960a9dec66b111b838ae805
