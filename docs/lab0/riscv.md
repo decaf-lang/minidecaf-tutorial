@@ -78,7 +78,8 @@ $ echo $?
 
 ```bash
 # 运行 a.out
-$ spike --isa=RV32G /usr/local/bin/pk a.out # /usr/local/bin/pk 替换为你自己的 pk 路径
+# /usr/local/bin/pk 替换为你自己的 pk 路径
+$ spike --isa=RV32G /usr/local/bin/pk a.out
 bbl loader
 
 # $? 是 spike 的返回码，也就是我们 main 所 return 的那个值

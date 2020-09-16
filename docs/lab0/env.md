@@ -46,13 +46,24 @@ Win10 设置
 ### macOS 用户环境配置指南
 
 1. 从[这里](https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-apple-darwin.tar.gz)下载预编译好的 RISC-V 工具链并解压到你喜欢的目录。
-2. 由于 macOS 不支持 QEMU 的用户态模式，我们使用 [Spike](https://github.com/riscv/riscv-isa-sim) 模拟器和一个简易内核 [riscv-pk](https://github.com/riscv/riscv-pk) 提供用户态程序的运行环境。网络学堂上提供了我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz。你也可以使用 [Homebrew](https://brew.sh/) 安装 Spike：
-```bash
-$ brew tap riscv/riscv
-$ brew install riscv-isa-sim
-```
+2. 由于 macOS 不支持 QEMU 的用户态模式，我们使用 [Spike](https://github.com/riscv/riscv-isa-sim) 模拟器和一个简易内核 [riscv-pk](https://github.com/riscv/riscv-pk) 提供用户态程序的运行环境。你可以选择下面两种安装方法中的任意一种：
 
-> Homebrew 也提供了 riscv-pk，不过那是 64 位的，而我们需要 32 位的，请使用我们预编译的 riscv-pk 或自行编译。
+  1. 从网络学堂上下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，不过还需要通过 [Homebrew](https://brew.sh/) 安装依赖 device tree compiler：
+
+    ```bash
+    $ brew install dtc
+    ```
+
+  2. 通过 [Homebrew](https://brew.sh/) 安装 Spike（会自动安装 dtc）：
+
+    ```bash
+    $ brew tap riscv/riscv
+    $ brew install riscv-isa-sim
+    ```
+
+    然后从网络学堂上下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，只用里面的 `pk`。
+
+    > Homebrew 也提供了 riscv-pk，不过那是 64 位的，而我们需要 32 位的，请使用我们预编译的 riscv-pk 或自行编译。
 
 3. （可选）设置环境变量，方法与 Linux 一样，见上一节。如果不设置每次使用 gcc 和 spike 时都要输入完整路径。不过对于 `pk` 设置环境变量不管用，要么把它放到系统目录 `/usr/local/bin/pk`，要么每次都用完整路径。
 4. 测试你 GCC 和 Spike 是否成功安装，详见[RISC-V 的工具链使用](./riscv.md)。
