@@ -44,7 +44,7 @@
 > 例如 `int *a[10][20]` 就是 `ArrayType(ArrayType(PointerType(IntegerType()), 20), 10)`，特别注意 20 和 10 的位置。
 >
 > 当然，就 MiniDecaf 而言，实现中你可以一口气把所有维长度都存起来，变成 `ArrayType(baseType, lengthList)`，如上就是 `ArrayType(PointerType(IntegerType()), [10, 20])`
-> 
+>
 > 如[step11](../lab11/typeck.md)中所说，你也可以用不那么通用的方法来表示类型。
 > 因为我们不允许指向数组的指针，所以可以用一个`(int, 整数列表)`的二元组表示step12中任何表达式的类型。
 > 其中`int`部分表示数组的元素类型，它只可能是`int`的若干重指针，比如用 0 表示 `int`，3 表示 `int***`。
@@ -110,7 +110,7 @@ load
     > `frameaddr 20 ; load ; push 61 ; push 4 ; mul ; add`。
     > 整数加指针、指针减整数类似。
 2. 指针减指针：同上，指针数值相减后，要除以基类型的大小。
-    
+
     > 因此 `int *p` 那么 `(p+10) - (&p[3])` 等于 7。
 
 ## 汇编生成
