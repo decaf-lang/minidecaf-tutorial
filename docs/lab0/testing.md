@@ -6,6 +6,7 @@
 > 同学们可以通过 `git log` 查看提交历史，通过 `git checkout` 查看每一个 step 的参考实现，或者通过 `git diff` 对比两个 step 之间的差异。
 
 1. 通过 `git clone` 把[测例](https://github.com/decaf-lang/minidecaf-tests)和某个参考实现克隆到同一个目录下面。
+    > git.tsinghua 上有[镜像](https://git.tsinghua.edu.cn/decaf-lang/minidecaf-tests)，每 5 分钟更新一次
 2. 按照参考实现的 README 配置好它的环境。
 3. 按照[测例](https://github.com/decaf-lang/minidecaf-tests)的 README 运行测试
 
