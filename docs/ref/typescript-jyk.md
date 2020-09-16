@@ -213,14 +213,14 @@ visitType(ctx: MiniDecafParser.TypeContext): Result {
 
 其中属性 `ty` 表示节点的类型。其他重要的属性还有：
 
-| 属性名 | 含义 |
-|-------|------|
-| `ty`  | 类型（表达式）|
-| `lvalue` | 是否是左值（表达式） |
-| `paramCount` | 参数个数（函数）|
-| `localVarSize` | 局部变量所占内存大小（函数）|
-| `variable` | 对应的变量（标识符）|
-| `loop` | 对应的循环语句（break、continue 语句）|
+| 属性名 | 具有该属性的节点 | 含义 |
+|-------|---------------|------|
+| `ty`  | 表达式  | 类型 |
+| `lvalue` | 表达式 | 是否是左值 |
+| `paramCount` | 函数 |参数个数 |
+| `localVarSize` | 函数 | 局部变量所占内存大小 |
+| `variable` | 标识符 | 对应的变量（`Variable` 类） |
+| `loop` | break、continue 语句 | 对应的循环语句节点 |
 
 ### 中间表示（所有 step）
 

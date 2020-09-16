@@ -25,7 +25,7 @@
 * clone 命令：`git clone https://github.com/equation314/minidecaf.git --recursive`
 * 演示网址：https://equation314.github.io/minidecaf
 
-## Java-ANTLR
+## [Java-ANTLR](./java-xxy.md)
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-xxy
 * clone 命令：`git clone https://github.com/decaf-lang/minidecaf.git -b md-xxy`
 
