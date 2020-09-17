@@ -82,4 +82,4 @@ $ python3 ir.py
 
 # 备注
 
-[^1]: 类似[Java Bytecode](https://en.wikipedia.org/wiki/Java_bytecode)这样的，虽然也属于基于栈的IR，但是实际的Java虚拟机中都会先把它转化成其它容易优化的形式，所以它的意义仅仅是便于生成和传输，几乎不会用于优化。这也启示我们，尽管我们选择了不容易优化的基于栈的IR，但未来还是有拓展的空间，可以把它转化成其他形式再进行优化。
+[^1]: 类似[Java Bytecode](https://en.wikipedia.org/wiki/Java_bytecode)这样的，虽然也属于基于栈的IR，但是实际的Java虚拟机中都会先把它转化成其它容易优化的形式，所以它的意义仅仅是便于生成和传输，几乎不会用于优化。这也启示我们，尽管我们选择了不容易优化的基于栈的IR，但未来还是有拓展的空间，可以把它转化成其他形式再进行优化。类似的还有[Python Bytecode](https://docs.python.org/3/library/dis.html#module-dis)。

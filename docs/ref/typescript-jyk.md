@@ -13,7 +13,7 @@
 * **网页版编译器**。通过将 TypeScript 翻译到 JavaScript，可直接在浏览器中运行 MiniDecaf 编译器，生成 RISC-V 汇编。
 * **在浏览器上运行源程序**。本参考代码基于对生成的中间表示的模拟执行，实现了一个解释器，能够在网页上直接运行源程序，并得到执行结果（`main` 函数返回值），无需再用 QEMU 等模拟器运行。
 
-此外，与其他参考代码一样，本参考代码完成每个 step 的过程，都被分成了一个或多个 [git commit](https://github.com/equation314/minidecaf/commits/master)，你可以使用 git diff 得到相邻两次 commit 的差异，来明确每一步需要完成哪些工作。
+此外，与其他参考代码一样，本参考代码完成每个 step 的过程，都被分成了一个或多个 [git commit](https://github.com/equation314/minidecaf/commits/master)，你可以使用 `git diff` 得到相邻两次 commit 的差异，来明确每一步需要完成哪些工作。每一个 step 的最后一个 commit 都被打上了 [tag](https://github.com/equation314/minidecaf/tags)，并都能通过部署在 Github Actions 上的[自动测试](https://github.com/equation314/minidecaf/actions?query=workflow%3A%22Build+%26+Test%22)。
 
 **特别注意：实现网页版编译器和解释器不是本实验的必做内容。**
 
@@ -45,13 +45,15 @@ TypeScript 可以被直接翻译到 JavaScript，因此不仅能使用 [Node.js]
 
 ### 安装依赖
 
-进入参考代码目录，先运行以下命令安装依赖：
+进入参考代码目录，先运行以下命令一键安装依赖：
 
 ```bash
 npm install
 ```
 
-运行完后当前目录中会多出一个 `node_modules` 文件夹，里边包含了开发所需的各种所需的软件包和运行库，例如 TypeScript 编译器 `tsc` 等等。
+运行完后当前目录中会多出一个 `node_modules` 文件夹，里边包含了开发所需的各种所需的软件包和运行库，例如 TypeScript 编译器 `tsc`、ANTLR 工具等等。
+
+> 你无需再像[step1：词法语法分析工具](../lab1/part2.md)那里一样下载 ANTLR 的 JAR 包。
 
 ### 命令行运行
 
@@ -82,8 +84,10 @@ npm run test-all -- -n 12       # 作为解释器运行
 这里 `-n <N>` 表示只运行 step1 到 stepN 的测例。
 
 > 请确保你在 clone 仓库时加了 `--recursive` 选项，将[测例仓库](https://github.com/decaf-lang/minidecaf-tests)也一起 clone 了下来。
+>
+> 如果加了 `-s` 选项，会自动调用 [minidecaf-tests/check.sh](https://github.com/decaf-lang/minidecaf-tests/blob/master/check.sh) 运行测试。但该脚本不支持测试解释器，只好写在 [test/test_all.sh](https://github.com/equation314/minidecaf/blob/master/test/test_all.sh) 中。
 
-### （可选）网页版编译器
+### 【可选】网页版编译器
 
 ```bash
 npm run build-web               # 将 TS 编译成 JS，然后将所有 JS 文件打包以便在网页上调用
@@ -116,7 +120,7 @@ npm run cli test/test.c -- -s   # 运行 JS 代码，生成汇编
 npm run test-codegen            # 对 test/test.c 生成汇编，并在模拟器中运行
 npm run test-all -- -s [-n <N>] # 运行 step1 到 step<N> 的全部测例
 
-#（可选）构建网站
+#【可选】构建网站
 npm run build-web               # 将 TS 编译成 JS 并打包
 npm run serve                   # 启动简易的 HTTP 静态服务器
 ```
@@ -135,11 +139,19 @@ export function compile(input: string, option: CompilerOption): string {
 }
 ```
 
-本函数就是你在实验中需要完成的部分。在每一个 step 中，你都需要让该函数返回正确的 RISC-V 汇编。你可以随意增加文件，不过不建议对除 [src/minidecaf.ts](https://github.com/equation314/minidecaf/blob/skeleton/src/minidecaf.ts) 以外的文件做修改。
-
 > 本实验无需实现解释器，你只需要处理 `option.target === CompilerTarget.Riscv32Asm` 的情况即可。
 
-### （可选）自动测试与部署
+本函数就是你在实验中需要完成的部分。在每一个 step 中，你都需要让该函数返回正确的 RISC-V 汇编。你可以随意增加文件，不过不建议对除 [src/minidecaf.ts](https://github.com/equation314/minidecaf/blob/skeleton/src/minidecaf.ts) 以外的文件做修改。
+
+为了让部署在 git.tsinghua.edu.cn 中的 CI 能自动测试你的代码，**请确保对给定源文件生成汇编的命令为以下格式**：
+
+```bash
+npm run cli -- <c_file> -s -o <asm_file>
+```
+
+如果你不使用我们提供的框架，请自行在 `package.json` 的 `scripts` 字段中添加 `cli` 字段，并填好运行你的 JS/TS 编译器的命令。此外你的编译器至少需要支持 `-s` 和 `-o` 选项。如果不想自己折腾建议直接使用我们的框架。
+
+### 【可选】自动测试与部署
 
 如果你使用 Github 进行代码托管，可使用 [Github Actions](https://docs.github.com/en/actions) 搭建 CI(continuous integration)，进行自动测试与网站的自动部署。我们已经提供了 [workflow 文件](https://github.com/equation314/minidecaf/tree/master/.github/workflows)，每次 push 任何分支都会使用 [test.yml](https://github.com/equation314/minidecaf/blob/master/.github/workflows/test.yml) 中的配置，自动构建并跑我们的测试用例；每次 push master 都会创建 GitHub Pages，部署网页版编译器。
 
@@ -147,13 +159,21 @@ export function compile(input: string, option: CompilerOption): string {
 
 ## 与实验总指导的差异
 
-本节列出了本参考实现与实验总指导的几处主要不同，能够帮你更好地理解这份参考代码。你在做实验时应该主要关注实验总指导，无需和这里的实现一样。另外本节内容涉及多个 step 中的细节，建议根据你目前所做的 step 选择性查阅相关内容。
+本节列出了本参考实现与实验总指导的几处主要不同，能够帮你更好地理解这份参考代码。参考代码中也提供了详细的注释帮助你理解。你在做实验时应该主要关注实验总指导，无需和这里的实现一样。另外本节内容涉及多个 step 中的细节，建议根据你目前所做的 step 选择性查阅相关内容。
 
-### 整体流程
+### 整体架构
 
-首先给出参考代码的整体编译流程和目录结构：
+参考代码中编译器的整体流程如下：
 
 ![参考实现的整体编译流程](pics/ts_workflow.svg)
+
+1. 源代码经过 ANTLR 词法和语法分析器，生成 ANTLR 分析树；
+2. 使用 ANTLR visitor 模式对分析树进行名称解析、类型检查等语义检查，并在节点上标记一些属性；
+3. 使用 ANTLR visitor 模式对分析树生成中间表示；
+4. 将中间表示转换为 RISC-V 汇编，之后用 GCC 生成可执行文件，并在 QEMU/Spike 上运行；
+5. 【可选】用解释器模拟中间代码的执行，直接得到结果。
+
+以下是参考代码的目录结构：
 
 ```
 src/
@@ -174,7 +194,35 @@ src/
 └── type.ts             # 类型系统
 ```
 
-### 中间表示（step1、step2、step3）
+### 语法树（所有 step）
+
+本参考实现没有真正构建出抽象语法树，而是直接使用了 ANTLR 自动生成的分析树。
+
+在第一次遍历分析树时（详见 [src/target/semantic.ts](https://github.com/equation314/minidecaf/blob/master/src/visitor/semantic.ts)），会给分析树增加一些额外的属性，以便之后的分析。使用 JavaScript 的语法可以方便地给任何 object 增加属性，例如：
+
+```ts
+visitType(ctx: MiniDecafParser.TypeContext): Result {
+    if (ctx.Int()) {
+        ctx["ty"] = BaseType.Int;
+    } else {
+        ctx["ty"] = new PointerType(ctx.type().accept(this)["ty"]);
+    }
+    return ctx;
+}
+```
+
+其中属性 `ty` 表示节点的类型。其他重要的属性还有：
+
+| 属性名 | 具有该属性的节点 | 含义 |
+|-------|---------------|------|
+| `ty`  | 表达式  | 类型 |
+| `lvalue` | 表达式 | 是否是左值 |
+| `paramCount` | 函数 |参数个数 |
+| `localVarSize` | 函数 | 局部变量所占内存大小 |
+| `variable` | 标识符 | 对应的变量（`Variable` 类） |
+| `loop` | break、continue 语句 | 对应的循环语句节点 |
+
+### 中间表示（所有 step）
 
 为了方便直接在浏览器上执行源程序并得到结果，本参考代码也使用了中间表示，并实现了对中间代码的模拟执行。不过与 step1 中讲的 [IR 简明介绍](../lab1/ir.md)这一节有所不同，这里的 IR 不只是一个简单的栈结构，还包含了两个寄存器。
 
@@ -248,6 +296,8 @@ addi t0, t1, t0
 
 此外，本参考实现中的 IR 指令不隐式包含栈操作，只有 `PUSH`、`POP` 指令可以进行压栈、弹栈（还有 `CALL` 指令在函数调用结束后会从栈中弹出参数个数个元素），而不像之前的 IR 中，执行一条二元运算指令也意味着栈中要减少一个元素，
 
+完整 IR 的指令表详见 [src/ir.ts](https://github.com/equation314/minidecaf/blob/master/src/ir.ts)。
+
 ### 调用约定（step9）
 
 本参考实现遵循了 step9 中描述的 [GCC 的调用约定](../lab9/calling.md)：
@@ -256,7 +306,7 @@ addi t0, t1, t0
 > 2. 返回值（32 位 int）放在 `a0` 寄存器中。
 > 3. 参数（32 位 int）从左到右放在 `a0`、`a1`……`a7` 中。如果还有，则从右往左压栈，第 9 个参数在栈顶。
 
-具体地，在 [commit 81cb750](https://github.com/equation314/minidecaf/commit/81cb750d7d53ce117c89a35c88af109543db4779#diff-25d902c24283ab8cfbac54dfa101ad31) 及之前使用的是 step9 中描述的简化版调用约定，在 [commit 0f0b6d5](https://github.com/equation314/minidecaf/commit/0f0b6d56ceff569b1cac54deda4222fab3c770e4#diff-25d902c24283ab8cfbac54dfa101ad31) 更改为了 GCC 的调用约定。如果你也想使用 GCC 的调用约定，可以参考 commit 0f0b6d5 中的实现过程，否则参考 commit 81cb750 即可。
+具体地，在 commit [6965523](https://github.com/equation314/minidecaf/commit/69655239e25c901f4b6c10429239ed3f982c303a) 及之前使用的是 step9 中描述的简化版调用约定，在 commit [fd5bccc](https://github.com/equation314/minidecaf/commit/fd5bcccb741258bc0ab746a3034a6aea0acdc973) 更改为了 GCC 的调用约定。如果你也想使用 GCC 的调用约定，可以参考 commit fd5bccc 中的实现过程，否则参考 commit 6965523 即可。
 
 实现过程也非常简单粗暴，效率上反而还不如简化版的，只是为了能够调用 GCC 编译的函数。具体做法为：当所有参数从右往左压栈后，从栈中弹出至多 8 个参数，分别存到 `a0`、`a1`……`a7` 中；由于参数寄存器属于临时寄存器，会在嵌套函数调用中被破坏，需要被保存，就在 callee 的 prologue 阶段再将它们保存到 callee 的栈帧上。
 
@@ -266,7 +316,7 @@ addi t0, t1, t0
 
 ![栈帧布局](pics/ts_stack_frame.svg)
 
-### （可选）解释器
+### 【可选】解释器（所有 step）
 
 本小节内容是可选的，如果想实现在浏览器中运行源程序，可阅读本小节以供参考。
 

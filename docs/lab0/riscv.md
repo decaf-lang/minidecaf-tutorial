@@ -2,7 +2,8 @@
 RISC-V 是一个很像 MIPS 的 RISC 指令集架构，编译实验要求你的编译器把 MiniDecaf 程序编译到 RISC-V 汇编。
 
 指令集文档在[这里](https://riscv.org/technical/specifications/)，我们只需要其中的 "Unprivileged Spec"。
-> 其实，很多时候 gcc 输出的汇编比看文档更有用。
+> 另外[这里](https://github.com/TheThirdOne/rars/wiki/Supported-Instructions)也有（非官方的）指令用法说明。
+> 不过事实上，很多时候看 gcc 输出的汇编比看什么文档都有用。
 
 ## RISC-V 工具使用
 我们提供预先编译好的 RISC-V 工具，在[环境配置](./env.md)中已经叙述了安装和使用方法。
@@ -77,7 +78,8 @@ $ echo $?
 
 ```bash
 # 运行 a.out
-$ spike --isa=RV32G /path/to/pk a.out	# /path/to/pk 替换为你自己的 pk 路径
+# /usr/local/bin/pk 替换为你自己的 pk 路径
+$ spike --isa=RV32G /usr/local/bin/pk a.out
 bbl loader
 
 # $? 是 spike 的返回码，也就是我们 main 所 return 的那个值

@@ -6,4 +6,7 @@
 
 * [C99 标准草案](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf)（和正式标准差不多，用于课程足矣。正式标准需要找 ISO 购买）
 
-* [riscv汇编指令集](riscv-instructions.md)
+* [RISC-V 手册](https://riscv.org/technical/specifications/)
+
+* [RISC-V（非官方）汇编指令用法](https://github.com/TheThirdOne/rars/wiki/Supported-Instructions)
+

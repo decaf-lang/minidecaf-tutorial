@@ -3,6 +3,8 @@
 我们提供了一系列完整的 step1~step12 的参考实现，分别使用了不同的编程语言或词法语法分析工具，如下所示：
 > 参考实现仅供参考，不是标准答案！
 
+> git.tsinghua 上有[镜像](https://git.tsinghua.edu.cn/decaf-lang/minidecaf)
+
 ## [Python-ANTLR](./python-dzy.md)
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-dzy
 * clone 命令：`git clone https://github.com/decaf-lang/minidecaf.git -b md-dzy`
@@ -25,7 +27,7 @@
 * clone 命令：`git clone https://github.com/equation314/minidecaf.git --recursive`
 * 演示网址：https://equation314.github.io/minidecaf
 
-## Java-ANTLR
+## [Java-ANTLR](./java-xxy.md)
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-xxy
 * clone 命令：`git clone https://github.com/decaf-lang/minidecaf.git -b md-xxy`
 

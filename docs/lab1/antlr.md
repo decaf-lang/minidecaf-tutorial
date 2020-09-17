@@ -175,6 +175,8 @@ $ ./main <input
 (expr (add (add (add (mul (atom ( (expr (add (add (mul (atom 1))) + (mul (atom 3)))) )) (mulOp *) (atom 4))) - (mul (atom 3))) - (mul (atom 3))))
 ```
 
+最后请你自行确认，对于不合法的输入（例如 `1+2+`），运行示例代码会发生什么。
+
 ## Visitor 的使用
 
 > ANTLR 默认生成 listener，它允许你在遍历 AST 过程进入结点和离开结点的时候运行一些代码，但我们不用 listener，我们使用 visitor。
