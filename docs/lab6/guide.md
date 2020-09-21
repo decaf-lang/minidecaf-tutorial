@@ -73,9 +73,19 @@ Visitor 遍历 AST 遇到一个有 else 的 if 语句，为了生成其 IR，要
 | `beqz LABEL_STR` | `lw t1, 0(sp)  ;  addi sp, sp, 4  ;  beqz t1, LABEL_STR` |
 | `bnez LABEL_STR` | `lw t1, 0(sp)  ;  addi sp, sp, 4  ;  bnez t1, LABEL_STR` |
 
-# 任务
-1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
-2. 实验报告中回答思考题。
+# 思考题
+
+1. Rust 和 Go 语言中的 if-else 语法与 C 语言中略有不同，它们都要求两个分支必须用大括号包裹起来，而且条件表达式不需要用括号包裹起来：
+
+```Rust
+if 条件表达式 {
+  // 在条件为 true 时执行
+} else {
+  // 在条件为 false 时执行
+}
+```
+
+请问相比 C 的语法，这两种语言的语法有什么优点？
 
 # 总结
 本节主要就是引入了跳转，后面 step8 循环语句还会使用。

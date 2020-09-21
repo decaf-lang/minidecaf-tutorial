@@ -230,16 +230,13 @@ main:
 # 任务
 1. 在不同输入上，运行 minilexer, miniparser 和 minivisitor。
 2. 浏览它们的代码（不用完全看懂）
+3. 在实验报告中回答思考题。
 
 # 思考题
-以下思考题六选四，在实验报告中回答。
 
-1. minilexer 是如何使得 `int` 被分析成一个关键字而非一个标识符的？
-2. 修改 minilexer 的输入（`lexer.setInput` 的参数），使得 lex 报错，给出一个简短的例子。
-3. miniparser 的算法，只有当语法满足什么条件时才能使用？
-4. 修改 minilexer 的输入，使得 lex 不报错但 parser 报错，给出一个简短的例子。
-5. 一种暴力算法是：lex 同上但是不进行 parse，而是在 token 流里面寻找连续的 `Return`，`Integer` 和 `Semicolon`，找到以后取得 `Integer` 的常量 a，然后类似上面目标代码生成。这个暴力算法有什么问题？
-6. 除了我们的暴力 miniparser，形式语言与自动机课中也描述了一种算法，可以用来计算语法分析树。请问它是什么算法，时间复杂度是多少？
+1. 修改 minilexer 的输入（`lexer.setInput` 的参数），使得 lex 报错，给出一个简短的例子。
+2. 修改 minilexer 的输入，使得 lex 不报错但 parse 报错，给出一个简短的例子。
+3. 在 riscv 中，哪个寄存器是用来存储函数返回值的？
 
 # 总结
 本节引入了很多概念，请仔细消化
