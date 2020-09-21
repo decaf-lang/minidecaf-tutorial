@@ -18,10 +18,6 @@
 * 演示网址：https://mashplant.online/minidecaf-frontend/
   - 除了加载可能因为网络原因稍慢，之后的运行都非常快。原理是Rust编译到[WASM](http://webassembly.org.cn/)在网页中执行，感兴趣的同学可以自行了解
 
-## Rust-manual
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-cy
-* clone 命令：`git clone https://github.com/decaf-lang/minidecaf.git -b md-cy`
-
 ## [TypeScript-ANTLR](./typescript-jyk.md)
 * 地址 https://github.com/equation314/minidecaf
 * clone 命令：`git clone https://github.com/equation314/minidecaf.git --recursive`
