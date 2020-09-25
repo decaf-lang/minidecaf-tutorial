@@ -41,7 +41,7 @@ IR 生成还是 Visitor 遍历，并且
 > 例如 `int main(){int a=2; a=a+3; return a;}`，显然 `a` 是第 0 个变量。
 > 那它的 IR 指令序列是（每行对应一条语句）：
 ```
-frameaddr 0 ; push 2 ; store ; pop ;
+push 2 ; frameaddr 0 ; store ; pop ;
 frameaddr 0 ; load ; push 3 ; add ; frameaddr 0 ; store ; pop ;
 frameaddr 0 ; load ; ret ;
 ```
