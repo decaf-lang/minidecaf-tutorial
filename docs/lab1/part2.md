@@ -39,7 +39,7 @@
 
 特别注意：如果输入有错误，ANTLR 的 parser 默认会尝试从错误恢复。
 但我们实验要求是：如果输入有错，那编译器应该立马报错退出。
-因此我们要设置 ANTLR parser 的错误处理为 `BailErrorStrategy`，使用速成文档的代码中的方法即可。
+因此我们要设置 ANTLR parser 的错误处理为 `BailErrorStrategy`，具体可以参考所给的框架中的设置方式。
 
 ### lalr1
 [lalr1](https://github.com/MashPlant/lalr1)是 MashPlant 助教自己编写的 parser generator，它用 Rust 编写，可以生成多种目标语言（目前实现了 Rust, C++, Java）。虽然还不能和那些常用的成熟工具链相比，但也已经在 2019 年的编译原理课程中经受住了考验，可靠性是有一定保证的。
