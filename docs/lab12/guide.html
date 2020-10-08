@@ -1683,41 +1683,41 @@ load
 <p>&#x65E0;&#x9700;&#x7279;&#x522B;&#x4FEE;&#x6539;&#x3002;</p>
 <h1 id="&#x601D;&#x8003;&#x9898;">&#x601D;&#x8003;&#x9898;</h1>
 <ol>
-<li>&#x8BBE;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5176;&#x4E2D;&#x5C40;&#x90E8;&#x53D8;&#x91CF; <code>a</code> &#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x90FD;&#x662F; <code>0x1000</code>(4096)&#xFF0C;&#x8BF7;&#x5206;&#x522B;&#x7ED9;&#x51FA;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF08;&#x7528;&#x4E00;&#x4E2A;&#x5E38;&#x91CF; minidecaf &#x8868;&#x8FBE;&#x5F0F;&#x8868;&#x793A;&#xFF0C;&#x4F8B;&#x5982;&#x51FD;&#x6570; <code>A</code> &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F; <code>*(int*)(4096 + 23 * 4)</code>&#xFF09;&#x3002;</li>
-</ol>
-<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">A</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">int</span> a[<span class="hljs-number">100</span>];
-    <span class="hljs-keyword">return</span> a[<span class="hljs-number">23</span>];
-}
+<li><p>&#x8BBE;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5176;&#x4E2D;&#x5C40;&#x90E8;&#x53D8;&#x91CF; <code>a</code> &#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x90FD;&#x662F; <code>0x1000</code>(4096)&#xFF0C;&#x8BF7;&#x5206;&#x522B;&#x7ED9;&#x51FA;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF08;&#x7528;&#x4E00;&#x4E2A;&#x5E38;&#x91CF; minidecaf &#x8868;&#x8FBE;&#x5F0F;&#x8868;&#x793A;&#xFF0C;&#x4F8B;&#x5982;&#x51FD;&#x6570; <code>A</code> &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F; <code>*(int*)(4096 + 23 * 4)</code>&#xFF09;&#x3002;</p>
+<pre><code class="lang-c"> <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">A</span><span class="hljs-params">()</span> </span>{
+     <span class="hljs-keyword">int</span> a[<span class="hljs-number">100</span>];
+     <span class="hljs-keyword">return</span> a[<span class="hljs-number">23</span>];
+ }
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">B</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">int</span> *p = (<span class="hljs-keyword">int</span>*) <span class="hljs-number">4096</span>;
-    <span class="hljs-keyword">return</span> p[<span class="hljs-number">23</span>];
-}
+ <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">B</span><span class="hljs-params">()</span> </span>{
+     <span class="hljs-keyword">int</span> *p = (<span class="hljs-keyword">int</span>*) <span class="hljs-number">4096</span>;
+     <span class="hljs-keyword">return</span> p[<span class="hljs-number">23</span>];
+ }
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">C</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];
-    <span class="hljs-keyword">return</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];
-}
+ <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">C</span><span class="hljs-params">()</span> </span>{
+     <span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];
+     <span class="hljs-keyword">return</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];
+ }
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">D</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">int</span> *a[<span class="hljs-number">10</span>];
-    <span class="hljs-keyword">return</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];
-}
+ <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">D</span><span class="hljs-params">()</span> </span>{
+     <span class="hljs-keyword">int</span> *a[<span class="hljs-number">10</span>];
+     <span class="hljs-keyword">return</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];
+ }
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">E</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">int</span> **p = (<span class="hljs-keyword">int</span>**) <span class="hljs-number">4096</span>;
-    <span class="hljs-keyword">return</span> p[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];
-}
+ <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">E</span><span class="hljs-params">()</span> </span>{
+     <span class="hljs-keyword">int</span> **p = (<span class="hljs-keyword">int</span>**) <span class="hljs-number">4096</span>;
+     <span class="hljs-keyword">return</span> p[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];
+ }
 </code></pre>
-<ol>
-<li>C &#x8BED;&#x8A00;&#x89C4;&#x8303;&#x89C4;&#x5B9A;&#xFF0C;&#x5141;&#x8BB8;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x662F;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#xFF08;<a href="https://en.wikipedia.org/wiki/Variable-length_array" target="_blank">Variable Length Array</a>&#xFF0C;VLA&#xFF09;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5B9E;&#x9A8C;&#x4E2D;&#x4E3A;&#x4E86;&#x7B80;&#x5316;&#xFF0C;&#x9009;&#x62E9;&#x4E0D;&#x652F;&#x6301;&#x5B83;&#x3002;&#x8BF7;&#x4F60;&#x7B80;&#x8981;&#x56DE;&#x7B54;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x51B3;&#x5B9A;&#x652F;&#x6301;&#x4E00;&#x7EF4;&#x7684;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;(&#x5373;&#x5141;&#x8BB8;&#x7C7B;&#x4F3C; <code>int n = 5; int a[n];</code> &#x8FD9;&#x79CD;&#xFF0C;&#x4F46;&#x4ECD;&#x7136;&#x4E0D;&#x5141;&#x8BB8;&#x7C7B;&#x4F3C; <code>int n = ...; int m = ...; int a[n][m];</code> &#x8FD9;&#x79CD;)&#xFF0C;&#x800C;&#x4E14;&#x8981;&#x6C42;&#x6570;&#x7EC4;&#x4ECD;&#x7136;&#x4FDD;&#x5B58;&#x5728;&#x6808;&#x4E0A;&#xFF08;&#x5373;&#x4E0D;&#x5141;&#x8BB8;&#x7528;&#x5806;&#x4E0A;&#x7684;&#x52A8;&#x6001;&#x5185;&#x5B58;&#x7533;&#x8BF7;&#xFF0C;&#x5982;<code>malloc</code>&#x7B49;&#x6765;&#x5B9E;&#x73B0;&#x5B83;&#xFF09;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;&#x73B0;&#x6709;&#x7684;&#x5B9E;&#x73B0;&#x57FA;&#x7840;&#x4E0A;&#x505A;&#x51FA;&#x90A3;&#x4E9B;&#x6539;&#x52A8;&#xFF1F;</li>
-</ol>
+</li>
+<li><p>C &#x8BED;&#x8A00;&#x89C4;&#x8303;&#x89C4;&#x5B9A;&#xFF0C;&#x5141;&#x8BB8;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x662F;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#xFF08;<a href="https://en.wikipedia.org/wiki/Variable-length_array" target="_blank">Variable Length Array</a>&#xFF0C;VLA&#xFF09;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5B9E;&#x9A8C;&#x4E2D;&#x4E3A;&#x4E86;&#x7B80;&#x5316;&#xFF0C;&#x9009;&#x62E9;&#x4E0D;&#x652F;&#x6301;&#x5B83;&#x3002;&#x8BF7;&#x4F60;&#x7B80;&#x8981;&#x56DE;&#x7B54;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x51B3;&#x5B9A;&#x652F;&#x6301;&#x4E00;&#x7EF4;&#x7684;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;(&#x5373;&#x5141;&#x8BB8;&#x7C7B;&#x4F3C; <code>int n = 5; int a[n];</code> &#x8FD9;&#x79CD;&#xFF0C;&#x4F46;&#x4ECD;&#x7136;&#x4E0D;&#x5141;&#x8BB8;&#x7C7B;&#x4F3C; <code>int n = ...; int m = ...; int a[n][m];</code> &#x8FD9;&#x79CD;)&#xFF0C;&#x800C;&#x4E14;&#x8981;&#x6C42;&#x6570;&#x7EC4;&#x4ECD;&#x7136;&#x4FDD;&#x5B58;&#x5728;&#x6808;&#x4E0A;&#xFF08;&#x5373;&#x4E0D;&#x5141;&#x8BB8;&#x7528;&#x5806;&#x4E0A;&#x7684;&#x52A8;&#x6001;&#x5185;&#x5B58;&#x7533;&#x8BF7;&#xFF0C;&#x5982;<code>malloc</code>&#x7B49;&#x6765;&#x5B9E;&#x73B0;&#x5B83;&#xFF09;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;&#x73B0;&#x6709;&#x7684;&#x5B9E;&#x73B0;&#x57FA;&#x7840;&#x4E0A;&#x505A;&#x51FA;&#x90A3;&#x4E9B;&#x6539;&#x52A8;&#xFF1F;</p>
 <blockquote>
 <p>&#x63D0;&#x793A;&#xFF1A;&#x4E0D;&#x80FD;&#x518D;&#x50CF;&#x73B0;&#x5728;&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#x8FDB;&#x5165;&#x51FD;&#x6570;&#x65F6;&#x7EDF;&#x4E00;&#x7ED9;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x5206;&#x914D;&#x5185;&#x5B58;&#xFF0C;&#x5728;&#x79BB;&#x5F00;&#x51FD;&#x6570;&#x65F6;&#x7EDF;&#x4E00;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;</p>
 <p>&#x5F53;&#x540C;&#x65F6;&#x5B58;&#x5728;&gt;= 2&#x4E2A;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x65F6;&#xFF0C;&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x4E0D;&#x80FD;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x51B3;&#x5B9A;&#x3002;</p>
 <p>&#x4F60;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#x4E0D;&#x5927;&#x4E8E;0&#x662F;&#x672A;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5904;&#x7406;&#x3002;</p>
 </blockquote>
+</li>
+</ol>
 <h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
 <p>&#x672C;&#x8282;&#x5185;&#x5BB9;&#x672C;&#x8EAB;&#x96BE;&#x5EA6;&#x4E0D;&#x5927;&#xFF0C;&#x4F46;&#x7EC6;&#x8282;&#x5F88;&#x591A;&#xFF08;&#x5C24;&#x5176;&#x6CE8;&#x610F;&#x6307;&#x9488;&#x52A0;&#x6574;&#x6570;&#x65F6;&#xFF0C;&#x6574;&#x6570;&#x8981;&#x4E58;&#x4E00;&#x4E2A;&#x6570;&#xFF09;&#xFF0C;&#x4E5F;&#x6709;&#x76F8;&#x5F53;&#x4EE3;&#x7801;&#x91CF;&#x3002;</p>
 <h1 id="&#x5907;&#x6CE8;">&#x5907;&#x6CE8;</h1>
@@ -1779,7 +1779,7 @@ load
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实验指导","level":"8.2.2","depth":2,"next":{"title":"其他","level":"8.2.3","depth":2,"ref":"","articles":[{"title":"手写简单 parser","level":"8.2.3.1","depth":3,"path":"docs/lab12/manual-parser.md","ref":"docs/lab12/manual-parser.md","articles":[]}]},"previous":{"title":"任务概述","level":"8.2.1","depth":2,"path":"docs/lab12/intro.md","ref":"docs/lab12/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab12/guide.md","mtime":"2020-10-04T11:06:22.350Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-04T11:07:19.949Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实验指导","level":"8.2.2","depth":2,"next":{"title":"其他","level":"8.2.3","depth":2,"ref":"","articles":[{"title":"手写简单 parser","level":"8.2.3.1","depth":3,"path":"docs/lab12/manual-parser.md","ref":"docs/lab12/manual-parser.md","articles":[]}]},"previous":{"title":"任务概述","level":"8.2.1","depth":2,"path":"docs/lab12/intro.md","ref":"docs/lab12/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/lab12/guide.md","mtime":"2020-10-08T07:48:35.723Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-08T07:49:37.927Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
