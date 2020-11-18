@@ -52,8 +52,3 @@ int qsort(int *a, int l, int r) {
 
 ## 备注
 [^1]: 关于名字由来，往年实验叫 Decaf，所以今年就叫 MiniDecaf 了。不过事实上现在的 MiniDecaf 和原来的 Decaf 没有任何关系。
-
-## Reference
-- [Writing a C Compiler by Nora Sandler](https://norasandler.com/2017/11/29/Write-a-Compiler.html)
-- [An Incremental Approach to Compiler Construction by Abdulaziz Ghuloum](http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf)
-- [Monkey: The programming language that lives in books](https://monkeylang.org/)
