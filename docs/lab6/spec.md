@@ -73,7 +73,7 @@
 </pre>
 
 > 注意：`if` 的 `then` 分支和 `else` 分支需要是一个语句（statement）而非声明（declaration）。
-> 例如 `if (1) int a;` 是不合法的输入。
+> 例如 `if (1) int a;` 不是合法的 MiniDecaf 程序。
 
 # step6 语义规范
 
