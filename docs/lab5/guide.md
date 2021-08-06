@@ -64,7 +64,7 @@ IR 指令到汇编的对应仍然很简单，如下表。
 | `ret` | `lw a0, 0(sp)  ;  addi sp, sp, 4  ;  j FUNCNAME_epilogue` |
 
 另外我们还要求 main 默认返回 0：
-> **5.4.** 执行完 main 函数但没有通过 return 结束时，返回值默认为 0。
+> **5.4** 执行完 main 函数但没有通过 return 结束时，返回值默认为 0。
 
 显然，如果 main 是通过 return 结束的，按照上面的修改一定是跳到 `main_epilogue`，否则是顺序执行到 `main_epilogue` 的。
 因此我们在 `main_epilogue` 之前，所有语句之后，加上 `push 0` 的汇编即可，表示默认返回 0。
