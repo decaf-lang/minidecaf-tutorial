@@ -6,7 +6,7 @@
 
 * [Monkey: The programming language that lives in books](https://monkeylang.org/)
 
-* [C99 标准草案](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf)（和正式标准差不多，用于课程足矣。正式标准需要找 ISO 购买）
+* [C99 标准](https://www.techstreet.com/standards/iso_iec/9899_cor1_2001?product_id=1035925)
 
 * [RISC-V 手册](https://riscv.org/technical/specifications/)
 
