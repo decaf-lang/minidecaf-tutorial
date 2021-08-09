@@ -1,25 +1,34 @@
-# 实验指导 step12：数组
-step12 支持的是数组和指针算术：
+# 实验指导 step12：指针
+step12 支持的是指针：
 
-语法上没有太大改动，
-1. 数组的声明：
+1. 增加类型：指针类型
 <pre id='vimCodeElement'><code></code>
-<span class="SpecRuleStart">declaration</span>
-<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)*</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
-</div></pre>
+<span class="SpecRuleStart">type</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'int'</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">type</span> <span class="SpecToken">'*'</span></div></pre>
 
-2. 数组和指针的下标操作
+2. 引入左值的概念，修改赋值
 <pre id='vimCodeElement'><code></code>
-<span class="SpecRuleStart">postfix</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">primary</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression_list</span> <span class="SpecToken">')'</span>
-<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">postfix</span> <span class="SpecToken">'['</span> <span class="SpecRule">expression</span> <span class="SpecToken">']'</span>
-</div></pre>
+<span class="SpecRuleStart">assignment</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">conditional</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">unary</span> <span class="SpecToken">'='</span> <span class="SpecRule">expression</span></div></pre>
 
-3. 指针算术：语法不变，但允许：指针加/减整数、整数加指针、指针减指针了。
+3. 支持取地址操作符 `&` 和解引用操作符 `*`
+<pre id='vimCodeElement'><code></code>
+<span class="SpecRuleStart">unary</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">postfix</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecOperator">(</span><span class="SpecToken">'-'</span><span class="SpecOperator">|</span><span class="SpecToken">'~'</span><span class="SpecOperator">|</span><span class="SpecToken">'!'</span><span class="SpecOperator">|</span><span class="SpecToken">'&amp;'</span><span class="SpecOperator">|</span><span class="SpecToken">'*'</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span></div></pre>
 
-step12 难度不大，但有了数组让我们能够写很多有意思的程序了，step12 之前甚至 MiniDecaf 连快速排序都写不了。
+4. 支持类型转换
+<pre id='vimCodeElement'><code></code>
+<span class="SpecRuleStart">unary</span>
+<span class="SpecRuleIndicator">    :</span> ...
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'('</span> <span class="SpecRule">type</span> <span class="SpecToken">')'</span> <span class="SpecRule">unary</span></div></pre>
+
+step12 相当复杂，需要我们引入类型系统、左值的概念，并且加入类型检查以及一大堆语义检查。
 
 你需要：
-1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
-2. 完成实验报告（具体要求请看网络学堂的公告）。
+1. 首先实现左值分析（无指针的），并通过之前所有测例。
+2. 然后搭建类型检查的框架（无指针的），并通过之前所有测例。
+3. 最后，加入指针，并且适当修改你的左值分析和类型检查。完整支持本节引入的所有新特性，通过相关测试
+4. 完成实验报告（具体要求请看网络学堂的公告）。

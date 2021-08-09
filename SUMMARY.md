@@ -93,22 +93,21 @@
   * [规范](docs/step10/spec.md)
 
 ## 指针和数组
-* step11：指针
+* step11：数组
   * [任务概述](docs/step11/intro.md)
   * [实验指导](docs/step11/guide.md)
   * 其他
-    * [左值](docs/step11/lvalue.md)
-    * [类型检查](docs/step11/typeck.md)
     * [手写简单 parser](docs/step11/manual-parser.md)
   * [规范](docs/step11/spec.md)
 
-* step12：数组
+* step12：指针
   * [任务概述](docs/step12/intro.md)
   * [实验指导](docs/step12/guide.md)
   * 其他
+    * [左值](docs/step12/lvalue.md)
+    * [类型检查](docs/step12/typeck.md)
     * [手写简单 parser](docs/step12/manual-parser.md)
   * [规范](docs/step12/spec.md)
-
 
 ## 参考资料
 * [参考资料](REFERENCE.md)
