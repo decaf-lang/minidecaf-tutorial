@@ -92,7 +92,7 @@
     * [手写简单 parser](docs/step10/manual-parser.md)
   * [规范](docs/step10/spec.md)
 
-## 指针和数组
+## 数组和指针
 * step11：数组
   * [任务概述](docs/step11/intro.md)
   * [实验指导](docs/step11/guide.md)
