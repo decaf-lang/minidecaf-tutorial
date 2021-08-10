@@ -6,7 +6,7 @@
 
 * [Monkey: The programming language that lives in books](https://monkeylang.org/)
 
-* [C99 标准](https://www.techstreet.com/standards/iso_iec/9899_cor1_2001?product_id=1035925)
+* [C17 标准草案 N2176](https://web.archive.org/web/20181230041359if_/http://www.open-std.org/jtc1/sc22/wg14/www/abq/c17_updated_proposed_fdis.pdf)（N2176 是 C17 标准正式发布前的最后一版草案，根据 C17 标准的编者之一 Jens Gustedt 的[博文](https://gustedt.wordpress.com/2018/04/17/c17/)，其与 C17 标准相比只有表述上的差异）
 
 * [RISC-V 手册](https://riscv.org/technical/specifications/)
 
