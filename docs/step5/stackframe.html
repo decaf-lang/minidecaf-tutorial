@@ -1,0 +1,1780 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>栈帧 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-click-reveal/click_reveal.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="manual-parser.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    实验简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">零：前置准备</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    配环境、跑测试
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../step0/env.html">
+            
+                <a href="../step0/env.html">
+            
+                    
+                    环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../step0/testing.html">
+            
+                <a href="../step0/testing.html">
+            
+                    
+                    运行测试样例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../step0/riscv.html">
+            
+                <a href="../step0/riscv.html">
+            
+                    
+                    RISC-V 的工具链使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../step0/faq.html">
+            
+                <a href="../step0/faq.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    参考实现
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../ref/intro.html">
+            
+                <a href="../ref/intro.html">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../ref/typescript-jyk.html">
+            
+                <a href="../ref/typescript-jyk.html">
+            
+                    
+                    TypeScript-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../ref/python-dzy.html">
+            
+                <a href="../ref/python-dzy.html">
+            
+                    
+                    Python-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../ref/java-xxy.html">
+            
+                <a href="../ref/java-xxy.html">
+            
+                    
+                    Java-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一个编译器</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    step1：仅一个 return 的 main 函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../step1/part1.html">
+            
+                <a href="../step1/part1.html">
+            
+                    
+                    从零开始的 lexer、parser 以及汇编生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../step1/part2.html">
+            
+                <a href="../step1/part2.html">
+            
+                    
+                    词法语法分析工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../step1/part3.html">
+            
+                <a href="../step1/part3.html">
+            
+                    
+                    使用中间码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.4.1" data-path="../step1/antlr.html">
+            
+                <a href="../step1/antlr.html">
+            
+                    
+                    ANTLR 使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.2" data-path="../step1/visitor.html">
+            
+                <a href="../step1/visitor.html">
+            
+                    
+                    Visitor 模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.3" data-path="../step1/ir.html">
+            
+                <a href="../step1/ir.html">
+            
+                    
+                    IR 简明介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.4" data-path="../step1/manual-parser.html">
+            
+                <a href="../step1/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../step1/spec.html">
+            
+                <a href="../step1/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常量表达式</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    step2：一元操作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../step2/intro.html">
+            
+                <a href="../step2/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../step2/guide.html">
+            
+                <a href="../step2/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../step2/manual-parser.html">
+            
+                <a href="../step2/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../step2/spec.html">
+            
+                <a href="../step2/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    step3：加减乘除模
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../step3/intro.html">
+            
+                <a href="../step3/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../step3/guide.html">
+            
+                <a href="../step3/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.3.1" data-path="../step3/precedence.html">
+            
+                <a href="../step3/precedence.html">
+            
+                    
+                    优先级和结合性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3.2" data-path="../step3/manual-parser.html">
+            
+                <a href="../step3/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../step3/spec.html">
+            
+                <a href="../step3/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    step4：比较和逻辑表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../step4/intro.html">
+            
+                <a href="../step4/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../step4/guide.html">
+            
+                <a href="../step4/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../step4/spec.html">
+            
+                <a href="../step4/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">变量和语句</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    step5：局部变量和赋值
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="intro.html">
+            
+                <a href="intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="guide.html">
+            
+                <a href="guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="5.1.3.1" data-path="stackframe.html">
+            
+                <a href="stackframe.html">
+            
+                    
+                    栈帧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3.2" data-path="manual-parser.html">
+            
+                <a href="manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="spec.html">
+            
+                <a href="spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    step6：if 语句和条件表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../step6/intro.html">
+            
+                <a href="../step6/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../step6/guide.html">
+            
+                <a href="../step6/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.3.1" data-path="../step6/manual-parser.html">
+            
+                <a href="../step6/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../step6/spec.html">
+            
+                <a href="../step6/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">块语句和作用域和更多语句</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    step7：作用域和块语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../step7/intro.html">
+            
+                <a href="../step7/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../step7/guide.html">
+            
+                <a href="../step7/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.3.1" data-path="../step7/manual-parser.html">
+            
+                <a href="../step7/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../step7/spec.html">
+            
+                <a href="../step7/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    step8：循环语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../step8/intro.html">
+            
+                <a href="../step8/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../step8/guide.html">
+            
+                <a href="../step8/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../step8/spec.html">
+            
+                <a href="../step8/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">函数和全局变量</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    step9：函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../step9/intro.html">
+            
+                <a href="../step9/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../step9/guide.html">
+            
+                <a href="../step9/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.3.1" data-path="../step9/calling.html">
+            
+                <a href="../step9/calling.html">
+            
+                    
+                    函数调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3.2" data-path="../step9/manual-parser.html">
+            
+                <a href="../step9/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../step9/spec.html">
+            
+                <a href="../step9/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    step10：全局变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../step10/intro.html">
+            
+                <a href="../step10/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../step10/guide.html">
+            
+                <a href="../step10/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.3.1" data-path="../step10/manual-parser.html">
+            
+                <a href="../step10/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="../step10/spec.html">
+            
+                <a href="../step10/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数组和指针</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" >
+            
+                <span>
+            
+                    
+                    step11：数组
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../step11/intro.html">
+            
+                <a href="../step11/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../step11/guide.html">
+            
+                <a href="../step11/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.3.1" data-path="../step11/manual-parser.html">
+            
+                <a href="../step11/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../step11/spec.html">
+            
+                <a href="../step11/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" >
+            
+                <span>
+            
+                    
+                    step12：指针
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.1" data-path="../step12/intro.html">
+            
+                <a href="../step12/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.2" data-path="../step12/guide.html">
+            
+                <a href="../step12/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.3.1" data-path="../step12/lvalue.html">
+            
+                <a href="../step12/lvalue.html">
+            
+                    
+                    左值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3.2" data-path="../step12/typeck.html">
+            
+                <a href="../step12/typeck.html">
+            
+                    
+                    类型检查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3.3" data-path="../step12/manual-parser.html">
+            
+                <a href="../step12/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.4" data-path="../step12/spec.html">
+            
+                <a href="../step12/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">参考资料</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../REFERENCE.html">
+            
+                <a href="../../REFERENCE.html">
+            
+                    
+                    参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >栈帧</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6808;&#x5E27;">&#x6808;&#x5E27;</h1>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x786E;&#x5B9A;&#x6808;&#xFF08;&#x5305;&#x62EC; IR &#x7684;&#x6808;&#x548C;&#x6C47;&#x7F16;&#x7684;&#x6808;&#xFF09;&#x4E0A;&#x9762;&#x5230;&#x5E95;&#x6709;&#x90A3;&#x4E9B;&#x5143;&#x7D20;&#xFF0C;&#x8FD9;&#x4E9B;&#x5143;&#x7D20;&#x5728;&#x6808;&#x4E0A;&#x7684;&#x5E03;&#x5C40;&#x5982;&#x4F55;&#x3002;</p>
+<p>&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#x8BFE;&#x4E0A;&#x63D0;&#x5230;&#x8FC7; <strong>&#x6808;&#x5E27;&#xFF08;stack frame&#xFF09;</strong> &#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x7B80;&#x5355;&#x56DE;&#x60F3;&#x4E00;&#x4E0B;&#xFF1A;
+&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x548C;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x90FD;&#x4F1A;&#x5728;&#x6808;&#x7A7A;&#x95F4;&#x4E0A;&#x5F00;&#x8F9F;&#x4E00;&#x7247;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD9;&#x7BC7;&#x7A7A;&#x95F4;&#x5C31;&#x53EB;&#x201C;&#x6808;&#x5E27;&#x201D;&#x3002;
+&#x6808;&#x5E27;&#x91CC;&#x5B58;&#x653E;&#x4E86;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x9700;&#x8981;&#x7684;&#x5404;&#x79CD;&#x6570;&#x636E;&#xFF0C;&#x5305;&#x62EC;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3001;callee-save &#x5BC4;&#x5B58;&#x5668;&#x7B49;&#x7B49;&#x3002;
+&#x5F53;&#x7136;&#xFF0C;&#x65E2;&#x7136;&#x6C47;&#x7F16;&#x6709;&#x6808;&#x5E27;, &#x6808;&#x5F0F;&#x673A; IR &#x4E5F;&#x6709;&#x6808;&#x5E27;&#x3002;</p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x51FD;&#x6570; main&#xFF0C;&#x76F4;&#x5230; step9 &#x6211;&#x4EEC;&#x624D;&#x4F1A;&#x6709;&#x591A;&#x51FD;&#x6570;&#x652F;&#x6301;&#x3002;
+&#x6240;&#x4EE5;&#x73B0;&#x5728;&#x5173;&#x4E8E;&#x6808;&#x5E27;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EA;&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x6808;&#x5E27;&#x3002;
+&#x540E;&#x9762;&#x7684; step &#x4F1A;&#x6DF1;&#x5165;&#x8BA8;&#x8BBA;&#x3002;</p>
+</blockquote>
+<p>&#x5173;&#x4E8E;&#x6808;&#x5E27;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#x9700;&#x8981;&#x8BF4;&#x660E;</p>
+<ol>
+<li>&#x6808;&#x5E27;&#x957F;&#x4EC0;&#x4E48;&#x6837;&#xFF1F;&#x5373;&#x3001;&#x6808;&#x5E27;&#x4E0A;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5E03;&#x5C40;&#x5982;&#x4F55;&#xFF1F;</li>
+<li>&#x6808;&#x5E27;&#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x4E0E;&#x9500;&#x6BC1;&#x7684;&#xFF1F;</li>
+</ol>
+<p>&#x7B2C; 1. &#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x89C4;&#x5B9A;&#xFF0C;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x4F55;&#x65F6;&#x523B;&#xFF0C;&#x6808;&#x5E27;&#x5206;&#x4E3A;&#x4E09;&#x5757;&#xFF1A;</p>
+<ol>
+<li>&#x6808;&#x9876;&#x662F;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7528;&#x7684;&#x8FD0;&#x7B97;&#x6808;&#xFF0C;&#x5B83;&#x53EF;&#x80FD;&#x4E3A;&#x7A7A;&#xFF08;&#x5F53;&#x524D;&#x4E0D;&#x5728;&#x8BA1;&#x7B97;&#x67D0;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF09;</li>
+<li>&#x7136;&#x540E;&#x4E00;&#x7247;&#x7A7A;&#x95F4;&#x5B58;&#x653E;&#x7684;&#x662F;&#x5F53;&#x524D;&#x53EF;&#x7528;&#x7684;&#x6240;&#x6709;&#x5C40;&#x90E8;&#x53D8;&#x91CF;</li>
+<li>&#x8FD4;&#x56DE;&#x5730;&#x5740;&#x3001;&#x8001;&#x7684;&#x6808;&#x5E27;&#x57FA;&#x5740;&#x7B49;&#x4FE1;&#x606F;</li>
+</ol>
+<p>&#x4E0B;&#x56FE;&#x5C55;&#x73B0;&#x4E86;&#x6C47;&#x7F16;&#x6808;&#x7684;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#xFF0C;&#x4EE5;&#x53CA;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6808;&#x4E2D;&#x5185;&#x5BB9;&#x7684;&#x53D8;&#x5316;&#x3002;
+&#x6808;&#x5DE6;&#x4E0A;&#x65B9;&#x662F;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x53F3;&#x4E0A;&#x65B9;&#x662F; IR&#x3002;
+&#x7C89;&#x8272;&#x80CC;&#x666F;&#x8868;&#x793A;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x7684;&#x6C47;&#x7F16;&#x5BF9;&#x5E94;&#x7684;&#x6E90;&#x4EE3;&#x7801;/IR&#x3002;
+&#x5047;&#x8BBE;&#x7528;&#x6237;&#x7ED9;&#x7684;&#x8F93;&#x5165;&#x662F; <code>24 12</code>&#x3002;</p>
+<p><img src="pics/sf.svg" alt=""></p>
+<p>&#x4ECE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x6808;&#x5E27;&#x6EE1;&#x8DB3;&#x5982;&#x4E0B;&#x6027;&#x8D28;</p>
+<ol>
+<li>&#x6BCF;&#x6761;&#x8BED;&#x53E5;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x548C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;&#x6C47;&#x7F16;&#x6808;&#x5E27;&#x5927;&#x5C0F;&#x90FD;&#x7B49;&#x4E8E; <code>8 + 4 * &#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4E2A;&#x6570;</code> &#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x5176;&#x4E2D; <code>4 == sizeof(int)</code> &#x662F;&#x4E00;&#x4E2A; int &#x53D8;&#x91CF;&#x5360;&#x7684;&#x5B57;&#x8282;&#x6570;</li>
+<li>&#xFF08;&#x5C31;&#x662F; step1 &#x4E2D;&#x7684;&#x5047;&#x8BBE;&#xFF09;&#x4EFB;&#x4F55;&#x8868;&#x8FBE;&#x5F0F;&#x5BF9;&#x5E94;&#x7684; IR &#x5E8F;&#x5217;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E00;&#x5B9A;&#x662F;&#xFF1A;&#x6808;&#x5E27;&#x5927;&#x5C0F;&#x589E;&#x52A0; 4&#xFF0C;&#x6808;&#x9876;&#x56DB;&#x5B57;&#x8282;&#x5B58;&#x653E;&#x4E86;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x3002;</li>
+<li>&#x6C47;&#x7F16;&#x6808;&#x5E27;&#x5E95;&#x90E8;&#x8FD8;&#x4FDD;&#x5B58;&#x4E86; <code>fp</code> &#x548C;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF0C;&#x4F7F;&#x5F97;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x80FD;&#x591F;&#x8FD4;&#x56DE; caller &#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</li>
+</ol>
+<p>&#x628A;&#x6808;&#x5E27;&#x8BBE;&#x8BA1;&#x6210;&#x8FD9;&#x6837;&#xFF0C;&#x8BBF;&#x95EE;&#x53D8;&#x91CF;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528; <code>fp</code> &#x52A0;&#x4E0A;&#x504F;&#x79FB;&#x91CF;&#x6765;&#x5B8C;&#x6210;&#x3002;
+&#x4F8B;&#x5982;&#x7B2C; 1. &#x5C0F;&#x56FE;&#x4E2D;&#xFF0C;&#x201C;&#x8BFB;&#x53D6; a&#x201D; &#x5C31;&#x662F;&#x52A0;&#x8F7D; <code>-12(fp)</code>&#xFF1B;&#x7B2C; 3. &#x5C0F;&#x56FE;&#x4E2D;&#xFF0C;&#x201C;&#x4FDD;&#x5B58;&#x5230; c&#x201D; &#x5C31;&#x662F;&#x4FDD;&#x5B58;&#x5230; <code>-20(fp)</code>&#x3002;</p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x53EA;&#x53D9;&#x8FF0;&#x4E86;&#x6C47;&#x7F16;&#x7684;&#x6808;&#x5E27;&#xFF0C;&#x4F46; IR &#x7684;&#x548C;&#x6C47;&#x7F16;&#x7684;&#x4E00;&#x6837;&#xFF08;&#x5C31;&#x6211;&#x4EEC;&#x7684;&#x8BBE;&#x8BA1;&#x800C;&#x8A00;&#xFF09;&#xFF0C;&#x4E5F;&#x662F;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x4E5F;&#x8981;&#x6709; old fp &#x548C;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#x3002;</p>
+</blockquote>
+<h2 id="&#x5EFA;&#x7ACB;&#x6808;&#x5E27;">&#x5EFA;&#x7ACB;&#x6808;&#x5E27;</h2>
+<p>&#x8FDB;&#x5165;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x540E;&#xFF0C;&#x5728;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x51FD;&#x6570;&#x4F53;&#x8BED;&#x53E5;&#x7684;&#x6C47;&#x7F16;&#x4E4B;&#x524D;&#xFF0C;&#x8981;&#x505A;&#x7684;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x662F;&#xFF1A;&#x5EFA;&#x7ACB;&#x6808;&#x5E27;&#x3002;
+&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x6700;&#x5F00;&#x59CB;&#x3001;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684;&#x7528;&#x4E8E;&#x5EFA;&#x7ACB;&#x6808;&#x5E27;&#x7684;&#x90A3;&#x6BB5;&#x6C47;&#x7F16;&#x88AB;&#x79F0;&#x4E3A;&#x51FD;&#x6570;&#x7684; <strong>prologue</strong>&#x3002;
+&#x5C31; step5 &#x800C;&#x8A00;&#xFF0C;prologue &#x8981;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5F88;&#x7B80;&#x5355;</p>
+<ol>
+<li>&#x5206;&#x914D;&#x6808;&#x5E27;&#x7A7A;&#x95F4;</li>
+<li>&#x4FDD;&#x5B58; <code>fp</code> &#x548C;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF08;&#x5728;&#x5BC4;&#x5B58;&#x5668; <code>ra</code> &#x91CC;&#xFF09;</li>
+</ol>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x7684; prologue &#x5199;&#x6CD5;&#x3002;
+&#x5176;&#x4E2D; <code>FRAMESIZE</code> &#x662F;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x671F;&#x5DF2;&#x77E5;&#x7684;&#x5E38;&#x91CF;&#xFF0C;&#x7B49;&#x4E8E; <code>8 + 4 * &#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4E2A;&#x6570;</code>&#xFF08;&#x8FD9;&#x540D;&#x5B57;&#x4E0D;&#x592A;&#x51C6;&#x786E;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x8FD0;&#x7B97;&#x6808;&#xFF0C;&#x6808;&#x5E27;&#x5927;&#x5C0F;&#x5176;&#x5B9E;&#x4E0D;&#x662F;&#x5E38;&#x91CF;&#xFF09;</p>
+<pre><code>    addi sp, sp, -FRAMESIZE         # &#x5206;&#x914D;&#x7A7A;&#x95F4;
+    sw ra, FRAMESIZE-4(sp)          # &#x50A8;&#x5B58;&#x8FD4;&#x56DE;&#x5730;&#x5740;
+    sw fp, FRAMESIZE-8(sp)          # &#x50A8;&#x5B58; fp
+    addi fp, sp, FRAMESIZE          # &#x66F4;&#x65B0; fp
+</code></pre><p>&#x5F53;&#x7136;&#xFF0C;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x51FD;&#x6570;&#x65F6;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x6808;&#x5E27;&#xFF0C;&#x7ED3;&#x675F;&#x6267;&#x884C;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x9500;&#x6BC1;&#x6808;&#x5E27;&#x3002;
+&#x51FD;&#x6570;&#x672B;&#x5C3E;&#x3001;&#x7528;&#x4E8E;&#x9500;&#x6BC1;&#x6808;&#x5E27;&#x7684;&#x4E00;&#x6BB5;&#x6C47;&#x7F16;&#x53EB;&#x51FD;&#x6570;&#x7684; <strong>epilogue</strong>&#xFF0C;&#x5B83;&#x8981;&#x505A;&#x7684;&#x662F;&#xFF1A;</p>
+<ol>
+<li>&#x8BBE;&#x7F6E;&#x8FD4;&#x56DE;&#x503C;</li>
+<li>&#x56DE;&#x6536;&#x6808;&#x5E27;&#x7A7A;&#x95F4;</li>
+<li>&#x6062;&#x590D; <code>fp</code>&#xFF0C;&#x8DF3;&#x56DE;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF08;<code>ret</code> &#x5C31;&#x662F; <code>jr ra</code>&#xFF09;</li>
+</ol>
+<p>&#x8FD4;&#x56DE;&#x503C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x653E;&#x5728; <code>a0</code> &#x4E2D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x6808;&#x9876;&#x8BA9; epilogue &#x53BB;&#x52A0;&#x8F7D;&#x3002;
+&#x5982;&#x679C;&#x662F;&#x540E;&#x8005;&#xFF0C;&#x90A3;&#x4E48;&#x4E0A;&#x9762;&#x201C;&#x6808;&#x5E27;&#x6EE1;&#x8DB3;&#x5982;&#x4E0B;&#x6027;&#x8D28;&#x201D;&#x7684; 1. &#x8981;&#x628A; return &#x4F5C;&#x4E3A;&#x4F8B;&#x5916;&#x4E86;&#x3002;</p>
+<p>&#x628A;&#x8FD4;&#x56DE;&#x503C;&#x653E;&#x5728;&#x6808;&#x9876;&#x7684;&#x8BDD;&#xFF0C;&#x4E0B;&#x9762;&#x662F; epilogue &#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x7684;&#x5199;&#x6CD5;&#x3002;</p>
+<blockquote>
+<p>&#x524D;&#x7F00; <code>FUNCNAME</code> &#x662F;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x51FD;&#x6570;&#x540D;&#xFF0C;&#x4F8B;&#x5982; <code>main</code>&#xFF0C;&#x52A0;&#x4E0A;&#x524D;&#x7F00;&#x4EE5;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x51FD;&#x6570;&#x7684; epilogue&#x3002;</p>
+<pre><code>FUNCNAME_epilogue:                  # epilogue &#x6807;&#x53F7;&#xFF0C;&#x53EF;&#x4F5C;&#x4E3A;&#x8DF3;&#x8F6C;&#x76EE;&#x7684;&#x5730;
+    lw a0, 0(sp)                    # &#x4ECE;&#x6808;&#x9876;&#x52A0;&#x8F7D;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x6B64;&#x65F6; sp = fp - FRAMESIZE - 4
+    addi sp, sp, 4                  # &#x5F39;&#x51FA;&#x6808;&#x9876;&#x7684;&#x8FD4;&#x56DE;&#x503C;
+    lw fp, FRAMESIZE-8(sp)          # &#x6062;&#x590D; fp
+    lw ra, FRAMESIZE-4(sp)          # &#x6062;&#x590D; ra
+    addi sp, sp, FRAMESIZE          # &#x56DE;&#x6536;&#x7A7A;&#x95F4;
+    jr ra                           # &#x8DF3;&#x56DE; caller
+</code></pre><p>&#x5C31; step5&#xFF0C;&#x4FDD;&#x5B58;&#x6062;&#x590D; fp/ra &#x7684;&#x786E;&#x4E0D;&#x5FC5;&#x8981;&#x3002;&#x4F46;&#x662F;&#x52A0;&#x4E0A;&#x4F1A;&#x8BA9;&#x540E;&#x9762;&#x6B65;&#x9AA4;&#x66F4;&#x65B9;&#x4FBF;&#x3002;</p>
+</blockquote>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;IR &#x7684; <code>ret</code> &#x6307;&#x4EE4;&#x4E0D;&#x80FD;&#x76F4;&#x63A5; <code>jr ra</code> &#x4E86;&#xFF0C;&#x800C;&#x662F;&#x8981;&#x8DF3;&#x8F6C;&#x6267;&#x884C; epilogue&#xFF0C;&#x5373; <code>j FUNCNAME_epilogue</code>&#x3002;</p>
+<h1 id="&#x53D8;&#x91CF;&#x58F0;&#x660E;">&#x53D8;&#x91CF;&#x58F0;&#x660E;</h1>
+<p>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;</p>
+<ol>
+<li>&#x8BBE;&#x5B9A;&#x53D8;&#x91CF;&#x76F8;&#x5BF9; <code>fp</code> &#x7684;&#x504F;&#x79FB;&#x91CF;&#x3002;</li>
+<li>&#x5728;&#x6808;&#x5E27;&#x4E0A;&#x9884;&#x7559;&#x4FDD;&#x5B58;&#x53D8;&#x91CF;&#x7A7A;&#x95F4;</li>
+</ol>
+<p>&#x7B2C; 2. &#x70B9;&#x5DF2;&#x7ECF;&#x5728; prologue &#x4E2D;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x91CD;&#x70B9;&#x662F;&#x7B2C; 1. &#x70B9;&#x3002;</p>
+<p>&#x5BF9;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x7528;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7EF4;&#x62A4;&#x5176;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#xFF1A;&#x540D;&#x79F0;&#x3001;&#x7C7B;&#x578B;&#xFF08;step12&#xFF09;&#x3001;&#x58F0;&#x660E;&#x4F4D;&#x7F6E;&#x3001;&#x521D;&#x59CB;&#x503C;&#x7B49;&#x3002;
+&#x76EE;&#x524D;&#x9636;&#x6BB5;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x94FE;&#x8868;&#x6216;&#x8005;&#x6570;&#x7EC4;&#x6765;&#x4FDD;&#x5B58;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;&#x3002;
+&#x8FD9;&#x4E2A;&#x4FDD;&#x5B58;&#x53D8;&#x91CF;&#x7B26;&#x53F7;&#x7684;&#x8868;&#x88AB;&#x79F0;&#x4E3A; <strong>&#x7B26;&#x53F7;&#x8868;&#xFF08;symbol table&#xFF09;</strong>&#x3002;
+&#x90A3;&#x504F;&#x79FB;&#x91CF;&#x53EF;&#x4EE5;&#xFF08;&#x4E00;&#xFF09;&#x4F5C;&#x4E3A;&#x53D8;&#x91CF;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x3001;&#xFF08;&#x4E8C;&#xFF09;&#x4E5F;&#x53EF;&#x4EE5;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x5230;&#x504F;&#x79FB;&#x91CF;&#x7684;&#x6620;&#x5C04;&#x3001;&#xFF08;&#x4E09;&#xFF09;&#x50CF;&#x4E0B;&#x9762;&#x901A;&#x8FC7;&#x67D0;&#x79CD;&#x65B9;&#x6CD5;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;&#x4E00;&#x5F20;&#x7B26;&#x53F7;&#x8868;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x4E0D;&#x540C;&#x4F4D;&#x7F6E;&#x7684;&#x7B26;&#x53F7;&#x8868;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x3002;
+&#x4F8B;&#x5982;&#xFF0C;&#x7B26;&#x53F7;&#x8868;&#x53EA;&#x4F1A;&#x5305;&#x542B;&#x88AB;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x56E0;&#x6B64;&#x5728; <code>int a=0;</code> &#x4E4B;&#x540E;&#x7684;&#x7B26;&#x53F7;&#x8868;&#x6BD4;&#x4E4B;&#x524D;&#x7684;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x6761;&#x76EE;&#x8868;&#x793A; <code>a</code> &#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x786E;&#x5B9A;&#x53D8;&#x91CF;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x672C;&#x8EAB;&#x5012;&#x5F88;&#x5BB9;&#x6613;&#xFF1A;&#x4ECE;&#x524D;&#x5F80;&#x540E;&#x6BCF;&#x4E00;&#x4E2A;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x504F;&#x79FB;&#x4F9D;&#x6B21;&#x9012;&#x51CF;&#xFF0C;&#x4ECE; <code>-12(fp)</code> &#x5F00;&#x59CB;&#xFF0C;&#x7136;&#x540E;&#x662F; <code>-16(fp)</code>&#x3001;<code>-20(fp)</code> &#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#x3002;
+&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x5728;&#x5176;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x8BB0;&#x5F55;&#xFF1A;&#x5B83;&#x662F;&#x4ECE;&#x524D;&#x5F80;&#x540E;&#x7B2C;&#x51E0;&#x4E2A;&#x53D8;&#x91CF;&#x3002;
+&#x7B2C; <code>k&gt;=0</code> &#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x5C31;&#x662F; <code>-12-4*k</code>&#x3002;</p>
+<blockquote>
+<p>&#x76EE;&#x524D;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x662F;&#x6CA1;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x5728;&#x7B2C;7&#x7AE0;&#x5F15;&#x5165;&#x4F5C;&#x7528;&#x57DF;&#x540E;&#xFF0C;&#x4F1A;&#x6709;&#x4E00;&#x79CD;&#x66F4;&#x52A0;&#x8282;&#x7EA6;&#x7A7A;&#x95F4;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="manual-parser.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 手写简单 parser">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"栈帧","level":"5.1.3.1","depth":3,"next":{"title":"手写简单 parser","level":"5.1.3.2","depth":3,"path":"docs/step5/manual-parser.md","ref":"docs/step5/manual-parser.md","articles":[]},"previous":{"title":"其他","level":"5.1.3","depth":2,"ref":"","articles":[{"title":"栈帧","level":"5.1.3.1","depth":3,"path":"docs/step5/stackframe.md","ref":"docs/step5/stackframe.md","articles":[]},{"title":"手写简单 parser","level":"5.1.3.2","depth":3,"path":"docs/step5/manual-parser.md","ref":"docs/step5/manual-parser.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step5/stackframe.md","mtime":"2021-08-30T09:36:39.479Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-30T09:37:55.406Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-click-reveal/click_reveal.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
