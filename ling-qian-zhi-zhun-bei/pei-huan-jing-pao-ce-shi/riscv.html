@@ -1,0 +1,1773 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>RISC-V 的工具链使用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-click-reveal/click_reveal.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="faq.html" />
+    
+    
+    <link rel="prev" href="testing.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    实验简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">零：前置准备</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    配环境、跑测试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="env.html">
+            
+                <a href="env.html">
+            
+                    
+                    环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="testing.html">
+            
+                <a href="testing.html">
+            
+                    
+                    运行测试样例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.3" data-path="riscv.html">
+            
+                <a href="riscv.html">
+            
+                    
+                    RISC-V 的工具链使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="faq.html">
+            
+                <a href="faq.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../can-kao-shi-xian/">
+            
+                <a href="../can-kao-shi-xian/">
+            
+                    
+                    参考实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../can-kao-shi-xian/intro.html">
+            
+                <a href="../can-kao-shi-xian/intro.html">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../can-kao-shi-xian/typescript-jyk.html">
+            
+                <a href="../can-kao-shi-xian/typescript-jyk.html">
+            
+                    
+                    TypeScript-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../can-kao-shi-xian/python-dzy.html">
+            
+                <a href="../can-kao-shi-xian/python-dzy.html">
+            
+                    
+                    Python-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../can-kao-shi-xian/java-xxy.html">
+            
+                <a href="../can-kao-shi-xian/java-xxy.html">
+            
+                    
+                    Java-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一个编译器</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/">
+            
+                    
+                    step1：仅一个 return 的 main 函数
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/part1.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/part1.html">
+            
+                    
+                    从零开始的 lexer、parser 以及汇编生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/part2.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/part2.html">
+            
+                    
+                    词法语法分析工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/part3.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/part3.html">
+            
+                    
+                    使用中间码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.4.1" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/antlr.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/antlr.html">
+            
+                    
+                    ANTLR 使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.2" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/visitor.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/visitor.html">
+            
+                    
+                    Visitor 模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.3" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/ir.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/ir.html">
+            
+                    
+                    IR 简明介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.4" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/manual-parser.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/spec.html">
+            
+                <a href="../../di-yi-ge-bian-yi-qi/step1-jin-yi-ge-return-de-main-han-shu/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常量表达式</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/">
+            
+                <a href="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/">
+            
+                    
+                    step2：一元操作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/intro.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/guide.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/qi-ta/">
+            
+                <a href="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/qi-ta/manual-parser.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/spec.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step2-yi-yuan-cao-zuo/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/">
+            
+                <a href="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/">
+            
+                    
+                    step3：加减乘除模
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/intro.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/guide.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/qi-ta/">
+            
+                <a href="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.3.1" data-path="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/qi-ta/precedence.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/qi-ta/precedence.html">
+            
+                    
+                    优先级和结合性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3.2" data-path="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/qi-ta/manual-parser.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/spec.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step3-jia-jian-cheng-chu-mo/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/">
+            
+                <a href="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/">
+            
+                    
+                    step4：比较和逻辑表达式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/intro.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/guide.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/spec.html">
+            
+                <a href="../../chang-liang-biao-da-shi/step4-bi-jiao-he-luo-ji-biao-da-shi/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">变量和语句</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/">
+            
+                <a href="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/">
+            
+                    
+                    step5：局部变量和赋值
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/intro.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/guide.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/qi-ta/">
+            
+                <a href="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.3.1" data-path="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/qi-ta/stackframe.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/qi-ta/stackframe.html">
+            
+                    
+                    栈帧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3.2" data-path="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/qi-ta/manual-parser.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/spec.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step5-ju-bu-bian-liang-he-fu-zhi/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/">
+            
+                <a href="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/">
+            
+                    
+                    step6：if 语句和条件表达式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/intro.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/guide.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" data-path="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/qi-ta/">
+            
+                <a href="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.3.1" data-path="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/qi-ta/manual-parser.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/spec.html">
+            
+                <a href="../../bian-liang-he-yu-ju/step6if-yu-ju-he-tiao-jian-biao-da-shi/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">块语句和作用域和更多语句</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/">
+            
+                    
+                    step7：作用域和块语句
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/intro.html">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/guide.html">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/qi-ta/">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.3.1" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/qi-ta/manual-parser.html">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/spec.html">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step7-zuo-yong-yu-he-kuai-yu-ju/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/">
+            
+                    
+                    step8：循环语句
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/intro.html">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/guide.html">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/spec.html">
+            
+                <a href="../../kuai-yu-ju-he-zuo-yong-yu-he-geng-duo-yu-ju/step8-xun-huan-yu-ju/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">函数和全局变量</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/">
+            
+                    
+                    step9：函数
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/intro.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/guide.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/qi-ta/">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.3.1" data-path="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/qi-ta/calling.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/qi-ta/calling.html">
+            
+                    
+                    函数调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3.2" data-path="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/qi-ta/manual-parser.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/spec.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step9-han-shu/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/">
+            
+                    
+                    step10：全局变量
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/intro.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/guide.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/qi-ta/">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.3.1" data-path="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/qi-ta/manual-parser.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/spec.html">
+            
+                <a href="../../han-shu-he-quan-ju-bian-liang/step10-quan-ju-bian-liang/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数组和指针</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../shu-zu-he-zhi-zhen/step11-shu-zu/">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step11-shu-zu/">
+            
+                    
+                    step11：数组
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../../shu-zu-he-zhi-zhen/step11-shu-zu/intro.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step11-shu-zu/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../../shu-zu-he-zhi-zhen/step11-shu-zu/guide.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step11-shu-zu/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../../shu-zu-he-zhi-zhen/step11-shu-zu/qi-ta/">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step11-shu-zu/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.3.1" data-path="../../shu-zu-he-zhi-zhen/step11-shu-zu/qi-ta/manual-parser.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step11-shu-zu/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../../shu-zu-he-zhi-zhen/step11-shu-zu/spec.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step11-shu-zu/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/">
+            
+                    
+                    step12：指针
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.1" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/intro.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.2" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/guide.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.3.1" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/lvalue.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/lvalue.html">
+            
+                    
+                    左值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3.2" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/typeck.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/typeck.html">
+            
+                    
+                    类型检查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3.3" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/manual-parser.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/qi-ta/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.4" data-path="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/spec.html">
+            
+                <a href="../../shu-zu-he-zhi-zhen/step12-zhi-zhen/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">参考资料</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../can-kao-zi-liao/reference.html">
+            
+                <a href="../../can-kao-zi-liao/reference.html">
+            
+                    
+                    参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >RISC-V 的工具链使用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="risc-v-&#x7684;&#x5DE5;&#x5177;&#x94FE;&#x4F7F;&#x7528;">RISC-V &#x7684;&#x5DE5;&#x5177;&#x94FE;&#x4F7F;&#x7528;</h1>
+<p>RISC-V &#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x50CF; MIPS &#x7684; RISC &#x6307;&#x4EE4;&#x96C6;&#x67B6;&#x6784;&#xFF0C;&#x7F16;&#x8BD1;&#x5B9E;&#x9A8C;&#x8981;&#x6C42;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x628A; MiniDecaf &#x7A0B;&#x5E8F;&#x7F16;&#x8BD1;&#x5230; RISC-V &#x6C47;&#x7F16;&#x3002;</p>
+<p>&#x6307;&#x4EE4;&#x96C6;&#x6587;&#x6863;&#x5728;<a href="https://riscv.org/technical/specifications/" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5176;&#x4E2D;&#x7684; &quot;Unprivileged Spec&quot;&#x3002;</p>
+<blockquote>
+<p>&#x53E6;&#x5916;<a href="https://github.com/TheThirdOne/rars/wiki/Supported-Instructions" target="_blank">&#x8FD9;&#x91CC;</a>&#x4E5F;&#x6709;&#xFF08;&#x975E;&#x5B98;&#x65B9;&#x7684;&#xFF09;&#x6307;&#x4EE4;&#x7528;&#x6CD5;&#x8BF4;&#x660E;&#x3002; &#x4E0D;&#x8FC7;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5F88;&#x591A;&#x65F6;&#x5019;&#x770B; gcc &#x8F93;&#x51FA;&#x7684;&#x6C47;&#x7F16;&#x6BD4;&#x770B;&#x4EC0;&#x4E48;&#x6587;&#x6863;&#x90FD;&#x6709;&#x7528;&#x3002;</p>
+</blockquote>
+<h2 id="risc-v-&#x5DE5;&#x5177;&#x4F7F;&#x7528;">RISC-V &#x5DE5;&#x5177;&#x4F7F;&#x7528;</h2>
+<p>&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x9884;&#x5148;&#x7F16;&#x8BD1;&#x597D;&#x7684; RISC-V &#x5DE5;&#x5177;&#xFF0C;&#x5728;<a href="env.html">&#x73AF;&#x5883;&#x914D;&#x7F6E;</a>&#x4E2D;&#x5DF2;&#x7ECF;&#x53D9;&#x8FF0;&#x4E86;&#x5B89;&#x88C5;&#x548C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3002; &#x4E0B;&#x9762;&#x6C47;&#x603B;&#x4E00;&#x4E0B;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x6211;&#x4EEC;&#x867D;&#x7136;&#x662F;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x524D;&#x7F00;&#x662F; <code>riscv64</code>&#xFF0C; &#x4F46;&#x6211;&#x4EEC;&#x52A0;&#x4E0A;&#x53C2;&#x6570; <code>-march=rv32im -mabi=ilp32</code> &#x4EE5;&#x540E;&#x5C31;&#x80FD;&#x7F16;&#x8BD1;&#x5230; 32 &#x4F4D;&#x6C47;&#x7F16; &#x3002; &#x4F7F;&#x7528;&#x65F6;&#x8BB0;&#x5F97;&#x52A0;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x9ED8;&#x8BA4;&#x7F16;&#x8BD1;&#x5230; 64 &#x4F4D;&#x6C47;&#x7F16;&#x3002;</p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x4F60;&#x5DF2;&#x7ECF;&#x6B63;&#x786E;&#x8BBE;&#x7F6E;&#x597D;&#x4E86;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x5426;&#x5219;&#x8FD0;&#x884C; <code>riscv64-unknown-elf-gcc</code> &#x6216; <code>qemu-riscv32</code> &#x6216; <code>spike</code> &#x65F6;&#x8BF7;&#x7528;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;&#x3002;</p>
+<ul>
+<li>gcc &#x7F16;&#x8BD1; <code>input.c</code> &#x5230;&#x6C47;&#x7F16; <code>input.s</code>&#xFF0C;&#x6700;&#x9AD8;&#x4F18;&#x5316;&#x7B49;&#x7EA7;&#xFF08;&#x5426;&#x5219;&#x8F93;&#x51FA;&#x7684;&#x6C47;&#x7F16;&#x4F1A;&#x5F88;&#x5197;&#x957F;&#xFF09;</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># input.c &#x7684;&#x5185;&#x5BB9;</span>
+$ cat input.c
+int <span class="hljs-function"><span class="hljs-title">main</span></span>(){<span class="hljs-built_in">return</span> 233;}
+
+<span class="hljs-comment"># &#x7F16;&#x8BD1;&#x5230; input.s</span>
+$ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -O3 -S input.c
+
+<span class="hljs-comment"># gcc &#x7684;&#x7F16;&#x8BD1;&#x7ED3;&#x679C;</span>
+$ cat input.s
+    .file    <span class="hljs-string">&quot;input.c&quot;</span>
+    .option nopic
+    .attribute arch, <span class="hljs-string">&quot;rv32i2p0_m2p0&quot;</span>
+    .attribute unaligned_access, 0
+    .attribute stack_align, 16
+    .text
+    .section    .text.startup,<span class="hljs-string">&quot;ax&quot;</span>,@progbits
+    .align    2
+    .globl    main
+    .type    main, @<span class="hljs-keyword">function</span>
+main:
+    li    a0,233
+    ret
+    .size    main, .-main
+    .ident    <span class="hljs-string">&quot;GCC: (SiFive GCC 8.3.0-2020.04.0) 8.3.0&quot;</span>
+</code></pre>
+<ul>
+<li>gcc &#x7F16;&#x8BD1; <code>input.s</code> &#x5230;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6; <code>a.out</code></li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># input.s &#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x6C47;&#x7F16;&#x8F93;&#x51FA;&#x7684;&#x7B80;&#x5316;&#x7248;&#x672C;</span>
+$ cat input.s
+    .text
+    .globl    main
+main:
+    li    a0,233
+    ret
+
+<span class="hljs-comment"># &#x7F16;&#x8BD1;&#x5230; a.out</span>
+$ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 input.s
+
+<span class="hljs-comment"># &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF0C;&#x80FD;&#x770B;&#x5230;&#x662F; 32 &#x4F4D;&#x7684; RISC-V &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</span>
+$ file a.out
+a.out: ELF 32-bit LSB executable, UCB RISC-V, version 1 (SYSV), statically linked, not stripped
+</code></pre>
+<ul>
+<li>&#x3010;Linux &#x7528;&#x6237;&#x3011;qemu &#x8FD0;&#x884C; <code>a.out</code>&#xFF0C;&#x83B7;&#x53D6;&#x8FD4;&#x56DE;&#x7801;</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x8FD0;&#x884C; a.out</span>
+$ qemu-riscv32 a.out
+
+<span class="hljs-comment"># $? &#x662F; qemu &#x7684;&#x8FD4;&#x56DE;&#x7801;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC; main &#x6240; return &#x7684;&#x90A3;&#x4E2A;&#x503C;</span>
+$ <span class="hljs-built_in">echo</span> $?
+233
+</code></pre>
+<ul>
+<li>&#x3010;macOS &#x7528;&#x6237;&#x3011;Spike &#x6A21;&#x62DF;&#x5668;&#x8FD0;&#x884C; <code>a.out</code>&#xFF0C;&#x83B7;&#x53D6;&#x8FD4;&#x56DE;&#x7801;</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x8FD0;&#x884C; a.out</span>
+<span class="hljs-comment"># /usr/local/bin/pk &#x66FF;&#x6362;&#x4E3A;&#x4F60;&#x81EA;&#x5DF1;&#x7684; pk &#x8DEF;&#x5F84;</span>
+$ spike --isa=RV32G /usr/<span class="hljs-built_in">local</span>/bin/pk a.out
+bbl loader
+
+<span class="hljs-comment"># $? &#x662F; spike &#x7684;&#x8FD4;&#x56DE;&#x7801;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC; main &#x6240; return &#x7684;&#x90A3;&#x4E2A;&#x503C;</span>
+$ <span class="hljs-built_in">echo</span> $?
+233
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="testing.html" class="navigation navigation-prev " aria-label="Previous page: 运行测试样例">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="faq.html" class="navigation navigation-next " aria-label="Next page: 常见问题">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"RISC-V 的工具链使用","level":"2.1.3","depth":2,"next":{"title":"常见问题","level":"2.1.4","depth":2,"path":"ling-qian-zhi-zhun-bei/pei-huan-jing-pao-ce-shi/faq.md","ref":"ling-qian-zhi-zhun-bei/pei-huan-jing-pao-ce-shi/faq.md","articles":[]},"previous":{"title":"运行测试样例","level":"2.1.2","depth":2,"path":"ling-qian-zhi-zhun-bei/pei-huan-jing-pao-ce-shi/testing.md","ref":"ling-qian-zhi-zhun-bei/pei-huan-jing-pao-ce-shi/testing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ling-qian-zhi-zhun-bei/pei-huan-jing-pao-ce-shi/riscv.md","mtime":"2021-08-31T09:11:55.024Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-31T09:12:47.224Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-click-reveal/click_reveal.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
