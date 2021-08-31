@@ -1,0 +1,1876 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Visitor 模式 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-click-reveal/click_reveal.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ir.html" />
+    
+    
+    <link rel="prev" href="antlr.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    实验简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">零：前置准备</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    配环境、跑测试
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../step0/env.html">
+            
+                <a href="../step0/env.html">
+            
+                    
+                    环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../step0/testing.html">
+            
+                <a href="../step0/testing.html">
+            
+                    
+                    运行测试样例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../step0/riscv.html">
+            
+                <a href="../step0/riscv.html">
+            
+                    
+                    RISC-V 的工具链使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../step0/faq.html">
+            
+                <a href="../step0/faq.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    参考实现
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../ref/intro.html">
+            
+                <a href="../ref/intro.html">
+            
+                    
+                    说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../ref/typescript-jyk.html">
+            
+                <a href="../ref/typescript-jyk.html">
+            
+                    
+                    TypeScript-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../ref/python-dzy.html">
+            
+                <a href="../ref/python-dzy.html">
+            
+                    
+                    Python-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../ref/java-xxy.html">
+            
+                <a href="../ref/java-xxy.html">
+            
+                    
+                    Java-ANTLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">第一个编译器</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    step1：仅一个 return 的 main 函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="part1.html">
+            
+                <a href="part1.html">
+            
+                    
+                    从零开始的 lexer、parser 以及汇编生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="part2.html">
+            
+                <a href="part2.html">
+            
+                    
+                    词法语法分析工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="part3.html">
+            
+                <a href="part3.html">
+            
+                    
+                    使用中间码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.4.1" data-path="antlr.html">
+            
+                <a href="antlr.html">
+            
+                    
+                    ANTLR 使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.1.4.2" data-path="visitor.html">
+            
+                <a href="visitor.html">
+            
+                    
+                    Visitor 模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.3" data-path="ir.html">
+            
+                <a href="ir.html">
+            
+                    
+                    IR 简明介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4.4" data-path="manual-parser.html">
+            
+                <a href="manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="spec.html">
+            
+                <a href="spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常量表达式</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    step2：一元操作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../step2/intro.html">
+            
+                <a href="../step2/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../step2/guide.html">
+            
+                <a href="../step2/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../step2/manual-parser.html">
+            
+                <a href="../step2/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../step2/spec.html">
+            
+                <a href="../step2/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    step3：加减乘除模
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../step3/intro.html">
+            
+                <a href="../step3/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../step3/guide.html">
+            
+                <a href="../step3/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.3.1" data-path="../step3/precedence.html">
+            
+                <a href="../step3/precedence.html">
+            
+                    
+                    优先级和结合性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3.2" data-path="../step3/manual-parser.html">
+            
+                <a href="../step3/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../step3/spec.html">
+            
+                <a href="../step3/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    step4：比较和逻辑表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../step4/intro.html">
+            
+                <a href="../step4/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../step4/guide.html">
+            
+                <a href="../step4/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../step4/spec.html">
+            
+                <a href="../step4/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">变量和语句</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    step5：局部变量和赋值
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../step5/intro.html">
+            
+                <a href="../step5/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../step5/guide.html">
+            
+                <a href="../step5/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.3.1" data-path="../step5/stackframe.html">
+            
+                <a href="../step5/stackframe.html">
+            
+                    
+                    栈帧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3.2" data-path="../step5/manual-parser.html">
+            
+                <a href="../step5/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../step5/spec.html">
+            
+                <a href="../step5/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    step6：if 语句和条件表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../step6/intro.html">
+            
+                <a href="../step6/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../step6/guide.html">
+            
+                <a href="../step6/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.3.1" data-path="../step6/manual-parser.html">
+            
+                <a href="../step6/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.4" data-path="../step6/spec.html">
+            
+                <a href="../step6/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">块语句和作用域和更多语句</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    step7：作用域和块语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../step7/intro.html">
+            
+                <a href="../step7/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../step7/guide.html">
+            
+                <a href="../step7/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.3.1" data-path="../step7/manual-parser.html">
+            
+                <a href="../step7/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../step7/spec.html">
+            
+                <a href="../step7/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" >
+            
+                <span>
+            
+                    
+                    step8：循环语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.2.1" data-path="../step8/intro.html">
+            
+                <a href="../step8/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.2" data-path="../step8/guide.html">
+            
+                <a href="../step8/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2.3" data-path="../step8/spec.html">
+            
+                <a href="../step8/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">函数和全局变量</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    step9：函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../step9/intro.html">
+            
+                <a href="../step9/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../step9/guide.html">
+            
+                <a href="../step9/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.3.1" data-path="../step9/calling.html">
+            
+                <a href="../step9/calling.html">
+            
+                    
+                    函数调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3.2" data-path="../step9/manual-parser.html">
+            
+                <a href="../step9/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../step9/spec.html">
+            
+                <a href="../step9/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    step10：全局变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../step10/intro.html">
+            
+                <a href="../step10/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../step10/guide.html">
+            
+                <a href="../step10/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.3.1" data-path="../step10/manual-parser.html">
+            
+                <a href="../step10/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="../step10/spec.html">
+            
+                <a href="../step10/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数组和指针</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" >
+            
+                <span>
+            
+                    
+                    step11：数组
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../step11/intro.html">
+            
+                <a href="../step11/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../step11/guide.html">
+            
+                <a href="../step11/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.3.1" data-path="../step11/manual-parser.html">
+            
+                <a href="../step11/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../step11/spec.html">
+            
+                <a href="../step11/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" >
+            
+                <span>
+            
+                    
+                    step12：指针
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.1" data-path="../step12/intro.html">
+            
+                <a href="../step12/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.2" data-path="../step12/guide.html">
+            
+                <a href="../step12/guide.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3" >
+            
+                <span>
+            
+                    
+                    其他
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.3.1" data-path="../step12/lvalue.html">
+            
+                <a href="../step12/lvalue.html">
+            
+                    
+                    左值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3.2" data-path="../step12/typeck.html">
+            
+                <a href="../step12/typeck.html">
+            
+                    
+                    类型检查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.3.3" data-path="../step12/manual-parser.html">
+            
+                <a href="../step12/manual-parser.html">
+            
+                    
+                    手写简单 parser
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2.4" data-path="../step12/spec.html">
+            
+                <a href="../step12/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">参考资料</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../REFERENCE.html">
+            
+                <a href="../../REFERENCE.html">
+            
+                    
+                    参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Visitor 模式</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="visitor-&#x6A21;&#x5F0F;&#x901F;&#x6210;">Visitor &#x6A21;&#x5F0F;&#x901F;&#x6210;</h1>
+<p>&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x6784;&#x9020;&#x4E2D;&#x4F1A;&#x4F7F;&#x7528;&#x5230;&#x5F88;&#x591A;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;Visitor &#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x79CD;&#x3002;
+&#x57FA;&#x7840;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x90FD;&#x5728; OOP &#x8BFE;&#x7A0B;&#x4E2D;&#x8986;&#x76D6;&#xFF0C;&#x8FD9;&#x91CC;&#x91CD;&#x63D0;&#x4E00;&#x4E0B; Visitor &#x6A21;&#x5F0F;&#xFF0C;&#x987A;&#x5E26;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x7528;&#x5230;&#x7684; python &#x6280;&#x5DE7;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x91CC;&#x6709;&#x5F88;&#x591A;&#x7684;&#x6811;&#x72B6;&#x7ED3;&#x6784;&#x3002;
+&#x6700;&#x5178;&#x578B;&#x7684;&#x5C31;&#x662F;&#xFF0C;&#x6E90;&#x7A0B;&#x5E8F;&#x901A;&#x8FC7;&#x4E0A;&#x4E0B;&#x6587;&#x65E0;&#x5173;&#x6587;&#x6CD5;&#x89E3;&#x6790;&#x540E;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;&#x3002;
+Visitor &#x6A21;&#x5F0F;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x904D;&#x5386;&#x8FD9;&#x4E9B;&#x6811;&#x72B6;&#x7ED3;&#x6784;&#xFF0C;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x4E00;&#x4E2A; DFS &#x904D;&#x5386;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x8BF4;&#x660E; Visitor &#x6A21;&#x5F0F;&#x3002;</p>
+<h2 id="&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;&#x3001;&#x8BED;&#x6CD5;&#x6811;&#x5B9A;&#x4E49;">&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;&#x3001;&#x8BED;&#x6CD5;&#x6811;&#x5B9A;&#x4E49;</h2>
+<p>&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x6587;&#x6CD5;&#xFF0C;&#x7EC8;&#x7ED3;&#x7B26;&#x5305;&#x62EC;&#x6574;&#x6570;&#x548C;&#x52A0;&#x51CF;&#x4E58;&#x9664;&#x6A21;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x8D77;&#x59CB;&#x7B26;&#x53F7;&#x662F; <code>expr</code>&#xFF0C;&#x5927;&#x81F4;&#x5982;&#x4E0B;</p>
+<pre><code>expr    -&gt; int | binary
+
+int     -&gt; Integer
+
+binary  -&gt; expr &apos;+&apos; expr
+        |  expr &apos;-&apos; expr
+        |  expr &apos;*&apos; expr
+        |  expr &apos;/&apos; expr
+        |  expr &apos;%&apos; expr
+</code></pre><p>&#x8FD9;&#x4E2A;&#x6587;&#x6CD5;&#x6709;&#x4E8C;&#x4E49;&#x6027;&#xFF0C;&#x540C;&#x6837;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x4E2A;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;&#x3002;
+&#x4E0D;&#x8FC7;&#x89E3;&#x6790;&#x5B57;&#x7B26;&#x4E32;&#x3001;&#x751F;&#x6210;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;&#x4E0D;&#x662F; Visitor &#x6A21;&#x5F0F;&#x7684;&#x5DE5;&#x4F5C;&#x3002;
+Visitor &#x6A21;&#x5F0F;&#x53EA;&#x8003;&#x8651;&#x67D0;&#x4E2A;&#x786E;&#x5B9A;&#x7684;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;&#x3002;
+&#x5982;&#x4E0B;&#x9762;&#x662F; <code>20-13*3</code> &#x7684;&#x4E00;&#x68F5;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;</p>
+<p><img src="pics/parsetree.svg" alt="&#x56FE;"></p>
+<p>&#x6211;&#x4EEC;&#x5728;&#x4EE3;&#x7801;&#x91CC;&#x8FD9;&#x6837;&#x5B9A;&#x4E49;&#x8FD9;&#x4E2A;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;&#xFF08;python&gt;=3.6&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span>
+    <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntNode</span><span class="hljs-params">(Node)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, v:int)</span>:</span> <span class="hljs-comment"># &#x7C7B;&#x578B;&#x6807;&#x6CE8;&#x662F;&#x7ED9;&#x4EBA;&#x770B;&#x7684;&#xFF0C;python &#x4E0D;&#x68C0;&#x67E5;</span>
+        self.v = v
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> f<span class="hljs-string">&quot;({self.v})&quot;</span> <span class="hljs-comment"># f-string &#x7279;&#x6027;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinopNode</span><span class="hljs-params">(Node)</span>:</span>
+    _legalOps = { *<span class="hljs-string">&quot;+-*/%&quot;</span> }  <span class="hljs-comment"># &#x4F7F;&#x7528; unpacking operator&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E; set(&apos;+&apos;, &apos;-&apos;, &apos;*&apos;, &apos;/&apos;, &apos;%&apos;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, op:str, lc:Node, rc:Node)</span>:</span>
+        <span class="hljs-keyword">assert</span> op <span class="hljs-keyword">in</span> BinopNode._legalOps
+        self.op, self.lc, self.rc = op, lc, rc
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> f<span class="hljs-string">&quot;({self.lc} {self.op} {self.rc})&quot;</span>
+
+<span class="hljs-comment"># &#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x67D0;&#x79CD;&#x624B;&#x6BB5;&#xFF0C;&#x5F97;&#x5230;&#x4E86;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;</span>
+expr1 = BinopNode(<span class="hljs-string">&apos;*&apos;</span>, BinopNode(<span class="hljs-string">&apos;-&apos;</span>, IntNode(<span class="hljs-number">20</span>), IntNode(<span class="hljs-number">13</span>)), IntNode(<span class="hljs-number">3</span>))
+print(expr1) <span class="hljs-comment"># (((20) - (13)) * (3))</span>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5FFD;&#x7565;&#x4E86; <code>Expr</code>&#xFF0C;&#x4E0D;&#x8FC7;&#x663E;&#x7136;&#x8FD9;&#x65E0;&#x4F24;&#x5927;&#x96C5;&#x3002;</p>
+<h2 id="&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;">&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;</h2>
+<p>&#x663E;&#x7136;&#xFF0C;&#x6BCF;&#x4E2A;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x6811;&#x90FD;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#xFF08;&#x52A0;&#x597D;&#x62EC;&#x53F7;&#xFF09;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x7684;&#x6811;&#x5C31;&#x5BF9;&#x5E94; <code>(20-13)*3</code>&#x3002;
+&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x5BF9;&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#xFF1F;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA9; python &#x5E2E;&#x6211;&#x4EEC;&#x505A; <code>print(eval(str(expr1), {}, {}))</code>&#xFF0C;
+&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x4F1A;&#x7528; Visitor &#x6A21;&#x5F0F;&#x5B9E;&#x73B0;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x3002;</p>
+<p>&#x5199; Visitor &#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x4E2A;&#x9012;&#x5F52;&#x904D;&#x5386;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dfs</span><span class="hljs-params">(node:Node)</span>:</span>
+    <span class="hljs-keyword">if</span> isinstance(node, IntNode):
+        <span class="hljs-keyword">return</span> node.v
+    <span class="hljs-keyword">if</span> isinstance(node, BinopNode):
+        lhs = dfs(node.lc)
+        rhs = dfs(node.rc)
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;+&quot;</span>: <span class="hljs-keyword">return</span> lhs + rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;-&quot;</span>: <span class="hljs-keyword">return</span> lhs - rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;*&quot;</span>: <span class="hljs-keyword">return</span> lhs * rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;/&quot;</span>: <span class="hljs-keyword">return</span> lhs / rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;%&quot;</span>: <span class="hljs-keyword">return</span> lhs % rhs
+
+print(dfs(expr1)) <span class="hljs-comment"># 21</span>
+</code></pre>
+<p><code>dfs</code> &#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x8FD9;&#x4E2A;&#x7ED3;&#x70B9;&#x4EE3;&#x8868;&#x7684;&#x5B50;&#x6811;&#x8FDB;&#x884C;&#x6C42;&#x503C;&#xFF0C;&#x8FD4;&#x56DE;&#x6C42;&#x503C;&#x7ED3;&#x679C;&#x3002;
+&#x5BB9;&#x6613;&#x770B;&#x51FA;&#xFF0C;<code>dfs</code> &#x51FD;&#x6570;&#x6839;&#x636E;&#x88AB;&#x904D;&#x5386;&#x7684;&#x7ED3;&#x70B9;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#xFF0C;&#x6267;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x6C42;&#x503C;&#x903B;&#x8F91;&#x3002;
+&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E9B;&#x6C42;&#x503C;&#x903B;&#x8F91;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x6700;&#x7B80;&#x5355;&#x7684; Visitor&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EvaluationVisitor</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visit</span><span class="hljs-params">(self, node:Node)</span>:</span>
+        <span class="hljs-keyword">if</span> isinstance(node, IntNode):
+            <span class="hljs-keyword">return</span> self.visitIntNode(node)
+        <span class="hljs-keyword">if</span> isinstance(node, BinopNode):
+            <span class="hljs-keyword">return</span> self.visitBinopNode(node)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitIntNode</span><span class="hljs-params">(self, node:IntNode)</span>:</span>
+        <span class="hljs-keyword">return</span> node.v
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitBinopNode</span><span class="hljs-params">(self, node:BinopNode)</span>:</span>
+        <span class="hljs-comment"># &#x4E0D;&#x786E;&#x5B9A;&#x5B50;&#x7ED3;&#x70B9;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x80FD;&#x8C03;&#x7528; visit &#x800C;&#x975E; visitIntNode &#x6216;&#x8005; visitBinopNode</span>
+        lhs = self.visit(node.lc)
+        rhs = self.visit(node.rc)
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;+&quot;</span>: <span class="hljs-keyword">return</span> lhs + rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;-&quot;</span>: <span class="hljs-keyword">return</span> lhs - rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;*&quot;</span>: <span class="hljs-keyword">return</span> lhs * rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;/&quot;</span>: <span class="hljs-keyword">return</span> lhs / rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;%&quot;</span>: <span class="hljs-keyword">return</span> lhs % rhs
+
+print(EvaluationVisitor().visit(expr1)) <span class="hljs-comment"># 21</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x5C31;&#x662F; Visitor &#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#xFF0C;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x4E2D;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F1A;&#x6709;&#x4E24;&#x70B9;&#x6539;&#x8FDB;</p>
+<ol>
+<li>&#x4E0D;&#x4F7F;&#x7528; <code>isinstance</code> &#x6765;&#x5224;&#x65AD;&#x7ED3;&#x70B9;&#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x662F;&#x8C03;&#x7528;&#x7ED3;&#x70B9;&#x81EA;&#x8EAB;&#x7684;&#x4E00;&#x4E2A; <code>accept</code> &#x51FD;&#x6570;</li>
+<li>&#x628A;&#x51E0;&#x4E2A; <code>visitXXX</code> &#x51FD;&#x6570;&#x62BD;&#x8C61;&#x5230;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x91CC;&#xFF0C;&#x5404;&#x79CD;&#x5177;&#x4F53;&#x7684; Visitor &#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;</li>
+</ol>
+<p>&#x6539;&#x8FDB;&#x540E;&#x7684; Visitor &#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">accept</span><span class="hljs-params">(self, visitor)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntNode</span><span class="hljs-params">(Node)</span>:</span>
+    <span class="hljs-comment"># ... &#x540C;&#x4E0A;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">accept</span><span class="hljs-params">(self, visitor)</span>:</span>
+        <span class="hljs-keyword">return</span> visitor.visitIntNode(self)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinopNode</span><span class="hljs-params">(Node)</span>:</span>
+    <span class="hljs-comment"># ... &#x540C;&#x4E0A;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">accept</span><span class="hljs-params">(self, visitor)</span>:</span>
+        <span class="hljs-keyword">return</span> visitor.visitBinopNode(self)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Visitor</span>:</span> <span class="hljs-comment"># &#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x662F;&#x904D;&#x5386;&#x4E00;&#x904D;&#xFF0C;&#x5565;&#x4E5F;&#x4E0D;&#x505A;&#xFF0C;&#x8FD9;&#x6837;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitIntNode</span><span class="hljs-params">(self, node:IntNode)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitBinopNode</span><span class="hljs-params">(self, node:BinopNode)</span>:</span>
+        node.lc.accept(self)
+        node.rc.accept(self)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EvaluationVisitor</span><span class="hljs-params">(Visitor)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitIntNode</span><span class="hljs-params">(self, node:IntNode)</span>:</span>
+        <span class="hljs-comment"># ... &#x540C;&#x4E0A;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitBinopNode</span><span class="hljs-params">(self, node:BinopNode)</span>:</span>
+        lhs = node.lc.accept(self)
+        rhs = node.rc.accept(self)
+        <span class="hljs-comment"># ... &#x540C;&#x4E0A;</span>
+</code></pre>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;Visitor &#x6A21;&#x5F0F;&#x7684;&#x8981;&#x7D20;&#x6709;</p>
+<ol>
+<li>&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x4F8B;&#x5982;&#x4E0A;&#x9762;&#x7684; <code>Node</code>&#x3002;</li>
+<li>Visitor &#x5C01;&#x88C5;&#x7684; <code>visitXXX</code>&#xFF0C;&#x8868;&#x793A;&#x5BF9;&#x4E0A;&#x8FF0;&#x5BF9;&#x8C61;&#x5B9E;&#x65BD;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x4F8B;&#x5982; <code>EvaluationVisitor</code>&#x3002;</li>
+</ol>
+<p>&#x6BCF;&#x79CD;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x5BF9;&#x8C61;&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x5B9A;&#x4E49;&#x4E2D;&#x90FD;&#x6709;&#x4E00;&#x4E2A; <code>accept</code> &#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x5728; Visitor &#x91CC;&#x9762;&#x4E5F;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A; <code>visitXXX</code> &#x51FD;&#x6570;&#x3002;</p>
+<h2 id="&#x6709;&#x72B6;&#x6001;&#x7684;-visitor">&#x6709;&#x72B6;&#x6001;&#x7684; Visitor</h2>
+<pre><code class="lang-python">subexpr = BinopNode(<span class="hljs-string">&apos;-&apos;</span>, IntNode(<span class="hljs-number">20</span>), IntNode(<span class="hljs-number">13</span>))
+expr1 = BinopNode(<span class="hljs-string">&apos;*&apos;</span>, subexpr, IntNode(<span class="hljs-number">3</span>))
+</code></pre>
+<p>&#x663E;&#x7136;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x4E5F;&#x90FD;&#x4F1A;&#x88AB;&#x6C42;&#x503C;&#x3002;
+&#x5982;&#x4E0A;&#xFF0C;&#x6C42;&#x503C; <code>expr1</code> &#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;<code>subexpr</code> &#x4E5F;&#x4E5F;&#x4F1A;&#x88AB;&#x6C42;&#x503C;&#x3002;
+&#x6211;&#x4EEC;&#x60F3;&#x628A;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;&#xFF0C;&#x4EE5;&#x540E;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x5BF9;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x91CD;&#x65B0;&#x6C42;&#x503C;&#x4E86;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x8FD9;&#x70B9;&#xFF0C;&#x8FD8;&#x662F;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684; <code>EvaluationVisitor</code>&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x4E2A;&#x5B57;&#x5178; <code>Node -&gt; int</code> &#x8BB0;&#x5F55;&#x6C42;&#x503C;&#x7ED3;&#x679C;&#xFF0C;&#x5E76;&#x4E14;&#x628A;&#x5B57;&#x5178;&#x4F5C;&#x4E3A; Visitor &#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EvaluationVisitor2</span><span class="hljs-params">(Visitor)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.value = {} <span class="hljs-comment"># Node -&gt; int</span>
+</code></pre>
+<p>&#x6BCF;&#x6B21; <code>EvaluationVisitor2.visitXXX(self, node)</code> &#x8FD4;&#x56DE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B; <code>self.value[node] = value</code>&#xFF0C;&#x5176;&#x4E2D; <code>value</code> &#x662F;&#x8FD4;&#x56DE;&#x503C;&#x3002;
+&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4FEE;&#x9970;&#x5668;&#x6765;&#x5B8C;&#x6210;&#x8BB0;&#x5F55;&#x7684;&#x52A8;&#x4F5C;&#xFF0C;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EvaluationVisitor2</span><span class="hljs-params">(Visitor)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.value = {} <span class="hljs-comment"># Node -&gt; int</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">SaveValue</span><span class="hljs-params">(visit)</span>:</span> <span class="hljs-comment"># decorator</span>
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decoratedVisit</span><span class="hljs-params">(self, node)</span>:</span>
+            value = visit(self, node)
+            self.value[node] = value
+            <span class="hljs-keyword">return</span> value
+        <span class="hljs-keyword">return</span> decoratedVisit
+
+<span class="hljs-meta">    @SaveValue</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitIntNode</span><span class="hljs-params">(self, node:IntNode)</span>:</span>
+        <span class="hljs-keyword">return</span> node.v
+
+<span class="hljs-meta">    @SaveValue</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">visitBinopNode</span><span class="hljs-params">(self, node:BinopNode)</span>:</span>
+        lhs = node.lc.accept(self)
+        rhs = node.rc.accept(self)
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;+&quot;</span>: <span class="hljs-keyword">return</span> lhs + rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;-&quot;</span>: <span class="hljs-keyword">return</span> lhs - rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;*&quot;</span>: <span class="hljs-keyword">return</span> lhs * rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;/&quot;</span>: <span class="hljs-keyword">return</span> lhs / rhs
+        <span class="hljs-keyword">if</span> node.op == <span class="hljs-string">&quot;%&quot;</span>: <span class="hljs-keyword">return</span> lhs % rhs
+
+subexpr = BinopNode(<span class="hljs-string">&apos;-&apos;</span>, IntNode(<span class="hljs-number">20</span>), IntNode(<span class="hljs-number">13</span>))
+expr1 = BinopNode(<span class="hljs-string">&apos;*&apos;</span>, subexpr, IntNode(<span class="hljs-number">3</span>))
+visitor = EvaluationVisitor2()
+expr1.accept(visitor)
+print(visitor.value[subexpr]) <span class="hljs-comment"># 7</span>
+print(visitor.value[expr1]) <span class="hljs-comment"># 21</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="antlr.html" class="navigation navigation-prev " aria-label="Previous page: ANTLR 使用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ir.html" class="navigation navigation-next " aria-label="Next page: IR 简明介绍">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Visitor 模式","level":"3.1.4.2","depth":3,"next":{"title":"IR 简明介绍","level":"3.1.4.3","depth":3,"path":"docs/step1/ir.md","ref":"docs/step1/ir.md","articles":[]},"previous":{"title":"ANTLR 使用","level":"3.1.4.1","depth":3,"path":"docs/step1/antlr.md","ref":"docs/step1/antlr.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step1/visitor.md","mtime":"2021-08-31T09:13:05.039Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-31T09:14:04.276Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-click-reveal/click_reveal.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
