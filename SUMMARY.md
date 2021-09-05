@@ -1,18 +1,15 @@
-# minidecaf教学实验文档
+# MiniDecaf 教学实验文档
 * [实验简介](README.md)
+* [待完善](step0/todo.md)
 
 ## 零：前置准备
 * 配环境、跑测试
-  * [环境配置](docs/step0/env.md)
-  * [运行测试样例](docs/step0/testing.md)
+  * [RISC-V环境配置](docs/step0/riscv_env.md)
   * [RISC-V 的工具链使用](docs/step0/riscv.md)
+  * [实验框架环境配置](docs/step0/env.md)
+  * [运行实验框架](docs/step0/testing.md)
   * [常见问题](docs/step0/faq.md)
 
-* 参考实现
-  * [说明](docs/ref/intro.md)
-  * [TypeScript-ANTLR](docs/ref/typescript-jyk.md)
-  * [Python-ANTLR](docs/ref/python-dzy.md)
-  * [Java-ANTLR](docs/ref/java-xxy.md)
 
 ## 第一个编译器
 * step1：仅一个 return 的 main 函数
