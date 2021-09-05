@@ -4,19 +4,26 @@
 
 关于操作系统，助教推荐使用 Linux 环境（如 Ubuntu，Debain 或 Windows 下的 WSL 等），当然你也可以在类 Unix 系统环境（Mac OS）中进行开发。助教不推荐直接在 Window 中搭建开发环境。对于 C++ 实验框架，你需要安装或保证如下软件满足我们的要求：
 
-> TODO：详细介绍一下各种工具安装的细节。
+> TODO：详细介绍一下Mac中各种工具安装的细节。
 
 1. Flex
 
-   Flex 是一个自动生成词法分析器的工具，它生成的词法分析器可以和 Bison 生成的语法分析器配合使用。我们推荐从 [Github](https://github.com/westes/flex/releases) 下载安装最新版本(在2021.9.1, 最新版本是2.6.4,不推荐使用更低的版本)。
+   Flex 是一个自动生成词法分析器的工具，它生成的词法分析器可以和 Bison 生成的语法分析器配合使用。我们推荐从 [Github](https://github.com/westes/flex/releases) 下载安装最新版本(在2021.9.1, 最新版本是2.6.4,不推荐使用低于2.6的版本)。
+
+   在ubuntu下，`apt-get install flex` 安装的flex版本为2.6,是可用的。
 
 2. Bison
 
-   Bison是一个自动生成语法分析器的工具,它生成的语法分析器可以和Flex生成的词法分析器配合使用。我们推荐从[官网](http://ftp.gnu.org/gnu/bison/)下载安装最新版本（在2021.9.1, 最新版本是3.7.6，不推荐使用更低的版本）。
+   Bison是一个自动生成语法分析器的工具,它生成的语法分析器可以和Flex生成的词法分析器配合使用。我们推荐从[官网](http://ftp.gnu.org/gnu/bison/)下载安装最新版本（在2021.9.1, 最新版本是3.7.6，不推荐使用低于3.7的版本,如ubuntu apt-get install安装的3.0.4版本是不可用的）。
+   
+   下载解压tar.gz文件后， 在路径下执行`./configure && make && make install`, 就应该能正确安装。如果发生失败，就尝试`sudo ./configure` `sudo make`, `sudo make install`, 然后`bison --version`检查一下版本是否为3.7.6就可以了。
 
 3. Boehmgc
 
-   C++ 语言的实验框架中，为了简化内存分配的处理，使用了一个第三方垃圾回收库，简单来说，使用这个垃圾回收库提供垃圾回收功能后，我们在框架里可以new了之后不用delete也不会出问题。从 [Github](https://github.com/ivmai/bdwgc/releases/download/v8.0.4/gc-8.0.4.tar.gz) 下载，解压后按照 README 的指示安装。
+   C++ 语言的实验框架中，为了简化内存分配的处理，使用了一个第三方垃圾回收库，简单来说，使用这个垃圾回收库提供垃圾回收功能后，我们在框架里可以new了之后不用delete也不会出问题。
+   
+   在ubuntu下,通过 `apt-get install libgc-dev`安装的boehmgc库是可用的。
+
 
 4. gcc
 
