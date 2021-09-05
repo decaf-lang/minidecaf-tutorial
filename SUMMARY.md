@@ -1,6 +1,6 @@
 # MiniDecaf 教学实验文档
 * [实验简介](README.md)
-* [待完善](step0/todo.md)
+* [待完善](docs/step0/todo.md)
 
 ## 零：前置准备
 * 配环境、跑测试
