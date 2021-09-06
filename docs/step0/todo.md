@@ -8,4 +8,5 @@
 - [ ] step1 补充 python 框架代码生成细节（step1/example.md）@杨耀良 
 - [ ] 完善实验框架环境配置中各工具安装细节的Mac版本（step0/env.md）@曾军
 - [ ] 快速上手 flex 和 bison 的教程（step1/...）@刘润达
+- [ ] step5 补充 python 框架中寄存器分配细节 （step5/example.m）@杨耀良
 

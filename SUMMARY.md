@@ -43,17 +43,14 @@
 ## 变量和语句
 * step5：局部变量和赋值
   * [任务概述](docs/step5/intro.md)
-  * [实验指导](docs/step5/guide.md)
-  * 其他
-    * [栈帧](docs/step5/stackframe.md)
-    * [手写简单 parser](docs/step5/manual-parser.md)
+  * [通过例子学习](docs/step5/example.md)
+  * [手写简单 parser](docs/step5/manual-parser.md)
   * [规范](docs/step5/spec.md)
 
 * step6：if 语句和条件表达式
   * [任务概述](docs/step6/intro.md)
-  * [实验指导](docs/step6/guide.md)
-  * 其他
-    * [手写简单 parser](docs/step6/manual-parser.md)
+  * [通过例子学习](docs/step6/example.md)
+  * [手写简单 parser](docs/step6/manual-parser.md)
   * [规范](docs/step6/spec.md)
 
 ## 块语句和作用域和更多语句
