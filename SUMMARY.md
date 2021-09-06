@@ -60,6 +60,7 @@
 ## 块语句和作用域和更多语句
 * step7：作用域和块语句
   * [任务概述](docs/step7/intro.md)
+  * [通过例子学习](docs/step7/example.md)
   * [实验指导](docs/step7/guide.md)
   * 其他
     * [手写简单 parser](docs/step7/manual-parser.md)
