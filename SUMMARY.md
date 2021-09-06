@@ -10,17 +10,14 @@
   * [运行实验框架](docs/step0/testing.md)
   * [常见问题](docs/step0/faq.md)
 
-
 ## 第一个编译器
+
+* [MiniDecaf 编译器结构](docs/step1/arch.md)
+
 * step1：仅一个 return 的 main 函数
-  * [从零开始的 lexer、parser 以及汇编生成](docs/step1/part1.md)
-  * [词法语法分析工具](docs/step1/part2.md)
-  * [使用中间码](docs/step1/part3.md)
-  * 其他
-    * [ANTLR 使用](docs/step1/antlr.md)
-    * [Visitor 模式](docs/step1/visitor.md)
-    * [IR 简明介绍](docs/step1/ir.md)
-    * [手写简单 parser](docs/step1/manual-parser.md)
+  * [通过例子学习](docs/step1/example.md)
+  * [Visitor 模式速成](docs/step1/visitor.md)
+  * [手写简单 parser](docs/step1/manual-parser.md)
   * [规范](docs/step1/spec.md)
 
 ## 常量表达式
