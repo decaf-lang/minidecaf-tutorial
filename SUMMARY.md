@@ -67,6 +67,8 @@
 
 * step8：循环语句
   * [任务概述](docs/step8/intro.md)
+  * [通过例子学习](docs/step8/example.md)
+  * [数据流分析](docs/step8/dataflow.md)
   * [实验指导](docs/step8/guide.md)
   * [规范](docs/step8/spec.md)
 
