@@ -78,15 +78,11 @@ def dfs(node: Node):
 dfs 函数接收一个结点，根据这个结点的类型进行深度优先遍历。容易看出，dfs 函数根据被遍历的结点类型不同，执行不同的遍历逻辑。 那么我们把这些遍历逻辑封装到一个类里面，就得到了一个最简单的 Visitor。此外，为了便于实现，我们不使用 isinstance 来判断结点类型，而是调用结点自身的一个 accept 函数，并把不同的 visitXXX 函数抽象到一个接口里，各种具体的 Visitor 来实现这个接口。
 
 ```python
-'''
-frontend/ast/node.py
-'''
+''' frontend/ast/node.py '''
 class Node: # 所有 AST 结点的基类
     def accept(self, v: Visitor[T, U], ctx: T) -> Optional[U]:
         raise NotImplementedError
-'''
-frontend/ast/tree.py
-'''
+''' frontend/ast/tree.py '''
 class Program(ListNode[Union["Function", "Declaration"]]):
     # ...
     def accept(self, v: Visitor[T, U], ctx: T):
@@ -96,9 +92,7 @@ class Function(Node):
     def accept(self, v: Visitor[T, U], ctx: T):
         return v.visitFunction(self, ctx)
 # ...
-'''
-frontend/ast/visitor.py
-'''
+''' frontend/ast/visitor.py '''
 class Visitor(Protocol[T, U]):
     def visitOther(self, node: Node, ctx: T) -> None:
         return None

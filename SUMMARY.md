@@ -23,23 +23,22 @@
 ## 常量表达式
 * step2：一元操作
   * [任务概述](docs/step2/intro.md)
-  * [实验指导](docs/step2/guide.md)
-  * 其他
-    * [手写简单 parser](docs/step2/manual-parser.md)
+  * [通过例子学习](docs/step2/example.md)
+  * [手写简单 parser](docs/step2/manual-parser.md)
   * [规范](docs/step2/spec.md)
 
 * step3：加减乘除模
   * [任务概述](docs/step3/intro.md)
-  * [实验指导](docs/step3/guide.md)
-  * 其他
-    * [优先级和结合性](docs/step3/precedence.md)
-    * [手写简单 parser](docs/step3/manual-parser.md)
+  * [通过例子学习](docs/step3/example.md)
+  * [优先级和结合性](docs/step3/precedence.md)
+  * [手写简单 parser](docs/step3/manual-parser.md)
   * [规范](docs/step3/spec.md)
 
 * step4：比较和逻辑表达式
   * [任务概述](docs/step4/intro.md)
-  * [实验指导](docs/step4/guide.md)
+  * [通过例子学习](docs/step4/example.md)
   * [规范](docs/step4/spec.md)
+* [stage1总结](docs/step4/stage1.md)
 
 ## 变量和语句
 * step5：局部变量和赋值
