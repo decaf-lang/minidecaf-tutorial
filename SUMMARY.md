@@ -75,6 +75,7 @@
 ## 函数和全局变量
 * step9：函数
   * [任务概述](docs/step9/intro.md)
+  * [通过例子学习](docs/step9/example.md)
   * [实验指导](docs/step9/guide.md)
   * 其他
     * [函数调用](docs/step9/calling.md)
