@@ -84,6 +84,7 @@
 
 * step10：全局变量
   * [任务概述](docs/step10/intro.md)
+  * [通过例子学习](docs/step10/example.md)
   * [实验指导](docs/step10/guide.md)
   * 其他
     * [手写简单 parser](docs/step10/manual-parser.md)
@@ -92,6 +93,7 @@
 ## 数组和指针
 * step11：数组
   * [任务概述](docs/step11/intro.md)
+  * [通过例子学习](docs/step11/example.md)
   * [实验指导](docs/step11/guide.md)
   * 其他
     * [手写简单 parser](docs/step11/manual-parser.md)
