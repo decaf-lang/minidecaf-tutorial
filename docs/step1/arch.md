@@ -7,9 +7,9 @@ MiniDecaf 编译器大致划分为三个部分：前端、中端、后端。通�
 
 > 此部分对应框架源码位置：
 >
-> C++ 框架：词法分析程序位于 `src/frontend/scanner.l`；语法分析程序位于 `src/frontend/parser.y`；语法树位于 `src/ast/`
+> C++ 框架：词法分析程序位于 `src/frontend/scanner.l`；语法分析程序位于 `src/frontend/parser.y`；语法树位于 `src/ast/`。
 >
-> Python 框架：词法分析程序位于 `frontend/lexer`；语法分析程序位于 `frontend/parser`
+> Python 框架：词法分析程序位于 `frontend/lexer`；语法分析程序位于 `frontend/parser`；语法树位于 `frontend/ast`。
 
 编译器前端分为两个子任务，一是**词法分析**，二是**语法分析**。词法分析的功能是从左到右扫描 MiniDecaf 源程序，识别出程序源代码中的标识符、保留字、整数常量、算符、分界符等单词符号（即终结符），并把识别结果返回给语法分析器，以供语法分析器使用。语法分析是在词法分析的基础上针对所输入的终结符串建立语法树，并对不符合语法规则的 MiniDecaf 程序进行报错处理。一般而言，这一步所生成的语法树并非表示了所有语法细节的语法分析树，而是只表示其树形结构的抽象语法树（[Abstract Syntax Tree, AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree)）。比如，对于下面这一段简单的MiniDecaf 代码：
 
@@ -50,9 +50,9 @@ AST省略掉了完整的语法分析树中不必要的细节，有利于简化�
 
 > 此部分对应框架源码位置：
 >
-> C++ 框架：符号表构建位于 `src/translation/build_sym.cpp`；类型检查位于 `src/translation/type_check.cpp`；符号表相关的数据结构位于`src/symb`；作用域相关数据结构位于 `src/scope`
+> C++ 框架：符号表构建位于 `src/translation/build_sym.cpp`；类型检查位于 `src/translation/type_check.cpp`；符号表相关的数据结构位于`src/symb`；作用域相关数据结构位于 `src/scope`。
 >
-> TODO：加入 Python 框架相关代码位置
+> Python 框架：符号表构建位于 `frontend/typecheck/namer.py`；类型检查位于 `frontend/typecheck/typer.py`；符号表相关的数据结构位于`frontend/symbol`；作用域相关数据结构位于 `frontend/scope`。
 
 语法分析树的建立可以说明所输入的 MiniDecaf 源程序在语法规范上是合法的，但是要进行有效的翻译，编译器还需要理解每个程序语句的含义。了解程序含义的过程称为**语义分析**。
 
@@ -79,9 +79,9 @@ AST省略掉了完整的语法分析树中不必要的细节，有利于简化�
 
 ## 中间代码生成
 
-> C++ 框架：三地址码定义位于 `src/tac`；中间代码生成位于 `src/translation/translation.cpp`
+> C++ 框架：三地址码定义位于 `src/tac`；中间代码生成位于 `src/translation/translation.cpp`。
 >
-> TODO：加入 Python 框架相关代码位置
+> Python 框架：三地址码定义位于 `utils/tac`；中间代码生成位于 `frontend/tacgen/tacgen.py`。
 
 在对 AST 进行语义分析后，我们将在这一阶段把带有类型标注的 AST 进行翻译成适合后端处理的一种**中间表示**。**中间表示**（也称中间代码，intermediate representation / IR）是位于语法树和汇编之间的一种程序表示。 它不像语法树一样保留了那么多源程序的结构，也不至于像汇编一样底层。 
 
