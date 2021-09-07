@@ -13,6 +13,7 @@
 ## 第一个编译器
 
 * [MiniDecaf 编译器结构](docs/step1/arch.md)
+* [已提供的语法特性](docs/step1/provided.md)
 
 * step1：仅一个 return 的 main 函数
   * [通过例子学习](docs/step1/example.md)
