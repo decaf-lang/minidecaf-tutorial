@@ -58,7 +58,6 @@
 * step7：作用域和块语句
   * [任务概述](docs/step7/intro.md)
   * [通过例子学习](docs/step7/example.md)
-  * [实验指导](docs/step7/guide.md)
   * 其他
     * [手写简单 parser](docs/step7/manual-parser.md)
   * [规范](docs/step7/spec.md)
@@ -67,14 +66,12 @@
   * [任务概述](docs/step8/intro.md)
   * [通过例子学习](docs/step8/example.md)
   * [数据流分析](docs/step8/dataflow.md)
-  * [实验指导](docs/step8/guide.md)
   * [规范](docs/step8/spec.md)
 
 ## 扩展：函数和全局变量
 * step9：函数
   * [任务概述](docs/step9/intro.md)
   * [通过例子学习](docs/step9/example.md)
-  * [实验指导](docs/step9/guide.md)
   * 其他
     * [函数调用](docs/step9/calling.md)
     * [手写简单 parser](docs/step9/manual-parser.md)
@@ -83,7 +80,6 @@
 * step10：全局变量
   * [任务概述](docs/step10/intro.md)
   * [通过例子学习](docs/step10/example.md)
-  * [实验指导](docs/step10/guide.md)
   * 其他
     * [手写简单 parser](docs/step10/manual-parser.md)
   * [规范](docs/step10/spec.md)
@@ -92,7 +88,6 @@
 * step11：数组
   * [任务概述](docs/step11/intro.md)
   * [通过例子学习](docs/step11/example.md)
-  * [实验指导](docs/step11/guide.md)
   * 其他
     * [手写简单 parser](docs/step11/manual-parser.md)
     * [类型系统](docs/step11/typesystem.md)
