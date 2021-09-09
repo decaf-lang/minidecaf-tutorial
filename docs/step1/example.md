@@ -139,7 +139,7 @@ main:             # 主函数入口符号
 
 ### Python 框架
 
-> TODO：补充 Python 框架目标代码生成细节。
+python 框架中关于目标代码生成的文件主要集中 backend 文件夹下，step1 中你只需要关注  backend/riscv 文件夹中的 riscvasmemitter.py 以及 utils/riscv.py 即可。具体来说 backend/asm.py 中会先调用 riscvasmemitter.py 中的 selectInstr 方法对每个函数内的 TAC 指令选择相应的 riscv 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成相应的 NativeInstr 指令（即所有操作数都已经分配好寄存器的指令），最后通过 RiscvSubroutineEmitter 的 emitEnd 方法生成每个函数的 Riscv 汇编。 
 
 ### C++ 框架
 
