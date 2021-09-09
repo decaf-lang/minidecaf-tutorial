@@ -107,15 +107,22 @@ main:
 
    **python 框架**：
 
-   > TODO：给出 python 框架中寄存器分配代码位置
+   寄存器分配算法主要集中在 backend/reg/bruteregalloc.py 中，主要有以下几个函数：
 
+   1. accept：根据每个函数的 CFG 进行寄存器分配，寄存器分配结束后生成相应汇编代码
+2. bind：将一个 Temp 与寄存器绑定
+   3. unbind：将一个 Temp 与相应寄存器解绑定
+   4. localAlloc：根据数据流对一个 BasicBlock 内的指令进行寄存器分配
+   5. allocForLoc：每一条指令进行寄存器分配
+   6. allocRegFor：根据数据流决定为当前 Temp 分配哪一个寄存器
+   
    **C++ 框架**：
-
+   
    寄存器分配算法主要集中在 src/asm/riscv_md.cc 中，主要有以下几个函数：
    1. getRegForRead：为源操作数对应的临时变量分配寄存器。
    2. getRegForWrite：为目标操作数对应的临时变量分配寄存器。
    3. selectRegToSpill：选择寄存器不足时，溢出到栈内存的寄存器，目前是随机算法。
-     栈帧建立和销毁分别位于 emitProlog 函数和 emitTrace 函数中。
+       栈帧建立和销毁分别位于 emitProlog 函数和 emitTrace 函数中。
 
 # 思考题
 
