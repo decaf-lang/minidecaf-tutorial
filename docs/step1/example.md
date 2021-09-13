@@ -16,6 +16,14 @@ int main() {
 
 > TODO：合理排版呈现，现在比较乱
 
+你可以根据我们的框架中对lex/yacc的使用， 结合我们的文档，来快速上手lex/yacc，完成作业。
+
+也可以选择阅读一些较为详细的文档, 来系统地进行lex/yacc的入门，但这不是必须的。
+
+[C++ lex/yacc 快速入门](https://www.gnu.org/software/bison/manual/html_node/A-Complete-C_002b_002b-Example.html)
+
+[python lex/yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
+
 Token流：
 
 Int Identifier("main") LParen RParen LBrace Return  IntConst(2021)  Comma  RBrace
