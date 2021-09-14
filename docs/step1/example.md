@@ -12,17 +12,19 @@ int main() {
 
 > 请注意，这里给出的生成结果（抽象语法树、三地址码、汇编）只是一种参考的实现，同学们可以按照自己的方式实现，只要能够通过测试用例即可。
 
-## 词法分析语法分析
+## 词法分析 & 语法分析
 
 > TODO：合理排版呈现，现在比较乱
 
-你可以根据我们的框架中对lex/yacc的使用， 结合我们的文档，来快速上手lex/yacc，完成作业。
+在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了lex/yacc库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。你可以根据我们的框架中对lex/yacc的使用，结合我们的文档，来快速上手lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行lex/yacc的入门，但这不是必须的。
 
-也可以选择阅读一些较为详细的文档, 来系统地进行lex/yacc的入门，但这不是必须的。
+为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。
 
 [C++ lex/yacc 快速入门](https://www.gnu.org/software/bison/manual/html_node/A-Complete-C_002b_002b-Example.html)
 
-[python lex/yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
+[Python lex/yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
+
+### C++
 
 Token流：
 
@@ -73,6 +75,81 @@ https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html。
 FuncDefn : Type IDENTIFIER LPAREN FormalList RPAREN LBRACE StmtList RBRACE { $$ = new ast::FuncDefn($2,$1,$4,$7,POS(@1)); } |
 
 $1, $2按顺序索引规则右侧的非终结符。
+
+### Python
+
+程序的入口点在 `main.py`，它通过调用 `frontend.parser.parser`（位于 `frontend/parser/ply_parser.py`）来完成语法分析的工作，而这一语法分析器会自动调用位于 `frontend/lexer/ply_lexer.py` 的词法分析器进行词法分析。语法的定义和语法分析器一样位于 `frontend/parser/ply_parser.py`，而词法的定义位于 `frontend/lexer/lex.py`。AST 节点的定义位于 `frontend/ast/tree.py` 中。以下表示中的符号都出自于这几个文件。
+
+当程序读入上述程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
+
+`Int Identifier("main") LParen RParen LBrace Return Integer(2021) Comma RBrace`
+
+并被 yacc 生成的 LALR(1) parser 转化为如下形式的 AST：
+
+```
+Program
+    |- (children[0]) Function
+        |- (ret_t) TInt
+        |- (ident) Identifier("main")
+        |- (body) Block
+            |- (children[0]) Return
+                |- (expr) IntLiteral(2021)
+```
+
+得到的这个 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
+
+如果我们想把返回值从 `2021` 变成 `-2021`，则在这一步中你可能需要进行以下操作（实际上这些东西我们已经给好了）：
+
+* 在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
+
+    ```python
+    class Unary(Expression):
+        def __init__(self, op: Operator, operand: Expression):
+            ...
+    ```
+
+    并在 `frontend/ast/visitor.py` 中加入相应的分派函数。
+
+    它将在后续的 parser 语义计算中被用到。
+
+* 在 `frontend/lex/lex.py` 里加入新的 lex token 定义:
+
+    ```python
+    t_Minus = "-"
+    ```
+
+    在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
+
+* 在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
+
+    ```python
+    def p_expression_precedence(p): #0
+        """
+        expression : unary
+        unary : primary
+        """ #1
+        p[0] = p[1] #2
+
+    def p_unary_expression(p):
+        """
+        unary : Minus unary
+        """
+        p[0] = tree.Unary(UnaryOp.Neg, p[2])
+    ```
+
+    其中：
+
+    #0：定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
+
+    #1：以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
+
+    #2：这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
+
+    更多的用法同样可参见[文档](https://www.dabeaz.com/ply/ply.html)。
+
+这样就基本完成了词法 & 语法分析步骤里加入取负运算的所有步骤。后续步骤中可能需要在某些 visitor 中实现相应的检查、转化至 TAC 的逻辑。
+
+另外需要留意的一点是，python 框架中解决运算符结合律、优先级和悬吊 else 问题的方法与 C++ 框架中略有不同：C++ 框架下使用了 yacc 的特性直接指定了相应语法规则的优先级和结合律，但在 python 框架中我们通过对相应语法规则进行变换来达到这一目的，这些变换方法（优先性级联、规定左结合/右结合、最近嵌套匹配）在学习 CFG 时应有涉及，此处不多赘述。
 
 ## 语义分析
 
