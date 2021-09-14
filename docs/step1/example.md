@@ -123,12 +123,13 @@ Program
 * 在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
 
     ```python
-    def p_expression_precedence(p): #0
+    def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
         """
         expression : unary
         unary : primary
-        """ #1
-        p[0] = p[1] #2
+        """ # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
+        p[0] = p[1] # 这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。
+        # 语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
 
     def p_unary_expression(p):
         """
@@ -136,14 +137,6 @@ Program
         """
         p[0] = tree.Unary(UnaryOp.Neg, p[2])
     ```
-
-    其中：
-
-    0：定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
-
-    1：以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
-
-    2：这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
 
     更多的用法同样可参见[文档](https://www.dabeaz.com/ply/ply.html)。
 
