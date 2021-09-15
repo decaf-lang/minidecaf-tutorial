@@ -56,11 +56,11 @@ _L3:                          # break label
 
 ### Python 框架
 
-`utils/tac/funcvisitor.py` 里的 FuncVisitor 类里实现了维护 TAC 生成时需要的上下文信息的功能。同学们可以在这个类中增加对循环所需的 loop/break 标签的维护。
+`utils/tac/funcvisitor.py` 里的 FuncVisitor 类里实现了维护 TAC 生成时需要的上下文信息的功能。同学们可以在这个类中增加对循环所需的 continue/break 标签的维护。
 
 ### C++ 框架
 
-> TODO：待完成
+同学们可以直接在 `translation/translation.hpp` 中的 Visitor 中用成员变量维护 continue/break 标签。
 
 ## 目标代码生成
 

@@ -12,59 +12,192 @@ int main() {
 
 > 请注意，这里给出的生成结果（抽象语法树、三地址码、汇编）只是一种参考的实现，同学们可以按照自己的方式实现，只要能够通过测试用例即可。
 
-## 词法分析语法分析
+## 词法分析 & 语法分析
 
 > TODO：合理排版呈现，现在比较乱
 
-Token流：
+在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了lex/yacc库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。你可以根据我们的框架中对lex/yacc的使用，结合我们的文档，来快速上手lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行lex/yacc的入门，但这不是必须的。
 
-Int Identifier("main") LParen RParen LBrace Return  IntConst(2021)  Comma  RBrace
+为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。
 
-AST: 
+[C++ lex/yacc 快速入门](https://www.gnu.org/software/bison/manual/html_node/A-Complete-C_002b_002b-Example.html)
 
-Program -> Functions -> Type Identifier LParen RParen LBrace Statements RBrace
+[Python lex/yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
 
-Statements -> ReturnStmt   ReturnStmt -> Return IntConst(2021) Comma
-
-(制图?)
+### C++
 
 Makefile中调用了flex和bison来处理parser.y和scanner.l, 将对语法分析器和词法分析器的描述翻译为C++实现。
 
-scanner.l和parser.y是配合使用的，简单来说，scanner.l定义了词法规则，parser.y定义了语法规则。parser.y自动生成的语法分析器，会调用scanner.l生成的yylex()函数, 相当于getNextToken()
+#### 概述
 
-将“return"解析为一个token的规则，在scanner.l中是
+`src/frontend/scanner.l`所生成的词法分析器，会将输入的程序字符串解析为这样的一串Token：
 
-"return"      { return yy::parser::make_RETURN  (loc);   }
+Int Identifier("main") LParen RParen LBrace Return  IntConst(2021) Comma RBrace
 
-loc是表示当前扫描位置的line\column行列的全局变量，yy::parser::make_RETURN是parser.y自动生成的函数，构建一个parser能够使用的RETURN token。
+这个程序的具体语法树中用到的语法规则如下: 
 
-在parser.y中，
+Program -> Functions
 
+Functions -> Type Identifier LParen RParen LBrace Statements RBrace
+
+Statements -> ReturnStmt   
+
+ReturnStmt -> Return IntConst(2021) Comma
+
+`parser.y`生成的语法分析器，分析获得的抽象语法树为:
+Program 
+    |-FoDList 
+        |- FuncDefn
+            |- (ret_type) Type INT
+            |- (name) Identifier "main"
+            |- (stmts) StmtList
+                |- ReturnStmt 
+                    |- Expr int_const 2021
+
+框架中`scanner.l`和`parser.y`是配合使用的，简单来说，scanner.l定义了词法规则，parser.y定义了语法规则。parser.y自动生成的语法分析器，会调用scanner.l生成的yylex()函数, 相当于getNextToken()
+
+#### 具体代码
+
+我们以一元负号为例，看一下前端具体的代码:
+`scanner.l`中，生成一个Token的规则，形如
+
+`"-"          { return yy::parser::make_MINUS  (loc);     }`
+
+将一个"-"字符，解析为parser中的 `MINUS` token
+
+`yy::parser::make_MINUS()`函数是在parser.y中声明MINUS这个token之后，yacc自动生成的token构造函数。loc是表示当前扫描位置的line\column行列的全局变量。
+
+这一段就是parser.y中声明MINUS这个token的位置。
+```c
+%define api.token.prefix {TOK_}
 %token
-
-RETURN "return"
-
+   //more tokens...
+   MINUS "-"
+   //more tokens...
 ;
-
-这一段就为parser声明了RETURN这个token。 
-
-%token <std::string> IDENTIFIER "identifier" 
-
-%token<int> ICONST "iconst"
-
+```
 具体语义可参考
 
 https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html。
 
-非终结符也需要声明。
+一元负号对应的语法树节点为`NegExpr`, 相关定义分散在`src/ast/ast.hpp`, `src/ast/ast.cpp`, `src/ast/ast_neg_expr.cpp`, `src/ast/visitor.hpp`，`src/define.hpp`。注意ast.hpp有一个节点类型的枚举,ast.cpp中有一个字符数组按顺序存储这些节点的名称，保持和`NodeType`枚举中的顺序一致。
 
-%nterm<mind::ast::Program* > Program FoDList
+```c++
+// src/ast/ast.hpp
+class NegExpr : public Expr {
+  public:
+//these member functions defined in src/ast/ast_neg_expr.cpp
+    NegExpr(Expr *e, Location *l);
 
-我们将非终结符都声明为语法树结点的指针类型。每条语法规则里对应的动作会构建一个新的语法树结点。如
+    virtual void accept(Visitor *);
+    virtual void dumpTo(std::ostream &);
 
-FuncDefn : Type IDENTIFIER LPAREN FormalList RPAREN LBRACE StmtList RBRACE { $$ = new ast::FuncDefn($2,$1,$4,$7,POS(@1)); } |
+  public:
+    Expr *e;
+};
+```
+在`parser.y`中，要为一元负号编写对应的语法规则和动作。
 
-$1, $2按顺序索引规则右侧的非终结符。
+省略Expr对应的其他规则，形如
+```c
+Expr  : MINUS Expr  %prec NEG
+                { $$ = new ast::NegExpr($2, POS(@1)); }
+            ;
+```
+其中，$2意味着右侧的Expr语法树节点，基于此，调用ast::NegExpr构造函数，获得新的NegExpr，赋值给$$, 作为这一级语法分析返回的节点。
+
+%prec NEG注明的是这条规则的优先级，和优先级定义中的NEG相同。
+
+```c
+/*   SUBSECTION 2.2: associativeness & precedences */
+%nonassoc QUESTION
+%left     OR
+%left     AND
+%left EQU NEQ
+%left LEQ GEQ LT GT
+%left     PLUS MINUS
+%left     TIMES SLASH MOD
+%nonassoc LNOT NEG BNOT
+%nonassoc LBRACK DOT
+```
+这是parser.y中的优先级定义，自上而下优先级越来越高。
+%left, %nonassoc标注了结合性。
+
+注意，非终结符也需要声明。
+
+如parser.y中`%nterm<mind::ast::Expr*> Expr`表示Expr非终结符对应的语法树节点是`mind::ast::Expr*`类型(的指针)。
+
+我们将非终结符都声明为语法树结点的指针类型。每条语法规则里对应的动作会构建一个新的语法树结点，像刚才看到的NegExpr。
+
+之后，你可能需要自己增加token的定义、语法树节点的定义、
+
+### Python
+
+程序的入口点在 `main.py`，它通过调用 `frontend.parser.parser`（位于 `frontend/parser/ply_parser.py`）来完成语法分析的工作，而这一语法分析器会自动调用位于 `frontend/lexer/ply_lexer.py` 的词法分析器进行词法分析。语法的定义和语法分析器一样位于 `frontend/parser/ply_parser.py`，而词法的定义位于 `frontend/lexer/lex.py`。AST 节点的定义位于 `frontend/ast/tree.py` 中。以下表示中的符号都出自于这几个文件。
+
+当程序读入上述程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
+
+`Int Identifier("main") LParen RParen LBrace Return Integer(2021) Comma RBrace`
+
+并被 yacc 生成的 LALR(1) parser 转化为如下形式的 AST：
+
+```
+Program
+    |- (children[0]) Function
+        |- (ret_t) TInt
+        |- (ident) Identifier("main")
+        |- (body) Block
+            |- (children[0]) Return
+                |- (expr) IntLiteral(2021)
+```
+
+得到的这个 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
+
+如果我们想把返回值从 `2021` 变成 `-2021`，则在这一步中你可能需要进行以下操作（实际上这些东西我们已经给好了）：
+
+* 在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
+
+    ```python
+    class Unary(Expression):
+        def __init__(self, op: Operator, operand: Expression):
+            ...
+    ```
+
+    并在 `frontend/ast/visitor.py` 中加入相应的分派函数。
+
+    它将在后续的 parser 语义计算中被用到。
+
+* 在 `frontend/lex/lex.py` 里加入新的 lex token 定义:
+
+    ```python
+    t_Minus = "-"
+    ```
+
+    在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
+
+* 在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
+
+    ```python
+    def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
+        """
+        expression : unary
+        unary : primary
+        """ # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
+        p[0] = p[1] # 这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。
+        # 语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
+
+    def p_unary_expression(p):
+        """
+        unary : Minus unary
+        """
+        p[0] = tree.Unary(UnaryOp.Neg, p[2])
+    ```
+
+    更多的用法同样可参见[文档](https://www.dabeaz.com/ply/ply.html)。
+
+这样就基本完成了词法 & 语法分析步骤里加入取负运算的所有步骤。后续步骤中可能需要在某些 visitor 中实现相应的检查、转化至 TAC 的逻辑。
+
+另外需要留意的一点是，python 框架中解决运算符结合律、优先级和悬吊 else 问题的方法与 C++ 框架中略有不同：C++ 框架下使用了 yacc 的特性直接指定了相应语法规则的优先级和结合律，但在 python 框架中我们通过对相应语法规则进行变换来达到这一目的，这些变换方法（优先性级联、规定左结合/右结合、最近嵌套匹配）在学习 CFG 时应有涉及，此处不多赘述。
 
 ## 语义分析
 
