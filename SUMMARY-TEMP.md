@@ -52,7 +52,7 @@
   * [手写简单 parser](docs/step6/manual-parser.md)
   * [规范](docs/step6/spec.md)
 
-## 块语句和作用域和更多语句
+## 作用域和循环
 * step7：作用域和块语句
   * [任务概述](docs/step7/intro.md)
   * [通过例子学习](docs/step7/example.md)
