@@ -1,6 +1,6 @@
 # 通过例子学习，一个仅有 return 的主函数编译全流程：
 
-本步骤主要涉及的语法为主函数和 return 语句，完成本步骤之后，你的编译器将支持将一个仅有 return 的主函数编译为32位 RISC-V 汇编代码，并通过 RISC-V 工具链生成可以在硬件模拟器上正确运行的程序。因为这是大家首次接触 MiniDecaf 编译实验框架，我们给大家的代码框架中已经包含所有 Step1 的实现，大家可以直接运行通过 Step1 的测试用例。并且，我们在每个步骤的文档中会详细梳理介绍在当前步骤中需要用到的知识点以及对应的代码片段和注释，如果我们认为当前步骤并不需要了解某部分知识点（如数据流分析、寄存器分配），我们会在后续的步骤中进行知识点的讲解。
+本步骤主要涉及的语法为主函数和 return 语句，完成本步骤之后，你的编译器将支持将一个仅有 return 的主函数编译为 32 位 RISC-V 汇编代码，并通过 RISC-V 工具链生成可以在硬件模拟器上正确运行的程序。因为这是大家首次接触 MiniDecaf 编译实验框架，我们给大家的代码框架中已经包含所有 step1 的实现，大家可以直接运行通过 step1 的测试用例。并且，我们在每个步骤的文档中会详细梳理介绍在当前步骤中需要用到的知识点以及对应的代码片段和注释，如果我们认为当前步骤并不需要了解某部分知识点（如数据流分析、寄存器分配），我们会在后续的步骤中进行知识点的讲解。
 
 下面我们将通过一个简单的 step1 测试用例，一起走过它的编译全流程：
 
@@ -14,17 +14,19 @@ int main() {
 
 ## 词法分析 & 语法分析
 
-在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了lex/yacc库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。你可以根据我们的框架中对lex/yacc的使用，结合我们的文档，来快速上手lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行lex/yacc的入门，但这不是必须的。
+> TODO：合理排版呈现，现在比较乱
 
-为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。
+在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了 lex/yacc 库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。你可以根据我们的框架中对 lex/yacc 的使用，结合我们的文档，来快速上手 lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行 lex/yacc 的入门，但这不是必须的。
 
-[C++ lex/yacc 快速入门](https://www.gnu.org/software/bison/manual/html_node/A-Complete-C_002b_002b-Example.html)
+为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。在 C++ 框架中，我们使用的是 lex/yacc 的高级替代 flex/bison，其使用方法和 lex/yacc 极为相似。在 Python 框架中，我们使用的是 lex/yacc 的一个纯 python 实现，称为 python-lex-yacc（简称 ply），其使用方法与 lex/yacc 有一些差异。
 
-[Python lex/yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
+[C++ flex/bison 快速入门](https://www.gnu.org/software/bison/manual/html_node/A-Complete-C_002b_002b-Example.html)
+
+[Python-lex-yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
 
 ### C++ 框架
 
-Makefile 中调用了 flex 和 bison 来处理 parser.y 和 scanner.l。flex 和 bison 会将这两个文件中的语法/词法描述翻译为 C++ 实现。
+Makefile 中调用了 flex 和 bison 来处理 `parser.y` 和 `scanner.l`。flex 和 bison 会将这两个文件中的语法/词法描述翻译为 C++ 实现。
 
 #### 概述
 
@@ -75,7 +77,10 @@ Program
    //more tokens...
 ;
 ```
-一元负号对应的语法树节点为`NegExpr`, 相关定义分散在`src/ast/ast.hpp`, `src/ast/ast.cpp`, `src/ast/ast_neg_expr.cpp`, `src/ast/visitor.hpp`，`src/define.hpp`。注意ast.hpp有一个节点类型的枚举,ast.cpp中有一个字符数组按顺序存储这些节点的名称，保持和`NodeType`枚举中的顺序一致。
+
+具体语义可参考[链接](https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html)。
+
+一元负号对应的语法树节点为 `NegExpr`，相关定义分散在 `src/ast/ast.hpp`，`src/ast/ast.cpp`，`src/ast/ast_neg_expr.cpp`，`src/ast/visitor.hpp`，`src/define.hpp` 中。注意 `ast.hpp` 中定义了节点的枚举类型 `NodeType`，`ast.cpp` 中定义了一个字符数组按顺序存储这些节点的名称，请保持和 `NodeType` 中的顺序一致。
 
 ```c++
 // src/ast/ast.hpp
@@ -180,7 +185,7 @@ Program
 
 ## 语义分析
 
-在 Step1 语义分析步骤中，我们要遍历 AST，检验是否存在如下的语义错误：
+在 step1 语义分析步骤中，我们要遍历 AST，检验是否存在如下的语义错误：
 
 * main 函数是否存在。
 
@@ -188,15 +193,15 @@ Program
 
 * 返回值是否在 int 合法的范围内。
 
-在实际操作中，我们遍历 AST 所用的方法就是的 [Visitor 模式](docs/step1/visitor.md)，通过 Visitor 模式，我们可以从抽象语法树的根结点开始，遍历整颗树的所有语法结点，并针对特定的语法结点作出相应的操作，如名称检查和类型检查等。在编译器中，这种基于 Visitor 的对语法树进行一次遍历，完成某种检查或优化的过程，称为遍（pass）。不难想到，一个现代编译器是由很多pass 组成的，如 gcc 根据优化等级不同会有数百个不等的 pass。下面，我们将指出，step1 中我们是如何实现符号表构建 pass 和类型检查 pass 的，选择不同语言的同学，可以选择去看相应的代码注释与实现细节。
+在实际操作中，我们遍历 AST 所用的方法就是的 [Visitor 模式](docs/step1/visitor.md)，通过 Visitor 模式，我们可以从抽象语法树的根结点开始，遍历整颗树的所有语法结点，并针对特定的语法结点作出相应的操作，如名称检查和类型检查等。在编译器中，这种基于 Visitor 的对语法树进行一次遍历，完成某种检查或优化的过程，称为遍（pass）。不难想到，一个现代编译器是由很多遍扫描组成的，如 gcc 根据优化等级不同会有数百个不等的 pass。下面，我们将指出，step1 中我们是如何实现符号表构建 pass 和类型检查 pass 的，选择不同语言的同学，可以选择去看相应的代码注释与实现细节。
 
 ### Python 框架
 
-`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在 Step1-10 中，同学们只需要考虑 `namer.py`（因为只有 int 类型，无需进行类型检查）。在框架中，namer 和 typer 都是继承 `frontend/ast/visitor.py` 中的 Visitor 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `namer.py`（因为只有 int 类型，无需进行类型检查）。在框架中，namer 和 typer 都是继承 `frontend/ast/visitor.py` 中的 Visitor 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
 
 ### C++ 框架
 
-`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 .cpp 文件分别对应了符号表构建和类型检查这两次遍历。在 Step1-10 中，同学们只需要考虑 `build_sym.hpp`（因为只有 int 类型，无需进行类型检查）。在框架中，两者都是继承` ast/visitor.hpp` 中的 Visitor 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `build_sym.hpp`（因为只有 int 类型，无需进行类型检查）。在框架中，两者都是继承` ast/visitor.hpp` 中的 Visitor 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
 
 ## 中间代码生成
 
@@ -214,13 +219,13 @@ main:           # main 函数入口标签
 
 `frontend/tacgen/tacgen.py` 中通过一遍 AST 扫描完成 TAC 生成。和语义分析一样，这部分也使用了 Visitor 模式。
 
-`frontend/utils/tac` 目录下实现了生成 TAC 所需的底层类。其中 `tacinstr.py` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。提供给生成 TAC 程序流程的主要接口在 `funcvisitor.py` 中，若你增加了 TAC 指令，则需要在 FuncVisitor 类中增加生成该指令的接口。在本框架中，TAC 程序的生成是以函数为单位，对每个函数（Step1-8 中只有 main 函数）分别使用一个 FuncVisitor 来生成对应的 TAC 程序。除此之外的 TAC 底层类，同学们可以不作修改，也可以按照自己的想法进行修改。
+`frontend/utils/tac` 目录下实现了生成 TAC 所需的底层类。其中 `tacinstr.py` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。提供给生成 TAC 程序流程的主要接口在 `funcvisitor.py` 中，若你增加了 TAC 指令，则需要在 `FuncVisitor` 类中增加生成该指令的接口。在本框架中，TAC 程序的生成是以函数为单位，对每个函数（step1-8 中只有 main 函数）分别使用一个 `FuncVisitor` 来生成对应的 TAC 程序。除此之外的 TAC 底层类，同学们可以不作修改，也可以按照自己的想法进行修改。
 
 ### C++ 框架
 
 `translation/translation.hpp` 及相应 .cpp 文件中通过一遍 AST 扫描完成 TAC 生成。和语义分析一样，这部分也使用了 Visitor 模式。
 
-tac 目录下实现了生成 TAC 所需的底层类。其中 `tac/tac.hpp` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。`tac/trans_helper.hpp` 及相应 .cpp 文件中的 TransHelper 类用于方便地生成 TAC 指令流，若你增加了 TAC 指令，则需要在 TransHelper 类中增加生成该指令的接口。除此之外的 TAC 底层类，同学们可以不作修改，也可以按照自己的想法进行修改。
+tac 目录下实现了生成 TAC 所需的底层类。其中 `tac/tac.hpp` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。`tac/trans_helper.hpp` 及相应 cpp 文件中的 `TransHelper` 类用于方便地生成 TAC 指令流，若你增加了 TAC 指令，则需要在 `TransHelper` 类中增加生成该指令的接口。除此之外的 TAC 底层类，同学们可以不作修改，也可以按照自己的想法进行修改。
 
 ## 目标代码生成
 
@@ -251,7 +256,7 @@ main:             # 主函数入口符号
 
 ### Python 框架
 
-python 框架中关于目标代码生成的文件主要集中 backend 文件夹下，step1 中你只需要关注  backend/riscv 文件夹中的 riscvasmemitter.py 以及 utils/riscv.py 即可。具体来说 backend/asm.py 中会先调用 riscvasmemitter.py 中的 selectInstr 方法对每个函数内的 TAC 指令选择相应的 riscv 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成相应的 NativeInstr 指令（即所有操作数都已经分配好寄存器的指令），最后通过 RiscvSubroutineEmitter 的 emitEnd 方法生成每个函数的 Riscv 汇编。 
+Python 框架中关于目标代码生成的文件主要集中 `backend` 文件夹下，step1 中你只需要关注 `backend/riscv` 文件夹中的 `riscvasmemitter.py` 以及 `utils/riscv.py` 即可。具体来说 `backend/asm.py` 中会先调用 `riscvasmemitter.py` 中的 `selectInstr` 方法对每个函数内的 TAC 指令选择相应的 RISC-V 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成相应的 `NativeInstr` 指令（即所有操作数都已经分配好寄存器的指令），最后通过 `RiscvSubroutineEmitter` 的 `emitEnd` 方法生成每个函数的 RISC-V 汇编。
 
 ### C++ 框架
 
