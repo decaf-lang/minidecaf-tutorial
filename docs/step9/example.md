@@ -9,7 +9,12 @@ int main() { return func(1, 2); }
 
 ## 词法语法分析
 
-> TODO：按照规范要求增加新的语法树结点和语法规则。
+针对函数特性，我们需要设计 AST 节点来表示它，给出的参考定义如下：
+
+| 节点 | 成员 | 含义 |
+| --- | --- | --- |
+| `Function` | 返回类型 `return_type`，函数名 `ident`，参数列表 `params`，函数体 `body` | 函数 |
+| `Parameter` | 参数类型 `var_type`，变量名 `ident` | 函数参数 |
 
 ## 语义分析
 
