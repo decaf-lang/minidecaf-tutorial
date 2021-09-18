@@ -10,7 +10,7 @@ int main() {
 }
 ```
 
-> 请注意，这里给出的生成结果（抽象语法树、三地址码、汇编）只是一种参考的实现，同学们可以按照自己的方式实现，只要能够通过测试用例即可。
+> 请注意，这里给出的生成结果（抽象语法树、三地址码、汇编）只是一种参考的实现，同学们可以按照自己的方式实现，只要能够通过测试用例即可。但是，严格杜绝抄袭现象，如果代码查重过程中发现有抄袭现象，抄袭者与被抄袭者将被记为0分。
 
 ## 词法分析 & 语法分析
 
@@ -32,49 +32,42 @@ Makefile 中调用了 flex 和 bison 来处理 `parser.y` 和 `scanner.l`。flex
 
 `src/frontend/scanner.l` 为词法描述。flex 生成的词法分析器，会将示例程序解析为这样的一串 Token：
 
-```
-Int Identifier("main") LParen RParen LBrace Return IntConst(2021) Comma RBrace
-```
+`Int Identifier("main") LParen RParen LBrace Return  IntConst(2021) Comma RBrace`
 
 这个程序的具体语法树中用到的语法规则如下: 
 
-```
+```C
 Program -> Functions
-
 Functions -> Type Identifier LParen RParen LBrace Statements RBrace
-
 Statements -> ReturnStmt   
-
 ReturnStmt -> Return IntConst(2021) Comma
 ```
 
-`parser.y` 为语法描述。bison 生成的语法分析器，分析获得的抽象语法树为：
+`parser.y`生成的语法分析器，分析获得的抽象语法树为:
 
 ```
 Program 
-    |-FoDList 
-        |- FuncDefn
-            |- (ret_type) Type INT
-            |- (name) Identifier "main"
-            |- (stmts) StmtList
-                |- ReturnStmt 
-                    |- Expr int_const 2021
+  |-FoDList 
+    |- FuncDefn
+      |- (ret_type) Type INT
+        |- (name) Identifier "main"
+          |- (stmts) StmtList
+            |- ReturnStmt 
+              |- Expr int_const 2021
 ```
 
 框架中 `scanner.l` 和 `parser.y` 是配合使用的，简单来说，`scanner.l` 定义了词法规则，`parser.y` 定义了语法规则。bison 生成的语法分析器，会调用 flex 生成的 `yylex()` 函数，这个函数的作用为获取 token 流的下一个 token。
 
 #### 具体代码
 
-让我们看看示例对应的前端代码：
-`scanner.l` 中，生成一个 Token 的规则，形如
+我们以一元负号为例，看一下前端具体的代码:`scanner.l`中，生成一个Token的规则，形如:
 
-`"-"          { return yy::parser::make_MINUS  (loc);     }`
+```C
+"-"    { return yy::parser::make_MINUS(loc); }
+# 该规则将一个'-'字符，解析为parser中的MINUS token。
+```
 
-将一个 "-" 字符，解析为 parser 中的 `MINUS` token。
-
-`yy::parser::make_MINUS()` 函数是在 `parser.y` 中声明 `MINUS` 这个 token 之后，bison 自动生成的 token 构造函数。loc 是表示当前扫描位置所在行列的全局变量。
-
-以下就是 `parser.y` 中声明 `MINUS` 这个 token 的位置：
+> `yy::parser::make_MINUS()` 函数是在 `parser.y` 中声明 `MINUS` 这个 token 之后，yacc 自动生成的 token 构造函数。loc 是表示当前扫描位置的 line\column 行列的全局变量。下面一段就是parser.y中声明MINUS这个token的位置。具体语义可参考 [Bison 教程](https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html)。
 
 ```c
 %define api.token.prefix {TOK_}
@@ -84,6 +77,7 @@ Program
    //more tokens...
 ;
 ```
+
 具体语义可参考[链接](https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html)。
 
 一元负号对应的语法树节点为 `NegExpr`，相关定义分散在 `src/ast/ast.hpp`，`src/ast/ast.cpp`，`src/ast/ast_neg_expr.cpp`，`src/ast/visitor.hpp`，`src/define.hpp` 中。注意 `ast.hpp` 中定义了节点的枚举类型 `NodeType`，`ast.cpp` 中定义了一个字符数组按顺序存储这些节点的名称，请保持和 `NodeType` 中的顺序一致。
@@ -94,25 +88,18 @@ class NegExpr : public Expr {
   public:
 //these member functions defined in src/ast/ast_neg_expr.cpp
     NegExpr(Expr *e, Location *l);
-
     virtual void accept(Visitor *);
     virtual void dumpTo(std::ostream &);
-
   public:
     Expr *e;
 };
 ```
-在 `parser.y` 中，要为一元负号编写对应的语法规则和动作。
+在`parser.y`中，要为一元负号编写对应的语法规则和动作。省略Expr对应的其他规则，形如：
 
-省略 `Expr` 对应的其他规则，形如
 ```c
-Expr  : MINUS Expr  %prec NEG
-                { $$ = new ast::NegExpr($2, POS(@1)); }
-            ;
+Expr : MINUS Expr %prec NEG { $$ = new ast::NegExpr($2, POS(@1));} ;
 ```
-其中，`$2` 意味着右侧的 `Expr` 语法树节点，基于此，调用 `ast::NegExpr` 构造函数，获得新的 `NegExpr`，赋值给 `$$`，作为这一级语法分析返回的节点。
-
-`%prec NEG` 注明的是这条规则的优先级，和优先级定义中的 `NEG` 相同。
+其中，`$2`意味着右侧的 Expr 语法树节点，基于此，调用ast::NegExpr构造函数，获得新的NegExpr，赋值给`$$`, 作为这一级语法分析返回的节点。`%prec NEG`注明的是这条规则的优先级，和优先级定义中的NEG相同。
 
 ```c
 /*   SUBSECTION 2.2: associativeness & precedences */
@@ -126,16 +113,7 @@ Expr  : MINUS Expr  %prec NEG
 %nonassoc LNOT NEG BNOT
 %nonassoc LBRACK DOT
 ```
-
-这是 `parser.y` 中的优先级定义，自上而下优先级越来越高。`%left, %nonassoc` 标注了结合性。
-
-注意，非终结符也需要声明。
-
-如 `parser.y` 中 `%nterm<mind::ast::Expr*> Expr` 表示 `Expr` 非终结符对应的语法树节点是 `mind::ast::Expr*` 类型（的指针）。
-
-我们将非终结符都声明为语法树结点的指针类型。每条语法规则里对应的动作会构建一个新的语法树结点，像刚才看到的 `NegExpr`。
-
-之后，你可能需要自己增加 token 的定义和语法树节点的定义。
+这是 `parser.y` 中的优先级定义，自上而下优先级越来越高。`%left, %nonassoc` 标注了结合性。注意，非终结符也需要声明。如 `parser.y` 中 `%nterm<mind::ast::Expr*> Expr` 表示Expr非终结符对应的语法树节点是`mind::ast::Expr*`类型(的指针)。我们将非终结符都声明为语法树结点的指针类型。每条语法规则里对应的动作会构建一个新的语法树结点，像刚才看到的NegExpr。之后，你可能需要自己增加token的定义、语法树节点的定义、
 
 ### Python 框架
 
