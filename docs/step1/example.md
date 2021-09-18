@@ -43,7 +43,7 @@ Statements -> ReturnStmt
 ReturnStmt -> Return IntConst(2021) Comma
 ```
 
-`parser.y`生成的语法分析器，分析获得的抽象语法树为:
+`parser.y` 生成的语法分析器，分析获得的抽象语法树为：
 
 ```
 Program 
@@ -120,7 +120,7 @@ Expr : MINUS Expr %prec NEG { $$ = new ast::NegExpr($2, POS(@1));} ;
 
 ### Python 框架
 
-程序的入口点在 `main.py`，它通过调用 `frontend.parser.parser`（位于 `frontend/parser/ply_parser.py`）来完成语法分析的工作，而这一语法分析器会自动调用位于 `frontend/lexer/ply_lexer.py` 的词法分析器进行词法分析。语法的定义和语法分析器一样位于 `frontend/parser/ply_parser.py`，而词法的定义位于 `frontend/lexer/lex.py`。AST 节点的定义位于 `frontend/ast/tree.py` 中。以下表示中的符号都出自于这几个文件。
+程序的入口点在 `main.py`，它通过调用 `frontend.parser.parser`（位于 `frontend/parser/ply_parser.py`）来完成语法分析的工作，而这一语法分析器会自动调用位于 `frontend/lexer/ply_lexer.py` 的词法分析器进行词法分析。语法的定义和语法分析器都位于 `frontend/parser/ply_parser.py`，而词法的定义位于 `frontend/lexer/lex.py`。AST 节点的定义位于 `frontend/ast/tree.py` 中。以下表示中的符号都出自于这几个文件。
 
 当程序读入上述程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
 
@@ -140,7 +140,7 @@ Program
 
 得到的这个 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
 
-如果我们想把返回值从 `2021` 变成 `-2021`，则在这一步中你可能需要进行以下操作（实际上这些东西我们已经给好了）：
+如果我们想把返回值从 `2021` 变成 `-2021`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
 
 * 在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
 
