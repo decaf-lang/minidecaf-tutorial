@@ -60,14 +60,16 @@ Program
 
 #### 具体代码
 
-我们以一元负号为例，看一下前端具体的代码:`scanner.l`中，生成一个Token的规则，形如:
+让我们看看示例对应的 parser 代码：
+
+`scanner.l` 中生成一个 Token 的规则，形如:
 
 ```C
 "-"    { return yy::parser::make_MINUS(loc); }
 # 该规则将一个'-'字符，解析为parser中的MINUS token。
 ```
 
-> `yy::parser::make_MINUS()` 函数是在 `parser.y` 中声明 `MINUS` 这个 token 之后，yacc 自动生成的 token 构造函数。loc 是表示当前扫描位置的 line\column 行列的全局变量。下面一段就是parser.y中声明MINUS这个token的位置。具体语义可参考 [Bison 教程](https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html)。
+> `yy::parser::make_MINUS()` 函数是在 `parser.y` 中声明 `MINUS` 这个 token 之后，yacc 自动生成的 token 构造函数。loc 是表示当前扫描位置的行列的全局变量。下面一段就是 `parser.y` 中声明 `MINUS` 这个 token 的位置。具体语义可参考 [Bison 教程](https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html)。
 
 ```c
 %define api.token.prefix {TOK_}
@@ -94,12 +96,13 @@ class NegExpr : public Expr {
     Expr *e;
 };
 ```
-在`parser.y`中，要为一元负号编写对应的语法规则和动作。省略Expr对应的其他规则，形如：
+在 `parser.y` 中，要为一元负号编写对应的语法规则和动作。省略 `Expr` 对应的其他规则，形如：
 
 ```c
 Expr : MINUS Expr %prec NEG { $$ = new ast::NegExpr($2, POS(@1));} ;
 ```
-其中，`$2`意味着右侧的 Expr 语法树节点，基于此，调用ast::NegExpr构造函数，获得新的NegExpr，赋值给`$$`, 作为这一级语法分析返回的节点。`%prec NEG`注明的是这条规则的优先级，和优先级定义中的NEG相同。
+
+其中，`$2` 意味着右侧的 `Expr` 语法树节点，基于此，调用 `ast::NegExpr` 构造函数，获得新的 `NegExpr`，赋值给`$$`，作为这一级语法分析返回的节点。`%prec NEG` 注明的是这条规则的优先级，和优先级定义中的 `NEG` 相同。
 
 ```c
 /*   SUBSECTION 2.2: associativeness & precedences */
@@ -113,7 +116,7 @@ Expr : MINUS Expr %prec NEG { $$ = new ast::NegExpr($2, POS(@1));} ;
 %nonassoc LNOT NEG BNOT
 %nonassoc LBRACK DOT
 ```
-这是 `parser.y` 中的优先级定义，自上而下优先级越来越高。`%left, %nonassoc` 标注了结合性。注意，非终结符也需要声明。如 `parser.y` 中 `%nterm<mind::ast::Expr*> Expr` 表示Expr非终结符对应的语法树节点是`mind::ast::Expr*`类型(的指针)。我们将非终结符都声明为语法树结点的指针类型。每条语法规则里对应的动作会构建一个新的语法树结点，像刚才看到的NegExpr。之后，你可能需要自己增加token的定义、语法树节点的定义、
+这是 `parser.y` 中的优先级定义，自上而下优先级越来越高。`%left, %nonassoc` 标注了结合性。注意，非终结符也需要声明。如 `parser.y` 中 `%nterm<mind::ast::Expr*> Expr` 表示 `Expr` 非终结符对应的语法树节点是 `mind::ast::Expr*` 类型（的指针）。我们将非终结符都声明为语法树结点的指针类型。每条语法规则里对应的动作会构建一个新的语法树结点，像刚才看到的 `NegExpr`。之后，你可能需要自己增加 token 的定义、语法树节点的定义。
 
 ### Python 框架
 
@@ -197,11 +200,11 @@ Program
 
 ### Python 框架
 
-`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `namer.py`（因为只有 int 类型，无需进行类型检查）。在框架中，namer 和 typer 都是继承 `frontend/ast/visitor.py` 中的 Visitor 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `namer.py`（因为只有 int 类型，无需进行类型检查）。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
 
 ### C++ 框架
 
-`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `build_sym.hpp`（因为只有 int 类型，无需进行类型检查）。在框架中，两者都是继承` ast/visitor.hpp` 中的 Visitor 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `build_sym.hpp`（因为只有 int 类型，无需进行类型检查）。在框架中，两者都是继承 `ast/visitor.hpp` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
 
 ## 中间代码生成
 
