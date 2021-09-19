@@ -14,8 +14,6 @@ int main() {
 
 ## 词法分析 & 语法分析
 
-> TODO：合理排版呈现，现在比较乱
-
 在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了 lex/yacc 库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。你可以根据我们的框架中对 lex/yacc 的使用，结合我们的文档，来快速上手 lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行 lex/yacc 的入门，但这不是必须的。
 
 为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。在 C++ 框架中，我们使用的是 lex/yacc 的高级替代 flex/bison，其使用方法和 lex/yacc 极为相似。在 Python 框架中，我们使用的是 lex/yacc 的一个纯 python 实现，称为 python-lex-yacc（简称 ply），其使用方法与 lex/yacc 有一些差异。
