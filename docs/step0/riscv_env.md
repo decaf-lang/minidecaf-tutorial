@@ -31,11 +31,16 @@ Win10 设置
 
 3. 按照下面的 Linux 用户环境配置指南安装 riscv 工具链。
 
-### Linux 用户环境配置指南
+### Ubuntu 用户环境配置指南
 
-1. 从网络学堂下载 riscv-prebuilt.tar.gz 压缩包并解压（命令是 `tar xzf riscv-prebuilt.tar.gz`）
+1. 你可以直接使用 apt 来安装用户态的 qemu，即 `apt qemu-user`。
 
-2. 安装工具链 `cp riscv-prebuilt/* /usr/ -r`
+> 对于 20.04 前的 Ubuntu 版本，这样似乎并不 work……
+> TODO: 之后研究一下旧版本的 Ubuntu 怎么搞比较合适吧……
+
+2. 从[这里](https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.08/riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14.tar.gz)下载预编译好的 RISC-V 工具链并解压。
+
+3. 安装工具链 `cp riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/* /usr/ -r`
 
 > 在第 2. 步，你可以选择不安装到系统目录下。相应的，你需要设置环境变量：
 > `export PATH=$PATH:/path/to/riscv-prebuilt/bin`，把 `/path/to` 替换为你的解压目录。
