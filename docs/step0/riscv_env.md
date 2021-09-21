@@ -33,7 +33,7 @@ Win10 设置
 
 ### Ubuntu 用户环境配置指南
 
-1. 你可以直接使用 apt 来安装用户态的 qemu，即 `apt qemu-user`。
+1. 你可以直接使用 apt 来安装用户态的 qemu，即 `apt install qemu-user`。
 
 > 对于 20.04 前的 Ubuntu 版本，这样似乎并不 work……
 > TODO: 之后研究一下旧版本的 Ubuntu 怎么搞比较合适吧……
