@@ -38,7 +38,6 @@
   * [任务概述](docs/step4/intro.md)
   * [通过例子学习](docs/step4/example.md)
   * [规范](docs/step4/spec.md)
-* [stage1总结](docs/step4/stage1.md)
 
 ## 变量和语句
 * step5：局部变量和赋值
