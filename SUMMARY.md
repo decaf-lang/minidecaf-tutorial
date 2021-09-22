@@ -3,7 +3,7 @@
 ## 零：前置准备
 
 * 配环境、跑测试
-  * [RISC-V环境配置](docs/step0/riscv_env.md)
+  * [RISC-V 环境配置](docs/step0/riscv_env.md)
   * [RISC-V 的工具链使用](docs/step0/riscv.md)
   * [实验框架环境配置](docs/step0/env.md)
   * [运行实验框架](docs/step0/testing.md)
