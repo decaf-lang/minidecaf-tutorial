@@ -37,6 +37,9 @@ Win10 设置
 
 1. 建议使用 Ubuntu 20.04 及更高的版本，你可以直接使用 apt 来安装用户态的 qemu，即 `apt install qemu-user`。
 
+如果使用的是低版本的WSL, 通过windows应用商店可以很容易地安装Ubuntu 20.04 LTS;
+如果在机器上直接安装了较低版本的Ubuntu, 可以参考 [这个教程](https://www.cyberciti.biz/faq/upgrade-ubuntu-18-04-to-20-04-lts-using-command-line/)进行升级. ** 注意备份! **
+
 对于低版本的 Ubuntu，你需要自己编译出可用的用户态 QEMU。
 ```bash
 git clone https://git.qemu.org/git/qemu.git # 这里可能下载速度过慢，需要科学上网
