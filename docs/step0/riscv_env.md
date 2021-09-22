@@ -68,6 +68,8 @@ Win10 设置
     然后从[这里](https://cloud.tsinghua.edu.cn/f/6246e90c407b4a508816/)上下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，只用里面的 `pk`。
 
     > Homebrew 也提供了 riscv-pk，不过那是 64 位的，而我们需要 32 位的，请使用我们预编译的 riscv-pk 或自行编译。
+    >
+    > 请注意我们提供的预编译 pk 是 x86 版本，如果你是其他平台（如M1 Mac），可以尝试自行根据 pk 的源码进行编译，附 [Github 仓库链接](https://github.com/riscv/riscv-pk)。
 
 3. （可选）设置环境变量，方法与 Linux 一样，见上一节。如果不设置每次使用 gcc 和 spike 时都要输入完整路径。不过对于 `pk` 设置环境变量不管用，要么把它放到系统目录 `/usr/local/bin/pk`，要么每次都用完整路径。
 4. 测试你 GCC 和 Spike 是否成功安装，详见[RISC-V 的工具链使用](./riscv.md)。
