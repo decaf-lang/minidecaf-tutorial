@@ -35,9 +35,6 @@ Win10 设置
 
 1. 你可以直接使用 apt 来安装用户态的 qemu，即 `apt install qemu-user`。
 
-> 对于 20.04 前的 Ubuntu 版本，这样似乎并不 work……
-> TODO: 之后研究一下旧版本的 Ubuntu 怎么搞比较合适吧……
-
 2. 从[这里](https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.08/riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14.tar.gz)下载预编译好的 RISC-V 工具链并解压。
 
 3. 安装工具链 `cp riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/* /usr/ -r`
