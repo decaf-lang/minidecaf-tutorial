@@ -53,7 +53,7 @@ Win10 设置
 1. 从[这里](https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-apple-darwin.tar.gz)下载预编译好的 RISC-V 工具链并解压到你喜欢的目录。
 2. 由于 macOS 不支持 QEMU 的用户态模式，我们使用 [Spike](https://github.com/riscv/riscv-isa-sim) 模拟器和一个简易内核 [riscv-pk](https://github.com/riscv/riscv-pk) 提供用户态程序的运行环境。你可以选择下面两种安装方法中的任意一种：
 
-  1. 从网络学堂上下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，不过还需要通过 [Homebrew](https://brew.sh/) 安装依赖 device tree compiler：
+  1. 从[这里](https://cloud.tsinghua.edu.cn/f/6246e90c407b4a508816/)下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，不过还需要通过 [Homebrew](https://brew.sh/) 安装依赖 device tree compiler：
 
     ```bash
     $ brew install dtc
@@ -66,7 +66,7 @@ Win10 设置
     $ brew install riscv-isa-sim
     ```
 
-    然后从网络学堂上下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，只用里面的 `pk`。
+    然后从[这里](https://cloud.tsinghua.edu.cn/f/6246e90c407b4a508816/)上下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，只用里面的 `pk`。
 
     > Homebrew 也提供了 riscv-pk，不过那是 64 位的，而我们需要 32 位的，请使用我们预编译的 riscv-pk 或自行编译。
 
