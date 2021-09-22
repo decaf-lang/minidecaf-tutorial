@@ -11,7 +11,7 @@
 > 因此我们不能直接使用有些系统自带的 gcc，这种 gcc 生成的可执行程序只能在你本机（x86）上运行。
 > 我们需要下载安装 riscv64-unknown-elf-gcc，用来生成 RISC-V 可执行程序。
 
-我们提供了预编译的 riscv64-unknown-elf-gcc 和 qemu 模拟器，不过只能在 Linux/Mac 下运行，Windows 的同学可以使用 WSL，或者运行一个虚拟机。
+我们提供了预编译的 riscv64-unknown-elf-gcc 和 qemu/spike 模拟器，不过只能在 Linux/Mac 下运行（qemu 对应 Linux，spike 对应 Mac），Windows 的同学可以使用 WSL，或者运行一个虚拟机。
 命令行基础操作我们就不赘述了，大家可以自己在网上查找资料。
 下面是环境配置指南，请阅读自己的系统的那一小节。
 
