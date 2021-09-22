@@ -3,11 +3,10 @@
 > 接下来我们会用到 git。
 > git 的安装和使用会在软件工程课上讲述，同学们也自行查阅相关资料，也可以参考[这里](https://www.liaoxuefeng.com/wiki/896043488029600) 。
 
-1. 通过 `git clone` 把[测例](https://github.com/decaf-lang/minidecaf-tests)和实验框架实现克隆到同一个目录下面。
+1. 按照本文档的前几节（[RISCV 环境配置](./riscv_env.md)和[实验框架环境配置](./env.md)配置好实验环境。
 
-    > 关于实验框架，助教会根据大家选择的语言，在大家提交的 Git Tsinghua 账号中创建一个有初始代码的仓库。
-
-2. 按照框架的 README 配置好它的环境。
+2. 助教已经为每位同学在 git.tsinghua.edu.cn 创建了一个仓库，其中 minidecaf 的[测例仓库](https://git.tsinghua.edu.cn/compiler-21/minidecaf-tests)为其中的一个子模块，你可以通过以下指令来在克隆主仓库的同时克隆子模块 `git clone --recursive <repository>`。
+由于测例仓库会有所更新，在克隆之后你需要在主仓库目录下使用 `git submodule update --remote --merge` 来手动更新。
 
 3. 按照[测例](https://github.com/decaf-lang/minidecaf-tests)的 README 运行测试 step1，实验框架给出的初始代码可以通过 step1 的所有测例。
 

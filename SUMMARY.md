@@ -17,21 +17,18 @@
 * step1：仅一个 return 的 main 函数
   * [通过例子学习](docs/step1/example.md)
   * [Visitor 模式速成](docs/step1/visitor.md)
-  * [手写简单 parser](docs/step1/manual-parser.md)
   * [规范](docs/step1/spec.md)
 
 ## 常量表达式
 * step2：一元操作
   * [任务概述](docs/step2/intro.md)
   * [通过例子学习](docs/step2/example.md)
-  * [手写简单 parser](docs/step2/manual-parser.md)
   * [规范](docs/step2/spec.md)
 
 * step3：加减乘除模
   * [任务概述](docs/step3/intro.md)
   * [通过例子学习](docs/step3/example.md)
   * [优先级和结合性](docs/step3/precedence.md)
-  * [手写简单 parser](docs/step3/manual-parser.md)
   * [规范](docs/step3/spec.md)
 
 * step4：比较和逻辑表达式
@@ -43,20 +40,17 @@
 * step5：局部变量和赋值
   * [任务概述](docs/step5/intro.md)
   * [通过例子学习](docs/step5/example.md)
-  * [手写简单 parser](docs/step5/manual-parser.md)
   * [规范](docs/step5/spec.md)
 
 * step6：if 语句和条件表达式
   * [任务概述](docs/step6/intro.md)
   * [通过例子学习](docs/step6/example.md)
-  * [手写简单 parser](docs/step6/manual-parser.md)
   * [规范](docs/step6/spec.md)
 
 ## 作用域和循环
 * step7：作用域和块语句
   * [任务概述](docs/step7/intro.md)
   * [通过例子学习](docs/step7/example.md)
-  * [手写简单 parser](docs/step7/manual-parser.md)
   * [规范](docs/step7/spec.md)
 
 * step8：循环语句
@@ -69,20 +63,17 @@
 * step9：函数
   * [任务概述](docs/step9/intro.md)
   * [通过例子学习](docs/step9/example.md)
-  * [手写简单 parser](docs/step9/manual-parser.md)
   * [规范](docs/step9/spec.md)
 
 * step10：全局变量
   * [任务概述](docs/step10/intro.md)
   * [通过例子学习](docs/step10/example.md)
-  * [手写简单 parser](docs/step10/manual-parser.md)
   * [规范](docs/step10/spec.md)
 
 ## 扩展：数组
 * step11：数组
   * [任务概述](docs/step11/intro.md)
   * [通过例子学习](docs/step11/example.md)
-  * [手写简单 parser](docs/step11/manual-parser.md)
   * [类型系统](docs/step11/typesystem.md)
   * [规范](docs/step11/spec.md)
 
