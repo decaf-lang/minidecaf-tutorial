@@ -99,7 +99,7 @@ $ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -O3 test.c
 $ ls a.out
 a.out
 $ ./a.out
-bash: ./a.out: cannot execute binary file: Exec format error
+如果没有安装qemu模拟器，则会出现如下错误:"bash: ./a.out: cannot execute binary file: Exec format error"
 ```
 
 后面[RISC-V 的工具链使用](./riscv.md)总结了 gcc 和 qemu 在编译实验中可能需要的用法。
@@ -109,6 +109,8 @@ bash: ./a.out: cannot execute binary file: Exec format error
 # Linux用户
 $ qemu-riscv32 a.out
 Hello world!
+# 注意：安装了qemu之后，直接运行 ./a.out 往往也可以调用qemu环境正确执行，并得到"Hello world!"输出。
+
 # Mac OS用户，假设你已经将spike加入环境变量，将pk加入系统目录
 $ spike --isa=RV32G pk a.out
 bbl loader
