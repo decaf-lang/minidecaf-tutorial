@@ -36,27 +36,26 @@ Win10 设置
 ### Ubuntu 用户环境配置指南
 
 1. 建议使用 Ubuntu 20.04 及更高的版本，你可以直接使用 apt 来安装用户态的 qemu，即 `apt install qemu-user`。
-
-如果使用的是低版本的 WSL，通过 Windows 应用商店可以很容易地安装 Ubuntu 20.04 LTS;
-如果在机器上直接安装了较低版本的 Ubuntu, 可以参考[这个教程](https://www.cyberciti.biz/faq/upgrade-ubuntu-18-04-to-20-04-lts-using-command-line/)进行升级，升级时**注意备份**。
-
-如果出于某些原因必须使用低版本的 Ubuntu，你需要自己编译出可用的用户态 QEMU。
-```bash
-git clone https://git.qemu.org/git/qemu.git # 这里可能下载速度过慢，需要科学上网
-cd qemu && ./configure --prefix=/usr/local --target-list=riscv32-linux-user
-make
-make install
-qemu-riscv32 --version # 检查是否安装成功
-```
+  
+  如果使用的是低版本的 WSL，通过 Windows 应用商店可以很容易地安装 Ubuntu 20.04 LTS;
+  如果在机器上直接安装了较低版本的 Ubuntu, 可以参考[这个教程](https://www.cyberciti.biz/faq/upgrade-ubuntu-18-04-to-20-04-lts-using-command-line/)进行升级，升级时**注意备份**。
+  
+  如果出于某些原因必须使用低版本的 Ubuntu，你需要自己编译出可用的用户态 QEMU。
+  ```bash
+  git clone https://git.qemu.org/git/qemu.git # 这里可能下载速度过慢，需要科学上网
+  cd qemu && ./configure --prefix=/usr/local --target-list=riscv32-linux-user
+  make
+  make install
+  qemu-riscv32 --version # 检查是否安装成功
+  ```
 
 2. 从[这里](https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.08/riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14.tar.gz)下载预编译好的 RISC-V 工具链并解压。
 
 3. 安装工具链 `cp riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/* /usr/ -r`
-
-> 在第 2. 步，你可以选择不安装到系统目录下。相应的，你需要设置环境变量：
->
-> 首先把文件夹`riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/`改名为 riscv-prebuilt（这一步实际不是必须的，主要为缩短文件夹名字的长度），然后修改`~/.bashrc` 文件, 把`export PATH=$PATH:/path/to/riscv-prebuilt/bin`加入到.bashrc文件的末尾。注意，此处的`/path/to` 需要替换解压文件夹所在目录。每次修改`.bashrc`文件后，都需要执行命令`source ~/.bashrc`使修改生效。
-> （如果你不用系统自带的 bash 而是用 zsh 之类的 shell，那加到 `~/.zshrc` 等 shell 配置文件里）
+  > 在第 2. 步，你可以选择不安装到系统目录下。相应的，你需要设置环境变量：
+  >
+  > 首先把文件夹`riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/`改名为 riscv-prebuilt（这一步实际不是必须的，主要为缩短文件夹名字的长度），然后修改`~/.bashrc` 文件, 把`export PATH=$PATH:/path/to/riscv-prebuilt/bin`加入到.bashrc文件的末尾。注意，此处的`/path/to` 需要替换解压文件夹所在目录。每次修改`.bashrc`文件后，都需要执行命令`source ~/.bashrc`使修改生效。
+  > （如果你不用系统自带的 bash 而是用 zsh 之类的 shell，那加到 `~/.zshrc` 等 shell 配置文件里）
 
 ### macOS 用户环境配置指南
 
@@ -70,7 +69,7 @@ qemu-riscv32 --version # 检查是否安装成功
     ```
 
   2. 通过 [Homebrew](https://brew.sh/) 安装 Spike（会自动安装 dtc）：
-
+    
     ```bash
     $ brew tap riscv/riscv
     $ brew install riscv-isa-sim
@@ -83,36 +82,37 @@ qemu-riscv32 --version # 检查是否安装成功
     > 请注意我们提供的预编译 pk 是 x86 版本，如果你是其他平台（如M1 Mac），可以尝试自行根据 pk 的源码进行编译，附 [Github 仓库链接](https://github.com/riscv/riscv-pk)。
 
 3. （可选）设置环境变量，方法与 Linux 一样，见上一节。如果不设置每次使用 gcc 和 spike 时都要输入完整路径。不过对于 `pk` 设置环境变量不管用，要么把它放到系统目录 `/usr/local/bin/pk`，要么每次都用完整路径。
+
 4. 测试你 GCC 和 Spike 是否成功安装，详见[RISC-V 的工具链使用](./riscv.md)。
 
 
 ## 必做：测试你是否正确配置好了环境
 1. 创建 `test.c` 文件，其中写入如下内容
-```c
-#include <stdio.h>
-int main() { printf("Hello world!\n"); }
-```
+  ```c
+  #include <stdio.h>
+  int main() { printf("Hello world!\n"); }
+  ```
 
 2. 编译 `test.c` 文件，`gcc` 应该输出一个可执行文件 `a.out`。但 `a.out` 是 RISC-V 可执行文件，所以我们的 X86 计算机无法运行。
-```bash
-$ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -O3 test.c
-$ ls a.out
-a.out
-$ ./a.out
-# 如果没有安装qemu模拟器，则会出现如下错误:"bash: ./a.out: cannot execute binary file: Exec format error"
-```
+  ```bash
+  $ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -O3 test.c
+  $ ls a.out
+  a.out
+  $ ./a.out
+  # 如果没有安装qemu模拟器，则会出现如下错误:"bash: ./a.out: cannot execute binary file: Exec format error"
+  ```
+  后面[RISC-V 的工具链使用](./riscv.md)总结了 gcc 和 qemu 在编译实验中可能需要的用法。
 
-后面[RISC-V 的工具链使用](./riscv.md)总结了 gcc 和 qemu 在编译实验中可能需要的用法。
+3. 使用 qemu 执行 `a.out`，具体操作如下
 
-3. 使用 qemu 执行 `a.out`
-# Linux用户
+### Linux用户
 ```bash
 $ qemu-riscv32 a.out
 Hello world!
 注意：安装了qemu之后，直接运行 ./a.out 往往也可以调用qemu环境正确执行，并得到"Hello world!"输出。
 ```
 
-# Mac OS用户，假设你已经将spike加入环境变量，将pk加入系统目录
+### Mac OS用户，假设你已经将spike加入环境变量，将pk加入系统目录
 ```bash
 $ spike --isa=RV32G pk a.out
 bbl loader
