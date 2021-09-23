@@ -109,7 +109,7 @@ $ ./a.out
 # Linux用户
 $ qemu-riscv32 a.out
 Hello world!
-# 注意：安装了qemu之后，直接运行 ./a.out 往往也可以调用qemu环境正确执行，并得到"Hello world!"输出。
+注意：安装了qemu之后，直接运行 ./a.out 往往也可以调用qemu环境正确执行，并得到"Hello world!"输出。
 
 # Mac OS用户，假设你已经将spike加入环境变量，将pk加入系统目录
 $ spike --isa=RV32G pk a.out
