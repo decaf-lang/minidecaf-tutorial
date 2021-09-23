@@ -105,13 +105,15 @@ $ ./a.out
 后面[RISC-V 的工具链使用](./riscv.md)总结了 gcc 和 qemu 在编译实验中可能需要的用法。
 
 3. 使用 qemu 执行 `a.out`
-```bash
 # Linux用户
+```bash
 $ qemu-riscv32 a.out
 Hello world!
 注意：安装了qemu之后，直接运行 ./a.out 往往也可以调用qemu环境正确执行，并得到"Hello world!"输出。
+```
 
 # Mac OS用户，假设你已经将spike加入环境变量，将pk加入系统目录
+```bash
 $ spike --isa=RV32G pk a.out
 bbl loader
 Hello world!
