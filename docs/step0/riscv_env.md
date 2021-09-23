@@ -42,7 +42,7 @@ Win10 设置
   
   如果出于某些原因必须使用低版本的 Ubuntu，你需要自己编译出可用的用户态 QEMU。
   ```bash
-  git clone https://git.qemu.org/git/qemu.git # 这里可能下载速度过慢，需要科学上网
+  git clone https://mirrors.tuna.tsinghua.edu.cn/git/qemu.git
   cd qemu && ./configure --prefix=/usr/local --target-list=riscv32-linux-user
   make
   make install
