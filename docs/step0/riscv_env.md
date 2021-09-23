@@ -54,9 +54,8 @@ qemu-riscv32 --version # 检查是否安装成功
 3. 安装工具链 `cp riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/* /usr/ -r`
 
 > 在第 2. 步，你可以选择不安装到系统目录下。相应的，你需要设置环境变量：
-> `export PATH=$PATH:/path/to/riscv-prebuilt/bin`，把 `/path/to` 替换为你的解压目录。
-> 把上面这条命令加到你的 `~/.bashrc` 文件中，这样不用每次打开终端都要重新设置。
-> 每次改完 `~/.bashrc` 你都需要重启终端，以便改动生效。
+>
+> 首先把文件夹`riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/`改名为 riscv-prebuilt（这一步实际不是必须的，主要为缩短文件夹名字的长度），然后修改`~/.bashrc` 文件, 把`export PATH=$PATH:/path/to/riscv-prebuilt/bin`加入到.bashrc文件的末尾。注意，此处的`/path/to` 需要替换解压文件夹所在目录。每次修改`.bashrc`文件后，都需要执行命令`source ~/.bashrc`使修改生效。
 > （如果你不用系统自带的 bash 而是用 zsh 之类的 shell，那加到 `~/.zshrc` 等 shell 配置文件里）
 
 ### macOS 用户环境配置指南
@@ -76,9 +75,9 @@ qemu-riscv32 --version # 检查是否安装成功
     $ brew tap riscv/riscv
     $ brew install riscv-isa-sim
     ```
-
+    
     然后从[这里](https://cloud.tsinghua.edu.cn/f/6246e90c407b4a508816/)上下载我们预编译的二进制程序包 spike-pk-prebuilt-x86_64-apple-darwin.tar.gz，只用里面的 `pk`。
-
+    
     > Homebrew 也提供了 riscv-pk，不过那是 64 位的，而我们需要 32 位的，请使用我们预编译的 riscv-pk 或自行编译。
     >
     > 请注意我们提供的预编译 pk 是 x86 版本，如果你是其他平台（如M1 Mac），可以尝试自行根据 pk 的源码进行编译，附 [Github 仓库链接](https://github.com/riscv/riscv-pk)。
