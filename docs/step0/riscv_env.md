@@ -99,7 +99,7 @@ $ riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 -O3 test.c
 $ ls a.out
 a.out
 $ ./a.out
-如果没有安装qemu模拟器，则会出现如下错误:"bash: ./a.out: cannot execute binary file: Exec format error"
+# 如果没有安装qemu模拟器，则会出现如下错误:"bash: ./a.out: cannot execute binary file: Exec format error"
 ```
 
 后面[RISC-V 的工具链使用](./riscv.md)总结了 gcc 和 qemu 在编译实验中可能需要的用法。
