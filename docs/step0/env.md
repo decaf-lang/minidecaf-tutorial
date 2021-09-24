@@ -70,36 +70,29 @@
 
 ## python 实验框架环境配置
 
-关于操作系统，类似 C++，但由于 python 的跨平台性，理论上也可以在 Windows 下进行开发。但**不保证Windows和在线测试环境下程序行为的一致性**。由于 python 自带的包管理系统 pip，安装推荐的依赖只需执行如下命令。
-
-```bash
-$ pip install -r ./requirements.txt 
-```
-
+关于操作系统，类似 C++，但由于 python 的跨平台性，理论上也可以在 Windows 下进行开发。但**不保证Windows和在线测试环境下程序行为的一致性**。
 1. python 3.9
 
    框架本身在 python 3.9 下进行开发，使用了 python 3.9 的新特性并仅在这一版本下经过测试。请保证你所使用的 python 版本高于此版本。
 
-   
-
    Linux环境下安装Python 3.9可以尝试如下命令：
-```bash
-> sudo add-apt-repository ppa:deadsnakes/ppa
-> sudo apt update
-> sudo apt install python3.9
-```
-修改~/.bashrc文件，在末尾加上`` alias python='/usr/bin/python3.9' ``。然后运行：
-```bash
-> source ~/.bashrc
-```
-此外，也可以通过``update-alternatives``命令修改python版本使用的优先级，对所有服务器用户都有效，具体用法请见 [https://medium.com/analytics-vidhya/how-to-install-and-switch-between-different-python-versions-in-ubuntu-16-04-dc1726796b9b]( https://medium.com/analytics-vidhya/how-to-install-and-switch-between-different-python-versions-in-ubuntu-16-04-dc1726796b9b)。
+   ```bash
+   > sudo add-apt-repository ppa:deadsnakes/ppa
+   > sudo apt update
+   > sudo apt install python3.9
+   ```
+   修改~/.bashrc文件，在末尾加上`` alias python='/usr/bin/python3.9' ``。然后运行：
+   ```bash
+   > source ~/.bashrc
+   ```
+   此外，也可以通过``update-alternatives``命令修改python版本使用的优先级，对所有服务器用户都有效，具体用法可参见[这里]( https://medium.com/analytics-vidhya/how-to-install-and-switch-between-different-python-versions-in-ubuntu-16-04-dc1726796b9b)。
 
-如果想为指定的Python版本（比如3.9）安装所依赖的包，可以用如下命令：
+   框架里已经提供了需要的 python 包列表文件 requirements.txt，你可以直接通过 pip 命令安装下文提到的 python 依赖包 ply 和 argparse：
 
-```bash
-> python3.9 -m pip install -r ./requirements.txt
-```
-
+   ```bash
+   $ pip install -r ./requirements.txt 
+   ```
+   
 
 2. argparse
 
