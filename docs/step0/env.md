@@ -80,6 +80,27 @@ $ pip install -r ./requirements.txt
 
    框架本身在 python 3.9 下进行开发，使用了 python 3.9 的新特性并仅在这一版本下经过测试。请保证你所使用的 python 版本高于此版本。
 
+   
+
+   Linux环境下安装Python 3.9可以尝试如下命令：
+```bash
+> sudo add-apt-repository ppa:deadsnakes/ppa
+> sudo apt update
+> sudo apt install python3.9
+```
+修改~/.bashrc文件，在末尾加上`` alias python='/usr/bin/python3.9' ``。然后运行：
+```bash
+> source ~/.bashrc
+```
+此外，也可以通过``update-alternatives``命令修改python版本使用的优先级，对所有服务器用户都有效，具体用法请见 [https://medium.com/analytics-vidhya/how-to-install-and-switch-between-different-python-versions-in-ubuntu-16-04-dc1726796b9b]( https://medium.com/analytics-vidhya/how-to-install-and-switch-between-different-python-versions-in-ubuntu-16-04-dc1726796b9b)。
+
+如果想为指定的Python版本（比如3.9）安装所依赖的包，可以用如下命令：
+
+```bash
+> python3.9 -m pip install -r ./requirements.txt
+```
+
+
 2. argparse
 
    框架使用了 [argparse](https://docs.python.org/zh-cn/3/library/argparse.html) 以处理命令行参数。官方文档中提供了它的[教程](https://docs.python.org/zh-cn/3/howto/argparse.html)。
