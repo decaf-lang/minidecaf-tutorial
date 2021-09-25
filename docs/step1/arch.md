@@ -141,6 +141,6 @@ TAC 程序是**无类型**的，或者说它仅支持一种类型：32位（4字
 
 通常我们认为的目标代码生成步骤包含寄存器分配、指令选择。**寄存器分配**是指为中间代码中的虚拟寄存器分配实际的物理寄存器，涉及物理寄存器的调度分配。指令选择是指选用合适的汇编指令来翻译中间代码指令，如中间代码生成章节提供的例子中，使用 addi 汇编指令来翻译 ADD 中间代码指令。需要特别提出的是，RISC-V 指令集的设计思路是尽可能简洁，因此有些指令并没有直接提供，需要用多条简单指令代替。如相等、大于等于、逻辑与、逻辑或等等，同学们实现时需要特别注意。
 
-课程实验的目标平台为 RISC-V，RISC-V 是一个与 MIPS 类似的 RISC 指令集架构，编译实验要求所实现的编译器把 MiniDecaf 程序编译到 RISC-V 汇编代码。指令集文档在[这里](https://riscv.org/technical/specifications/)，我们只需要其中的 "Unprivileged Spec"，另外[这里](https://github.com/TheThirdOne/rars/wiki/Supported-Instructions)也有（非官方的）指令用法说明。下图给出了 RISC-V 的32个整数寄存器的相关说明，其中需要特别注意的寄存器有 ra（存放函数返回地址）、sp（存放当前栈顶地址）、fp（存放当前栈底地址）、a0&a1（存放函数返回值）。为了简单起见，我们简化了 RISC-V 的调用约定，由调用者（caller）负责保存寄存器内容，因此，无需关心某个寄存器是 caller-saved 还是 called-saved。
+课程实验的目标平台为 RISC-V，RISC-V 是一个与 MIPS 类似的 RISC 指令集架构，编译实验要求所实现的编译器把 MiniDecaf 程序编译到 RISC-V 汇编代码。指令集文档在[这里](https://riscv.org/technical/specifications/)，我们只需要其中的 "Unprivileged Spec"，另外[这里](https://github.com/TheThirdOne/rars/wiki/Supported-Instructions)也有（非官方的）指令用法说明。下图给出了 RISC-V 的32个整数寄存器的相关说明，其中需要特别注意的寄存器有 ra（存放函数返回地址）、sp（存放当前栈顶地址）、fp（存放当前栈底地址）、a0&a1（存放函数返回值）。为了简单起见，我们简化了 RISC-V 的调用约定，由调用者（caller）负责保存寄存器内容，因此，无需关心某个寄存器是 caller-saved 还是 callee-saved。
 
 ![](./pics/riscv_reg.png)
