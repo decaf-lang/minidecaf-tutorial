@@ -53,7 +53,7 @@ stage4 - stage5 为升级关卡，如果你学有余力，完成它们可以减�
 
 ## 实验提交
 
-大家在网络学堂提交 **git.tsinghua.edu.cn** 的帐号名后，助教会给每个人建立一个私有的仓库，URL 为 https://git.tsinghua.edu.cn/compiler-20/minidecaf-你的学号 ，将作业提交到那个仓库即可。
+大家在网络学堂提交 **git.tsinghua.edu.cn** 的帐号名后，助教会给每个人建立一个私有的仓库，URL 为 https://git.tsinghua.edu.cn/compiler-21/minidecaf-你的学号 ，将作业提交到那个仓库即可。
 每个 stage 会对应于一个 branch，当切换到一个新的 branch 上实现时，你可以用 `git merge` 来合并前一个 branch 所作的修改。
 
 本学期我们使用 GitLab 的 CI（持续集成）配合一个前端的 OJ 来测试大家的代码实现。
