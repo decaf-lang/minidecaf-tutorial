@@ -61,9 +61,9 @@ int main() {
 
 ```assembly
 main:
-	_T1 = 2021                  
-    _T0 = _T1                    
-    return _T0 
+	_T1 = 2021
+    _T0 = _T1
+    return _T0
 ```
 
 针对赋值操作，我们显然需要设计一条中间代码指令来表示它，给出的参考定义如下：
@@ -93,7 +93,7 @@ Step5 的示例对应如下 RISC-V 汇编代码：
     .global main
 main:
     li t1, 2021
-	mv t0, t1
+	mv t0, t1     # 我们使用 mv 指令来翻译中间表示里的 ASSIGN 指令
     mv a0, t0
     ret
 ```
