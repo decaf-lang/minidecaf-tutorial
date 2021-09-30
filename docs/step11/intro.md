@@ -1,5 +1,5 @@
 # 实验指导 step11：数组
-step11 支持的是数组和指针算术：
+step11 的目标是支持数组：
 
 语法上没有太大改动，
 1. 数组的声明：
@@ -8,15 +8,13 @@ step11 支持的是数组和指针算术：
 <div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)*</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
 </div></pre>
 
-2. 数组和指针的下标操作
+2. 数组的下标操作
 <pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">postfix</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">primary</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression_list</span> <span class="SpecToken">')'</span>
 <div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">postfix</span> <span class="SpecToken">'['</span> <span class="SpecRule">expression</span> <span class="SpecToken">']'</span>
 </div></pre>
-
-3. 指针算术：语法不变，但允许：指针加/减整数、整数加指针、指针减指针了。
 
 step11 难度不大，但有了数组让我们能够写很多有意思的程序了，step11 之前甚至 MiniDecaf 连快速排序都写不了。
 
