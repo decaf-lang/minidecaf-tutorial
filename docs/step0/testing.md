@@ -8,6 +8,8 @@
 2. 助教已经为每位同学在 git.tsinghua.edu.cn 创建了一个仓库，其中 minidecaf 的[测例仓库](https://git.tsinghua.edu.cn/compiler-21/minidecaf-tests)为其中的一个子模块，你可以通过以下指令来在克隆主仓库的同时克隆子模块 `git clone --recursive <repository>`。
 由于测例仓库会有所更新，在克隆之后你需要在主仓库目录下使用 `git submodule update --remote --merge` 来手动更新。
 
+> 注意：由于子模块使用 ssh 链接，你需要将你的 ssh 公钥添加到你的 git.tsinghua 账号上，才能将其克隆下来。
+
 3. 如果你使用的是 C++ 语言的框架，你需要使用 `make` 来编译实验框架，你可以在下方仓库的 `src/` 目录下手动 `make`，或者直接运行脚本 `bash ./prepare.sh`。
 
 4. 按照[测例](https://github.com/decaf-lang/minidecaf-tests)的 README 运行测试 step1，实验框架给出的初始代码可以通过 step1 的所有测例。
