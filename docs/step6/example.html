@@ -1100,6 +1100,9 @@
 <h2 id="&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x751F;&#x6210;">&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x751F;&#x6210;</h2>
 <p>&#x4ECE;&#x672C;&#x6B65;&#x9AA4;&#x5F00;&#x59CB;&#xFF0C;&#x7531;&#x4E8E; MiniDecaf &#x7A0B;&#x5E8F;&#x51FA;&#x73B0;&#x4E86;&#x5206;&#x652F;&#x7ED3;&#x6784;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5F00;&#x59CB;&#x8003;&#x8651;&#x8DF3;&#x8F6C;&#x8BED;&#x53E5;&#x4E86;&#x3002;&#x5728; Step1-4 &#x4E2D;&#xFF0C;TAC &#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x6807;&#x7B7E;&#x53EA;&#x6709;&#x6807;&#x5FD7; main &#x51FD;&#x6570;&#x5165;&#x53E3;&#x8FD9;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x3002;&#x800C;&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6807;&#x7B7E;&#x6765;&#x6307;&#x793A;&#x8DF3;&#x8F6C;&#x6307;&#x4EE4;&#x7684;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#x3002;&#x6211;&#x4EEC;&#x7528; _Lk &#x6765;&#x8868;&#x793A;&#x8DF3;&#x8F6C;&#x7528;&#x6807;&#x7B7E;&#xFF0C;&#x4EE5;&#x6B64;&#x548C;&#x51FD;&#x6570;&#x5165;&#x53E3;&#x6807;&#x7B7E;&#x533A;&#x5206;&#x5F00;&#x6765;&#x3002;</p>
 <p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0; if &#x8BED;&#x53E5;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8BBE;&#x8BA1;&#x4E24;&#x6761;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x6307;&#x4EE4;&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;&#x6761;&#x4EF6;&#x8DF3;&#x8F6C;&#x548C;&#x65E0;&#x6761;&#x4EF6;&#x8DF3;&#x8F6C;&#xFF0C;&#x7ED9;&#x51FA;&#x7684;&#x53C2;&#x8003;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;TAC &#x6307;&#x4EE4;&#x7684;&#x540D;&#x79F0;&#x53EA;&#x8981;&#x5728;&#x4F60;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x5373;&#x53EF;&#xFF0C;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x548C;&#x6587;&#x6863;&#x4E00;&#x81F4;&#x3002;</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -1115,7 +1118,7 @@
 <td>&#x82E5; T0 &#x7684;&#x503C;&#x4E3A;0&#xFF0C;&#x5219;&#x8DF3;&#x8F6C;&#x5230; LABEL &#x6807;&#x7B7E;&#x5904;</td>
 </tr>
 <tr>
-<td><code>JMP</code></td>
+<td><code>JUMP</code></td>
 <td><code>Label</code></td>
 <td>&#x8DF3;&#x8F6C;&#x5230; LABEL &#x6807;&#x7B7E;&#x5904;</td>
 </tr>
@@ -1125,10 +1128,10 @@
 <pre><code class="lang-assembly">main:
     _T1 = 1
     _T0 = _T1
-    BEQ _T0, _L1
+    BEQZ _T0, _L1
     _T2 = 2
     _T0 = _T2
-    JMP _L2
+    JUMP _L2
 _L1:
     _T3 = 3
     _T0 = _T3
@@ -1216,7 +1219,7 @@ _L1:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"通过例子学习","level":"5.2.2","depth":2,"next":{"title":"规范","level":"5.2.3","depth":2,"path":"docs/step6/spec.md","ref":"docs/step6/spec.md","articles":[]},"previous":{"title":"任务概述","level":"5.2.1","depth":2,"path":"docs/step6/intro.md","ref":"docs/step6/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step6/example.md","mtime":"2021-09-30T14:38:17.913Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-30T14:39:38.271Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"通过例子学习","level":"5.2.2","depth":2,"next":{"title":"规范","level":"5.2.3","depth":2,"path":"docs/step6/spec.md","ref":"docs/step6/spec.md","articles":[]},"previous":{"title":"任务概述","level":"5.2.1","depth":2,"path":"docs/step6/intro.md","ref":"docs/step6/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step6/example.md","mtime":"2021-10-03T03:37:32.653Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-03T03:38:40.042Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
