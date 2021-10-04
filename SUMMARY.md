@@ -1,6 +1,6 @@
 * [实验简介](README.md)
 
-## 零：前置准备
+## 前置准备
 
 * 配环境、跑测试
   * [RISC-V 环境配置](docs/step0/riscv_env.md)
@@ -9,7 +9,7 @@
   * [运行实验框架](docs/step0/testing.md)
   * [常见问题](docs/step0/faq.md)
 
-## 第一个编译器
+## Stage0：第一个编译器
 
 * [MiniDecaf 编译器结构](docs/step1/arch.md)
 * [已提供的语法特性](docs/step1/provided.md)

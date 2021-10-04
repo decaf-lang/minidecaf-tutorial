@@ -198,11 +198,11 @@ def p_unary_expression(p):
 
 ### Python 框架
 
-`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `namer.py`（因为只有 int 类型，无需进行类型检查）。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
 
 ### C++ 框架
 
-`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `build_sym.hpp`（因为只有 int 类型，无需进行类型检查）。在框架中，两者都是继承 `ast/visitor.hpp` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在框架中，两者都是继承 `ast/visitor.hpp` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。在新增 AST 节点后，必须在两者中增加对应的 `visitXXX` 函数。其实现细节参见代码。
 
 ## 中间代码生成
 
