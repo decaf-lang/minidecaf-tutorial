@@ -51,12 +51,12 @@
 * step7：作用域和块语句
   * [任务概述](docs/step7/intro.md)
   * [通过例子学习](docs/step7/example.md)
+  * [数据流分析](docs/step7/dataflow.md)
   * [规范](docs/step7/spec.md)
 
 * step8：循环语句
   * [任务概述](docs/step8/intro.md)
   * [通过例子学习](docs/step8/example.md)
-  * [数据流分析](docs/step8/dataflow.md)
   * [规范](docs/step8/spec.md)
 
 ## Stage4（升级）：函数和全局变量
