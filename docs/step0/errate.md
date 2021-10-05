@@ -14,7 +14,7 @@ printer.work(prog)
 
 &nbsp;
 
-Q: Python框架 step7 中，由 multi_nesting.c 生成的以下中间代码无法成功生成目标代码。
+Q： Python框架 step7 中，由 multi_nesting.c 生成的以下中间代码无法成功生成目标代码。
 
 经过使用 print 法调试，发现是 `_T1` 所对应的寄存器在 `return _T1` 前就被释放了，后端会尝试到栈中寻找 `_T1` 并且不会找到，出现报错：
 `utils.error.IllegalArgumentException: error: encounter a non-returned basic block`
