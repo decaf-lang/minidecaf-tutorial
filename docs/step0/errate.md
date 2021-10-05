@@ -1,9 +1,8 @@
 # 勘误表
 
-在这里我们会列出与实验相关的勘误，它会和[问答墙](https://docs.qq.com/doc/DY1hZWFV0T0N0VWph)上的勘误部分保持一致。同学们遇到问题时，请先在勘误表中查找查看是否已有解答。
+在这里我们会列出与实验相关的**勘误**，它会和[问答墙](https://docs.qq.com/doc/DY1hZWFV0T0N0VWph)上的勘误部分保持一致。同学们遇到问题时，请先在勘误表中查找查看是否已有解答。
 
-
-
+&nbsp;
 
 Q：Python 框架无法正确输出三地址码？
 
@@ -13,7 +12,7 @@ printer = TreePrinter(indentLen=<缩进空格数>)
 printer.work(prog)
 ```
 
-
+&nbsp;
 
 Q: Python框架 step7 中，由 multi_nesting.c 生成的以下中间代码无法成功生成目标代码。
 
@@ -24,7 +23,7 @@ Q: Python框架 step7 中，由 multi_nesting.c 生成的以下中间代码无�
 
 A：Python 框架的后端除了要修改指令选择部分之外，还需要修改基本块 CFG，可以参见 BruteRegAlloc 的注释里给出的提示。
 
-
+&nbsp;
 
 Q：我怎样才能知道我的提交通过了所有测试用例？
 
