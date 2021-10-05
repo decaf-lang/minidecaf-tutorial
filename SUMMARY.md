@@ -1,6 +1,6 @@
 * [实验简介](README.md)
 
-## 零：前置准备
+## 前置准备
 
 * 配环境、跑测试
   * [RISC-V 环境配置](docs/step0/riscv_env.md)
@@ -9,7 +9,7 @@
   * [运行实验框架](docs/step0/testing.md)
   * [常见问题](docs/step0/faq.md)
 
-## 第一个编译器
+## Stage0：第一个编译器
 
 * [MiniDecaf 编译器结构](docs/step1/arch.md)
 * [已提供的语法特性](docs/step1/provided.md)
@@ -19,7 +19,7 @@
   * [Visitor 模式速成](docs/step1/visitor.md)
   * [规范](docs/step1/spec.md)
 
-## 常量表达式
+## Stage1：常量表达式
 * step2：一元操作
   * [任务概述](docs/step2/intro.md)
   * [通过例子学习](docs/step2/example.md)
@@ -36,7 +36,7 @@
   * [通过例子学习](docs/step4/example.md)
   * [规范](docs/step4/spec.md)
 
-## 变量和语句
+## Stage2：变量和语句
 * step5：局部变量和赋值
   * [任务概述](docs/step5/intro.md)
   * [通过例子学习](docs/step5/example.md)
@@ -47,19 +47,19 @@
   * [通过例子学习](docs/step6/example.md)
   * [规范](docs/step6/spec.md)
 
-## 作用域和循环
+## Stage3：作用域和循环
 * step7：作用域和块语句
   * [任务概述](docs/step7/intro.md)
   * [通过例子学习](docs/step7/example.md)
+  * [数据流分析](docs/step7/dataflow.md)
   * [规范](docs/step7/spec.md)
 
 * step8：循环语句
   * [任务概述](docs/step8/intro.md)
   * [通过例子学习](docs/step8/example.md)
-  * [数据流分析](docs/step8/dataflow.md)
   * [规范](docs/step8/spec.md)
 
-## 升级：函数和全局变量
+## Stage4（升级）：函数和全局变量
 * step9：函数
   * [任务概述](docs/step9/intro.md)
   * [通过例子学习](docs/step9/example.md)
@@ -70,7 +70,7 @@
   * [通过例子学习](docs/step10/example.md)
   * [规范](docs/step10/spec.md)
 
-## 升级：数组
+## Stage5（升级）：数组
 * step11：数组
   * [任务概述](docs/step11/intro.md)
   * [通过例子学习](docs/step11/example.md)
