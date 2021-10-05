@@ -1,4 +1,5 @@
 * [实验简介](README.md)
+* [勘误表](docs/step0/errate.md)
 
 ## 前置准备
 
