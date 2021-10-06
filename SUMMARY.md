@@ -8,7 +8,6 @@
   * [RISC-V 的工具链使用](docs/step0/riscv.md)
   * [实验框架环境配置](docs/step0/env.md)
   * [运行实验框架](docs/step0/testing.md)
-  * [常见问题](docs/step0/faq.md)
 
 ## Stage0：第一个编译器
 

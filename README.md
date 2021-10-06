@@ -60,6 +60,8 @@ stage4 - stage5 为升级关卡，如果你学有余力，完成它们可以减�
 
 我们以 step 组织文档，每个 step 的文档都将以如下形式组织：首先我们会介绍当前 step 需要用到的知识点，其次我们会以一个当前 step 具有代表性的例子介绍它的整个编译流程。在之前 step 中已经介绍的知识点，我们会略过，新的知识点和技术会被详细介绍。
 
+在 2021 年秋季学期，我们通过[问答墙](https://docs.qq.com/doc/DY1hZWFV0T0N0VWph)来集中解决大家在环境配置及完成实验中遇到问题。如果你遇到了任何问题，都可以在[问答墙](https://docs.qq.com/doc/DY1hZWFV0T0N0VWph)中检索；如果尚未有其他人提问，也欢迎提问，助教会尽快回复的。
+
 ## 实验提交
 
 大家在网络学堂提交 **git.tsinghua.edu.cn** 的帐号名后，助教会给每个人建立一个私有的仓库，URL 为 https://git.tsinghua.edu.cn/compiler-21/minidecaf-你的学号 ，将作业提交到那个仓库即可。
