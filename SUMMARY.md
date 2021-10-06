@@ -75,7 +75,6 @@
 * step11：数组
   * [任务概述](docs/step11/intro.md)
   * [通过例子学习](docs/step11/example.md)
-  * [类型系统](docs/step11/typesystem.md)
   * [规范](docs/step11/spec.md)
 
 ## 参考资料
