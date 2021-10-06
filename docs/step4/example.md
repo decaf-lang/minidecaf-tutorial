@@ -63,8 +63,8 @@ slt t2, t0, t1
 
 | IR       | 汇编                                                |
 | ---      | ---                                                 |
-| `lor` | `or t1,t1,t2  ;  snez t1,t1` |
-| `land` | `snez t1,t1  ;  snez t2,t2  ;  and t1,t1,t2` |
+| `lor` | `or t3,t1,t2  ;  snez t3,t3` |
+| `land` | `snez t3,t1  ;  snez t4,t2  ;  and t3,t3,t4` |
 
 > 注意 RISC-V 汇编中的 `and` 和 `or` 指令都是位运算指令，不是逻辑运算指令。
 
