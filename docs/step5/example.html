@@ -1052,6 +1052,7 @@
 </code></pre>
 <h2 id="&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;">&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;</h2>
 <p>&#x9488;&#x5BF9;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x548C;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8BBE;&#x8BA1; AST &#x8282;&#x70B9;&#x6765;&#x8868;&#x793A;&#x5B83;&#xFF0C;&#x7ED9;&#x51FA;&#x7684;&#x53C2;&#x8003;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF08;&#x6846;&#x67B6;&#x4E2D;&#x5DF2;&#x7ECF;&#x63D0;&#x4F9B;&#xFF09;&#xFF1A;</p>
+<p>&#x5BF9;&#x4E8E;python:</p>
 <table>
 <thead>
 <tr>
@@ -1079,6 +1080,43 @@
 </tbody>
 </table>
 <p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;<strong>&#x4E8C;&#x5143;&#x8FD0;&#x7B97;</strong>&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5C06;&#x5B83;&#x5408;&#x5E76;&#x5230; <code>Binary</code> &#x8282;&#x70B9;&#x91CC;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x8BBE;&#x7F6E;&#x4E00;&#x79CD;&#x8282;&#x70B9;&#x7EE7;&#x627F; <code>Binary</code> &#x7C7B;&#x6765;&#x5904;&#x7406;&#x5B83;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;C++:</p>
+<table>
+<thead>
+<tr>
+<th>&#x8282;&#x70B9;</th>
+<th>&#x6210;&#x5458;</th>
+<th>&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VarDecl</code></td>
+<td>&#x540D;&#x79F0; <code>name</code> &#x7C7B;&#x578B;<code>type</code> &#x521D;&#x59CB;&#x5316;&#x503C;<code>init</code></td>
+<td>&#x53D8;&#x91CF;&#x58F0;&#x660E;</td>
+</tr>
+<tr>
+<td><code>AssignExpr</code></td>
+<td>&#x5DE6;&#x503C;<code>left</code>, &#x8D4B;&#x503C;&#x7684;&#x8868;&#x8FBE;&#x5F0F;<code>e</code></td>
+<td>&#x8D4B;&#x503C;&#x8868;&#x8FBE;&#x5F0F;</td>
+</tr>
+<tr>
+<td><code>VarRef</code></td>
+<td>&#x53D8;&#x91CF;&#x540D;<code>var</code></td>
+<td>&#x5DE6;&#x503C;(&#x53D8;&#x91CF;)</td>
+</tr>
+<tr>
+<td><code>IntType</code></td>
+<td>&#x65E0;</td>
+<td>&#x6574;&#x6570;&#x7C7B;&#x578B;</td>
+</tr>
+<tr>
+<td><code>StmtList</code></td>
+<td>&#x82E5;&#x5E72;<code>Statement</code></td>
+<td>&#x8BED;&#x53E5;&#x5217;&#x8868;</td>
+</tr>
+</tbody>
+</table>
 <h2 id="&#x8BED;&#x4E49;&#x5206;&#x6790;">&#x8BED;&#x4E49;&#x5206;&#x6790;</h2>
 <p>&#x4ECE; step5 &#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x9636;&#x6BB5;&#x5BF9;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x89C4;&#x8303;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x3002;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x540D;&#x4E3A;&#x7B26;&#x53F7;&#x8868;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x7B26;&#x53F7;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#x5DF2;&#x7ECF;&#x5728;&#x6846;&#x67B6;&#x4E2D;&#x7ED9;&#x51FA;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x90E8;&#x5206;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x5FC5;&#x8981;&#x65F6;&#x8C03;&#x7528;&#x7B26;&#x53F7;&#x8868;&#x7684;&#x63A5;&#x53E3;&#x5373;&#x53EF;&#x3002;</p>
 <p>&#x5728;&#x7B26;&#x53F7;&#x8868;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x6309;&#x7167;&#x8BED;&#x53E5;&#x987A;&#x5E8F;&#xFF0C;&#x9010;&#x4E00;&#x8BBF;&#x95EE;&#x6240;&#x6709;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x58F0;&#x660E;&#x3002;&#x5728;&#x8BBF;&#x95EE;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E3A;&#x8BE5;&#x53D8;&#x91CF;&#x8D4B;&#x4E88;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x7B26;&#x53F7;&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x5B58;&#x5165;&#x7B26;&#x53F7;&#x8868;&#x4E2D;&#x3002;&#x7531;&#x4E8E;&#x53D8;&#x91CF;&#x4E0D;&#x80FD;&#x91CD;&#x590D;&#x58F0;&#x660E;&#xFF0C;&#x5728;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x7B26;&#x53F7;&#x524D;&#x9700;&#x8981;&#x5728;&#x7B26;&#x53F7;&#x8868;&#x4E2D;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x540C;&#x540D;&#x7B26;&#x53F7;&#x3002;</p>
@@ -1244,7 +1282,7 @@ main:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"通过例子学习","level":"5.1.2","depth":2,"next":{"title":"规范","level":"5.1.3","depth":2,"path":"docs/step5/spec.md","ref":"docs/step5/spec.md","articles":[]},"previous":{"title":"任务概述","level":"5.1.1","depth":2,"path":"docs/step5/intro.md","ref":"docs/step5/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step5/example.md","mtime":"2021-10-06T13:57:15.617Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-06T13:58:22.232Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"通过例子学习","level":"5.1.2","depth":2,"next":{"title":"规范","level":"5.1.3","depth":2,"path":"docs/step5/spec.md","ref":"docs/step5/spec.md","articles":[]},"previous":{"title":"任务概述","level":"5.1.1","depth":2,"path":"docs/step5/intro.md","ref":"docs/step5/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step5/example.md","mtime":"2021-10-07T03:50:45.186Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-07T03:51:44.545Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
