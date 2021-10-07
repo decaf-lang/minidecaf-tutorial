@@ -37,13 +37,13 @@ for (int i = 0; i < 5; i = i + 1)
 _L1:                          # begin label
     _T2 = 5
     _T3 = LT _T0, _T2
-    BEQ _T3, _L3              # i < 5;
-    JMP _L3                   # 循环体
+    BEQZ _T3, _L3              # i < 5;
+    JUMP _L3                   # 循环体
 _L2:                          # loop label
     _T4 = 1
     _T5 = ADD _T0, _T4
     _T0 = _T5                 # i = i + 1;
-    JMP _L1
+    JUMP _L1
 _L3:                          # break label
     # 后续指令 ...
 ```

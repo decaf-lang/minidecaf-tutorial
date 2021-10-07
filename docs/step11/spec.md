@@ -9,7 +9,7 @@
 <span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">function</span> <span class="SpecOperator">|</span> <span class="SpecRule">declaration</span><span class="SpecOperator">)*</span>
 
 <span class="SpecRuleStart">function</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">parameter_list</span> <span class="SpecToken">')'</span> <span class="SpecOperator">(</span><span class="SpecRule">compound_statement</span> <span class="SpecOperator">|</span> <span class="SpecToken">';'</span><span class="SpecOperator">)</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">parameter_list</span> <span class="SpecToken">')'</span> <span class="SpecRule">compound_statement</span>
 
 <span class="SpecRuleStart">type</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'int'</span>
@@ -110,48 +110,3 @@
 
 **11.5** 下标运算越界是未定义行为。
 > 即便是类似 `int a[4][5]; a[1][7]` 这种，同样也是未定义行为。
-
-## step11 类型系统
-
-（更详尽的解释见[类型系统](./typesystem.md)一节）
-
-MiniDecaf 包含两种类型：
-- $$\mathrm{int}$$：一个 32 位整数；
-- $$[\mathrm{int}]^n$$：一个 $$n~(n \ge 1)$$ 维数组，其元素类型为 $$\mathrm{int}$$。
-
-MiniDecaf 包含五条类型规则：
-
-$$
-\frac
-{e : \mathrm{int} \qquad \bullet \in UN}
-{\bullet (e) : \mathrm{int}}
-\text{(T-un)}
-$$
-
-$$
-\frac
-{e_1 : \mathrm{int} \qquad e_2 : \mathrm{int} \qquad \bullet \in BIN}
-{\bullet (e_1, e_2) : \mathrm{int}}
-\text{(T-bin)}
-$$
-
-$$
-\frac
-{e_1 : \mathrm{int} \qquad e_2 : \mathrm{int} \qquad e_3 : \mathrm{int} \qquad \bullet \in TERN}
-{\bullet(e_1, e_2, e_3) : \mathrm{int}}
-\text{(T-tern)}
-$$
-
-$$
-\frac
-{a : [\mathrm{int}]^n \qquad i : \mathrm{int} \qquad n > 1}
-{a[i] : [\mathrm{int}]^{n-1}}
-\text{(T-hda)}
-$$
-
-$$
-\frac
-{a : [\mathrm{int}]^1 \qquad i : \mathrm{int}}
-{a[i]: \mathrm{int}}
-\text{(T-oda)}
-$$

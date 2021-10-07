@@ -142,11 +142,11 @@ Program
 
 * 在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
 
-    ```python
-    class Unary(Expression):
-        def __init__(self, op: Operator, operand: Expression):
-            ...
-    ```
+```python
+class Unary(Expression):
+    def __init__(self, op: Operator, operand: Expression):
+        ...
+```
 
     并在 `frontend/ast/visitor.py` 中加入相应的分派函数。
 
@@ -154,29 +154,29 @@ Program
 
 * 在 `frontend/lex/lex.py` 里加入新的 lex token 定义:
 
-    ```python
-    t_Minus = "-"
-    ```
+```python
+t_Minus = "-"
+```
 
     在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
 
 * 在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
 
-    ```python
-    def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
-        """
-        expression : unary
-        unary : primary
-        """ # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
-        p[0] = p[1] # 这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。
-        # 语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
+```python
+def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
+    """
+    expression : unary
+    unary : primary
+    """ # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
+    p[0] = p[1] # 这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。
+    # 语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
 
-    def p_unary_expression(p):
-        """
-        unary : Minus unary
-        """
-        p[0] = tree.Unary(UnaryOp.Neg, p[2])
-    ```
+def p_unary_expression(p):
+    """
+    unary : Minus unary
+    """
+    p[0] = tree.Unary(UnaryOp.Neg, p[2])
+```
 
     更多的用法同样可参见[文档](https://www.dabeaz.com/ply/ply.html)。
 
@@ -198,11 +198,11 @@ Program
 
 ### Python 框架
 
-`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `namer.py`（因为只有 int 类型，无需进行类型检查）。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
 
 ### C++ 框架
 
-`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在 step1-10 中，同学们只需要考虑 `build_sym.hpp`（因为只有 int 类型，无需进行类型检查）。在框架中，两者都是继承 `ast/visitor.hpp` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在框架中，两者都是继承 `ast/visitor.hpp` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。在新增 AST 节点后，必须在两者中增加对应的 `visitXXX` 函数。其实现细节参见代码。
 
 ## 中间代码生成
 
