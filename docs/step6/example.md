@@ -13,11 +13,20 @@ int main() {
 ## 词法语法分析
 针对 if 语句，我们需要设计 AST 节点来表示它，给出的参考定义如下（框架中已经提供）：
 
+对于Python: 
+
 | 节点 | 成员 | 含义 |
 | --- | --- | --- |
 | `If` | 分支条件 `cond`，真分支 `then`，假分支 `otherwise` | if 分支语句 |
 
 仿照 if 节点，还需要类似地实现条件表达式节点（框架中已经提供）。
+
+对于C++:
+
+| 节点 | 成员 | 含义 |
+| --- | --- | --- |
+| `IfStmt` | 分支条件 `condition`，真分支 `true_brch`，假分支 `false_brch` | if 分支语句 |
+| `IfExpr` | 分支条件 `condition`，真分支 `true_brch`，假分支 `false_brch` | if 条件表达式 |
 
 ### 悬吊 else 问题
 
