@@ -99,7 +99,7 @@ main:
 
 ### Python 框架
 
-Python 框架比较特殊，需要同学们对寄存器分配相关的 CFG 的内容进行细微修改。具体来说，需要在 `backend\dataflow\cfg.py` 中添加基本块是否可达的判断。在寄存器分配算法 `backend/reg/bruteregalloc.py` 的注释中，我们给出了提示，如果一个基本块不可达，那么无须为它分配寄存器。
+Python 框架比较特殊，需要同学们对寄存器分配相关的 CFG 的内容进行细微修改。具体来说，需要在 `backend/dataflow/cfg.py` 中添加基本块是否可达的判断。在寄存器分配算法 `backend/reg/bruteregalloc.py` 的注释中，我们给出了提示，如果一个基本块不可达，那么无须为它分配寄存器。
 
 # 思考题
 
