@@ -87,13 +87,7 @@
    ```
    此外，也可以通过``update-alternatives``命令修改python版本使用的优先级，对所有服务器用户都有效，具体用法可参见[这里]( https://medium.com/analytics-vidhya/how-to-install-and-switch-between-different-python-versions-in-ubuntu-16-04-dc1726796b9b)。
 
-   框架里已经提供了需要的 python 包列表文件 requirements.txt，你可以直接通过 pip 命令安装下文提到的 python 依赖包 ply 和 argparse：
-
-   ```bash
-   pip install -r ./requirements.txt
-   ```
-   
-   如果你安装了多版本的 python，可以使用如下命令安装3.9版本的包：
+   框架里已经提供了需要的 python 包列表文件 requirements.txt，你可以通过 pip 命令安装下文提到的 python 依赖包 ply 和 argparse：
 
    ```bash
    $ python3.9 -m pip install -r ./requirements.txt 
