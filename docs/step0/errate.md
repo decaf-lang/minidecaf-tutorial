@@ -4,6 +4,12 @@
 
 &nbsp;
 
+Q：使用 `pip install -r ./requirements.txt` 命令无法正确安装依赖？
+
+A：如果你安装了多版本的 python，使用 pip 命令未必会对应 3.9 版本的包管理器。请尝试使用 `python3.9 -m pip install -r ./requirements.txt` 安装依赖。
+
+&nbsp;
+
 Q：Python 框架无法正确输出三地址码？
 
 A：非常抱歉，框架中输出时有一个小错误。在 `main.py` 中，输出三地址码时，请使用 `prog.printTo()` 语句；此外，想要输出带有缩进格式的抽象语法树，请使用如下语句：
