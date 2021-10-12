@@ -48,3 +48,15 @@ A：
 3. 此前提到的 OJ 由于开发进度迟缓，我们本学期不会使用它作为作业评分的标准平台。
 
 4. 如果关于报告提交有任何问题，请及时联系助教。
+
+&nbsp;
+
+Q：Python 框架寄存器分配中 allocRegFor 函数实现有错误？
+
+A：请修改 bruteregalloc.py 中第 119 行处随机数生成的范围，将上界改为 `len(...) - 1`，避免溢出。感谢孟本源同学！
+
+```python
+reg = self.emitter.allocatableRegs[
+    random.randint(0, len(self.emitter.allocatableRegs) - 1)
+]
+```
