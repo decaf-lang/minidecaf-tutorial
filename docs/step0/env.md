@@ -90,7 +90,13 @@
    框架里已经提供了需要的 python 包列表文件 requirements.txt，你可以直接通过 pip 命令安装下文提到的 python 依赖包 ply 和 argparse：
 
    ```bash
-   $ pip install -r ./requirements.txt 
+   pip install -r ./requirements.txt
+   ```
+   
+   如果你安装了多版本的 python，可以使用如下命令安装3.9版本的包：
+
+   ```bash
+   $ python3.9 -m pip install -r ./requirements.txt 
    ```
    
 
