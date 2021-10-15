@@ -4,6 +4,12 @@
 
 &nbsp;
 
+Q：C++ 框架的 Variable 类实现有误？
+
+A：`symb/symbol.hpp` 里面 Variable 类的 isLocalVar 函数是一段死代码。如果使用，请根据情况重写。
+
+&nbsp;
+
 Q：使用 `pip install -r ./requirements.txt` 命令无法正确安装依赖？
 
 A：如果你安装了多版本的 python，使用 pip 命令未必会对应 3.9 版本的包管理器。请尝试使用 `python3.9 -m pip install -r ./requirements.txt` 安装依赖。
