@@ -47,6 +47,13 @@
   * [通过例子学习](docs/step6/example.md)
   * [规范](docs/step6/spec.md)
 
+## Parser: 自顶向下语法分析
+* parser: 自顶向下语法分析
+  * [任务概述](docs/step-parser/intro.md)
+  * [通过例子学习](docs/step-parser/example.md)
+  * [规范](docs/step-parser/spec.md)
+
+
 ## Stage3：作用域和循环
 * step7：作用域和块语句
   * [任务概述](docs/step7/intro.md)
