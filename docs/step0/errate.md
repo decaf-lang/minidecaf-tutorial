@@ -29,6 +29,34 @@ A：`symb/symbol.hpp` 里面 Variable 类的 isLocalVar 函数是一段死代码
 
 &nbsp;
 
+Q: C++框架的 3rdparty/set.hpp 实现有误？（可能导致liveness分析出错）
+
+A: 修改contains()的实现如下，判断集合是否为空。（之前有可能在集合空的情况下返回true)
+
+```c++
+	  bool contains(const _T e) const {
+		const _T* p = std::lower_bound(begin(), end(), e);
+
+		return (p!=end() && (*p == e);
+	  }
+```
+
+并修改remove()的实现如下：
+
+```c++
+	void remove(const _T e) {
+        _T* p = std::lower_bound(begin(), end(), e);
+
+        if (p!=end() && *p == e) {
+          std::copy(p+1, end(), p);
+          --_size;
+        }
+      }
+```
+
+&nbsp;
+
+
 Q：使用 `pip install -r ./requirements.txt` 命令无法正确安装依赖？
 
 A：如果你安装了多版本的 python，使用 pip 命令未必会对应 3.9 版本的包管理器。请尝试使用 `python3.9 -m pip install -r ./requirements.txt` 安装依赖。
