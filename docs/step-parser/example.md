@@ -83,12 +83,12 @@ p_declaration p_block p_if p_return p_type
 
 # 思考题
 
-1. ```
-additive : additive '+' multiplicative
-                 | additive '-' multiplicative
-                 | multiplicative  
+1. 在框架里我们使用 EBNF 处理了 `additive` 的产生式。请使用课上学习的方法，将其转换为不含左递归的 LL(1) 文法。（不考虑后续 multiplicative 的产生式）
 ```
-在框架里我们使用 EBNF 处理了 `additive` 的产生式。请使用课上学习的方法，将其转换为不含左递归的 LL(1) 文法。（不考虑后续 multiplicative 的产生式）
+additive : additive '+' multiplicative
+           | additive '-' multiplicative
+           | multiplicative  
+```
 
 2. 对于我们的程序框架，自顶向下语法分析的过程中，如果出现一个语法错误，可以进行**错误恢复**以继续解析，从而能够解析出一个程序中多个语法错误。
 请尝试举出一个出错程序的例子，结合我们的程序框架，描述你心目中的错误恢复机制对这个例子，怎样越过出错的位置继续解析。（注意目前框架里是没有错误恢复机制的。）
