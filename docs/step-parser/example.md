@@ -14,7 +14,7 @@ Python 框架：`def lookahead(self, type: Optional[str] = None) -> Any`
 
 词法分析器 lex 将程序字符串转换为一串 token，C++ 框架用 `yylex()` 获取词法分析器提供的下一个 token，python 框架用 `next(lexer)` 获取词法分析器提供的下一个 token。
 
-为了实现递归下降语法分析中的 "lookahead" 机制，我们用一个变量 `next_token` （C++ 框架：全局变量 next_token，python 框架：Parser.next_token）暂存将要被解析的下一个 token。通过判断 `next_token` 的类型，来判断将要使用哪一条产生式。
+为了实现递归下降语法分析中的 "lookahead" 机制，我们需要**看下一个 token 是什么，但却不能消耗这个 token**，为此我们用一个变量 `next_token` （C++ 框架：全局变量 next_token，python 框架：Parser.next_token）暂存将要被解析的下一个 token。通过判断 `next_token` 的类型，来判断将要使用哪一条产生式。
 
 而 `lookahead()` 函数，则表示希望读取一个特定类型的 token（如果传入了一个 token 类型做参数） / 希望读取一个 token（如果没有传入一个 token 类型作为参数）。每次执行这个函数，都会**消耗**当前的 `next_token` 并从词法分析器获得新的 token 赋值给 `next_token` 变量。
 
@@ -28,9 +28,7 @@ Python 框架：`def lookahead(self, type: Optional[str] = None) -> Any`
 
 在我们的框架里，因为语法非常简单，这两个集合用到的地方不多，更多的是直接用 if 语句来判断（相当于通过 if 语句把 First/Follow 集合直接写出来进行判断）。
 
-C++ 框架里定义的 isFirst 数组和 isFollow 数组，表示的是左端为某个非终结符的所有产生式的 First 集合的总和。
-
-例如，`isFirst[SymbolType::Binary][TokenType::IDENTIFIER]` 表示的是左侧为 `Binary` 的所有产生式中，能否产生第一个 token 为 `IDENTIFIER` 的 token 序列。如果能，`isFirst` 数组这个位置的数值就为 true。
+C++ 框架里定义的 isFirst 数组和 isFollow 数组，表示的是左端为某个非终结符的所有产生式的 First 集合的总和。例如，`isFirst[SymbolType::Binary][TokenType::IDENTIFIER]` 表示的是左侧为 `Binary` 的所有产生式中，能否产生第一个 token 为 `IDENTIFIER` 的 token 序列。如果能，`isFirst` 数组这个位置的数值就为 true。
 
 Python 框架中通过装饰器模式（decorator pattern）定义了每个产生式的 First 集合，例如 `p_declaration` 函数开头的 `@first("Int")` 表示 `declaration` 的 First 集只包含 token `'Int'`。Python 框架里没有显式定义 Follow 集合。事实上，需要同学们完善的部分里并不需要用到 First/Follow 集合。
 
