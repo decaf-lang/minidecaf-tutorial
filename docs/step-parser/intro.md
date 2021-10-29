@@ -20,7 +20,21 @@ $ git merge stage-2
 3. 对于 `src/Makefile` 和 `src/compiler.hpp` 的修改分为以下两种情况：
    1. 如果你没有修改过 `Makefile` 和 `compiler.hpp` ，直接使用上述链接中的同名文件覆盖即可。
    2. 如果你修改过，请按照下述方法在文件中添加相关内容：
-
+        
+        `compiler.hpp`中, 
+        
+        在最开头添加`#include "frontend/myparser.hpp" `
+        
+        `Makefile`中, 
+        
+        删除和`parser.cpp` `parser.hpp` `parser.o` `parser.y` 相关的内容.
+        
+        添加`FRONTEND = scanner.o frontend/myparser.o`
+        
+        添加`frontend/myparser.o: config.hpp 3rdparty/boehmgc.hpp define.hpp 3rdparty/list.hpp frontend/myparser.hpp frontend/myparser.cpp`
+        
+        添加`frontend/myparser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp`
+```
 **对于 Python 框架**，只需要将我们下发的 parser-stage 文件覆盖在 stage2 上即可。
 
 **需要注意的是**，parser-stage 的实验相对于其他 stage 是独立的，因此你在开始做 stage3 实验时，应从 stage2 中完成的代码开始（而不是 parser-stage）：
