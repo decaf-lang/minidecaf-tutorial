@@ -83,7 +83,7 @@ p_declaration p_block p_if p_return p_type
 
 # 思考题
 
-1.```
+1. ```
 additive : additive '+' multiplicative
                  | additive '-' multiplicative
                  | multiplicative  
