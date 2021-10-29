@@ -83,13 +83,11 @@ p_declaration p_block p_if p_return p_type
 
 # 思考题
 
-1.
-```
+1.```
 additive : additive '+' multiplicative
                  | additive '-' multiplicative
                  | multiplicative  
 ```
-
 在框架里我们使用 EBNF 处理了 `additive` 的产生式。请使用课上学习的方法，将其转换为不含左递归的 LL(1) 文法。（不考虑后续 multiplicative 的产生式）
 
 2. 对于我们的程序框架，自顶向下语法分析的过程中，如果出现一个语法错误，可以进行**错误恢复**以继续解析，从而能够解析出一个程序中多个语法错误。
