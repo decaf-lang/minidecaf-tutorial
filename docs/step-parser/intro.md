@@ -1,6 +1,6 @@
 # 实验指导 parser-stage：自顶向下语法分析器
 
-在 Stage1-2 中，实验框架使用了 bison（C++ 框架）或 ply（Python 框架）作为语法分析器，解析 MiniDecaf 程序并生成 AST。
+ 在 Stage1-2 中，实验框架使用了 bison（C++ 框架）或 ply（Python 框架）作为语法分析器，解析 MiniDecaf 程序并生成 AST。
 
 在 parser-stage 中，我们将结合课堂上学习的 LL(1) 分析方法，完成一个**手工实现的递归下降**语法分析器。为了降低难度和工作量，将提供分析器的基本框架和部分实现，同学们只需要补全代码片段即可。所实现的手工语法分析器，只需要支持 [**Step1-6 的语法**](spec.md)。
 
@@ -19,26 +19,32 @@ $ git merge stage-2
 2. 使用上述链接中的 `scanner.l` 覆盖原有的 `scanner.l`。
 3. 对于 `src/Makefile` 和 `src/compiler.hpp` 的修改分为以下两种情况：
    1. 如果你没有修改过 `Makefile` 和 `compiler.hpp` ，直接使用上述链接中的同名文件覆盖即可。
+   
    2. 如果你修改过，请按照下述方法在文件中添加相关内容：
+   
+        ```C++
+        // compiler.hpp
+        1. #include "parser.hpp" 修改为 #include "frontend/myparser.hpp"
+        2. 删除 #define YY_DECL yy::parser::symbol_type yylex()
+        3. 删除 YYDECL;
         
-        `compiler.hpp`中, 
-        
-        在最开头添加`#include "frontend/myparser.hpp" `
-        
-        `Makefile`中, 
-        
-        删除和`parser.cpp` `parser.hpp` `parser.o` `parser.y` 相关的内容.
-        
-        添加`FRONTEND = scanner.o frontend/myparser.o`
-        
-        添加`frontend/myparser.o: config.hpp 3rdparty/boehmgc.hpp define.hpp 3rdparty/list.hpp frontend/myparser.hpp frontend/myparser.cpp`
-        
-        添加`frontend/myparser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp`
-
+        // Makefile
+        1. 删除 YACC = bison
+        2. 删除 YFLAGS = -dv
+        3. 在 LEXCFLAGS = -O $(CFLAGS) 之前加上 LFLAGS = -8
+        4. 删除 PARSER  = parser.cpp parser.hpp location.hh position.hh stack.hh
+        5. FRONTEND = scanner.o parser.o 修改为 FRONTEND = scanner.o frontend/myparser.o
+        6. 删除 $(PARSER): frontend/parser.y $(YACC) $(YFLAGS) $<
+        7. parser.o: config.hpp 3rdparty/boehmgc.hpp define.hpp 3rdparty/list.hpp 修改为 frontend/myparser.o: config.hpp 3rdparty/boehmgc.hpp define.hpp 3rdparty/list.hpp frontend/myparser.hpp frontend/myparser.cpp
+        8. parser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp 修改为
+        frontend/myparser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp
+        9. scanner.o: error.hpp ast/ast.hpp parser.hpp location.hpp 修改为
+        scanner.o: error.hpp ast/ast.hpp frontend/myparser.hpp location.hpp
+        ```
 
 **对于 Python 框架**，在切换到 `parser-stage` 分支之后，我们提供两种完成方法：
 
-1. 直接在从[上述链接](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)中下载的框架上进行实验，这是一个只包含 parser-stage 前端的框架，没有中后端的部分，可以排除 parser-stage 中用不到部分的干扰。在完成之后，将 `frontend/parser/` 目录整个覆盖到你的 stage2 代码上，即可通过测试。
+1. 直接在从[上述链接](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)中下载的框架上进行实验，这是一个只包含 parser-stage 前端的框架，没有中后端的部分，可以排除 parser-stage 中用不到部分的干扰。在完成之后，将 `frontend/parser/` 目录整个覆盖到你的 stage2 代码上，即可进行测试。
 2. 先将 `frontend/parser/` 目录整个覆盖到你的 stage2 代码上，然后在整体框架上完成实验。这样的好处是你可以随时在整个框架上使用测例进行测试。
 
 **需要注意的是**，parser-stage 的实验相对于其他 stage 是独立的，因此你在开始做 stage3 实验时，应从 stage2 中完成的代码开始（而不是 parser-stage）：
