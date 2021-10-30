@@ -36,10 +36,8 @@ $ git merge stage-2
         5. FRONTEND = scanner.o parser.o 修改为 FRONTEND = scanner.o frontend/myparser.o
         6. 删除 $(PARSER): frontend/parser.y $(YACC) $(YFLAGS) $<
         7. parser.o: config.hpp 3rdparty/boehmgc.hpp define.hpp 3rdparty/list.hpp 修改为 frontend/myparser.o: config.hpp 3rdparty/boehmgc.hpp define.hpp 3rdparty/list.hpp frontend/myparser.hpp frontend/myparser.cpp
-        8. parser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp 修改为
-        frontend/myparser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp
-        9. scanner.o: error.hpp ast/ast.hpp parser.hpp location.hpp 修改为
-        scanner.o: error.hpp ast/ast.hpp frontend/myparser.hpp location.hpp
+        8. parser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp 修改为 frontend/myparser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp
+        9. scanner.o: error.hpp ast/ast.hpp parser.hpp location.hpp 修改为 scanner.o: error.hpp ast/ast.hpp frontend/myparser.hpp location.hpp
         ```
 
 **对于 Python 框架**，在切换到 `parser-stage` 分支之后，我们提供两种完成方法：
