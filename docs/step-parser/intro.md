@@ -21,7 +21,10 @@ $ git merge stage-2
    1. 如果你没有修改过 `Makefile` 和 `compiler.hpp` ，直接使用上述链接中的同名文件覆盖即可。
    2. 如果你修改过，请按照下述方法在文件中添加相关内容：
 
-**对于 Python 框架**，只需要将我们下发的 parser-stage 文件覆盖在 stage2 上即可。
+**对于 Python 框架**，在切换到 `parser-stage` 分支之后，我们提供两种完成方法：
+
+1. 直接在从[上述链接](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)中下载的框架上进行实验，这是一个只包含 parser-stage 前端的框架，没有中后端的部分，可以排除 parser-stage 中用不到部分的干扰。在完成之后，将 `frontend/parser/` 目录整个覆盖到你的 stage2 代码上，即可通过测试。
+2. 先将 `frontend/parser/` 目录整个覆盖到你的 stage2 代码上，然后在整体框架上完成实验。这样的好处是你可以随时在整个框架上使用测例进行测试。
 
 **需要注意的是**，parser-stage 的实验相对于其他 stage 是独立的，因此你在开始做 stage3 实验时，应从 stage2 中完成的代码开始（而不是 parser-stage）：
 
