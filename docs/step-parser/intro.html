@@ -110,6 +110,8 @@
     <link rel="next" href="example.html" />
     
     
+    <link rel="prev" href="../step6/spec.html" />
+    
 
     </head>
     <body>
@@ -411,9 +413,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="4.2.1" data-path="intro.html">
+        <li class="chapter " data-level="4.2.1" data-path="../step3/intro.html">
             
-                <a href="intro.html">
+                <a href="../step3/intro.html">
             
                     
                     任务概述
@@ -424,9 +426,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.2" data-path="example.html">
+        <li class="chapter " data-level="4.2.2" data-path="../step3/example.html">
             
-                <a href="example.html">
+                <a href="../step3/example.html">
             
                     
                     通过例子学习
@@ -437,9 +439,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.3" data-path="precedence.html">
+        <li class="chapter " data-level="4.2.3" data-path="../step3/precedence.html">
             
-                <a href="precedence.html">
+                <a href="../step3/precedence.html">
             
                     
                     优先级和结合性
@@ -450,9 +452,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.4" data-path="spec.html">
+        <li class="chapter " data-level="4.2.4" data-path="../step3/spec.html">
             
-                <a href="spec.html">
+                <a href="../step3/spec.html">
             
                     
                     规范
@@ -656,9 +658,9 @@
         
         
     
-        <li class="chapter " data-level="6.1" data-path="../step-parser/intro.html">
+        <li class="chapter active" data-level="6.1" data-path="intro.html">
             
-                <a href="../step-parser/intro.html">
+                <a href="intro.html">
             
                     
                     任务概述
@@ -669,9 +671,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2" data-path="../step-parser/example.html">
+        <li class="chapter " data-level="6.2" data-path="example.html">
             
-                <a href="../step-parser/example.html">
+                <a href="example.html">
             
                     
                     通过例子学习
@@ -682,9 +684,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.3" data-path="../step-parser/spec.html">
+        <li class="chapter " data-level="6.3" data-path="spec.html">
             
-                <a href="../step-parser/spec.html">
+                <a href="spec.html">
             
                     
                     规范
@@ -1087,40 +1089,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step3&#xFF1A;&#x52A0;&#x51CF;&#x4E58;&#x9664;&#x6A21;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step3&#xFF1A;&#x52A0;&#x51CF;&#x4E58;&#x9664;&#x6A21;</h1>
-<p>step3 &#x6211;&#x4EEC;&#x8981;&#x589E;&#x52A0;&#x7684;&#x662F;&#xFF1A;&#x52A0; <code>+</code>&#x3001;&#x51CF; <code>-</code>&#x3001;&#x4E58; <code>*</code>&#x3001;&#x6574;&#x9664; <code>/</code>&#x3001;&#x6A21; <code>%</code> &#x4EE5;&#x53CA;&#x62EC;&#x53F7; <code>(</code> <code>)</code>&#x3002;</p>
-<p>&#x8BED;&#x6CD5;&#x4E0A;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x4FEE;&#x6539; <code>expression</code>&#xFF0C;&#x53D8;&#x6210;</p>
-<pre id="vimCodeElement"><code></code><div class="changed">
-<span class="SpecRuleStart">expression</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">additive</span>
-
-<span class="SpecRuleStart">additive</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">multiplicative</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">additive</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;+&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">multiplicative</span>
-
-<span class="SpecRuleStart">multiplicative</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">unary</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">multiplicative</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;*&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;/&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;%&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
-
-<span class="SpecRuleStart">unary</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">primary</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;~&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;!&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
-
-<span class="SpecRuleStart">primary</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span>
-</div></pre>
-
-<p>&#x65B0;&#x7279;&#x6027;&#x7684;&#x8BED;&#x4E49;&#x3001;&#x4F18;&#x5148;&#x7EA7;&#x3001;&#x7ED3;&#x5408;&#x6027;&#x548C; C &#x4EE5;&#x53CA;&#x5E38;&#x8BC6;&#x76F8;&#x540C;&#xFF0C;&#x4F8B;&#x5982; <code>1+2*(4/2+1) == 7</code>&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x8FD9;&#x79CD;&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;&#x5199;&#x6CD5;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x7E41;&#x7410;&#xFF0C;&#x4F46;&#x5B83;&#x6709;&#x51E0;&#x4E2A;&#x597D;&#x5904;&#xFF1A;</p>
+                                <h1 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-parser-stage&#xFF1A;&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; parser-stage&#xFF1A;&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;</h1>
+<p> &#x5728; Stage1-2 &#x4E2D;&#xFF0C;&#x5B9E;&#x9A8C;&#x6846;&#x67B6;&#x4F7F;&#x7528;&#x4E86; bison&#xFF08;C++ &#x6846;&#x67B6;&#xFF09;&#x6216; ply&#xFF08;Python &#x6846;&#x67B6;&#xFF09;&#x4F5C;&#x4E3A;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x89E3;&#x6790; MiniDecaf &#x7A0B;&#x5E8F;&#x5E76;&#x751F;&#x6210; AST&#x3002;</p>
+<p>&#x5728; parser-stage &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x7ED3;&#x5408;&#x8BFE;&#x5802;&#x4E0A;&#x5B66;&#x4E60;&#x7684; LL(1) &#x5206;&#x6790;&#x65B9;&#x6CD5;&#xFF0C;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;<strong>&#x624B;&#x5DE5;&#x5B9E;&#x73B0;&#x7684;&#x9012;&#x5F52;&#x4E0B;&#x964D;</strong>&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x3002;&#x4E3A;&#x4E86;&#x964D;&#x4F4E;&#x96BE;&#x5EA6;&#x548C;&#x5DE5;&#x4F5C;&#x91CF;&#xFF0C;&#x5C06;&#x63D0;&#x4F9B;&#x5206;&#x6790;&#x5668;&#x7684;&#x57FA;&#x672C;&#x6846;&#x67B6;&#x548C;&#x90E8;&#x5206;&#x5B9E;&#x73B0;&#xFF0C;&#x540C;&#x5B66;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x8865;&#x5168;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x5373;&#x53EF;&#x3002;&#x6240;&#x5B9E;&#x73B0;&#x7684;&#x624B;&#x5DE5;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x652F;&#x6301; <a href="spec.html"><strong>Step1-6 &#x7684;&#x8BED;&#x6CD5;</strong></a>&#x3002;</p>
+<h2 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;">&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h2>
+<p>parser-stage &#x4E0D;&#x6D89;&#x53CA;&#x4E2D;&#x7AEF;&#x3001;&#x540E;&#x7AEF;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x8BF7;&#x540C;&#x5B66;&#x4EEC;&#x5C06; stage2 &#x4E2D;&#x5B8C;&#x6210;&#x7684;&#x4E2D;&#x540E;&#x7AEF;&#x4EE3;&#x7801;&#x5408;&#x5E76;&#x5230; parser-stage &#x7684;&#x5B9E;&#x9A8C;&#x6846;&#x67B6;&#x4E0A;&#x3002;&#x5177;&#x4F53;&#x7684;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x5982;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<pre><code class="lang-bash">$ git switch parser-stage
+$ git merge stage-2
+</code></pre>
+<p>&#xFF08;&#x672C;&#x6B65;&#x9AA4;&#x6240;&#x9700;&#x8981;&#x7684;&#x989D;&#x5916;&#x6587;&#x4EF6;&#x8BF7;&#x5728;<a href="https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/" target="_blank">&#x6B64;&#x5904;</a>&#x83B7;&#x53D6;&#xFF0C;C++ &#x7684;&#x6587;&#x4EF6;&#x5728; cpp/ &#x4E0B;&#xFF0C;Python &#x7684;&#x6587;&#x4EF6;&#x5728; python/ &#x4E0B;&#xFF09;</p>
+<p><strong>&#x5BF9;&#x4E8E; C++ &#x6846;&#x67B6;</strong>&#xFF0C;&#x5728;&#x5207;&#x6362;&#x5230; <code>parser-stage</code> &#x5206;&#x652F;&#x4E4B;&#x540E;&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1A;</p>
 <ol>
-<li>&#x548C; <a href="../../REFERENCE.html">C17 &#x6807;&#x51C6;&#x8349;&#x6848;</a>&#x4FDD;&#x6301;&#x4E00;&#x81F4;</li>
-<li>&#x628A;&#x4F18;&#x5148;&#x7EA7;&#x548C;&#x7ED3;&#x5408;&#x6027;&#x4FE1;&#x606F;&#x76F4;&#x63A5;&#x7F16;&#x7801;&#x5165;&#x8BED;&#x6CD5;&#x91CC;&#xFF0C;&#x89C1;<a href="precedence.html">&#x4F18;&#x5148;&#x7EA7;&#x548C;&#x7ED3;&#x5408;&#x6027;</a>&#x4E00;&#x8282;&#x3002;</li>
+<li>&#x5C06;<a href="https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/" target="_blank">&#x94FE;&#x63A5;</a>&#x4E2D;&#x7684; <code>my_parser.hpp</code> &#x53CA; <code>my_parser.cpp</code> &#x653E;&#x5165; <code>src/frontend/</code> &#x4E2D;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x4E0A;&#x8FF0;&#x94FE;&#x63A5;&#x4E2D;&#x7684; <code>scanner.l</code> &#x8986;&#x76D6;&#x539F;&#x6709;&#x7684; <code>scanner.l</code>&#x3002;</li>
+<li><p>&#x5BF9;&#x4E8E; <code>src/Makefile</code> &#x548C; <code>src/compiler.hpp</code> &#x7684;&#x4FEE;&#x6539;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol>
+<li><p>&#x5982;&#x679C;&#x4F60;&#x6CA1;&#x6709;&#x4FEE;&#x6539;&#x8FC7; <code>Makefile</code> &#x548C; <code>compiler.hpp</code> &#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x4E0A;&#x8FF0;&#x94FE;&#x63A5;&#x4E2D;&#x7684;&#x540C;&#x540D;&#x6587;&#x4EF6;&#x8986;&#x76D6;&#x5373;&#x53EF;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x505A;&#x8FC7;&#x4FEE;&#x6539;&#xFF0C;&#x8BF7;&#x6309;&#x7167;&#x4E0B;&#x8FF0;&#x65B9;&#x6CD5;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code class="lang-C++">  <span class="hljs-comment">// compiler.hpp</span>
+  <span class="hljs-number">1.</span> <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;parser.hpp&quot;</span> &#x4FEE;&#x6539;&#x4E3A; #<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;frontend/myparser.hpp&quot;</span></span>
+  <span class="hljs-number">2.</span> &#x5220;&#x9664; <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> YY_DECL yy::parser::symbol_type yylex()</span>
+  <span class="hljs-number">3.</span> &#x5220;&#x9664; YYDECL;
+
+  <span class="hljs-comment">// Makefile</span>
+  <span class="hljs-number">1.</span> &#x5220;&#x9664; YACC = bison
+  <span class="hljs-number">2.</span> &#x5220;&#x9664; YFLAGS = -dv
+  <span class="hljs-number">3.</span> &#x5728; LEXCFLAGS = -O $(CFLAGS) &#x4E4B;&#x524D;&#x52A0;&#x4E0A; LFLAGS = <span class="hljs-number">-8</span>
+  <span class="hljs-number">4.</span> &#x5220;&#x9664; PARSER  = parser.cpp parser.hpp location.hh position.hh <span class="hljs-built_in">stack</span>.hh
+  <span class="hljs-number">5.</span> FRONTEND = scanner.o parser.o &#x4FEE;&#x6539;&#x4E3A; FRONTEND = scanner.o frontend/myparser.o
+  <span class="hljs-number">6.</span> &#x5220;&#x9664; $(PARSER): frontend/parser.y $(YACC) $(YFLAGS) $&lt;
+  <span class="hljs-number">7.</span> parser.o: config.hpp <span class="hljs-number">3</span>rdparty/boehmgc.hpp define.hpp <span class="hljs-number">3</span>rdparty/<span class="hljs-built_in">list</span>.hpp &#x4FEE;&#x6539;&#x4E3A; frontend/myparser.o: config.hpp <span class="hljs-number">3</span>rdparty/boehmgc.hpp define.hpp <span class="hljs-number">3</span>rdparty/<span class="hljs-built_in">list</span>.hpp frontend/myparser.hpp frontend/myparser.cpp
+  <span class="hljs-number">8.</span> parser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp &#x4FEE;&#x6539;&#x4E3A; frontend/myparser.o: error.hpp ast/ast.hpp location.hpp compiler.hpp
+  <span class="hljs-number">9.</span> scanner.o: error.hpp ast/ast.hpp parser.hpp location.hpp &#x4FEE;&#x6539;&#x4E3A; scanner.o: error.hpp ast/ast.hpp frontend/myparser.hpp location.hpp
+</code></pre>
+</li>
 </ol>
-<p>&#x4F60;&#x9700;&#x8981;&#xFF1A;</p>
+</li>
+</ol>
+<p><strong>&#x5BF9;&#x4E8E; Python &#x6846;&#x67B6;</strong>&#xFF0C;&#x5728;&#x5207;&#x6362;&#x5230; <code>parser-stage</code> &#x5206;&#x652F;&#x4E4B;&#x540E;&#xFF0C;&#x4ECE;<a href="https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/" target="_blank">&#x94FE;&#x63A5;</a>&#x4E0B;&#x8F7D; python &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x4F7F;&#x7528; <code>frontend/parser/</code> &#x76EE;&#x5F55;&#x6574;&#x4E2A;&#x66FF;&#x6362;&#x4F60; stage2 &#x4EE3;&#x7801;&#x7684;&#x5BF9;&#x5E94;&#x76EE;&#x5F55;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x6574;&#x4F53;&#x6846;&#x67B6;&#x4E0A;&#x5B8C;&#x6210;&#x5B9E;&#x9A8C;&#x3002;</p>
+<p><strong>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;</strong>&#xFF0C;parser-stage &#x7684;&#x5B9E;&#x9A8C;&#x76F8;&#x5BF9;&#x4E8E;&#x5176;&#x4ED6; stage &#x662F;&#x72EC;&#x7ACB;&#x7684;&#x3002;&#x5728;&#x540E;&#x7EED;&#x8FDB;&#x884C; stage3 &#x7684;&#x5B9E;&#x9A8C;&#x65F6;&#xFF0C;&#x5E94;&#x4ECE; stage2 &#x6240;&#x5B8C;&#x6210;&#x7684;&#x4EE3;&#x7801;&#x5F00;&#x59CB;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x7528; parser-stage &#x7684;&#x4EE3;&#x7801;&#x3002;&#x672A;&#x6765;&#x5728;&#x8FDB;&#x884C; stage3 &#x5B9E;&#x9A8C;&#x65F6;&#xFF0C;&#x5EFA;&#x8BAE;&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-bash">$ git switch stage-3
+<span class="hljs-comment"># &#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x4ECE; parser-stage merge</span>
+$ git merge stage-2
+</code></pre>
+<h2 id="&#x80CC;&#x666F;&#x77E5;&#x8BC6;">&#x80CC;&#x666F;&#x77E5;&#x8BC6;</h2>
+<p>&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7ECF;&#x5F88;&#x719F;&#x6089;&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x3001;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x8DF3;&#x8FC7;&#x8FD9;&#x90E8;&#x5206;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x5BF9;&#x4E24;&#x79CD;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#xFF0C;<strong>&#x8BE6;&#x7EC6;&#x539F;&#x7406;&#x8BF7;&#x53C2;&#x8003;&#x8BFE;&#x4EF6;</strong>&#x3002;</p>
+<p>bison/ply &#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x5C5E;&#x4E8E; LALR(1) &#x8BED;&#x6CD5;&#x5206;&#x6790;&#xFF0C;&#x662F;<strong>&#x81EA;&#x5E95;&#x5411;&#x4E0A;</strong>&#x7684;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x6808;&#xFF08;&#x4FDD;&#x5B58;&#x72B6;&#x6001;&#x548C;&#x7B26;&#x53F7;&#xFF09;&#xFF0C;&#x6BCF;&#x4E00;&#x6B65;&#x64CD;&#x4F5C;&#x5982;&#x679C;&#x662F;&#x79FB;&#x8FDB;&#xFF08;shift&#xFF09;&#x64CD;&#x4F5C;&#xFF0C;&#x5219;&#x5C06;&#x65B0;&#x7684; token &#x52A0;&#x5165;&#x6808;&#x9876;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x89C4;&#x7EA6;&#xFF08;reduce&#xFF09;&#x64CD;&#x4F5C;&#xFF0C;&#x5219;&#x4F9D;&#x636E;&#x89C4;&#x7EA6;&#x5BF9;&#x5E94;&#x7684;&#x4EA7;&#x751F;&#x5F0F;&#x7684;&#x53F3;&#x7AEF;&#xFF0C;&#x5C06;&#x6808;&#x9876;&#x7684;&#x72B6;&#x6001;&#x548C;&#x7B26;&#x53F7;&#x4F9D;&#x6B21;&#x5F39;&#x51FA;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x4EA7;&#x751F;&#x5F0F;&#x5DE6;&#x7AEF;&#x7684;&#x975E;&#x7EC8;&#x7ED3;&#x7B26;&#xFF08;&#x4EE5;&#x53CA;&#x5BF9;&#x5E94;&#x8F6C;&#x79FB;&#x5230;&#x7684;&#x72B6;&#x6001;&#xFF09;&#x5165;&#x6808;&#x3002;&#x6839;&#x636E;&#x89C4;&#x7EA6;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4ECE;&#x8BED;&#x6CD5;&#x6811;&#x7684;&#x6700;&#x5E95;&#x5C42;&#x5F00;&#x59CB;&#xFF0C;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x6784;&#x5EFA; AST &#x7ED3;&#x70B9;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x6574;&#x4E2A; AST&#x3002;</p>
+<p>&#x800C;<strong>&#x9012;&#x5F52;&#x4E0B;&#x964D;</strong>&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x7684;&#x8FC7;&#x7A0B;&#x662F;:</p>
+<p>&#x4ECE;&#x6587;&#x6CD5;&#x5F00;&#x59CB;&#x7B26;&#x53F7;&#xFF08;&#x5BF9;&#x5E94; AST &#x7684;&#x6839;&#x7ED3;&#x70B9;&#xFF09;&#x8D77;&#xFF0C;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x96C6;&#x5408; PS&#xFF08;&#x5B9E;&#x9645;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x4E3A;&#x4E86;&#x7B80;&#x4FBF;&#xFF0C;&#x76F4;&#x63A5;&#x91C7;&#x7528;&#x4E86; First &#x96C6;&#x548C; Follow &#x96C6;&#xFF09;&#x4EE5;&#x53CA;&#x8F93;&#x5165;&#x7B26;&#x53F7;&#xFF0C;&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x7684;&#x4EA7;&#x751F;&#x5F0F;&#x3002;&#x5BF9;&#x4E8E;&#x4EA7;&#x751F;&#x5F0F;&#x53F3;&#x4FA7;&#x7684;&#x975E;&#x7EC8;&#x7ED3;&#x7B26;&#x548C;&#x7EC8;&#x7ED3;&#x7B26;&#x5206;&#x522B;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5BF9;&#x4E8E;&#x975E;&#x7EC8;&#x7ED3;&#x7B26;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x9012;&#x5F52;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5BF9;&#x4E8E;&#x7EC8;&#x7ED3;&#x7B26;&#x901A;&#x8FC7; matchToken&#xFF08;&#x5B9E;&#x9645;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x7528;lookahead&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#xFF09; &#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x7531;&#x4E8E;&#x5728;&#x9012;&#x5F52;&#x4E0B;&#x964D;&#x5206;&#x6790;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x53EA;&#x6709;&#x5206;&#x6790;&#x5B8C;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x540E;&#xFF0C;&#x624D;&#x4F1A;&#x8FD4;&#x56DE;&#xFF0C;&#x6240;&#x4EE5;&#x5B9E;&#x9645;&#x7684; AST &#x6784;&#x9020;&#x8FC7;&#x7A0B;&#x4E5F;&#x662F;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x6784;&#x5EFA; AST &#x7ED3;&#x70B9;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x6574;&#x4E2A; AST&#x3002;</p>
+<h2 id="&#x4EFB;&#x52A1;&#x63CF;&#x8FF0;">&#x4EFB;&#x52A1;&#x63CF;&#x8FF0;</h2>
+<p>&#x8981;&#x6C42;&#xFF1A;</p>
 <ol>
-<li>&#x6539;&#x8FDB;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x652F;&#x6301;&#x672C;&#x8282;&#x5F15;&#x5165;&#x7684;&#x65B0;&#x7279;&#x6027;&#xFF0C;&#x901A;&#x8FC7;&#x76F8;&#x5173;&#x6D4B;&#x8BD5;&#x3002;</li>
-<li>&#x5B8C;&#x6210;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#xFF08;&#x5177;&#x4F53;&#x8981;&#x6C42;&#x8BF7;&#x770B;&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;&#x4E66;&#x7684;&#x9996;&#x9875;&#xFF09;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x6240;&#x63D0;&#x4F9B;&#x7684; parser-stage &#x6846;&#x67B6;&#x66FF;&#x6362;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x4E2D;&#x7684; parser &#x90E8;&#x5206;&#xFF0C;&#x5B8C;&#x5584;&#x6846;&#x67B6;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;<strong>&#x901A;&#x8FC7; Step1-6 &#x7684;&#x6D4B;&#x8BD5;</strong>&#x3002;</li>
+<li>&#x672C;&#x6B65;&#x9AA4;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x7684;&#x4EE3;&#x7801;&#x5747;&#x6709; <code>TODO</code> &#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x6709;&#x76F8;&#x5173;&#x7684;&#x5F15;&#x5BFC;&#x6CE8;&#x91CA;&#x3002;&#x5176;&#x4E2D; C++ &#x6846;&#x67B6;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x7684;&#x6587;&#x4EF6;&#x4E3A; <code>src/frontend/my_parser.cpp</code>&#xFF0C;Python &#x6846;&#x67B6;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x7684;&#x6587;&#x4EF6;&#x4E3A; <code>frontend/parser/my_parser.py</code>&#x3002;</li>
+<li>&#x5B8C;&#x6210;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#xFF08;&#x5177;&#x4F53;&#x8981;&#x6C42;&#x8BF7;&#x89C1;&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;&#x4E66;&#x7684;&#x9996;&#x9875;&#xFF09;&#x3002;</li>
 </ol>
 
                                 
@@ -1165,8 +1189,12 @@
 
             
                 
+                <a href="../step6/spec.html" class="navigation navigation-prev " aria-label="Previous page: 规范">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="example.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 通过例子学习">
+                
+                <a href="example.html" class="navigation navigation-next " aria-label="Next page: 通过例子学习">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1177,7 +1205,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"任务概述","level":"4.2.1","depth":2,"next":{"title":"通过例子学习","level":"4.2.2","depth":2,"path":"docs/step3/example.md","ref":"docs/step3/example.md","articles":[]},"previous":{"title":"step3：加减乘除模","level":"4.2","depth":1,"ref":"","articles":[{"title":"任务概述","level":"4.2.1","depth":2,"path":"docs/step3/intro.md","ref":"docs/step3/intro.md","articles":[]},{"title":"通过例子学习","level":"4.2.2","depth":2,"path":"docs/step3/example.md","ref":"docs/step3/example.md","articles":[]},{"title":"优先级和结合性","level":"4.2.3","depth":2,"path":"docs/step3/precedence.md","ref":"docs/step3/precedence.md","articles":[]},{"title":"规范","level":"4.2.4","depth":2,"path":"docs/step3/spec.md","ref":"docs/step3/spec.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step3/intro.md","mtime":"2021-10-31T11:31:30.809Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-31T11:32:50.751Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"任务概述","level":"6.1","depth":1,"next":{"title":"通过例子学习","level":"6.2","depth":1,"path":"docs/step-parser/example.md","ref":"docs/step-parser/example.md","articles":[]},"previous":{"title":"规范","level":"5.2.3","depth":2,"path":"docs/step6/spec.md","ref":"docs/step6/spec.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step-parser/intro.md","mtime":"2021-10-31T11:31:30.801Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-31T11:32:50.751Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
