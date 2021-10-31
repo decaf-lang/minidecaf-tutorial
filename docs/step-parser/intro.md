@@ -14,7 +14,7 @@ $ git switch parser-stage
 $ git merge stage-2
 ```
 
-（本步骤所需要的额外文件请在[链接](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)获取，C++ 的文件在 cpp/ 下，Python 的文件在 python/ 下）
+（本步骤所需要的额外文件请在[此处](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)获取，C++ 的文件在 cpp/ 下，Python 的文件在 python/ 下）
 
 **对于 C++ 框架**，在切换到 `parser-stage` 分支之后进行如下操作：
 
@@ -43,13 +43,13 @@ $ git merge stage-2
         9. scanner.o: error.hpp ast/ast.hpp parser.hpp location.hpp 修改为 scanner.o: error.hpp ast/ast.hpp frontend/myparser.hpp location.hpp
         ```
 
-**对于 Python 框架**，在切换到 `parser-stage` 分支之后，从[链接](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)下载 python 目录下的文件，并将 `frontend/parser/` 目录整个覆盖到你的 stage2 代码，然后在整体框架上完成实验。
+**对于 Python 框架**，在切换到 `parser-stage` 分支之后，从[链接](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)下载 python 目录下的文件，并使用 `frontend/parser/` 目录整个替换你 stage2 代码的对应目录，然后在整体框架上完成实验。
 
 **需要注意的是**，parser-stage 的实验相对于其他 stage 是独立的。在后续进行 stage3 的实验时，应从 stage2 所完成的代码开始，而不需要用 parser-stage 的代码。未来在进行 stage3 实验时，建议进行如下操作：
 
 ```bash
 $ git switch stage-3
-# 注意不要从parser-stage merge
+# 注意不要从 parser-stage merge
 $ git merge stage-2
 ```
 
@@ -64,7 +64,7 @@ bison/ply 自动生成的语法分析器，属于 LALR(1) 语法分析，是**�
 
 而**递归下降**语法分析的过程是:
 
-从文法开始符号（对应 AST 的根结点）起，通过PS预测集合（实际实现中，为了简便，直接采用了First集和Follow集）以及输入符号，选择对应的产生式。对于产生式右侧的非终结符和终结符分别进行不同的操作，对于非终结符通过调用递归函数进行处理，对于终结符通过 matchToken（实际实现中，用lookahead函数实现） 进行处理。由于在递归下降分析的过程中，只有分析完叶子结点后，才会返回，所以实际的 AST 构造过程也是自底向上构建 AST 结点，最终得到整个 AST。
+从文法开始符号（对应 AST 的根结点）起，通过预测集合 PS（实际实现中，为了简便，直接采用了 First 集和 Follow 集）以及输入符号，选择对应的产生式。对于产生式右侧的非终结符和终结符分别进行不同的操作，对于非终结符通过调用递归函数进行处理，对于终结符通过 matchToken（实际实现中，用lookahead函数实现） 进行处理。由于在递归下降分析的过程中，只有分析完叶子结点后，才会返回，所以实际的 AST 构造过程也是自底向上构建 AST 结点，最终得到整个 AST。
 
 
 ## 任务描述

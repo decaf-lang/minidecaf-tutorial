@@ -31,7 +31,7 @@ Python 框架：`def lookahead(self, type: Optional[str] = None) -> Any`
 
 C++ 框架里定义的 isFirst 数组和 isFollow 数组，表示的是左端为某个非终结符的所有产生式的 First 集合的总和。例如，`isFirst[SymbolType::Binary][TokenType::IDENTIFIER]` 表示的是左侧为 `Binary` （产生式左端的非终结符）对应的所有产生式中，能否产生第一个 token 为 `IDENTIFIER` 的 token 序列。如果能，`isFirst` 数组对应元素的值则为 true，否则为 false。如果同学们在实现中需要用到 isFirst 数组和 isFollow 数组，需要自行补充完整数组的内容。
 
-Python 框架中通过装饰器模式（decorator pattern）定义了每个产生式左端非终结符的 First 集合，例如 `p_declaration` 函数开头的 `@first("Int")` 表示 `declaration` 的 First 集只包含 token `'Int'`。Python 框架里没有显式定义 Follow 集合。事实上，需要同学们完善的部分里并不需要用到 First/Follow 集合。
+Python 框架中通过**装饰器模式**（decorator pattern）定义了每个产生式左端非终结符的 First 集合，例如 `p_declaration` 函数开头的 `@first("Int")` 表示 `declaration` 的 First 集只包含 token `'Int'`。Python 框架里没有显式定义 Follow 集合。事实上，需要同学们完善的部分里并不需要用到 First/Follow 集合，直接使用 if 语句判断即可。
 
 ### p_Multiplicative
 
@@ -61,6 +61,26 @@ while 循环第二轮: `lookahead` 消耗掉 `*`，递归解析出 `3` 对应的
 ……（以此类推）
 
 直到处理完 `x` 后，发现下一个 token 不是 `*`，那么当前 `multiplicative` 非终结符对应的文法 parse 结束，并返回 AST 结点。
+
+最后得到的 AST 为：
+```
+binary(*) [
+    binary(*) [
+        binary(*) [
+            binary(*) [
+                int(1)
+                int(2)
+            ]
+            int(3)
+        ]
+        binary(+) [
+            int(4)
+            int(5)
+        ]
+    ]
+    identifier(x)
+]
+```
 
 
 ### 需要填写的函数
