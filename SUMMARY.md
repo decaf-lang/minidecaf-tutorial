@@ -51,7 +51,7 @@
 
 * parser-stage：手工自顶向下语法分析器
   * [任务概述](docs/step-parser/intro.md)
-  * [通过例子学习](docs/step-parser/example.md)
+  * [框架介绍](docs/step-parser/example.md)
   * [规范](docs/step-parser/spec.md)
 
 ## Stage3：作用域和循环
