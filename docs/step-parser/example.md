@@ -2,7 +2,7 @@
 
 下面我们介绍 parser-stage 实验框架中的一些函数，来帮助大家更好地理解实验框架。
 
-注意**我们的框架并不完全是课堂讲授的基于 LL(1) 文法的递归下降分析方法**，在有些地方会通过 while 循环来解析多个连续的、左结合的表达式，对于等价的拓展巴克斯范式（EBNF）文法。详见下文关于 `p_multiplicative` 函数的介绍。
+注意**我们的框架并不完全是课堂讲授的基于 LL(1) 文法的递归下降分析方法**，在有些地方会通过 while 循环来解析多个连续的、左结合的表达式，对应于等价的拓展巴克斯范式（EBNF）文法。详见下文关于 `p_multiplicative` 函数的介绍。
 
 ## 框架接口
 
@@ -89,7 +89,7 @@ binary(*) [
 
 C++ 框架需要完成的函数：
 ```
-p_Type  p_StmtList  p_Statement p_VarDecl  p_Return p_If
+p_Type p_StmtList p_Statement p_VarDecl p_Return p_If
 p_Expression  p_Assignment p_LogicalAnd p_Relational
 ```
 
@@ -105,8 +105,8 @@ p_declaration p_block p_if p_return p_type
 1. 在框架里我们使用 EBNF 处理了 `additive` 的产生式。请使用课上学习的消除左递归、消除左公因子的方法，将其转换为不含左递归的 LL(1) 文法。（不考虑后续 multiplicative 的产生式）
 ```
 additive : additive '+' multiplicative
-           | additive '-' multiplicative
-           | multiplicative  
+             | additive '-' multiplicative
+             | multiplicative  
 ```
 
 2. 对于我们的程序框架，在自顶向下语法分析的过程中，如果出现一个语法错误，可以进行**错误恢复**以继续解析，从而继续解析程序中后续的语法单元。
