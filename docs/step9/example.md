@@ -93,6 +93,59 @@ main:
 
 ## 目标代码生成
 
+```assembly
+    .text
+    .global main
+
+func:
+    # start of prologue
+    addi sp, sp, -56
+    # end of prologue
+
+    # start of body
+    sw a0, 0(sp)
+    sw a1, 4(sp)
+    lw t0, 0(sp)
+    lw t1, 4(sp)
+    add t2, t0, t1
+    mv t0, t2
+    mv a0, t0
+    j func_exit
+    # end of body
+
+func_exit:
+    # start of epilogue
+    addi sp, sp, 56
+    # end of epilogue
+
+    ret
+
+main:
+    # start of prologue
+    addi sp, sp, -56
+    sw ra, 52(sp)
+    # end of prologue
+
+    # start of body
+    li t0, 1
+    li t1, 2
+    mv a0, t0
+    mv a1, t1
+    call func
+    mv t0, a0
+    mv a0, t0
+    j main_exit
+    # end of body
+
+main_exit:
+    # start of epilogue
+    lw ra, 52(sp)
+    addi sp, sp, 56
+    # end of epilogue
+
+    ret
+```
+
 首先你需要参考之前步骤中实现的方法，**翻译本步骤中新增的中间代码指令**。
 
 接下来详细介绍函数调用的步骤和约定，以及函数调用及返回过程中栈帧的变化。
