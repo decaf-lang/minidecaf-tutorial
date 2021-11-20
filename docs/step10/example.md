@@ -82,5 +82,6 @@ Step10 中目标代码生成的主要任务有：翻译中间代码，将全局�
    ```
 
 # 思考题
+1. 写出 `la v0, a` 这一 RiscV 伪指令可能会被转换成哪些 RiscV 指令的组合（说出两种可能即可）。
 
-TODO
+参考的 RiscV 指令链接：https://github.com/TheThirdOne/rars/wiki/Supported-Instructions
