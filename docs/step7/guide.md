@@ -98,16 +98,17 @@ step7 我们需要给自己的编译器新增一个阶段：名称解析，它�
 无须修改。
 
 # 思考题
-1. 请将下述 MiniDecaf 代码中的 `???` 替换为一个 32 位整数，使得程序运行结束后会返回 0。
+1. 请画出下述 MiniDecaf 代码的控制流图。
 ```c++
-int main() {
-    int x = ???;
-    if (x) {
-        return x;
-    } else {
-        int x = 2;
+int main(){
+    int a = 2;
+    if (a < 3) {
+        {
+            int a = 3;
+            return a;
+        }
+        return a;
     }
-    return x;
 }
 ```
 
