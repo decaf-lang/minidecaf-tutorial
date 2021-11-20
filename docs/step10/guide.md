@@ -62,7 +62,9 @@ compiler:
 ```
 
 # 思考题
-1. 请给出将全局变量 `a` 的值读到寄存器 `t0` 所需的 riscv 指令序列。
+1. 写出 `la v0, a` 这一 RiscV 伪指令可能会被转换成哪些 RiscV 指令的组合（说出两种可能即可）。
+
+参考的 RiscV 指令链接：https://github.com/TheThirdOne/rars/wiki/Supported-Instructions
 
 # 总结
 我们实验中，全局变量相对简单。
