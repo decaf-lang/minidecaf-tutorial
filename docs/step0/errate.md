@@ -117,3 +117,7 @@ reg = self.emitter.allocatableRegs[
     random.randint(0, len(self.emitter.allocatableRegs) - 1)
 ]
 ```
+
+Q: Parser Stage中的`test-parser-stage.sh`无法正常使用?
+
+A: 发布作业时打包有失误，请使用原有的`minidecaf-tests`中的`check.sh`测试脚本，将parser-stage的前端接入到原先的中后端来进行测试。
