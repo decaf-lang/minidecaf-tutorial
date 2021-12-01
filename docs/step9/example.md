@@ -15,6 +15,7 @@ int main() { return func(1, 2); }
 | --- | --- | --- |
 | `Function` | 返回类型 `return_type`，函数名 `ident`，参数列表 `params`，函数体 `body` | 函数 |
 | `Parameter` | 参数类型 `var_type`，变量名 `ident` | 函数参数 |
+| `Call` | 调用函数名 `ident`，参数列表 `argument_list` | 函数调用 |
 
 ## 语义分析
 
