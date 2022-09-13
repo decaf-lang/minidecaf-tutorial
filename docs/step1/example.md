@@ -6,7 +6,7 @@
 
 ```C
 int main() {
-    return 2021;
+    return 2022;
 }
 ```
 
@@ -30,7 +30,7 @@ Makefile 中调用了 flex 和 bison 来处理 `parser.y` 和 `scanner.l`。flex
 
 `src/frontend/scanner.l` 为词法描述。flex 生成的词法分析器，会将示例程序解析为这样的一串 Token：
 
-`Int Identifier("main") LParen RParen LBrace Return  IntConst(2021) Comma RBrace`
+`Int Identifier("main") LParen RParen LBrace Return  IntConst(2022) Comma RBrace`
 
 这个程序的具体语法树中用到的语法规则如下: 
 
@@ -38,7 +38,7 @@ Makefile 中调用了 flex 和 bison 来处理 `parser.y` 和 `scanner.l`。flex
 Program -> Functions
 Functions -> Type Identifier LParen RParen LBrace Statements RBrace
 Statements -> ReturnStmt   
-ReturnStmt -> Return IntConst(2021) Comma
+ReturnStmt -> Return IntConst(2022) Comma
 ```
 
 `parser.y` 生成的语法分析器，分析获得的抽象语法树为：
@@ -51,7 +51,7 @@ Program
         |- (name) Identifier "main"
           |- (stmts) StmtList
             |- ReturnStmt 
-              |- Expr int_const 2021
+              |- Expr int_const 2022
 ```
 
 框架中 `scanner.l` 和 `parser.y` 是配合使用的，简单来说，`scanner.l` 定义了词法规则，`parser.y` 定义了语法规则。bison 生成的语法分析器，会调用 flex 生成的 `yylex()` 函数，这个函数的作用为获取 token 流的下一个 token。
@@ -122,7 +122,7 @@ Expr : MINUS Expr %prec NEG { $$ = new ast::NegExpr($2, POS(@1));} ;
 
 当程序读入上述程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
 
-`Int Identifier("main") LParen RParen LBrace Return Integer(2021) Comma RBrace`
+`Int Identifier("main") LParen RParen LBrace Return Integer(2022) Comma RBrace`
 
 并被 yacc 生成的 LALR(1) parser 转化为如下形式的 AST：
 
@@ -133,12 +133,12 @@ Program
         |- (ident) Identifier("main")
         |- (body) Block
             |- (children[0]) Return
-                |- (expr) IntLiteral(2021)
+                |- (expr) IntLiteral(2022)
 ```
 
 得到的这个 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
 
-如果我们想把返回值从 `2021` 变成 `-2021`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
+如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
 
 * 在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
 
@@ -210,7 +210,7 @@ def p_unary_expression(p):
 
 ```asm
 main:           # main 函数入口标签
-    _T0 = 2021  # 为立即数2021分配一个临时变量
+    _T0 = 2022  # 为立即数2022分配一个临时变量
     return _T0  # 返回
 ```
 
@@ -234,7 +234,7 @@ tac 目录下实现了生成 TAC 所需的底层类。其中 `tac/tac.hpp` 下�
 
 1. 如何将一个立即数装载到指定寄存器中？
 
-   RISC-V 提供了 li <reg> <imm32> 指令来支持加载一个 32 位立即数到指定寄存器中，其中 <reg> 表示寄存器名，<imm32> 表示立即数值，如：`li t0, 2021`，就是将立即数 2021 加载到寄存器 t0 中。
+   RISC-V 提供了 li <reg> <imm32> 指令来支持加载一个 32 位立即数到指定寄存器中，其中 <reg> 表示寄存器名，<imm32> 表示立即数值，如：`li t0, 2022`，就是将立即数 2022 加载到寄存器 t0 中。
 
 2. 如何设置返回值？
 
@@ -248,7 +248,7 @@ tac 目录下实现了生成 TAC 所需的底层类。其中 `tac/tac.hpp` 下�
     .text         # 代码段
     .global main  # 声明全局符号 main
 main:             # 主函数入口符号
-    li t0, 2021   # 加载立即数2021到t0寄存器中
+    li t0, 2022   # 加载立即数2022到t0寄存器中
     mv a0, t0     # 将返回值放到a0寄存器中
     ret           # 返回
 ```
