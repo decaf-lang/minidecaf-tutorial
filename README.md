@@ -119,5 +119,10 @@ stage4 - stage5 为升级关卡，如果你学有余力，完成它们可以减�
 - [实验框架介绍视频](https://cloud.tsinghua.edu.cn/d/d1d80ebd16a44c179d44/)
 - [实验环境虚拟机下载链接（使用方法参见网络学堂公告）](https://cloud.tsinghua.edu.cn/d/5281023e65fd4032a69b/)
 
+## 参考资料
+- [Writing a C Compiler: by Nora Sandler](https://norasandler.com/2017/11/29/Write-a-Compiler.html)
+  - [nqcc](https://github.com/nlsandler/nqcc)
+- [http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf](http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf)
+
 ## 备注
 [^1]: 关于名字由来，由于往年的实验叫 Decaf，我们在新的且更简单的语言规范下复用了 Decaf 的编译器框架，所以今年的实验就叫 MiniDecaf 了。
