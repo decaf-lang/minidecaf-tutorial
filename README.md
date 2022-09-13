@@ -110,5 +110,14 @@ stage4 - stage5 为升级关卡，如果你学有余力，完成它们可以减�
 
 代码雷同情节严重的，课程组有权上报至院系和学校，并按照相关规定严肃处理。
 
+## 相关资源
+
+- [实验指导书（首页有实验报告提交要求）](https://decaf-lang.github.io/minidecaf-tutorial/)
+- [实验指导书勘误表](https://decaf-lang.github.io/minidecaf-tutorial/docs/step0/errate.html)
+- [课程问答墙](https://docs.qq.com/doc/DY1hZWFV0T0N0VWph)
+- [实验思路指导与问答墙](https://docs.qq.com/doc/DY05QVmJFcGNWcllo)
+- [实验框架介绍视频](https://cloud.tsinghua.edu.cn/d/d1d80ebd16a44c179d44/)
+- [实验环境虚拟机下载链接（使用方法参见网络学堂公告）](https://cloud.tsinghua.edu.cn/d/5281023e65fd4032a69b/)
+
 ## 备注
 [^1]: 关于名字由来，由于往年的实验叫 Decaf，我们在新的且更简单的语言规范下复用了 Decaf 的编译器框架，所以今年的实验就叫 MiniDecaf 了。
