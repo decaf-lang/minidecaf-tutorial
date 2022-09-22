@@ -2,7 +2,7 @@
 step11 的目标是支持数组：
 
 语法上没有太大改动，
-1. 数组的声明：
+1. 数组的初始化：
 <pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">declaration</span>
 <div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)*</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>

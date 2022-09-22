@@ -1,8 +1,9 @@
 # 规范
 每个步骤结尾的 **规范** 一节都会对这个步骤中的新特性给出规范，方便大家查阅。
 
-# step11 语法规范
+# step12 语法规范
 灰色部分表示相对上一节的修改。
+
 <pre id='vimCodeElement'>
 <code></code>
 <span class="SpecRuleStart">program</span>
@@ -14,9 +15,9 @@
 <span class="SpecRuleStart">type</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'int'</span>
 
-<span class="SpecRuleStart">parameter_list</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">','</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span><span class="SpecOperator">)*)?</span>
-
+<div class="changed"><span class="SpecRuleStart">parameter_list</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span> <span class="SpecOperator">(</span><span class="SpecToken">','</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span><span class="SpecOperator">)*)?</span>
+</div>
 <span class="SpecRuleStart">compound_statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'{'</span> <span class="SpecRule">block_item</span><span class="SpecOperator">*</span> <span class="SpecToken">'}'</span>
 
@@ -37,7 +38,8 @@
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'continue'</span> <span class="SpecToken">';'</span>
 
 <span class="SpecRuleStart">declaration</span>
-<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)*</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
+<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator"><span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
+<span class="SpecRule">    | type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)+</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">'{' (Integer (',' Integer)*)? '}'</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
 </div>
 
 <span class="SpecRuleStart">expression_list</span>
@@ -48,8 +50,7 @@
 
 <span class="SpecRuleStart">assignment</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">conditional</span>
-<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">unary</span> <span class="SpecToken">'='</span> <span class="SpecRule">expression</span>
-</div>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">unary</span> <span class="SpecToken">'='</span> <span class="SpecRule">expression</span>
 
 <span class="SpecRuleStart">conditional</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">logical_or</span>
@@ -94,14 +95,23 @@
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span>
 </pre>
 
-# step11 语义规范
 
-**11.1** 一个数组类型描述了一组被连续分配在一段内存空间中的对象，所有对象都具有相同的类型（我们称之为**元素类型**）。数组类型包含两部分：元素类型，和数组的长度（即元素数量）。数组类型的表达式仅能参与下标运算。
+# step12 语义规范 
 
-**11.2** 我们仅要求支持固定长度的数组，即在数组的声明中，其长度是一个正整数字面量。
-> 所以，我们不要求支持变长数组 `int a[n];` 或不定长数组 `int a[];`。
+**12.1** 多维数组按照类似一维数组的初始化方法，不要求实现内部嵌套括号
 
-**11.3** 对于下标运算 `a[b]`，要求 `a` 是一个数组类型，`b` 是一个整数类型，`a[b]` 是 `a` 中的第 `b` 个元素（从 0 开始计数）。
+> int a\[2][2] = {1, 2, 3, 4};
+>
+> 会将数组变为
+>
+> a\[0][0] = 1;
+>
+> a\[0][1] = 2;
+>
+> a\[1][0] = 3;
+>
+> a\[1][1] = 4;
 
-**11.4** 下标运算越界是未定义行为。
-> 即便是类似 `int a[4][5]; a[1][7]` 这种，同样也是未定义行为。
+**12.2** 数组传参是支持不定长度的
+
+> int fun(int a[]) 是被支持的，由于传参不需要申请完整的数组的空间，不会产生需要计算数组空间的问题
