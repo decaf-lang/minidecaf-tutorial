@@ -3,24 +3,23 @@ step12 的目标是支持数组的初始化和传参：
 
 语法上没有太大改动，
 
-1. 数组的初始化：
+数组的初始化：
 
 <pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">declaration</span>
-<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)+</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">'{' (Integer (',' Integer)*)? '}'</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
+<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">) +</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">'{' (Integer (',' Integer)*)? '}'</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
 </div></pre>
 
 
-2. 数组的传参：
+数组的传参：
 
 <pre id='vimCodeElement'><code></code><div class="changed">
 <span class="SpecRuleStart">function</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">parameter_list</span> <span class="SpecToken">')'</span> <span class="SpecOperator">(</span><span class="SpecRule">compound_statement</span> <span class="SpecOperator">|</span> <span class="SpecToken">';'</span><span class="SpecOperator">)</span>
-</div>
-
-<div class="changed"><span class="SpecRuleStart">parameter_list</span>
+<span class="SpecRuleStart">parameter_list</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span> <span class="SpecOperator">(</span><span class="SpecToken">','</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span><span class="SpecOperator">)*)?</span>
 </div></pre>
+
 
 你需要：
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
