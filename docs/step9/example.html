@@ -1040,6 +1040,64 @@
             
         </li>
     
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    step12：完善数组功能
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" data-path="../step12/intro.html">
+            
+                <a href="../step12/intro.html">
+            
+                    
+                    任务概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" data-path="../step12/example.html">
+            
+                <a href="../step12/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.3" data-path="../step12/spec.html">
+            
+                <a href="../step12/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
         
@@ -1203,10 +1261,6 @@ main:
 <p>&#x540C;&#x5B66;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x53C2;&#x8003;&#x7684;&#x5B9E;&#x73B0;&#x5F62;&#x5F0F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x601D;&#x8003;&#x4F20;&#x53C2;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x3002;</p>
 <blockquote>
 <p>&#x5728; step9 &#x4E4B;&#x540E;&#xFF0C;C++ &#x6846;&#x67B6;&#x4E2D;&#x51FA;&#x73B0;&#x4E86;&#x65B0;&#x7684;&#x4E09;&#x5730;&#x5740;&#x7801;&#x6307;&#x4EE4;&#xFF08;PARAM&#x3001;CALL&#x7B49;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x4F60;&#x9700;&#x8981;&#x53C2;&#x8003; <code>tac/dataflow.cpp</code> &#x6587;&#x4EF6;&#x5F00;&#x59CB;&#x7684;&#x6CE8;&#x91CA;&#x4FEE;&#x6539;&#x76F8;&#x5E94;&#x6307;&#x4EE4;&#x7684;&#x6570;&#x636E;&#x6D41;&#x4FE1;&#x606F;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4FEE;&#x6539;&#x65B9;&#x5F0F;&#x53D6;&#x51B3;&#x4E8E;&#x4F60;&#x5B9A;&#x4E49;&#x7684;&#x4E09;&#x5730;&#x5740;&#x7801;&#x6307;&#x4EE4;&#x7684;&#x8F93;&#x5165;&#x548C;&#x8F93;&#x51FA;&#x7279;&#x70B9;&#x3002;</p>
-<p>&#x53E6;&#x5916;&#x5728; C++ &#x6846;&#x67B6;&#x4E2D;&#x5DF2;&#x7ECF;&#x5E2E;&#x52A9;&#x5927;&#x5BB6;&#x5B9E;&#x73B0;&#x4E86;&#x7528;&#x6808;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x56E0;&#x6B64;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x628A; <strong>PARAM &#x6307;&#x4EE4;</strong>&#x7406;&#x89E3;&#x4E3A; PUSH &#x6307;&#x4EE4;&#xFF0C;&#x6309;&#x7167;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x4ECE;&#x5DE6;&#x5F80;&#x53F3;&#x5C06;&#x53C2;&#x6570;&#x538B;&#x6808;&#x5373;&#x53EF;&#xFF08;&#x6CE8;&#x610F;&#x7528;&#x6808;&#x4F20;&#x9012;&#x7684;&#x903B;&#x8F91;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x6C42;&#x53C2;&#x6570;&#x7684;&#x503C;&#x4F1A;&#x81EA;&#x52A8;&#x4F9D;&#x6B21;&#x6309;&#x987A;&#x5E8F;&#x88C5;&#x8F7D;&#x5230;&#x4E34;&#x65F6;&#x53D8;&#x91CF; _T0, _T1 ... &#x4E2D;&#xFF09;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x7528; <strong>POP &#x6307;&#x4EE4;</strong>&#x5C06;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4ECE;&#x6808;&#x4E0A;&#x5F39;&#x51FA;&#x3002;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF1A;</p>
-<p>&#xFF08;1&#xFF09;src/translation/translation.cpp &#x4E2D; visit(ast::FuncDefn *f) &#x786E;&#x5B9A;&#x4E86;&#x53C2;&#x6570;&#x7684;&#x5728;&#x6808;&#x4E0A; offset&#x3002;</p>
-<p>&#xFF08;2&#xFF09;src/tac/trans_helper.cpp &#x4E2D; memoOf(Function *f)) &#x786E;&#x5B9A;&#x4E86;&#x5B58;&#x50A8;&#x53C2;&#x6570;&#x503C;&#x7684; Temp &#x5728;&#x6808;&#x4E0A;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
-<p>&#x56E0;&#x6B64; C++ &#x6846;&#x67B6;&#x4E2D;&#x5927;&#x5BB6;&#x9700;&#x8981;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x4E3A;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5C06;&#x53C2;&#x6570;&#x6309;&#x7167;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x4F9D;&#x6B21;&#x5165;&#x6808;&#xFF0C;&#x7136;&#x540E; <strong>CALL LABEL</strong>&#xFF0C;&#x8C03;&#x7528;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x5C06;&#x53C2;&#x6570;&#x4ECE;&#x6808;&#x4E0A;&#x5F39;&#x51FA;&#x3002;</p>
 </blockquote>
 <h2 id="&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x751F;&#x6210;">&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x751F;&#x6210;</h2>
 <pre><code class="lang-assembly">    .text
@@ -1275,7 +1329,7 @@ main_exit:
 <h3 id="&#x8C03;&#x7528;&#x7EA6;&#x5B9A;">&#x8C03;&#x7528;&#x7EA6;&#x5B9A;</h3>
 <p>&#x5982;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x662F; caller &#x548C; callee &#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x79CD;&#x7EA6;&#x5B9A;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x5E76;&#x4E0D;&#x552F;&#x4E00;&#xFF0C;&#x53EA;&#x8981; caller &#x548C; callee &#x4E4B;&#x95F4;&#x7684;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x76F8;&#x540C;&#xFF0C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5C31;&#x53EF;&#x4EE5;&#x987A;&#x5229;&#x8FDB;&#x884C;&#x3002;&#x5728;&#x8BFE;&#x7A0B;&#x5B9E;&#x9A8C;&#x6587;&#x6863;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x7ED9;&#x51FA;&#x4E24;&#x79CD;&#x53C2;&#x8003;&#x7684;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#xFF1A;&#x4E00;&#x79CD;&#x662F; gcc &#x4F7F;&#x7528;&#x7684; 32 &#x4F4D; RISC-V &#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x7B80;&#x5316;&#x4E4B;&#x540E;&#x7684;&#x975E;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x3002;</p>
 <blockquote>
-<p>&#x9700;&#x8981;&#x8BF4;&#x660E;&#x7684;&#x662F;&#xFF0C;&#x5B9E;&#x9A8C;&#x6D4B;&#x4F8B;&#x4E2D;&#x6CA1;&#x6709;&#x4E0E; gcc &#x7F16;&#x8BD1;&#x7684;&#x6587;&#x4EF6;&#x76F8;&#x4E92;&#x8C03;&#x7528;&#x7684;&#x8981;&#x6C42;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5927;&#x5BB6;&#x5B9E;&#x73B0;&#x7B80;&#x5316;&#x7248;&#x7684;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x5373;&#x53EF;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x81EA;&#x5DF1;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x8981;&#x6C42;&#x8F83;&#x9AD8;&#xFF08;&#x6BD4;&#x5982;&#xFF0C;&#x5E0C;&#x671B;&#x4E0E;&#x7528; gcc &#x7F16;&#x8BD1;&#x6240;&#x5F97;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4E00;&#x8D77;&#x94FE;&#x63A5;&#x5E76;&#x8FDB;&#x884C;&#x76F8;&#x4E92;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x8BF4;&#x660E;&#x7684;&#x662F;&#xFF0C;&#x5B9E;&#x9A8C;&#x6D4B;&#x4F8B;&#x4E2D;&#x6709;&#x4E0E; gcc &#x7F16;&#x8BD1;&#x7684;&#x6587;&#x4EF6;&#x76F8;&#x4E92;&#x8C03;&#x7528;&#x7684;&#x8981;&#x6C42;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5927;&#x5BB6;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x3002;</p>
 </blockquote>
 <h4 id="risc-v-&#x7684;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#xFF08;gcc-&#x4F7F;&#x7528;&#x7684;&#x3001;&#x548C;-minidecaf-&#x76F8;&#x5173;&#x7684;&#xFF09;">RISC-V &#x7684;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#xFF08;gcc &#x4F7F;&#x7528;&#x7684;&#x3001;&#x548C; MiniDecaf &#x76F8;&#x5173;&#x7684;&#xFF09;</h4>
 <ol>
@@ -1289,39 +1343,6 @@ main_exit:
 <p>&#x8FD4;&#x56DE;&#x503C;&#xFF08;32 &#x4F4D; int&#xFF09;&#x653E;&#x5728; a0 &#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;</p>
 </li>
 </ol>
-<h4 id="&#x7B80;&#x5316;&#x7248;&#x7684;&#x975E;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;">&#x7B80;&#x5316;&#x7248;&#x7684;&#x975E;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;</h4>
-<ol>
-<li><p>caller-saved &#x548C; callee-saved &#x5BC4;&#x5B58;&#x5668;</p>
-<p>callee &#x53EA;&#x9700;&#x8981;&#x4FDD;&#x5B58; fp &#x548C; ra &#x5BC4;&#x5B58;&#x5668;&#x3002;&#x5176;&#x4E2D; fp &#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x5B58;&#x50A8;&#x8C03;&#x7528;&#x8005;&#x6808;&#x5E27;&#x7684;&#x6808;&#x5E95;&#x5730;&#x5740;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x6062;&#x590D;&#x8C03;&#x7528;&#x8005;&#x7684;&#x6808;&#x5E27;&#xFF0C;ra &#x5BC4;&#x5B58;&#x5668;&#x4FDD;&#x5B58;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#x3002;&#x7A0B;&#x5E8F;&#x5B9E;&#x9A8C;&#x6846;&#x67B6;&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x6570;&#x636E;&#x6D41;&#x5206;&#x6790;&#x6A21;&#x5757;&#xFF0C;caller &#x53EA;&#x9700;&#x4FDD;&#x5B58;&#x6D3B;&#x8DC3;&#x53D8;&#x91CF;&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x5185;&#x5BB9;&#xFF08;&#x6570;&#x636E;&#x6D41;&#x5206;&#x6790;&#x548C;&#x6D3B;&#x8DC3;&#x53D8;&#x91CF;&#x89C1; step7&#xFF09;&#x3002;</p>
-</li>
-<li><p>&#x51FD;&#x6570;&#x53C2;&#x6570;&#x53CA;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x4F20;&#x9012;</p>
-<p>&#x4E0D;&#x4F7F;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x8FDB;&#x884C;&#x4F20;&#x53C2;&#xFF0C;&#x6240;&#x6709;&#x53C2;&#x6570;&#x4ECE;&#x53F3;&#x5F80;&#x5DE6;&#x538B;&#x6808;&#xFF0C;&#x7B2C; 1 &#x4E2A;&#x53C2;&#x6570;&#x5728;&#x6808;&#x9876;&#x3002;</p>
-<p>&#x8FD4;&#x56DE;&#x503C;&#xFF08;32 &#x4F4D; int&#xFF09;&#x653E;&#x5728; a0 &#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;</p>
-</li>
-</ol>
-<h3 id="&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x6808;&#x5E27;&#x53D8;&#x5316;&#xFF08;&#x4F7F;&#x7528;&#x975E;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#xFF09;">&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x6808;&#x5E27;&#x53D8;&#x5316;&#xFF08;&#x4F7F;&#x7528;&#x975E;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#xFF09;</h3>
-<p>&#x4E3A;&#x4E86;&#x5E2E;&#x52A9;&#x5927;&#x5BB6;&#x66F4;&#x597D;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E0A;&#x8FF0;&#x7684;<strong>&#x7B80;&#x5316;&#x7248;&#x7684;&#x975E;&#x6807;&#x51C6;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;</strong>&#xFF0C;&#x753B;&#x51FA;&#x4E86;&#x4E00;&#x6BB5;&#x5177;&#x6709;&#x4EE3;&#x8868;&#x6027;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x5176;&#x6574;&#x4E2A;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6808;&#x5E27;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x4EE5;&#x53CA;&#x53D8;&#x5316;&#x3002;&#x4EE3;&#x8868;&#x6027;&#x7A0B;&#x5E8F;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-C"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">bar</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
-    <span class="hljs-keyword">return</span> x + y;
-}
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">foo</span> <span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>; 
-    <span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;
-    <span class="hljs-keyword">int</span> c = foo(a, b);
-    <span class="hljs-comment">// return a+c &#x7684;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x8BB2;&#x89E3;&#x4FDD;&#x5B58;&#x6D3B;&#x8DC3;&#x53D8;&#x91CF;&#x7684;&#x60C5;&#x51B5;</span>
-    <span class="hljs-keyword">return</span> a + c;         
-}
-</code></pre>
-<p><img src="pics/1.png" alt=" "></p>
-<p>&#xFF08;1&#xFF09; foo &#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x6808;&#x5E27;&#x5EFA;&#x7ACB;&#xFF0C;&#x53D8;&#x91CF; a &#x4E0E; b &#x88AB;&#x5206;&#x914D;&#x5BF9;&#x5E94;&#x5BC4;&#x5B58;&#x5668;&#x3002;</p>
-<p><img src="pics/2.png" alt=" "></p>
-<p>&#xFF08;2&#xFF09;&#x8C03;&#x7528; bar &#x51FD;&#x6570;&#xFF0C;&#x7531;&#x4E8E;&#x53D8;&#x91CF; a &#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x8FD8;&#x9700;&#x8981;&#x88AB;&#x4F7F;&#x7528;&#xFF08;a+c&#xFF09;&#xFF0C;&#x662F;&#x6D3B;&#x8DC3;&#x53D8;&#x91CF;&#xFF0C;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x5230;&#x6808;&#x4E2D;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x6309;&#x7167;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x5BF9;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x538B;&#x6808;&#x4F20;&#x53C2;&#x3002;</p>
-<p><img src="pics/3.png" alt=" "></p>
-<p>&#xFF08;3&#xFF09;bar &#x51FD;&#x6570;&#x5185;&#x90E8;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#xFF0C;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x5BC4;&#x5B58;&#x5668;&#x53D8;&#x5316;&#xFF0C;&#x6808;&#x5E27;&#x65B9;&#x9762;&#x4EC5;&#x4EC5;&#x662F;&#x5EFA;&#x7ACB;&#x4E86; bar &#x51FD;&#x6570;&#x7684;&#x6808;&#x5E27;&#x3002;</p>
-<p><img src="pics/4.png" alt=" "></p>
-<p>&#xFF08;4&#xFF09;bar &#x51FD;&#x6570;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#xFF0C;&#x5176;&#x6808;&#x5E27;&#x88AB;&#x9500;&#x6BC1;&#x3002;</p>
-<p><img src="pics/5.png" alt=" "></p>
-<p>&#xFF08;5&#xFF09;foo &#x51FD;&#x6570;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#xFF0C;&#x5176;&#x6808;&#x5E27;&#x88AB;&#x9500;&#x6BC1;&#x3002;</p>
 <h1 id="&#x601D;&#x8003;&#x9898;">&#x601D;&#x8003;&#x9898;</h1>
 <ol>
 <li>MiniDecaf &#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65F6;&#x53C2;&#x6570;&#x6C42;&#x503C;&#x7684;&#x987A;&#x5E8F;&#x662F;&#x672A;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;&#x3002;&#x8BD5;&#x5199;&#x51FA;&#x4E00;&#x6BB5; MiniDecaf &#x4EE3;&#x7801;&#xFF0C;&#x4F7F;&#x5F97;&#x4E0D;&#x540C;&#x7684;&#x53C2;&#x6570;&#x6C42;&#x503C;&#x987A;&#x5E8F;&#x4F1A;&#x5BFC;&#x81F4;&#x4E0D;&#x540C;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x3002;</li>
@@ -1385,7 +1406,7 @@ main_exit:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"通过例子学习","level":"8.1.2","depth":2,"next":{"title":"规范","level":"8.1.3","depth":2,"path":"docs/step9/spec.md","ref":"docs/step9/spec.md","articles":[]},"previous":{"title":"任务概述","level":"8.1.1","depth":2,"path":"docs/step9/intro.md","ref":"docs/step9/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step9/example.md","mtime":"2022-10-15T15:22:37.730Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-10-15T15:23:40.921Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"通过例子学习","level":"8.1.2","depth":2,"next":{"title":"规范","level":"8.1.3","depth":2,"path":"docs/step9/spec.md","ref":"docs/step9/spec.md","articles":[]},"previous":{"title":"任务概述","level":"8.1.1","depth":2,"path":"docs/step9/intro.md","ref":"docs/step9/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step9/example.md","mtime":"2022-10-23T07:31:42.173Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-10-23T07:32:43.666Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
