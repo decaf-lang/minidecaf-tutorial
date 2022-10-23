@@ -38,7 +38,6 @@ _L1:                          # begin label
     _T2 = 5
     _T3 = LT _T0, _T2
     BEQZ _T3, _L3              # i < 5;
-    JUMP _L3                   # 循环体
 _L2:                          # loop label
     _T4 = 1
     _T5 = ADD _T0, _T4
