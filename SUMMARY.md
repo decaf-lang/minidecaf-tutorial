@@ -83,5 +83,10 @@
   * [通过例子学习](docs/step11/example.md)
   * [规范](docs/step11/spec.md)
 
+* step12：完善数组功能
+  * [任务概述](docs/step12/intro.md)
+  * [通过例子学习](docs/step12/example.md)
+  * [规范](docs/step12/spec.md)
+
 ## 参考资料
 * [参考资料](REFERENCE.md)
