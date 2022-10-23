@@ -11,7 +11,8 @@ step12 的目标是支持数组的初始化和传参：
 </div></pre>
 
 
-2. 数组的传参
+2. 数组的传参：
+
 <pre id='vimCodeElement'><code></code><div class="changed">
 <span class="SpecRuleStart">function</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">parameter_list</span> <span class="SpecToken">')'</span> <span class="SpecOperator">(</span><span class="SpecRule">compound_statement</span> <span class="SpecOperator">|</span> <span class="SpecToken">';'</span><span class="SpecOperator">)</span>
@@ -19,8 +20,7 @@ step12 的目标是支持数组的初始化和传参：
 
 <div class="changed"><span class="SpecRuleStart">parameter_list</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span> <span class="SpecOperator">(</span><span class="SpecToken">','</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span><span class="SpecOperator">)*)?</span>
-</div>
-</pre>
+</div></pre>
 
 你需要：
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
