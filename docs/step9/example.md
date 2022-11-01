@@ -181,63 +181,57 @@ main_exit:
 我们的测试脚本会将你的编译器生成的汇编代码与我们提供的运行时框架一起通过gcc编译得到可执行文件，对比运行结果，因此，你可以查看测试文件夹中的`runtime.c`,`runtime.h`,`runtime.s`来查看我们预定义的函数。
 
 C++框架中：
-由于调用时涉及将参数放到寄存器中，如果原来的寄存器中已经分配给了其他虚拟寄存器，那么你需要将寄存器先保存（spill）到栈上，但是这个过程你需要小心地处理Liveout集合，以下面三地址码为例:
-```assembly
-func:
-	_T2 = ADD _T0, _T1
-    return _T2        # 参数 x 和 y 分别对应 _T0, _T1
-main:
-    _T0 = 1
-    PARAM _T0         # 将 _T0 的值作为参数 x 放入a0寄存器
-    _T1 = 2
-    PARAM _T1         # 将 _T1 的值作为参数 y 放入a1寄存器
-    _T3 = CALL func   # 调用函数
-    return _T3
-```
-在PARAM _T0这一行，我们要将虚拟寄存器T0作为参数x放入物理寄存器a0，假设此时T0在栈中，并且物理寄存器a0中存放了另一个虚拟寄存器T2，那么要先将T2 spill到栈中。
-即此时需要：
-1. 将T2放入栈中（即：spill T2）
-2. 从栈中将T0取出放入a0寄存器中
 
-但是我们的框架在spill一个寄存器时会考虑当前位置的liveout集合，假设T0在此后不再被用到，那么T0就不在当前位置的liveout集合中，也就是说在spill寄存器时T0可以被覆盖掉，这可能导致T2被spill到了T0所在的位置，覆盖了T0。
-```c++
-void RiscvDesc::spillReg(int i, LiveSet *live) {
-    std::ostringstream oss;
+1. 框架中会对函数声明和调用都加上下划线`_`，如果链接时出现问题请检查是不是下划线导致的。
 
-    Temp v = _reg[i]->var;
+2. 由于调用时涉及将参数放到寄存器中，如果原来的寄存器中已经分配给了其他虚拟寄存器，那么你需要将寄存器先保存（spill）到栈上，但是这个过程你需要小心地处理Liveout集合，以下面三地址码为例:
+    ```assembly
+    func:
+        _T2 = ADD _T0, _T1
+        return _T2        # 参数 x 和 y 分别对应 _T0, _T1
+    main:
+        _T0 = 1
+        PARAM _T0         # 将 _T0 的值作为参数 x 放入a0寄存器
+        _T1 = 2
+        PARAM _T1         # 将 _T1 的值作为参数 y 放入a1寄存器
+        _T3 = CALL func   # 调用函数
+        return _T3
+    ```
+    在PARAM _T0这一行，我们要将虚拟寄存器T0作为参数x放入物理寄存器a0，假设此时T0在栈中，并且物理寄存器a0中存放了另一个虚拟寄存器T2，那么要先将T2 spill到栈中。
+    即此时需要：
+    1. 将T2放入栈中（即：spill T2）
+    2. 从栈中将T0取出放入a0寄存器中
 
-    if ((NULL != v) && _reg[i]->dirty && live->contains(v)) {
-        RiscvReg *base = _reg[RiscvReg::FP];
-
-        if (!v->is_offset_fixed) {
-            _frame->getSlotToWrite(v, live);   // 此处选择了一个栈上的位置用于保存寄存器
+    但是我们的框架在spill一个寄存器时会考虑当前位置的liveout集合，假设T0在此后不再被用到，那么T0就不在当前位置的liveout集合中，也就是说在spill寄存器时T0可以被覆盖掉，这可能导致T2被spill到了T0所在的位置，覆盖了T0。
+    ```c++
+    void RiscvDesc::spillReg(int i, LiveSet *live) {
+        std::ostringstream oss;
+        Temp v = _reg[i]->var;
+        if ((NULL != v) && _reg[i]->dirty && live->contains(v)) { 
+            RiscvReg *base = _reg[RiscvReg::FP];
+            if (!v->is_offset_fixed) {
+                _frame->getSlotToWrite(v, live);   // 此处选择了一个栈上的位置用于保存寄存器
+            }
+            ... ...
         }
-
-        oss << "spill " << v << " from " << _reg[i]->name << " to ("
-            << base->name << (v->offset < 0 ? "" : "+") << v->offset << ")";
-        addInstr(RiscvInstr::SW, _reg[i], base, NULL, v->offset, EMPTY_STR,
-                 oss.str().c_str());
+        ... ...
     }
-
-    _reg[i]->var = NULL;
-    _reg[i]->dirty = false;
-}
-```
-因此如果你遇到需要将参数放到某个物理寄存器中并且原来物理寄存器中含有其他虚拟寄存器，那么你可以按照下面的方式做：
-```c++
-void RiscvDesc::setRegParam(Tac *t, int cnt) {
-    // 此处助教使用Tac的op0来存放需要当作参数的虚拟寄存器
-    // 先将op0加入当前的LiveOut集合，这可以保证spillReg时候不会将op0覆盖
-    t->LiveOut->add(t->op0.var);
-    spillReg(RiscvReg::A0 + cnt, t->LiveOut);
-    int i = lookupReg(t->op0.var);
-    if(i < 0) {
-        // 处理在栈上的情况
-    } else {
-        // 处理在其他寄存器中的情况
+    ```
+    因此如果你遇到需要将参数放到某个物理寄存器中并且原来物理寄存器中含有其他虚拟寄存器，那么你可以按照下面的方式做：
+    ```c++
+    void RiscvDesc::setRegParam(Tac *t, int cnt) {
+        // 此处助教使用Tac的op0来存放需要当作参数的虚拟寄存器
+        // 先将op0加入当前的LiveOut集合，这可以保证spillReg时候不会将op0覆盖
+        t->LiveOut->add(t->op0.var);
+        spillReg(RiscvReg::A0 + cnt, t->LiveOut);
+        int i = lookupReg(t->op0.var);
+        if(i < 0) {
+            // 处理在栈上的情况
+        } else {
+            // 处理在其他寄存器中的情况
+        }
     }
-}
-```
+    ```
 
 # 思考题
 1. MiniDecaf 的函数调用时参数求值的顺序是未定义行为。试写出一段 MiniDecaf 代码，使得不同的参数求值顺序会导致不同的返回结果。
