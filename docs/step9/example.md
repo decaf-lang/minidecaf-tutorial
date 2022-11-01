@@ -192,7 +192,11 @@ main:
     _T3 = CALL func   # 调用函数
     return _T3
 ```
-在PARAM _T0这一行，我们要将虚拟寄存器_T0 作为参数 x 放入物理寄存器a0，假设此时T0在栈中，并且物理寄存器a0中存放了另一个虚拟寄存器T1，那么要先将T1 spill到栈中，但是在spill的实现过程中，会考虑当前位置的liveout集合，假设T0在此后不再被用到，那么就可能将原先T0所在的栈上空间覆盖掉。
+在PARAM _T0这一行，我们要将虚拟寄存器T0作为参数x放入物理寄存器a0，假设此时T0在栈中，并且物理寄存器a0中存放了另一个虚拟寄存器T2，那么要先将T2 spill到栈中。
+即此时需要：
+1. 将T2放入栈中（即：spill T2）
+2. 从栈中将T0取出放入a0寄存器中
+但是我们的框架在spill一个寄存器时会考虑当前位置的liveout集合，假设T0在此后不再被用到，那么T0就不在当前位置的liveout集合中，也就是说在spill寄存器时T0可以被覆盖掉，这可能导致T2被spill到了T0所在的位置，覆盖了T0。
 ```c++
 void RiscvDesc::spillReg(int i, LiveSet *live) {
     std::ostringstream oss;
@@ -218,8 +222,8 @@ void RiscvDesc::spillReg(int i, LiveSet *live) {
 ```
 因此如果你遇到需要将参数放到某个物理寄存器中并且原来物理寄存器中含有其他虚拟寄存器，那么你可以按照下面的方式做：
 ```c++
-void RiscvDesc::setParam(Tac *t, int cnt) {
-    // 此处助教使用Tac的op0来存放需要当作参数的寄存器
+void RiscvDesc::setRegParam(Tac *t, int cnt) {
+    // 此处助教使用Tac的op0来存放需要当作参数的虚拟寄存器
     // 先将op0加入当前的LiveOut集合，这可以保证spillReg时候不会将op0覆盖
     t->LiveOut->add(t->op0.var);
     spillReg(RiscvReg::A0 + cnt, t->LiveOut);
