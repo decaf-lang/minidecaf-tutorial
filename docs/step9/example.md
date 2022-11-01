@@ -158,9 +158,7 @@ main_exit:
 
 ### 调用约定
 
-如上所述，调用约定是 caller 和 callee 之间的一种约定。因此，调用约定并不唯一，只要 caller 和 callee 之间的调用约定相同，函数调用就可以顺利进行。在课程实验文档中，我们将给出两种参考的调用约定：一种是 gcc 使用的 32 位 RISC-V 标准调用约定，一种是简化之后的非标准调用约定。
-
-> 需要说明的是，实验测例中有与 gcc 编译的文件相互调用的要求，因此，大家需要实现标准调用约定。
+实验测例中有与 gcc 编译的文件相互调用的要求，因此，大家需要实现标准调用约定。
 
 #### RISC-V 的标准调用约定（gcc 使用的、和 MiniDecaf 相关的）
 
@@ -177,6 +175,62 @@ main_exit:
    函数参数（32 位 int）从左到右存放在 a0 - a7 寄存器中，如果还有其他参数，则以从右向左的顺序压栈，第 9 个参数在栈顶位置。同学们可以使用编写一个带有多个参数的函数并进行调用，然后用 gcc 编译程序进行验证。
 
    返回值（32 位 int）放在 a0 寄存器中。
+
+### 提示
+
+C++框架中：
+由于调用时涉及将参数放到寄存器中，如果原来的寄存器中已经分配给了其他虚拟寄存器，那么你需要将寄存器先保存（spill）到栈上，但是这个过程你需要小心地处理Liveout集合，以下面三地址码为例:
+```assembly
+func:
+	_T2 = ADD _T0, _T1
+    return _T2        # 参数 x 和 y 分别对应 _T0, _T1
+main:
+    _T0 = 1
+    PARAM _T0         # 将 _T0 的值作为参数 x 放入a0寄存器
+    _T1 = 2
+    PARAM _T1         # 将 _T1 的值作为参数 y 放入a1寄存器
+    _T3 = CALL func   # 调用函数
+    return _T3
+```
+在PARAM _T0这一行，我们要将虚拟寄存器_T0 作为参数 x 放入物理寄存器a0，假设此时T0在栈中，并且物理寄存器a0中存放了另一个虚拟寄存器T1，那么要先将T1 spill到栈中，但是在spill的实现过程中，会考虑当前位置的liveout集合，假设T0在此后不再被用到，那么就可能将原先T0所在的栈上空间覆盖掉。
+```c++
+void RiscvDesc::spillReg(int i, LiveSet *live) {
+    std::ostringstream oss;
+
+    Temp v = _reg[i]->var;
+
+    if ((NULL != v) && _reg[i]->dirty && live->contains(v)) {
+        RiscvReg *base = _reg[RiscvReg::FP];
+
+        if (!v->is_offset_fixed) {
+            _frame->getSlotToWrite(v, live);   // 此处选择了一个栈上的位置用于保存寄存器
+        }
+
+        oss << "spill " << v << " from " << _reg[i]->name << " to ("
+            << base->name << (v->offset < 0 ? "" : "+") << v->offset << ")";
+        addInstr(RiscvInstr::SW, _reg[i], base, NULL, v->offset, EMPTY_STR,
+                 oss.str().c_str());
+    }
+
+    _reg[i]->var = NULL;
+    _reg[i]->dirty = false;
+}
+```
+因此如果你遇到需要将参数放到某个物理寄存器中并且原来物理寄存器中含有其他虚拟寄存器，那么你可以按照下面的方式做：
+```c++
+void RiscvDesc::setParam(Tac *t, int cnt) {
+    // 此处助教使用Tac的op0来存放需要当作参数的寄存器
+    // 先将op0加入当前的LiveOut集合，这可以保证spillReg时候不会将op0覆盖
+    t->LiveOut->add(t->op0.var);
+    spillReg(RiscvReg::A0 + cnt, t->LiveOut);
+    int i = lookupReg(t->op0.var);
+    if(i < 0) {
+        // 处理在栈上的情况
+    } else {
+        // 处理在其他寄存器中的情况
+    }
+}
+```
 
 # 思考题
 1. MiniDecaf 的函数调用时参数求值的顺序是未定义行为。试写出一段 MiniDecaf 代码，使得不同的参数求值顺序会导致不同的返回结果。
