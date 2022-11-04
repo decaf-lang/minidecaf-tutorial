@@ -9,7 +9,7 @@
 <span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">function</span> <span class="SpecOperator">|</span> <span class="SpecRule">declaration</span><span class="SpecOperator">)*</span>
 </div>
 <span class="SpecRuleStart">function</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">parameter_list</span> <span class="SpecToken">')'</span> <span class="SpecRule">compound_statement</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">'('</span> <span class="SpecRule">parameter_list</span> <span class="SpecToken">')'</span> <span class="SpecRule">( compound_statement | ; )</span>
 
 <span class="SpecRuleStart">type</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'int'</span>
