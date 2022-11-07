@@ -39,7 +39,7 @@
 
 <span class="SpecRuleStart">declaration</span>
 <div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator"><span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
-<span class="SpecRule">    | type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">) +</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">'{' (Integer (',' Integer)*)? '}'</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
+<span class="SpecRule">    | type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)+</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">'{' (Integer (',' Integer)*)? '}'</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
 </div>
 
 <span class="SpecRuleStart">expression_list</span>
@@ -97,7 +97,7 @@
 </pre>
 
 
-# step12 语义规范 
+# step12 语义规范
 
 **12.1** 多维数组按照类似一维数组的初始化方法，不要求实现内部嵌套括号
 
