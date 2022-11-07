@@ -7,7 +7,7 @@ step12 的目标是支持数组的初始化和传参：
 
 <pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">declaration</span>
-<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">) +</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">'{' (Integer (',' Integer)*)? '}'</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
+<div class="changed"><span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'['</span> <span class="SpecToken">Integer</span> <span class="SpecToken">']'</span><span class="SpecOperator">)+</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">'{' (Integer (',' Integer)*)? '}'</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
 </div></pre>
 
 
