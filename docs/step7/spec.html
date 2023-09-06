@@ -108,7 +108,7 @@
 
     
     
-    <link rel="prev" href="dataflow.html" />
+    <link rel="prev" href="example.html" />
     
 
     </head>
@@ -529,7 +529,7 @@
 
     
         
-        <li class="header">Stage2：变量和语句</li>
+        <li class="header">Stage2：变量</li>
         
         
     
@@ -591,12 +591,19 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" >
+
+    
+        
+        <li class="header">Stage3：作用域</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
             
                 <span>
             
                     
-                    step6：条件语句和循环语句
+                    step6：作用域和块语句
             
                 </span>
             
@@ -605,7 +612,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.2.1" data-path="../step6/intro.html">
+        <li class="chapter " data-level="6.1.1" data-path="../step6/intro.html">
             
                 <a href="../step6/intro.html">
             
@@ -618,7 +625,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2.2" data-path="../step6/example.html">
+        <li class="chapter " data-level="6.1.2" data-path="../step6/example.html">
             
                 <a href="../step6/example.html">
             
@@ -631,7 +638,20 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2.3" data-path="../step6/spec.html">
+        <li class="chapter " data-level="6.1.3" data-path="../step6/dataflow.html">
+            
+                <a href="../step6/dataflow.html">
+            
+                    
+                    数据流分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../step6/spec.html">
             
                 <a href="../step6/spec.html">
             
@@ -652,72 +672,7 @@
 
     
         
-        <li class="header">Parser-Stage</li>
-        
-        
-    
-        <li class="chapter " data-level="6.1" >
-            
-                <span>
-            
-                    
-                    parser-stage：手工自顶向下语法分析器
-            
-                </span>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="6.1.1" data-path="../step-parser/intro.html">
-            
-                <a href="../step-parser/intro.html">
-            
-                    
-                    任务概述
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="6.1.2" data-path="../step-parser/example.html">
-            
-                <a href="../step-parser/example.html">
-            
-                    
-                    框架介绍
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="6.1.3" data-path="../step-parser/spec.html">
-            
-                <a href="../step-parser/spec.html">
-            
-                    
-                    规范
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Stage3：作用域和循环</li>
+        <li class="header">Stage4：条件和循环</li>
         
         
     
@@ -726,7 +681,7 @@
                 <span>
             
                     
-                    step7：作用域和块语句
+                    step7：条件语句
             
                 </span>
             
@@ -761,20 +716,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.1.3" data-path="dataflow.html">
-            
-                <a href="dataflow.html">
-            
-                    
-                    数据流分析
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="7.1.4" data-path="spec.html">
+        <li class="chapter active" data-level="7.1.3" data-path="spec.html">
             
                 <a href="spec.html">
             
@@ -1166,7 +1108,7 @@
                                 
                                 <h1 id="&#x89C4;&#x8303;">&#x89C4;&#x8303;</h1>
 <p>&#x6BCF;&#x4E2A;&#x6B65;&#x9AA4;&#x7ED3;&#x5C3E;&#x7684; <strong>&#x89C4;&#x8303;</strong> &#x4E00;&#x8282;&#x90FD;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;&#x6B65;&#x9AA4;&#x4E2D;&#x7684;&#x65B0;&#x7279;&#x6027;&#x7ED9;&#x51FA;&#x89C4;&#x8303;&#xFF0C;&#x65B9;&#x4FBF;&#x5927;&#x5BB6;&#x67E5;&#x9605;&#x3002;</p>
-<h1 id="step7-&#x8BED;&#x6CD5;&#x89C4;&#x8303;">step7 &#x8BED;&#x6CD5;&#x89C4;&#x8303;</h1>
+<h1 id="step6-&#x8BED;&#x6CD5;&#x89C4;&#x8303;">step6 &#x8BED;&#x6CD5;&#x89C4;&#x8303;</h1>
 <p>&#x7070;&#x8272;&#x90E8;&#x5206;&#x8868;&#x793A;&#x76F8;&#x5BF9;&#x4E0A;&#x4E00;&#x8282;&#x7684;&#x4FEE;&#x6539;&#x3002;</p>
 <pre id="vimCodeElement">
 <code></code>
@@ -1174,23 +1116,19 @@
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">function</span>
 
 <div class="changed"><span class="SpecRuleStart">function</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">compound_statement</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecToken">&apos;{&apos;</span> <span class="SpecRule">block_item</span><span class="SpecOperator">*</span> <span class="SpecToken">&apos;}&apos;</span>
 </div>
 <span class="SpecRuleStart">type</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">&apos;int&apos;</span>
 
-<div class="changed"><span class="SpecRuleStart">compound_statement</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">&apos;{&apos;</span> <span class="SpecRule">block_item</span><span class="SpecOperator">*</span> <span class="SpecToken">&apos;}&apos;</span>
-</div>
-<span class="SpecRuleStart">block_item</span>
+<div class="changed"><span class="SpecRuleStart">block_item</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">statement</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">declaration</span>
-
+</div>
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">&apos;return&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;;&apos;</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">&apos;;&apos;</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;if&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;else&apos;</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
-<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;if&apos;</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;else&apos;</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
 </div>
 <span class="SpecRuleStart">declaration</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;=&apos;</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">&apos;;&apos;</span>
@@ -1198,14 +1136,14 @@
 <span class="SpecRuleStart">expression</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">assignment</span>
 
-<span class="SpecRuleStart">assignment</span>
+<div class="changed"><span class="SpecRuleStart">assignment</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">conditional</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span> <span class="SpecToken">&apos;=&apos;</span> <span class="SpecRule">expression</span>
 
 <span class="SpecRuleStart">conditional</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">logical_or</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">logical_or</span> <span class="SpecToken">&apos;?&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;:&apos;</span> <span class="SpecRule">conditional</span>
-
+</div>
 <span class="SpecRuleStart">logical_or</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">logical_and</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">logical_or</span> <span class="SpecToken">&apos;||&apos;</span> <span class="SpecRule">logical_and</span>
@@ -1240,19 +1178,20 @@
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">Identifier</span>
 </pre>
 
-
-<h1 id="step7-&#x8BED;&#x4E49;&#x89C4;&#x8303;">step7 &#x8BED;&#x4E49;&#x89C4;&#x8303;</h1>
-<p><strong>7.1</strong> &#x6839;&#x636E;&#x5176;&#x58F0;&#x660E;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x7B26;&#x90FD;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x3002;&#x76EE;&#x524D;&#x6211;&#x4EEC;&#x6709;&#x4E24;&#x79CD;&#x4F5C;&#x7528;&#x57DF;&#xFF1A;&#x6587;&#x4EF6;&#x7EA7;&#x548C;&#x5757;&#x7EA7;&#x3002;&#x5982;&#x679C;&#x662F;&#x5728;&#x5757;&#x4E2D;&#x58F0;&#x660E;&#xFF0C;&#x5219;&#x6807;&#x8BC6;&#x7B26;&#x5176;&#x58F0;&#x660E;&#x6240;&#x5C5E;&#x7684;&#x5757;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x4F8B;&#x5982;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF1B;&#x5426;&#x5219;&#x6807;&#x8BC6;&#x7B26;&#x5728;&#x6587;&#x4EF6;&#x7EA7;&#xFF08;&#x5168;&#x5C40;&#xFF09;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x4F8B;&#x5982;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3002;</p>
-<p><strong>7.2</strong> &#xFF08;&#x66F4;&#x65B0; 5.6&#xFF09;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x7B26;&#x5728;&#x4E24;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x91CC;&#x9762;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x5FC5;&#x7136;&#x662F;&#x5D4C;&#x5957;&#x7684;&#xFF0C;&#x5373;&#x4E00;&#x4E2A;&#x5185;&#x5C42;&#x4F5C;&#x7528;&#x57DF;&#x5B8C;&#x5168;&#x88AB;&#x53E6;&#x4E00;&#x4E2A;&#x5916;&#x5C42;&#x4F5C;&#x7528;&#x57DF;&#x6240;&#x8986;&#x76D6;&#x3002;&#x4E14;&#x5728;&#x5185;&#x5C42;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x5916;&#x5C42;&#x4F5C;&#x7528;&#x57DF;&#x91CC;&#x8BE5;&#x6807;&#x8BC6;&#x7B26;&#x6240;&#x6307;&#x6D3E;&#xFF08;designate&#xFF09;&#x7684;&#x53D8;&#x91CF;&#x6216;&#x51FD;&#x6570;&#x662F;&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#x3002;</p>
 <blockquote>
-<p>&#x5728;&#x521D;&#x59CB;&#x5316;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#xFF0C;&#x5176;&#x6B63;&#x5728;&#x521D;&#x59CB;&#x5316;&#x7684;&#x53D8;&#x91CF;&#x5DF2;&#x88AB;&#x58F0;&#x660E;&#xFF0C;&#x4F1A;&#x9690;&#x85CF;&#xFF08;shadow&#xFF09;&#x5916;&#x5C42;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x540C;&#x540D;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x5176;&#x503C;&#x4E0D;&#x786E;&#x5B9A;&#x3002;&#x4F8B;&#x5982;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x4E2D;&#xFF0C;<code>a + 1</code> &#x7684;&#x503C;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;</p>
-<pre><code>int a = 1;
-{
-  int a = a + 1;
-}
-</code></pre></blockquote>
-<p><strong>7.1</strong> &#xFF08;&#x66F4;&#x65B0; 5.3&#xFF09;&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x81F3;&#x591A;&#x6709;&#x4E00;&#x4E2A;&#x58F0;&#x660E;&#x3002;</p>
-<p><strong>7.3</strong> &#xFF08;&#x66F4;&#x65B0; 5.4&#xFF09;&#x4F7F;&#x7528;&#x4E0D;&#x5728;&#x5F53;&#x524D;&#x5F00;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x662F;&#x4E0D;&#x5408;&#x6CD5;&#x7684;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;<code>if</code> &#x7684; <code>then</code> &#x5206;&#x652F;&#x548C; <code>else</code> &#x5206;&#x652F;&#x9700;&#x8981;&#x662F;&#x4E00;&#x4E2A;&#x8BED;&#x53E5;&#xFF08;statement&#xFF09;&#x800C;&#x975E;&#x58F0;&#x660E;&#xFF08;declaration&#xFF09;&#x3002;
+&#x4F8B;&#x5982; <code>if (1) int a;</code> &#x4E0D;&#x662F;&#x5408;&#x6CD5;&#x7684; MiniDecaf &#x7A0B;&#x5E8F;&#x3002;</p>
+</blockquote>
+<h1 id="step6-&#x8BED;&#x4E49;&#x89C4;&#x8303;">step6 &#x8BED;&#x4E49;&#x89C4;&#x8303;</h1>
+<p><strong>6.1</strong> &#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x4F1A;&#x5148;&#x5BF9;&#x7B2C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x6C42;&#x503C;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x5176;&#x503C;&#x9009;&#x62E9;&#x8BA1;&#x7B97;&#x7B2C;&#x4E8C;&#x4E2A;&#x6216;&#x7B2C;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x3002;&#x5F53;&#x4E14;&#x4EC5;&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x503C;&#x4E0D;&#x7B49;&#x4E8E; 0&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5BF9;&#x7B2C;&#x4E8C;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x6C42;&#x503C;&#x3002;&#x5F53;&#x4E14;&#x4EC5;&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x503C;&#x7B49;&#x4E8E; 0&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5BF9;&#x7B2C;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x6C42;&#x503C;&#x3002;&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x503C;&#x4E3A; 0 &#x65F6;&#xFF0C;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6C42;&#x503C;&#x7ED3;&#x679C;&#x4E3A;&#x7B2C;&#x4E8C;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x6240;&#x6C42;&#x5F97;&#x7684;&#x503C;&#xFF1B;&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x503C;&#x975E; 0 &#x65F6;&#xFF0C;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6C42;&#x503C;&#x7ED3;&#x679C;&#x4E3A;&#x7B2C;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x6240;&#x6C42;&#x5F97;&#x7684;&#x503C;&#x3002;</p>
+<blockquote>
+<p>&#x4E0D;&#x8BBA;&#x9009;&#x62E9;&#x7B2C;&#x4E8C;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x6216;&#x8005;&#x662F;&#x7B2C;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x53BB;&#x6C42;&#x503C;&#xFF0C;&#x90FD;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x8BA1;&#x7B97;&#x5B8C;&#x7B2C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x5F00;&#x59CB;&#x7B2C;&#x4E8C;&#x4E2A;&#x6216;&#x7B2C;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x6C42;&#x503C;&#x8BA1;&#x7B97;&#x3002;</p>
+</blockquote>
+<p><strong>6.2</strong> &#x5BF9;&#x4E8E; if &#x8BED;&#x53E5;&#x800C;&#x8A00;&#xFF0C;&#x5F53;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x4E0D;&#x7B49;&#x4E8E; 0 &#x65F6;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x53E5;&#xFF1B;&#x5F53;&#x63A7;&#x5236;&#x6761;&#x4EF6;&#x7B49;&#x4E8E; 0 &#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6709; else &#x5206;&#x652F;&#xFF0C;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x7B2C;&#x4E8C;&#x4E2A;&#x8BED;&#x53E5;&#xFF0C;&#x5426;&#x5219;&#x6574;&#x4E2A; if &#x8BED;&#x53E5;&#x7684;&#x6267;&#x884C;&#x4FBF;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x3002;</p>
+<p><strong>6.3</strong> &#x5982;&#x679C;&#x51FA;&#x73B0;&#x60AC;&#x540A; <code>else</code>&#xFF08;dangling else&#xFF09;&#xFF0C;&#x8981;&#x6C42; <code>else</code> &#x4F18;&#x5148;&#x548C;&#x6700;&#x63A5;&#x8FD1;&#x7684;&#x6CA1;&#x6709;&#x5339;&#x914D; <code>else</code> &#x7684; <code>if</code> &#x5339;&#x914D;&#x3002;</p>
+<blockquote>
+<p>&#x4F8B;&#x5982; <code>if (0) if (0) ; else ;</code> &#x7B49;&#x4EF7;&#x4E8E; <code>if (0) { if (0) ; else; }</code> &#x800C;&#x975E; <code>if (0) { if (0) ; } else ;</code>&#x3002;</p>
+</blockquote>
 
                                 
                                 </section>
@@ -1296,7 +1235,7 @@
 
             
                 
-                <a href="dataflow.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 数据流分析">
+                <a href="example.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 通过例子学习">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1308,7 +1247,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"规范","level":"7.1.4","depth":2,"next":{"title":"step8：循环语句","level":"7.2","depth":1,"ref":"","articles":[{"title":"任务概述","level":"7.2.1","depth":2,"path":"docs/step8/intro.md","ref":"docs/step8/intro.md","articles":[]},{"title":"通过例子学习","level":"7.2.2","depth":2,"path":"docs/step8/example.md","ref":"docs/step8/example.md","articles":[]},{"title":"规范","level":"7.2.3","depth":2,"path":"docs/step8/spec.md","ref":"docs/step8/spec.md","articles":[]}]},"previous":{"title":"数据流分析","level":"7.1.3","depth":2,"path":"docs/step7/dataflow.md","ref":"docs/step7/dataflow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step7/spec.md","mtime":"2023-09-06T13:11:47.198Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-06T13:12:41.374Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"规范","level":"7.1.3","depth":2,"next":{"title":"step8：循环语句","level":"7.2","depth":1,"ref":"","articles":[{"title":"任务概述","level":"7.2.1","depth":2,"path":"docs/step8/intro.md","ref":"docs/step8/intro.md","articles":[]},{"title":"通过例子学习","level":"7.2.2","depth":2,"path":"docs/step8/example.md","ref":"docs/step8/example.md","articles":[]},{"title":"规范","level":"7.2.3","depth":2,"path":"docs/step8/spec.md","ref":"docs/step8/spec.md","articles":[]}]},"previous":{"title":"通过例子学习","level":"7.1.2","depth":2,"path":"docs/step7/example.md","ref":"docs/step7/example.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step7/spec.md","mtime":"2023-09-06T13:46:02.080Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-06T13:46:53.092Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
