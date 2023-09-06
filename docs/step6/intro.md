@@ -1,5 +1,5 @@
 # 实验指导 step6：
-step6 我们要支持 if 语句和条件表达式（又称三元/三目表达式，ternary expression）。
+step6 我们要支持条件语句（if 语句和条件表达式（又称三元/三目表达式，ternary expression））和循环语句（while 语句）。
 
 语法上的改动是：
 

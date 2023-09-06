@@ -42,7 +42,7 @@
   * [通过例子学习](docs/step5/example.md)
   * [规范](docs/step5/spec.md)
 
-* step6：if 语句和条件表达式
+* step6：条件语句和循环语句
   * [任务概述](docs/step6/intro.md)
   * [通过例子学习](docs/step6/example.md)
   * [规范](docs/step6/spec.md)
