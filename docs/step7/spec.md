@@ -15,14 +15,18 @@
 <span class="SpecRuleStart">type</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'int'</span>
 
-<div class="changed"><span class="SpecRuleStart">block_item</span>
+<div class="changed"><span class="SpecRuleStart">compound_statement</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'{'</span> <span class="SpecRule">block_item</span><span class="SpecOperator">*</span> <span class="SpecToken">'}'</span>
+
+<span class="SpecRuleStart">block_item</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">statement</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">declaration</span>
 </div>
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
-<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'if'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">'else'</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'if'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">'else'</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
 </div>
 <span class="SpecRuleStart">declaration</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>

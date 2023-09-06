@@ -22,7 +22,7 @@ int main() {
 ### 悬吊 else 问题
 
 这一节引入的 if 语句既可以带 else 子句也可以不带，但这会导致语法二义性：`else` 到底和哪一个 `if` 结合？
-例如 `if(a) if(b) c=0; else d=0;`，到底是 `if(a) {if(b) c=0; else d=0;}` 还是  `if(a) {if(b) c=0;} else d=0;`（其中有大括号，step7中会支持，不过意思不难理解）？
+例如 `if(a) if(b) c=0; else d=0;`，到底是 `if(a) {if(b) c=0; else d=0;}` 还是  `if(a) {if(b) c=0;} else d=0;`？
 这个问题被称为 **悬吊 else（dangling else）** 问题。
 
 如果程序员没有加大括号，那么我们需要通过一个规定来解决歧义。

@@ -1,7 +1,7 @@
 # 实验指导 step8：循环语句
 step8 我们要增加对循环语句，以及 break/continue 的支持：
 
-<pre id='vimCodeElement'><code></code><div class="changed">
+<pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>

@@ -1,7 +1,5 @@
 # 实验指导 step7：
-step7 我们要支持条件语句：
-  * if 语句
-  * 条件表达式（又称三元/三目表达式，ternary expression）
+step7 我们要支持条件语句，包括 if 语句和条件表达式（又称三元/三目表达式，ternary expression）。
 
 语法上的改动是：
 
