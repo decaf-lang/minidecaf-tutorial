@@ -1,14 +1,31 @@
 # 实验指导 step6：
-step6 我们要支持条件语句（if 语句和条件表达式（又称三元/三目表达式，ternary expression））和循环语句（while 语句）。
+step6 我们要支持：
+1. 条件语句：
+  * if 语句
+  * 条件表达式（又称三元/三目表达式，ternary expression）
+2. 循环语句：
+  * while 语句
+  * for 语句
+  * do-while 语句
+3. break/continue 语句。
+
+我们将给出 if 语句的完整实现，同学可以参考进而实现 while 语句，体会程序由线性结构向循环结构的转变。为了减少重复劳动，我们将 for、do-while 语句的实现作为可选，不计入成绩，感兴趣的同学可以自行完成。
 
 语法上的改动是：
 
 1. if 表达式
-<pre id='vimCodeElement'><code></code><div class="changed">
+<pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
-<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'if'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">'else'</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
+<div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'if'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">'else'</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'while'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'for'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'for'</span> <span class="SpecToken">'('</span> <span class="SpecRule">declaration</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'do'</span> <span class="SpecRule">statement</span> <span class="SpecToken">'while'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span> <span class="SpecToken">';'</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'break'</span> <span class="SpecToken">';'</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'continue'</span> <span class="SpecToken">';'</span>
 </div></pre>
 
 2. 条件表达式
@@ -31,7 +48,7 @@ step6 我们要支持条件语句（if 语句和条件表达式（又称三元/�
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">declaration</span>
 </div></pre>
 
-if 语句的语义和 C 以及常识相同，条件表达式优先级只比赋值高。
+条件语句和循环语句的语义和 C 相同，需要注意条件表达式优先级只比赋值高，同时要检查 break/continue 不能出现在循环外。
 
 你需要：
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
