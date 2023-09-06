@@ -36,29 +36,23 @@
   * [通过例子学习](docs/step4/example.md)
   * [规范](docs/step4/spec.md)
 
-## Stage2：变量和语句
+## Stage2：变量
 * step5：局部变量和赋值
   * [任务概述](docs/step5/intro.md)
   * [通过例子学习](docs/step5/example.md)
   * [规范](docs/step5/spec.md)
 
-* step6：条件语句和循环语句
+## Stage3：作用域
+* step6：作用域和块语句
   * [任务概述](docs/step6/intro.md)
   * [通过例子学习](docs/step6/example.md)
+  * [数据流分析](docs/step6/dataflow.md)
   * [规范](docs/step6/spec.md)
 
-## Parser-Stage
-
-* parser-stage：手工自顶向下语法分析器
-  * [任务概述](docs/step-parser/intro.md)
-  * [框架介绍](docs/step-parser/example.md)
-  * [规范](docs/step-parser/spec.md)
-
-## Stage3：作用域和循环
-* step7：作用域和块语句
+## Stage4：条件和循环
+* step7：条件语句
   * [任务概述](docs/step7/intro.md)
   * [通过例子学习](docs/step7/example.md)
-  * [数据流分析](docs/step7/dataflow.md)
   * [规范](docs/step7/spec.md)
 
 * step8：循环语句
