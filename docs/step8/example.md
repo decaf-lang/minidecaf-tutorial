@@ -17,7 +17,6 @@ for (int i = 0; i < 5; i = i + 1)
 | `For` | 初始语句 `init`，循环条件 `cond`，更新语句 `update`，循环体 `body` | for 循环语句 |
 | `Break` | 无 | break 语句 |
 
-
 ## 语义分析
 
 本步骤语义分析阶段的处理方式和 Step6 中的 if 语句相类似，但是请额外注意以下两点：
@@ -59,13 +58,7 @@ _L3:                          # break label
 
 由于循环语句可以嵌套，所以 TAC 语句生成过程中需要动态维护 loop 标签和 break 标签，这样才能确定每一条 continue 和 break 语句跳转到何处。因此，在 TAC 生成时，需要使用栈结构维护从内到外所有的 loop 标签和 break 标签。
 
-### Python 框架
-
 `utils/tac/funcvisitor.py` 里的 FuncVisitor 类里实现了维护 TAC 生成时需要的上下文信息的功能。同学们可以在这个类中增加对循环所需的 continue/break 标签的维护。
-
-### C++ 框架
-
-同学们可以直接在 `translation/translation.hpp` 中的 Visitor 中用成员变量维护 continue/break 标签。
 
 ## 目标代码生成
 
@@ -94,6 +87,6 @@ _L3:                          # break label
 6. `label CONTINUE_LABEL`：continue 跳到这
 7. `cond 的 IR`
 8. `bnez BEGINLOOP_LABEL`：本轮迭代完成，条件满足时进行下一次迭代
-9.  `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
+9. `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
 
 从执行的指令的条数这个角度（`label` 指令不计算在内，假设循环体至少执行了一次），请评价这两种翻译方式哪一种更好？

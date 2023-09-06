@@ -21,6 +21,9 @@ step6 我们要增加块语句的支持。
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecToken">'if'</span> <span class="SpecToken">'('</span> <span class="SpecRule">expression</span> <span class="SpecToken">')'</span> <span class="SpecRule">statement</span> <span class="SpecOperator">(</span><span class="SpecToken">'else'</span> <span class="SpecRule">statement</span><span class="SpecOperator">)?</span>
 <div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
+<div class="changed"><span class="SpecRuleStart">block_item</span>
+<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">statement</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">declaration</span>
 </div>
 </pre>
 
