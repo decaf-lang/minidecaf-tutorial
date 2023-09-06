@@ -1,5 +1,5 @@
-# 实验指导 step6：
-step6 我们要支持：
+# 实验指导 step7：
+step7 我们要支持：
 1. 条件语句：
   * if 语句
   * 条件表达式（又称三元/三目表达式，ternary expression）
