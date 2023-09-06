@@ -11,9 +11,11 @@ step6 我们要支持：
 
 我们将给出 if 语句的完整实现，同学可以参考进而实现 while 语句，体会程序由线性结构向循环结构的转变。为了减少重复劳动，我们将 for、do-while 语句的实现作为可选，不计入成绩，感兴趣的同学可以自行完成。
 
+为了保证条件语句和循环语句的语义完整性，我们给出了语句块的实现，但是不强调对应的作用域的概念，留待下一阶段实现。
+
 语法上的改动是：
 
-1. if 表达式
+1. 条件语句、循环语句和 break/continue 语句
 <pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
