@@ -4,7 +4,7 @@ step7 我们要支持条件语句，包括 if 语句和条件表达式（又称�
 语法上的改动是：
 
 1. if 表达式
-<pre id='vimCodeElement'><code></code><div class="changed">
+<pre id='vimCodeElement'><code></code>
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
