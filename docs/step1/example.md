@@ -26,7 +26,7 @@ int main() {
 
 ```
                   读内容       词法分析 & 语法分析              语义分析
-                 readCode        parser.parse     namer.transform & typer.transform
+                 readCode       parser.parse    namer.transform & typer.transform
 MiniDecaf 源文件 --------> 字节流 -----------> AST -------------------------------> ... 
 ```
 
@@ -47,6 +47,8 @@ Program
 ```
 
 得到的这个 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
+
+尝试运行 `python main.py --input example.c --parse` 你应该就能看到类似的输出。（记得自己写一个`example.c`）
 
 ## 语义分析
 
@@ -107,14 +109,13 @@ main:             # 主函数入口符号
 
 实验框架中关于目标代码生成的文件主要集中 `backend` 文件夹下，step1 中你只需要关注 `backend/riscv` 文件夹中的 `riscvasmemitter.py` 以及 `utils/riscv.py` 即可。具体来说 `backend/asm.py` 中会先调用 `riscvasmemitter.py` 中的 `selectInstr` 方法对每个函数内的 TAC 指令选择相应的 RISC-V 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成相应的 `NativeInstr` 指令（即所有操作数都已经分配好寄存器的指令），最后通过 `RiscvSubroutineEmitter` 的 `emitEnd` 方法生成每个函数的 RISC-V 汇编。
 
+## 细节呢？
 
-## 进一步
-
-如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
+为了帮大家再快一点了解实验框架。我们进一步看一个例子，如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
 
 首先，我们应该把 `-` 看作一个符号，而不应该将 `-2022` 看作一个整体，因为我们还可能遇到 `-x` 这种求一个变量的相反数的操作，如果将其分开处理则会增加我们的工作量。因此我们需要在词法分析中加入对 `-` 的处理。
 
-我们能发现 `-` `!` `~` 等符号都可以作为一元运算符出现，比如`!x` `~a` `-10`，我们将这类一元运算操作都称为 unary ，一并处理所有的一元运算符这样就不需要对每一种符号都专门生成一种语法规则和 AST 节点了。
+我们能发现 `-`, `!`, `~` 等符号都可以作为一元运算符出现，比如`!x`, `~a`, `-10`，我们将这类一元运算操作都称为 unary ，一并处理所有的一元运算符这样就不需要对每一种符号都专门生成一种语法规则和 AST 节点了。
 
 因此我们希望生成的 AST 应当变为如下形式：
 
@@ -129,7 +130,7 @@ Program
                     |- (expr) IntLiteral(2022)
 ```
 
-* 词法分析
+* 词法分析 & 语法分析
     
     在 `frontend/lex/lex.py` 里加入新的 lex token 定义，以便lexer可以解析 `-`：
 
@@ -138,8 +139,6 @@ Program
     ```
 
     在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
-
-* 语法分析
     
     在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
 
@@ -153,7 +152,7 @@ Program
 
     它将在后续的 parser 语义计算中被用到。
 
-* 在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
+    在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
 
     ```python
     def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
@@ -171,6 +170,6 @@ Program
         p[0] = tree.Unary(UnaryOp.Neg, p[2])
     ```
 
-    更多的用法同样可参见[文档](https://www.dabeaz.com/ply/ply.html)。
+    现在尝试运行 `python main.py --input example.c --parse` 看看效果吧。（记得修改`example.c`）
 
 这样就基本完成了词法 & 语法分析步骤里加入取负运算的所有步骤。后续步骤中可能需要在某些 visitor 中实现相应的检查、转化至 TAC 的逻辑。
