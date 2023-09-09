@@ -4,56 +4,6 @@
 
 &nbsp;
 
-Q：C++ 框架生成 RISC-V 汇编时有一些注释没法正常输出？
-
-A：怀疑与平台相关，同学们可以做如下修改：
-
-src/tac/tac.cpp 中，将 void Tac::dump 函数中输出每个 Tac 的四个空格修改为九个空格，如：
-
-```C++
-  case ASSIGN:
-	os << "    " << op0.var << " <- " << op1.var;
-	break;
-修改为：
-  case ASSIGN:
-	os << "         " << op0.var << " <- " << op1.var;
-	break;
-```
-**其余 Tac 类似。**
-
-&nbsp;
-
-Q：C++ 框架的 Variable 类实现有误？
-
-A：`symb/symbol.hpp` 里面 Variable 类的 isLocalVar 函数是一段死代码。如果使用，请根据情况重写。
-
-&nbsp;
-
-Q: C++ 框架使用的第三方库 3rdparty/set.hpp 实现有误？（可能导致liveness分析出错）
-
-A: 修改contains()的实现如下，判断集合是否为空。（之前有可能在集合空的情况下返回true)
-
-```c++
-bool contains(const _T e) const {
-    const _T* p = std::lower_bound(begin(), end(), e);
-	return (p!=end() && (*p == e);
-}
-```
-
-并修改remove()的实现如下：
-
-```c++
-void remove(const _T e) {
-    _T* p = std::lower_bound(begin(), end(), e);
-    if (p!=end() && *p == e) {
-        std::copy(p+1, end(), p);
-        --_size;
-    }
-}
-```
-
-&nbsp;
-
 
 Q：使用 `pip install -r ./requirements.txt` 命令无法正确安装依赖？
 

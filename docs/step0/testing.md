@@ -10,9 +10,7 @@
 
 > 注意：由于子模块使用 ssh 链接，你需要将你的 ssh 公钥添加到你的 git.tsinghua 账号上，才能将其克隆下来。
 
-3. 如果你使用的是 C++ 语言的框架，你需要使用 `make` 来编译实验框架，你可以在下方仓库的 `src/` 目录下手动 `make`，或者直接运行脚本 `bash ./prepare.sh`。
-
-4. 按照[测例](https://github.com/decaf-lang/minidecaf-tests)的 README 运行测试 step1，实验框架给出的初始代码可以通过 step1 的所有测例。
+3. 按照[测例](https://github.com/decaf-lang/minidecaf-tests)的 README 运行测试 step1，实验框架给出的初始代码可以通过 step1 的所有测例。
 
 测试运行的 **输出结果** 大致如下。
 

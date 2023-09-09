@@ -7,7 +7,7 @@ MiniDecaf 编译器大致划分为三个部分：前端、中端、后端。通�
 
 > 此部分对应框架源码位置：
 >
-> Python 框架：词法分析程序位于 `frontend/lexer`；语法分析程序位于 `frontend/parser`；语法树位于 `frontend/ast`。
+> 词法分析程序位于 `frontend/lexer`；语法分析程序位于 `frontend/parser`；语法树位于 `frontend/ast`。
 
 编译器前端分为两个子任务，一是**词法分析**，二是**语法分析**。词法分析的功能是从左到右扫描 MiniDecaf 源程序，识别出程序源代码中的标识符、保留字、整数常量、算符、分界符等单词符号（即终结符），并把识别结果返回给语法分析器，以供语法分析器使用。语法分析是在词法分析的基础上针对所输入的终结符串建立语法树，并对不符合语法规则的 MiniDecaf 程序进行报错处理。一般而言，这一步所生成的语法树并非表示了所有语法细节的语法分析树，而是只表示其树形结构的抽象语法树（[Abstract Syntax Tree, AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree)）。比如，对于下面这一段简单的MiniDecaf 代码：
 
@@ -48,7 +48,7 @@ AST省略掉了完整的语法分析树中不必要的细节，有利于简化�
 
 > 此部分对应框架源码位置：
 >
-> Python 框架：符号表构建位于 `frontend/typecheck/namer.py`；类型检查位于 `frontend/typecheck/typer.py`；符号表相关的数据结构位于`frontend/symbol`；作用域相关数据结构位于 `frontend/scope`。
+> 符号表构建位于 `frontend/typecheck/namer.py`；类型检查位于 `frontend/typecheck/typer.py`；符号表相关的数据结构位于`frontend/symbol`；作用域相关数据结构位于 `frontend/scope`。
 
 语法分析树的建立可以说明所输入的 MiniDecaf 源程序在语法规范上是合法的，但是要进行有效的翻译，编译器还需要理解每个程序语句的含义。了解程序含义的过程称为**语义分析**。
 
@@ -75,7 +75,7 @@ AST省略掉了完整的语法分析树中不必要的细节，有利于简化�
 
 ## 中间代码生成
 
-> Python 框架：三地址码定义位于 `utils/tac`；中间代码生成位于 `frontend/tacgen/tacgen.py`。
+> 三地址码定义位于 `utils/tac`；中间代码生成位于 `frontend/tacgen/tacgen.py`。
 
 在对 AST 进行语义分析后，我们将在这一阶段把带有类型标注的 AST 翻译成适合后端处理的一种**中间表示**。**中间表示**（也称中间代码，intermediate representation / IR）是介于语法树和汇编代码之间的一种程序表示。 它不像语法树一样保留了那么多源程序的结构，也不至于像汇编一样底层。 
 
@@ -88,7 +88,7 @@ AST省略掉了完整的语法分析树中不必要的细节，有利于简化�
 
 ### 三地址码
 
-**三地址码**（Three Address Code, TAC）看起来很像汇编，与汇编最大的区别在于 —— 汇编里面使用的是目标平台（如 risc-v, x86, mips）规定的物理寄存器，其数目有限；而 TAC 使用的是“伪寄存器”，我们称为**临时变量**，其数目不受限制，可以任意使用（这意味着直接将临时变量转化为寄存器可能会出现寄存器不够用的情况）。**在后端生成汇编代码时，我们再考虑如何为临时变量分配物理寄存器的问题。**
+**三地址码**（Three Address Code, TAC）看起来很像汇编，与汇编最大的区别在于 —— 汇编里面使用的是目标平台（如 risc-v, x86, mips）规定的物理寄存器，其数目有限；而 TAC 使用的是“虚拟寄存器”，我们称为**临时变量**，其数目不受限制，可以任意使用（这意味着直接将临时变量转化为寄存器可能会出现寄存器不够用的情况）。**在后端生成汇编代码时，我们再考虑如何为临时变量分配物理寄存器的问题。**
 
 ```asm
 main:                  # main 函数入口标签
@@ -113,7 +113,7 @@ TAC 程序是**无类型**的，或者说它仅支持一种类型：32位（4字
 
 ## 控制流、数据流分析和寄存器分配
 
-> Python 框架：数据流图定义及优化在 `backend/dataflow/` 中；寄存器分配在 `backend/reg/` 中
+> 数据流图定义及优化在 `backend/dataflow/` 中；寄存器分配在 `backend/reg/` 中
 
 ### 控制流和数据流分析
 
@@ -127,7 +127,7 @@ TAC 程序是**无类型**的，或者说它仅支持一种类型：32位（4字
 
 ## 目标平台汇编代码生成
 
-> Python 框架：目标平台汇编代码生成在 `backend/asm.py | backend/asmemitter.py | backend/subroutineemitter.py | subroutineinfo.py` 以及 `backend/riscv/` 中。
+> 目标平台汇编代码生成在 `backend/asm.py | backend/asmemitter.py | backend/subroutineemitter.py | subroutineinfo.py` 以及 `backend/riscv/` 中。
 
 通常我们认为的目标代码生成步骤包含寄存器分配、指令选择。**寄存器分配**是指为中间代码中的虚拟寄存器分配实际的物理寄存器，涉及物理寄存器的调度分配。指令选择是指选用合适的汇编指令来翻译中间代码指令，如中间代码生成章节提供的例子中，使用 addi 汇编指令来翻译 ADD 中间代码指令。需要特别提出的是，RISC-V 指令集的设计思路是尽可能简洁，因此有些指令并没有直接提供，需要用多条简单指令代替。如相等、大于等于、逻辑与、逻辑或等等，同学们实现时需要特别注意。
 

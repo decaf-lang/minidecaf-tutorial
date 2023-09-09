@@ -35,7 +35,6 @@ program
 
 > 我们用缩进表示树结构，其中 program, function, type, identifier, param_list, block, return, int 等均为 AST 上的结点类型。
 
-## Python 框架
 
 在框架中，我们有以下的 AST 结点类实现（进行了适当的简略）：
 
