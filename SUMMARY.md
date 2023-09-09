@@ -60,18 +60,18 @@
   * [通过例子学习](docs/step8/example.md)
   * [规范](docs/step8/spec.md)
 
-## Stage4（升级）：函数和全局变量
+## Stage5：函数和全局变量
 * step9：函数
   * [任务概述](docs/step9/intro.md)
   * [通过例子学习](docs/step9/example.md)
   * [规范](docs/step9/spec.md)
 
+## Stage6（升级）：全局变量和数组
 * step10：全局变量
   * [任务概述](docs/step10/intro.md)
   * [通过例子学习](docs/step10/example.md)
   * [规范](docs/step10/spec.md)
 
-## Stage5（升级）：数组
 * step11：数组
   * [任务概述](docs/step11/intro.md)
   * [通过例子学习](docs/step11/example.md)

@@ -14,7 +14,7 @@ int main() {
 
 ## 词法分析 & 语法分析
 
-在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了 lex/yacc 库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。你可以根据我们的框架中对 lex/yacc 的使用，结合我们的文档，来快速上手 lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行 lex/yacc 的入门，但这不是必须的。
+在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了 lex/yacc 库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。**你可以根据我们的框架中对 lex/yacc 的使用，结合我们的文档，来快速上手 lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行 lex/yacc 的入门，但这不是必须的。**
 
 为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。在实验框架中，我们使用的是 lex/yacc 的一个纯 python 实现，称为 python-lex-yacc（简称 ply），其使用方法与 lex/yacc 有一些差异。
 
@@ -22,7 +22,15 @@ int main() {
 
 程序的入口点在 `main.py`，它通过调用 `frontend.parser.parser`（位于 `frontend/parser/ply_parser.py`）来完成语法分析的工作，而这一语法分析器会自动调用位于 `frontend/lexer/ply_lexer.py` 的词法分析器进行词法分析。语法的定义和语法分析器都位于 `frontend/parser/ply_parser.py`，而词法的定义位于 `frontend/lexer/lex.py`。AST 节点的定义位于 `frontend/ast/tree.py` 中。以下表示中的符号都出自于这几个文件。
 
-当程序读入上述程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
+这部分的工作流程如下，第一行是对应的函数：
+
+```
+                  读内容       词法分析 & 语法分析              语义分析
+                 readCode        parser.parse     namer.transform & typer.transform
+MiniDecaf 源文件 --------> 字节流 -----------> AST -------------------------------> ... 
+```
+
+当程序读入程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
 
 `Int Identifier("main") LParen RParen LBrace Return Integer(2022) Comma RBrace`
 
@@ -39,50 +47,6 @@ Program
 ```
 
 得到的这个 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
-
-如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
-
-* 在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
-
-    ```python
-    class Unary(Expression):
-        def __init__(self, op: Operator, operand: Expression):
-            ...
-    ```
-
-    并在 `frontend/ast/visitor.py` 中加入相应的分派函数。
-
-    它将在后续的 parser 语义计算中被用到。
-
-* 在 `frontend/lex/lex.py` 里加入新的 lex token 定义:
-
-    ```python
-    t_Minus = "-"
-    ```
-
-    在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
-
-* 在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
-
-    ```python
-    def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
-        """
-        expression : unary
-        unary : primary
-        """ # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
-        p[0] = p[1] # 这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。
-        # 语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
-
-    def p_unary_expression(p):
-        """
-        unary : Minus unary
-        """
-        p[0] = tree.Unary(UnaryOp.Neg, p[2])
-    ```
-
-    更多的用法同样可参见[文档](https://www.dabeaz.com/ply/ply.html)。
-
-这样就基本完成了词法 & 语法分析步骤里加入取负运算的所有步骤。后续步骤中可能需要在某些 visitor 中实现相应的检查、转化至 TAC 的逻辑。
 
 ## 语义分析
 
@@ -142,3 +106,71 @@ main:             # 主函数入口符号
 >  关于实现细节，对应的代码位置在下面给出，代码中提供注释供大家学习：
 
 实验框架中关于目标代码生成的文件主要集中 `backend` 文件夹下，step1 中你只需要关注 `backend/riscv` 文件夹中的 `riscvasmemitter.py` 以及 `utils/riscv.py` 即可。具体来说 `backend/asm.py` 中会先调用 `riscvasmemitter.py` 中的 `selectInstr` 方法对每个函数内的 TAC 指令选择相应的 RISC-V 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成相应的 `NativeInstr` 指令（即所有操作数都已经分配好寄存器的指令），最后通过 `RiscvSubroutineEmitter` 的 `emitEnd` 方法生成每个函数的 RISC-V 汇编。
+
+
+## 进一步
+
+如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
+
+首先，我们应该把 `-` 看作一个符号，而不应该将 `-2022` 看作一个整体，因为我们还可能遇到 `-x` 这种求一个变量的相反数的操作，如果将其分开处理则会增加我们的工作量。因此我们需要在词法分析中加入对 `-` 的处理。
+
+我们能发现 `-` `!` `~` 等符号都可以作为一元运算符出现，比如`!x` `~a` `-10`，我们将这类一元运算操作都称为 unary ，一并处理所有的一元运算符这样就不需要对每一种符号都专门生成一种语法规则和 AST 节点了。
+
+因此我们希望生成的 AST 应当变为如下形式：
+
+```
+Program
+    |- (children[0]) Function
+        |- (ret_t) TInt
+        |- (ident) Identifier("main")
+        |- (body) Block
+            |- (children[0]) Return
+                |- (unary) -
+                    |- (expr) IntLiteral(2022)
+```
+
+* 词法分析
+    
+    在 `frontend/lex/lex.py` 里加入新的 lex token 定义，以便lexer可以解析 `-`：
+
+    ```python
+    t_Minus = "-"
+    ```
+
+    在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
+
+* 语法分析
+    
+    在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
+
+    ```python
+    class Unary(Expression):
+        def __init__(self, op: Operator, operand: Expression):
+            ...
+    ```
+
+    并在 `frontend/ast/visitor.py` 中加入相应的分派函数。
+
+    它将在后续的 parser 语义计算中被用到。
+
+* 在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
+
+    ```python
+    def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
+        """
+        expression : unary
+        unary : primary
+        """ # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
+        p[0] = p[1] # 这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。
+        # 语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
+
+    def p_unary_expression(p):
+        """
+        unary : Minus unary
+        """
+        p[0] = tree.Unary(UnaryOp.Neg, p[2])
+    ```
+
+    更多的用法同样可参见[文档](https://www.dabeaz.com/ply/ply.html)。
+
+这样就基本完成了词法 & 语法分析步骤里加入取负运算的所有步骤。后续步骤中可能需要在某些 visitor 中实现相应的检查、转化至 TAC 的逻辑。
