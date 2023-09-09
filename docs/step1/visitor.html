@@ -1203,85 +1203,6 @@ frontend/ast/tree.py
     <span class="hljs-comment"># ...</span>
 </code></pre>
 <p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BBF;&#x95EE;&#x67D0;&#x4E2A;&#x5B50;&#x7ED3;&#x70B9; child&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528; child.accept(self, ctx) &#x5373;&#x53EF;&#x3002;</p>
-<h2 id="c-&#x6846;&#x67B6;">C++ &#x6846;&#x67B6;</h2>
-<p>&#x5728;&#x6846;&#x67B6;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4EE5;&#x4E0B;&#x7684; AST &#x7ED3;&#x70B9;&#x7C7B;&#x5B9E;&#x73B0;&#xFF08;&#x8FDB;&#x884C;&#x4E86;&#x9002;&#x5F53;&#x7684;&#x7B80;&#x7565;&#xFF09;&#xFF1A;</p>
-<pre><code class="lang-C++"><span class="hljs-comment">// ast/ast.hpp</span>
-<span class="hljs-keyword">class</span> ASTNode { <span class="hljs-comment">// &#x6240;&#x6709; AST &#x7ED3;&#x70B9;&#x7684;&#x57FA;&#x7C7B;</span>
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-keyword">virtual</span> NodeType <span class="hljs-title">getKind</span> <span class="hljs-params">()</span></span>; <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x7ED3;&#x70B9;&#x7C7B;&#x578B;</span>
-    <span class="hljs-comment">// ...</span>
-};
-<span class="hljs-keyword">class</span> FuncDefn : <span class="hljs-keyword">public</span> ASTNode { <span class="hljs-comment">// &#x6240;&#x6709;&#x51FD;&#x6570;</span>
-    <span class="hljs-comment">// ...</span>
-};
-<span class="hljs-keyword">class</span> Statement : <span class="hljs-keyword">public</span> ASTNode { <span class="hljs-comment">// &#x8BED;&#x53E5;&#x57FA;&#x7C7B;</span>
-    <span class="hljs-comment">// ...</span>
-};
-<span class="hljs-keyword">class</span> ReturnStmt : <span class="hljs-keyword">public</span> Statement { <span class="hljs-comment">// return &#x8BED;&#x53E5;</span>
-    <span class="hljs-comment">// ...</span>
-};
-<span class="hljs-keyword">class</span> Type : <span class="hljs-keyword">public</span> ASTNode { <span class="hljs-comment">// &#x7C7B;&#x578B;&#x57FA;&#x7C7B;</span>
-    <span class="hljs-comment">// ...</span>
-};
-<span class="hljs-keyword">class</span> IntType : <span class="hljs-keyword">public</span> Type { <span class="hljs-comment">// &#x6574;&#x578B;</span>
-    <span class="hljs-comment">// ...</span>
-};
-</code></pre>
-<p>&#x5047;&#x8BBE;&#x5728;&#x7ECF;&#x8FC7;&#x4E86;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x548C;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#x5C06; MiniDecaf &#x4EE3;&#x7801;&#x8F6C;&#x5316;&#x4E3A;&#x4E86; AST &#x7ED3;&#x6784;&#x3002;&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x5BF9; AST &#x8FDB;&#x884C;&#x626B;&#x63CF;&#x3002;&#x5F88;&#x5BB9;&#x6613;&#x5199;&#x51FA;&#x9012;&#x5F52;&#x7684; DFS &#x904D;&#x5386;&#xFF1A;</p>
-<pre><code class="lang-C++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(ASTNode *node)</span> </span>{
-    <span class="hljs-keyword">if</span> (node-&gt;getKind() ==  NodeType::PROGRAM) {
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;&amp;item : ((Program*)node)-&gt;func_and_globals) {
-            dfs(item);
-        }
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (node-&gt;getKind() == NodeType::FUNC_DEFN) {
-        <span class="hljs-comment">// do something for scanning a function node</span>
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (node-&gt;getKind() == NodeType::RETURN) {
-        <span class="hljs-comment">// ...</span>
-    }
-}
-</code></pre>
-<p>dfs &#x51FD;&#x6570;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#x3002;&#x5BB9;&#x6613;&#x770B;&#x51FA;&#xFF0C;dfs &#x51FD;&#x6570;&#x6839;&#x636E;&#x88AB;&#x904D;&#x5386;&#x7684;&#x7ED3;&#x70B9;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#xFF0C;&#x6267;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x904D;&#x5386;&#x903B;&#x8F91;&#x3002; &#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E9B;&#x904D;&#x5386;&#x903B;&#x8F91;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x7C7B;&#x91CC;&#x9762;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x6700;&#x7B80;&#x5355;&#x7684; Visitor&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x5B9E;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x4F7F;&#x7528; getKind &#x6765;&#x5224;&#x65AD;&#x7ED3;&#x70B9;&#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x662F;&#x8C03;&#x7528;&#x7ED3;&#x70B9;&#x81EA;&#x8EAB;&#x7684;&#x4E00;&#x4E2A; accept &#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x628A;&#x4E0D;&#x540C;&#x7684; visitXXX &#x51FD;&#x6570;&#x62BD;&#x8C61;&#x5230;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x91CC;&#xFF0C;&#x5404;&#x79CD;&#x5177;&#x4F53;&#x7684; Visitor &#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x3002;</p>
-<pre><code class="lang-C++"><span class="hljs-comment">// ast/ast.hpp</span>
-<span class="hljs-keyword">class</span> ASTNode { <span class="hljs-comment">// &#x6240;&#x6709; AST &#x7ED3;&#x70B9;&#x7684;&#x57FA;&#x7C7B;</span>
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">accept</span><span class="hljs-params">(Visitor *)</span> </span>= <span class="hljs-number">0</span>;
-};
-<span class="hljs-keyword">class</span> Program : <span class="hljs-keyword">public</span> ASTNode {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">accept</span><span class="hljs-params">(Visitor *v)</span> override </span>{
-        <span class="hljs-comment">// &#x4EC5;&#x4F5C;&#x793A;&#x610F;&#xFF0C;&#x5B9E;&#x9645;&#x5B9E;&#x73B0;&#x5728;&#x5BF9;&#x5E94;&#x7684; .cpp &#x6587;&#x4EF6;&#x91CC;</span>
-        v-&gt;visit(<span class="hljs-keyword">this</span>);
-    }
-};
-<span class="hljs-keyword">class</span> FuncDefn : <span class="hljs-keyword">public</span> ASTNode {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">accept</span><span class="hljs-params">(Visitor *v)</span> override </span>{
-        <span class="hljs-comment">// &#x4EC5;&#x4F5C;&#x793A;&#x610F;&#xFF0C;&#x5B9E;&#x9645;&#x5B9E;&#x73B0;&#x5728;&#x5BF9;&#x5E94;&#x7684; .cpp &#x6587;&#x4EF6;&#x91CC;</span>
-        v-&gt;visit(<span class="hljs-keyword">this</span>);
-    }
-};
-<span class="hljs-comment">// ast/visitor.hpp</span>
-<span class="hljs-keyword">class</span> Visitor {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">visit</span><span class="hljs-params">(Program *)</span> </span>{}
-    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">visit</span><span class="hljs-params">(FuncDefn *)</span> </span>{}
-};
-</code></pre>
-<p>&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7F16;&#x5199;&#x4E00;&#x79CD;&#x904D;&#x5386; AST &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7EE7;&#x627F; Visitor &#x7C7B;&#xFF0C;&#x5E76;&#x5728;&#x5BF9;&#x5E94;&#x7ED3;&#x70B9;&#x7684; visit &#x6210;&#x5458;&#x65B9;&#x6CD5;&#x4E0B;&#x5B9E;&#x73B0;&#x5BF9;&#x5E94;&#x7684;&#x903B;&#x8F91;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6846;&#x67B6;&#x4E2D;&#x7528;&#x5982;&#x4E0B;&#x7684;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7B26;&#x53F7;&#x8868;&#x6784;&#x5EFA;&#xFF1A;</p>
-<pre><code class="lang-C++"><span class="hljs-keyword">class</span> SemPass1 : <span class="hljs-keyword">public</span> Visitor {
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">visit</span><span class="hljs-params">(ast::Program* prog)</span> </span>{
-        <span class="hljs-comment">// ...</span>
-
-        <span class="hljs-comment">// visit global variables and each function</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = prog-&gt;func_and_globals-&gt;begin(); it != prog-&gt;func_and_globals-&gt;end(); ++it) {
-            (*it)-&gt;accept(<span class="hljs-keyword">this</span>);
-            <span class="hljs-comment">// ...</span>
-        }
-        <span class="hljs-comment">// ...</span>
-    }
-}
-</code></pre>
-<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BBF;&#x95EE;&#x67D0;&#x4E2A;&#x5B50;&#x7ED3;&#x70B9; child&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528; child.accept(self, ctx) &#x5373;&#x53EF;&#x3002;</p>
 
                                 
                                 </section>
@@ -1341,7 +1262,7 @@ frontend/ast/tree.py
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Visitor 模式速成","level":"3.3.2","depth":2,"next":{"title":"规范","level":"3.3.3","depth":2,"path":"docs/step1/spec.md","ref":"docs/step1/spec.md","articles":[]},"previous":{"title":"通过例子学习","level":"3.3.1","depth":2,"path":"docs/step1/example.md","ref":"docs/step1/example.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step1/visitor.md","mtime":"2023-09-07T16:26:26.574Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-07T16:27:13.178Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Visitor 模式速成","level":"3.3.2","depth":2,"next":{"title":"规范","level":"3.3.3","depth":2,"path":"docs/step1/spec.md","ref":"docs/step1/spec.md","articles":[]},"previous":{"title":"通过例子学习","level":"3.3.1","depth":2,"path":"docs/step1/example.md","ref":"docs/step1/example.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step1/visitor.md","mtime":"2023-09-09T08:15:45.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-09T08:16:28.233Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
