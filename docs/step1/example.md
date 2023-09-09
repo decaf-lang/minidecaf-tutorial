@@ -16,106 +16,9 @@ int main() {
 
 在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了 lex/yacc 库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。你可以根据我们的框架中对 lex/yacc 的使用，结合我们的文档，来快速上手 lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行 lex/yacc 的入门，但这不是必须的。
 
-为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。在 C++ 框架中，我们使用的是 lex/yacc 的高级替代 flex/bison，其使用方法和 lex/yacc 极为相似。在 Python 框架中，我们使用的是 lex/yacc 的一个纯 python 实现，称为 python-lex-yacc（简称 ply），其使用方法与 lex/yacc 有一些差异。
-
-[C++ flex/bison 快速入门](https://www.gnu.org/software/bison/manual/html_node/A-Complete-C_002b_002b-Example.html)
+为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。在 Python 框架中，我们使用的是 lex/yacc 的一个纯 python 实现，称为 python-lex-yacc（简称 ply），其使用方法与 lex/yacc 有一些差异。
 
 [Python-lex-yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
-
-### C++ 框架
-
-Makefile 中调用了 flex 和 bison 来处理 `parser.y` 和 `scanner.l`。flex 和 bison 会将这两个文件中的语法/词法描述翻译为 C++ 实现。
-
-#### 概述
-
-`src/frontend/scanner.l` 为词法描述。flex 生成的词法分析器，会将示例程序解析为这样的一串 Token：
-
-`Int Identifier("main") LParen RParen LBrace Return  IntConst(2022) Comma RBrace`
-
-这个程序的具体语法树中用到的语法规则如下: 
-
-```C
-Program -> Functions
-Functions -> Type Identifier LParen RParen LBrace Statements RBrace
-Statements -> ReturnStmt   
-ReturnStmt -> Return IntConst(2022) Comma
-```
-
-`parser.y` 生成的语法分析器，分析获得的抽象语法树为：
-
-```
-Program 
-  |-FoDList 
-    |- FuncDefn
-      |- (ret_type) Type INT
-        |- (name) Identifier "main"
-          |- (stmts) StmtList
-            |- ReturnStmt 
-              |- Expr int_const 2022
-```
-
-框架中 `scanner.l` 和 `parser.y` 是配合使用的，简单来说，`scanner.l` 定义了词法规则，`parser.y` 定义了语法规则。bison 生成的语法分析器，会调用 flex 生成的 `yylex()` 函数，这个函数的作用为获取 token 流的下一个 token。
-
-#### 具体代码
-
-让我们看看示例对应的 parser 代码：
-
-`scanner.l` 中生成一个 Token 的规则，形如:
-
-```C
-"-"    { return yy::parser::make_MINUS(loc); }
-# 该规则将一个'-'字符，解析为parser中的MINUS token。
-```
-
-> `yy::parser::make_MINUS()` 函数是在 `parser.y` 中声明 `MINUS` 这个 token 之后，yacc 自动生成的 token 构造函数。loc 是表示当前扫描位置的行列的全局变量。下面一段就是 `parser.y` 中声明 `MINUS` 这个 token 的位置。具体语义可参考 [Bison 教程](https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html)。
-
-```c
-%define api.token.prefix {TOK_}
-%token
-   //more tokens...
-   MINUS "-"
-   //more tokens...
-;
-```
-
-具体语义可参考[链接](https://www.gnu.org/software/bison/manual/html_node/Complete-Symbols.html)。
-
-一元负号对应的语法树节点为 `NegExpr`，相关定义分散在 `src/ast/ast.hpp`，`src/ast/ast.cpp`，`src/ast/ast_neg_expr.cpp`，`src/ast/visitor.hpp`，`src/define.hpp` 中。注意 `ast.hpp` 中定义了节点的枚举类型 `NodeType`，`ast.cpp` 中定义了一个字符数组按顺序存储这些节点的名称，请保持和 `NodeType` 中的顺序一致。
-
-```c++
-// src/ast/ast.hpp
-class NegExpr : public Expr {
-  public:
-//these member functions defined in src/ast/ast_neg_expr.cpp
-    NegExpr(Expr *e, Location *l);
-    virtual void accept(Visitor *);
-    virtual void dumpTo(std::ostream &);
-  public:
-    Expr *e;
-};
-```
-在 `parser.y` 中，要为一元负号编写对应的语法规则和动作。省略 `Expr` 对应的其他规则，形如：
-
-```c
-Expr : MINUS Expr %prec NEG { $$ = new ast::NegExpr($2, POS(@1));} ;
-```
-
-其中，`$2` 意味着右侧的 `Expr` 语法树节点，基于此，调用 `ast::NegExpr` 构造函数，获得新的 `NegExpr`，赋值给`$$`，作为这一级语法分析返回的节点。`%prec NEG` 注明的是这条规则的优先级，和优先级定义中的 `NEG` 相同。
-
-```c
-/*   SUBSECTION 2.2: associativeness & precedences */
-%nonassoc QUESTION
-%left     OR
-%left     AND
-%left EQU NEQ
-%left LEQ GEQ LT GT
-%left     PLUS MINUS
-%left     TIMES SLASH MOD
-%nonassoc LNOT NEG BNOT
-%nonassoc LBRACK DOT
-```
-这是 `parser.y` 中的优先级定义，自上而下优先级越来越高。`%left, %nonassoc` 标注了结合性。注意，非终结符也需要声明。如 `parser.y` 中 `%nterm<mind::ast::Expr*> Expr` 表示 `Expr` 非终结符对应的语法树节点是 `mind::ast::Expr*` 类型（的指针）。我们将非终结符都声明为语法树结点的指针类型。每条语法规则里对应的动作会构建一个新的语法树结点，像刚才看到的 `NegExpr`。之后，你可能需要自己增加 token 的定义、语法树节点的定义。
-
 ### Python 框架
 
 程序的入口点在 `main.py`，它通过调用 `frontend.parser.parser`（位于 `frontend/parser/ply_parser.py`）来完成语法分析的工作，而这一语法分析器会自动调用位于 `frontend/lexer/ply_lexer.py` 的词法分析器进行词法分析。语法的定义和语法分析器都位于 `frontend/parser/ply_parser.py`，而词法的定义位于 `frontend/lexer/lex.py`。AST 节点的定义位于 `frontend/ast/tree.py` 中。以下表示中的符号都出自于这几个文件。
@@ -200,10 +103,6 @@ def p_unary_expression(p):
 
 `frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
 
-### C++ 框架
-
-`translation/build_sym.hpp` 和 `translation/type_check.hpp` 及相应 cpp 文件分别对应了符号表构建和类型检查这两次遍历。在框架中，两者都是继承 `ast/visitor.hpp` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。在新增 AST 节点后，必须在两者中增加对应的 `visitXXX` 函数。其实现细节参见代码。
-
 ## 中间代码生成
 
 在通过语义检查之后，编译器已经掌握了翻译源程序所需的信息（符号表、类型等），下一步要做的则是将抽象语法树翻译为便于移植和优化的中间代码，在本实验框架中就是三地址码。如何翻译抽象语法树？当然还是无所不能的 Visitor 模式，我们在中间代码生成步骤中再遍历一次语法树，对每个结点做对应的翻译处理。具体来说，在 step1 当中，我们只需要提取 return 语句返回的常量，为之分配一个临时变量，再生成相应的 TAC 返回指令即可。不难看出，本例对应的三地址码为：
@@ -221,12 +120,6 @@ main:           # main 函数入口标签
 `frontend/tacgen/tacgen.py` 中通过一遍 AST 扫描完成 TAC 生成。和语义分析一样，这部分也使用了 Visitor 模式。
 
 `frontend/utils/tac` 目录下实现了生成 TAC 所需的底层类。其中 `tacinstr.py` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。提供给生成 TAC 程序流程的主要接口在 `funcvisitor.py` 中，若你增加了 TAC 指令，则需要在 `FuncVisitor` 类中增加生成该指令的接口。在本框架中，TAC 程序的生成是以函数为单位，对每个函数（step1-8 中只有 main 函数）分别使用一个 `FuncVisitor` 来生成对应的 TAC 程序。除此之外的 TAC 底层类，同学们可以不作修改，也可以按照自己的想法进行修改。
-
-### C++ 框架
-
-`translation/translation.hpp` 及相应 .cpp 文件中通过一遍 AST 扫描完成 TAC 生成。和语义分析一样，这部分也使用了 Visitor 模式。
-
-tac 目录下实现了生成 TAC 所需的底层类。其中 `tac/tac.hpp` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。`tac/trans_helper.hpp` 及相应 cpp 文件中的 `TransHelper` 类用于方便地生成 TAC 指令流，若你增加了 TAC 指令，则需要在 `TransHelper` 类中增加生成该指令的接口。除此之外的 TAC 底层类，同学们可以不作修改，也可以按照自己的想法进行修改。
 
 ## 目标代码生成
 
@@ -258,7 +151,3 @@ main:             # 主函数入口符号
 ### Python 框架
 
 Python 框架中关于目标代码生成的文件主要集中 `backend` 文件夹下，step1 中你只需要关注 `backend/riscv` 文件夹中的 `riscvasmemitter.py` 以及 `utils/riscv.py` 即可。具体来说 `backend/asm.py` 中会先调用 `riscvasmemitter.py` 中的 `selectInstr` 方法对每个函数内的 TAC 指令选择相应的 RISC-V 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成相应的 `NativeInstr` 指令（即所有操作数都已经分配好寄存器的指令），最后通过 `RiscvSubroutineEmitter` 的 `emitEnd` 方法生成每个函数的 RISC-V 汇编。
-
-### C++ 框架
-
-C++ 框架中关于目标代码生成的文件主要集中在 `src/asm` 文件夹下，step1 中你只需要关注 `src/asm/riscv_md.cpp` 即可。具体来说，`riscv_md.cpp` 中的 `emitPiece` 函数是整个目标代码生成模块的入口。你只需要顺着函数调用的逻辑，以及我们提供的注释，就能够走通整个编译的流程。
