@@ -103,11 +103,11 @@ main:             # 主函数入口符号
     ret           # 返回
 ```
 
->  关于实现细节，对应的代码位置在下面给出，代码中提供注释供大家学习：
-
 实验框架中关于目标代码生成的文件主要集中 `backend` 文件夹下，step1 中你只需要关注 `backend/riscv` 文件夹中的 `riscvasmemitter.py` 以及 `utils/riscv.py` 即可。具体来说 `backend/asm.py` 中会先调用 `riscvasmemitter.py` 中的 `selectInstr` 方法对每个函数内的 TAC 指令选择相应的 RISC-V 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成相应的 `NativeInstr` 指令（即所有操作数都已经分配好寄存器的指令），最后通过 `RiscvSubroutineEmitter` 的 `emitEnd` 方法生成每个函数的 RISC-V 汇编。
 
 ## 细节呢？
+
+>  关于实现细节，对应的代码位置在下面给出，代码中提供注释供大家学习，但是应该有同学不想读冗长的代码，因此有了这部分。
 
 为了帮大家再快一点了解实验框架。我们进一步看一个例子，如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
 
@@ -175,9 +175,9 @@ Program
 
 * 怎么从 AST 变为 TAC 的？
 
-    这一步就是 `TACGen.transform` 函数做的事了，请确保你已经对[Visitor 模式](docs/step1/visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
+    这一步就是 `TACGen.transform` 函数(frontend/tacgen/tacgen.py)做的事了， `TACGen.transform` 接受一个AST树输入，输出一个TAC表示，请确保你已经对[Visitor 模式](docs/step1/visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
 
-    **下面的描述中一定要记得区分accept和直接对于mv.visitorXXX的调用，前者是在遍历AST时调用的，后者是在visitorXXX函数中调用的。并且希望大家一定要对着代码看。**
+    **下面的描述中一定要记得区分accept和直接对于mv.visitorXXX的调用，前者是在遍历AST时调用的，后者是在 FuncVisitor 类中调用的。并且希望大家一定要对着代码看。**
     
     ```
     Program
@@ -223,3 +223,51 @@ Program
     ```
 
     `self.freshTemp()`分配了一个虚拟寄存器 `temp` ，并且产生了一条load语句通过`self.func.add`加入到了`func`中（其实就是`main`函数中）。至此，我们翻译出了第一条语句，将2022 load到一个虚拟寄存器 `temp` 中。剩下的部分，对着代码和上面的AST看一下相信大家也知道发生了什么了。
+
+    到此为止我们得到的TAC代码如下：
+
+    ```
+    FUNCTION<main>:
+    _T0 = 2022
+    _T1 = - _T0
+    return _T1
+    ```
+
+    现在尝试运行 `python main.py --input example.c --tac` 看看效果吧。
+
+* 怎么从TAC到汇编代码
+
+    这一步是 `Asm.transform` 函数(backend/asm.py)处理的，`Asm.transform` 接受一个 TAC 输入，输出汇编代码。
+    
+    ```python
+    def transform(self, prog: TACProg):
+        analyzer = LivenessAnalyzer()
+
+        for func in prog.funcs:
+            pair = self.emitter.selectInstr(func)
+            builder = CFGBuilder()
+            cfg: CFG = builder.buildFrom(pair[0])
+            analyzer.accept(cfg)
+            self.regAlloc.accept(cfg, pair[1])
+
+        return self.emitter.emitEnd()
+    ```
+
+    我们先忽略`LivenessAnalyzer`和`CFG`以及寄存器分配的部分（助教写了一个非常简单暴力的寄存器分配，如果你觉得它不够好，你可以在后面的step换掉它），实际上，我们这里最主要的是`selectInstr`，`selectInstr`函数中，我们也采用了visitor模式遍历指令序列，对于`_T0 = 2022`和`_T1 = - _T0`两句比较直接，我们也能较为容易的想到一个简单的汇编指令对应，这两句的翻译我们不在赘述，主要讲讲`return _T1`翻译过程发生了什么。
+
+    直接看`visitReturn`函数，我们这里的`return`是一个带返回值函数的`return`
+    
+    ```python
+    def visitReturn(self, instr: Return) -> None:
+        if instr.value is not None:
+            self.seq.append(Riscv.Move(Riscv.A0, instr.value))
+        else:
+            self.seq.append(Riscv.LoadImm(Riscv.A0, 0))
+        self.seq.append(Riscv.JumpToEpilogue(self.entry))
+    ```
+
+    这里会进入第一个分支，由于Risc-V的调用约定将A0寄存器定为存放返回值的寄存器，因此在返回时我们产生了一条Move指令，这里的`instr.value`则是返回值对应的表达式使用的寄存器。
+
+    你可能会觉得，这一步不就是将 TAC 一一对应为一个汇编指令序列嘛，有什么必要吗？其实这一步是必要的，首先有的中间表示可能无法由一条汇编指令完成，比如`T2 = T1 && T0`，这里的逻辑与需要将T1、T0通过汇编指令先转换为True或False，再进行与操作，否则不符合逻辑与操作的语义。为什么这一步不在产生 TAC 时就处理了？因为我们希望中间表示是和平台无关的代码，在特定架构下，指令选择是有巨大差异的，中间表示有一定抽象能力能简化整体编译器的设计。
+
+    然后后面的物理寄存器分配我们暂时跳过。至此我们已经完成了从源代码到汇编代码的翻译，现在尝试运行 `python main.py --input example.c --riscv` 看看效果吧。
