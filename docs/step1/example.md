@@ -14,7 +14,7 @@ int main() {
 
 在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了 lex/yacc 库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。**你可以根据我们的框架中对 lex/yacc 的使用，结合我们的文档，来快速上手 lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行 lex/yacc 的入门，但这不是必须的。**
 
-为了方便同学们理解框架，我们将同时在这一段中说明为了加入取负运算所需要的操作。在实验框架中，我们使用的是 lex/yacc 的一个纯 python 实现，称为 python-lex-yacc（简称 ply），其使用方法与 lex/yacc 有一些差异。
+在实验框架中，我们使用的是 lex/yacc 的一个纯 python 实现，称为 python-lex-yacc（简称 ply），其使用方法与 lex/yacc 有一些差异。
 
 [Python-lex-yacc 快速入门](https://www.dabeaz.com/ply/ply.html)
 
@@ -107,7 +107,7 @@ main:             # 主函数入口符号
 
 ## 细节呢？
 
->  关于实现细节，对应的代码位置在下面给出，代码中提供注释供大家学习，但是应该有同学不想读冗长的代码，因此有了这部分。
+>  关于实现细节，对应的代码位置在下面给出，代码中提供注释供大家学习，但是应该有同学不想读冗长的代码，因此有了这部分。这部分看着长其实不长（大家还是读一下吧）。
 
 为了帮大家再快一点了解实验框架。我们进一步看一个例子，如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
 
@@ -139,7 +139,7 @@ Program
     t_Minus = "-"
     ```
 
-    在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
+    在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)（太长了助教也读不下去）。
     
     在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西）：
 
@@ -171,11 +171,13 @@ Program
         p[0] = tree.Unary(UnaryOp.Neg, p[2])
     ```
 
-    现在尝试运行 `python main.py --input example.c --parse` 看看效果吧。（记得修改`example.c`）
+    **现在尝试运行 `python main.py --input example.c --parse` 看看效果吧。（记得修改`example.c`）**
 
 * 怎么从 AST 变为 TAC 的？
 
-    这一步就是 `TACGen.transform` 函数(frontend/tacgen/tacgen.py)做的事了， `TACGen.transform` 接受一个AST树输入，输出一个TAC表示，请确保你已经对[Visitor 模式](docs/step1/visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
+    什么是 [TAC](./arch.md#三地址码) ，如果你没读前面的章节，你可以快速看看这一部分。
+
+    这一步就是 `TACGen.transform` 函数(frontend/tacgen/tacgen.py)做的事了， `TACGen.transform` 接受一个AST树输入，输出一个TAC表示，请确保你已经对[Visitor 模式](./visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
 
     **下面的描述中一定要记得区分accept和直接对于mv.visitorXXX的调用，前者是在遍历AST时调用的，后者是在 FuncVisitor 类中调用的。并且希望大家一定要对着代码看。**
     
@@ -233,7 +235,7 @@ Program
     return _T1
     ```
 
-    现在尝试运行 `python main.py --input example.c --tac` 看看效果吧。
+    **现在尝试运行 `python main.py --input example.c --tac` 看看效果吧。**
 
 * 怎么从TAC到汇编代码
 
@@ -270,4 +272,6 @@ Program
 
     你可能会觉得，这一步不就是将 TAC 一一对应为一个汇编指令序列嘛，有什么必要吗？其实这一步是必要的，首先有的中间表示可能无法由一条汇编指令完成，比如`T2 = T1 && T0`，这里的逻辑与需要将T1、T0通过汇编指令先转换为True或False，再进行与操作，否则不符合逻辑与操作的语义。为什么这一步不在产生 TAC 时就处理了？因为我们希望中间表示是和平台无关的代码，在特定架构下，指令选择是有巨大差异的，中间表示有一定抽象能力能简化整体编译器的设计。
 
-    然后后面的物理寄存器分配我们暂时跳过。至此我们已经完成了从源代码到汇编代码的翻译，现在尝试运行 `python main.py --input example.c --riscv` 看看效果吧。
+    然后后面的物理寄存器分配我们暂时跳过。至此我们已经完成了从源代码到汇编代码的翻译。
+    
+    **现在尝试运行 `python main.py --input example.c --riscv` 看看效果吧。**
