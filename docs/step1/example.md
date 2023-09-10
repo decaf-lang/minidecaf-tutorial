@@ -10,8 +10,6 @@ int main() {
 }
 ```
 
-> 请注意，这里给出的生成结果（抽象语法树、三地址码、汇编）只是一种参考的实现，同学们可以按照自己的方式实现，只要能够通过测试用例即可。但是，严格杜绝抄袭现象，如果代码查重过程中发现有抄袭现象，抄袭者与被抄袭者将被记为0分。
-
 ## 词法分析 & 语法分析
 
 在词法分析 & 语法分析这一步中，我们需要将输入的程序字符流按照[语法规范](./spec.md)转化为后续步骤所需要的 AST，我们使用了 lex/yacc 库来实现这一点。[yacc](https://en.wikipedia.org/wiki/Yacc) 是一个根据 EBNF 形式的语法规范生成相应 LALR parser 的工具，支持基于属性文法的语法制导的语义计算过程。**你可以根据我们的框架中对 lex/yacc 的使用，结合我们的文档，来快速上手 lex/yacc，完成作业；也可以选择阅读一些较为详细的文档，来系统地进行 lex/yacc 的入门，但这不是必须的。**
@@ -26,7 +24,7 @@ int main() {
 
 ```
                   读内容       词法分析 & 语法分析              语义分析
-                 readCode       parser.parse    namer.transform & typer.transform
+                 readCode       parser.parse    Namer.transform & Typer.transform
 MiniDecaf 源文件 --------> 字节流 -----------> AST -------------------------------> ... 
 ```
 
@@ -60,9 +58,9 @@ Program
 
 * 返回值是否在 int 合法的范围内。
 
-在实际操作中，我们遍历 AST 所用的方法就是的 [Visitor 模式](./visitor.md)，通过 Visitor 模式，我们可以从抽象语法树的根结点开始，遍历整颗树的所有语法结点，并针对特定的语法结点作出相应的操作，如名称检查和类型检查等。在编译器中，这种基于 Visitor 的对语法树进行一次遍历，完成某种检查或优化的过程，称为遍（pass）。不难想到，一个现代编译器是由很多遍扫描组成的，如 gcc 根据优化等级不同会有数百个不等的 pass。下面，我们将指出，step1 中我们是如何实现符号表构建 pass 和类型检查 pass 的，选择不同语言的同学，可以选择去看相应的代码注释与实现细节。
+在实际操作中，我们遍历 AST 所用的方法就是的 [Visitor 模式](./visitor.md)，通过 Visitor 模式，我们可以从抽象语法树的根结点开始，遍历整颗树的所有语法结点，并针对特定的语法结点作出相应的操作，如名称检查和类型检查等。在编译器中，这种基于 Visitor 的对语法树进行一次遍历，完成某种检查或优化的过程，称为遍（pass）。不难想到，一个现代编译器是由很多遍扫描组成的，如 gcc 根据优化等级不同会有数百个不等的 pass。下面，我们将指出，step1 中我们是如何实现符号表构建 pass 和类型检查 pass 的，同学们可以选择去看相应的代码注释与实现细节。
 
-`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 的。其实现细节参见代码。
+`frontend/typecheck/namer.py` 和 `typer.py` 分别对应了符号表构建和类型检查这两次遍历。在框架中，`Namer` 和 `Typer` 都是继承 `frontend/ast/visitor.py` 中的 `Visitor` 类来通过 Visitor 模式遍历 AST 。
 
 ## 中间代码生成
 
@@ -126,9 +124,12 @@ Program
         |- (ident) Identifier("main")
         |- (body) Block
             |- (children[0]) Return
-                |- (unary) -
+                |- (expr) Unary
+                    |- (op) Minus
                     |- (expr) IntLiteral(2022)
 ```
+
+看到这里，你可能会好奇，为什么这里多了如 (expr) Unary 这样的奇怪的 AST 节点。在编译器中，我们将所有的值、或者运算产生的结果称为一个表达式。比如 `2022` 这个数字是一个表达式， `-2022` , `y-x`同样也是表达式，其会生成一个值。而带返回值的 `return` 语句需要一个值，我们可以理解为带返回值的 `return` 语句后需要接一个表达式，这样在语义上才是正确的（例如，我们能见到`return 1;`这样的语句，但是不会见到`return if;`这样的语句，因为 `if` 并不是一个会产生值的表达式）。
 
 * 词法分析 & 语法分析
     
@@ -140,7 +141,7 @@ Program
 
     在 ply 的 lexer 中，定义的新 token 需要以 `t_`开头。更具体的解释见文件注释或[文档](https://www.dabeaz.com/ply/ply.html)。
     
-    在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西），可能长这样：
+    在 `frontend/ast/tree.py` 里加入新的 AST 节点定义（以及相应的其它东西）：
 
     ```python
     class Unary(Expression):
@@ -152,7 +153,7 @@ Program
 
     它将在后续的 parser 语义计算中被用到。
 
-    在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule，可能包含（不限于）以下的这些：
+    在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule：
 
     ```python
     def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
@@ -172,4 +173,53 @@ Program
 
     现在尝试运行 `python main.py --input example.c --parse` 看看效果吧。（记得修改`example.c`）
 
-这样就基本完成了词法 & 语法分析步骤里加入取负运算的所有步骤。后续步骤中可能需要在某些 visitor 中实现相应的检查、转化至 TAC 的逻辑。
+* 怎么从 AST 变为 TAC 的？
+
+    这一步就是 `TACGen.transform` 函数做的事了，请确保你已经对[Visitor 模式](docs/step1/visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
+
+    **下面的描述中一定要记得区分accept和直接对于mv.visitorXXX的调用，前者是在遍历AST时调用的，后者是在visitorXXX函数中调用的。并且希望大家一定要对着代码看。**
+    
+    ```
+    Program
+        |- (children[0]) Function
+            |- (ret_t) TInt
+            |- (ident) Identifier("main")
+            |- (body) Block
+                |- (children[0]) Return
+                    |- (expr) Unary
+                        |- (op) Minus
+                        |- (expr) IntLiteral(2022)
+    ```
+
+    继续看上述例子，我们先关注只有 `main` 函数的 Minidecaf 程序， `TACGen.transform` 会先visit `main`函数，代码贴了一些在这里：
+    
+    ```python
+    def transform(self, program: Program) -> TACProg:
+        mainFunc = program.mainFunc()
+        pw = ProgramWriter(["main"])
+        # The function visitor of 'main' is special.
+        mv = pw.visitMainFunc()
+
+        mainFunc.body.accept(self, mv)
+        # Remember to call mv.visitEnd after the translation a function.
+        mv.visitEnd()
+
+        # Remember to call pw.visitEnd before finishing the translation phase.
+        return pw.visitEnd()
+    ```
+
+    你可以不用关注pw是什么，假装它是一个容器，我们 visit 函数时带上这个容器，将翻译好的函数放进去。`visitMainFunc()`创建了一个这样的容器，并且放了一个`main`函数进去，现在我们开始正式遍历这棵AST树，对于main函数我们要将中间的函数体也遍历一遍，翻译函数体中的语句，因此调用了`mainFunc.body.accept(self, mv)` 而函数体首先在一个block中（花括号括起来的部分），因此会先进入 `visitBlock` 函数，这个函数对于在block中的所有子节点调用了`child.accept(self, mv)`，在这个例子中则会调用`Return` 语句对应的visitor，进入`visitReturn`。继续向下，`visitReturn` 又对于 return AST Node 中的 expr 调用了 `stmt.expr.accept(self, mv)` ，又进入了`visitUnary`，同理，`expr.operand.accept(self, mv)`会进入`visitIntLiteral`。
+    
+    **到了此处出现了不同**，我们发现`visitIntLiteral`中第一次调用了mv的成员函数 `mv.visitLoad(expr.value)` 这里进入了`FuncVisitor.visitLoad`：
+
+    ```
+    def visitLoad(self, value: Union[int, str]) -> Temp:
+        temp = self.freshTemp()
+        if isinstance(value, int):
+            self.func.add(LoadImm4(temp, value))
+        else:
+            self.func.add(LoadStrConst(temp, value))
+        return temp
+    ```
+
+    `self.freshTemp()`分配了一个虚拟寄存器 `temp` ，并且产生了一条load语句通过`self.func.add`加入到了`func`中（其实就是`main`函数中）。至此，我们翻译出了第一条语句，将2022 load到一个虚拟寄存器 `temp` 中。剩下的部分，对着代码和上面的AST看一下相信大家也知道发生了什么了。
