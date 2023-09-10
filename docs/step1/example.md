@@ -20,7 +20,7 @@ int main() {
 
 程序的入口点在 `main.py`，它通过调用 `frontend.parser.parser`（位于 `frontend/parser/ply_parser.py`）来完成语法分析的工作，而这一语法分析器会自动调用位于 `frontend/lexer/ply_lexer.py` 的词法分析器进行词法分析。语法的定义和语法分析器都位于 `frontend/parser/ply_parser.py`，而词法的定义位于 `frontend/lexer/lex.py`。AST 节点的定义位于 `frontend/ast/tree.py` 中。以下表示中的符号都出自于这几个文件。
 
-这部分的工作流程如下，第一行是对应的函数：
+这部分的工作流程如下：
 
 ```
                   读内容       词法分析 & 语法分析              语义分析
@@ -214,7 +214,7 @@ Program
     
     **到了此处出现了不同**，我们发现`visitIntLiteral`中第一次调用了mv的成员函数 `mv.visitLoad(expr.value)` 这里进入了`FuncVisitor.visitLoad`：
 
-    ```
+    ```python
     def visitLoad(self, value: Union[int, str]) -> Temp:
         temp = self.freshTemp()
         if isinstance(value, int):
@@ -228,7 +228,7 @@ Program
 
     到此为止我们得到的TAC代码如下：
 
-    ```
+    ```asm
     FUNCTION<main>:
     _T0 = 2022
     _T1 = - _T0
