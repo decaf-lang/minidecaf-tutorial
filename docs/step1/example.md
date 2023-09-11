@@ -160,7 +160,8 @@ Program
         """
         expression : unary
         unary : primary
-        """ # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
+        """ 
+        # 以 [BNF](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) 定义的新语法规则，以 docstring 的形式提供。
         p[0] = p[1] # 这条语法规则相应的语义计算步骤，下标对应着产生式中的相应符号。
         # 语法分析器直接产生的实际上是一棵语法分析树，而构建 AST 这一数据结构则通过相应语法制导的语义计算过程来完成。
 
@@ -170,6 +171,8 @@ Program
         """
         p[0] = tree.Unary(UnaryOp.Neg, p[2])
     ```
+
+    这里其实就是上下文无关文法，大家要看懂文法和代码的对应关系，注意看这条生成规则`unary : Minus unary`，其中p[0]代表的就是第一个`unary`, p[1]则是`Minus`，p[2]为第二个`unary`。你会看到我们框架代码和这里不太一样，因为unary符号不止有减号，我们通过将lex解析得到的`-`通过`backward_search`对应到我们在代码中enum的`UnaryOp.Neg`（frontend/ast/node.py:40）。
 
     **现在尝试运行 `python main.py --input example.c --parse` 看看效果吧。（记得修改`example.c`）**
 
@@ -268,10 +271,10 @@ Program
         self.seq.append(Riscv.JumpToEpilogue(self.entry))
     ```
 
-    这里会进入第一个分支，由于Risc-V的调用约定将A0寄存器定为存放返回值的寄存器，因此在返回时我们产生了一条Move指令，这里的`instr.value`则是返回值对应的表达式使用的寄存器。
+    这里会进入第一个分支，由于 Risc-V 的调用约定将A0寄存器定为存放返回值的寄存器，因此在返回时我们产生了一条Move指令，这里的`instr.value`则是返回值对应的表达式使用的寄存器。
 
     你可能会觉得，这一步不就是将 TAC 一一对应为一个汇编指令序列嘛，有什么必要吗？其实这一步是必要的，首先有的中间表示可能无法由一条汇编指令完成，比如`T2 = T1 && T0`，这里的逻辑与需要将T1、T0通过汇编指令先转换为True或False，再进行与操作，否则不符合逻辑与操作的语义。为什么这一步不在产生 TAC 时就处理了？因为我们希望中间表示是和平台无关的代码，在特定架构下，指令选择是有巨大差异的，中间表示有一定抽象能力能简化整体编译器的设计。
 
-    然后后面的物理寄存器分配我们暂时跳过。至此我们已经完成了从源代码到汇编代码的翻译。
+    物理寄存器分配我们暂时跳过。至此我们已经完成了从源代码到汇编代码的翻译。
     
     **现在尝试运行 `python main.py --input example.c --riscv` 看看效果吧。**
