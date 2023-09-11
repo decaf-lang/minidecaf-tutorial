@@ -52,11 +52,7 @@ Program
 
 在 step1 语义分析步骤中，我们要遍历 AST，检验是否存在如下的语义错误：
 
-* main 函数是否存在。
-
-* return 语句是否有返回值。
-
-* 返回值是否在 int 合法的范围内。
+* main 函数是否存在。（`frontend/typecheck/namer.py:35`）
 
 在实际操作中，我们遍历 AST 所用的方法就是的 [Visitor 模式](./visitor.md)，通过 Visitor 模式，我们可以从抽象语法树的根结点开始，遍历整颗树的所有语法结点，并针对特定的语法结点作出相应的操作，如名称检查和类型检查等。在编译器中，这种基于 Visitor 的对语法树进行一次遍历，完成某种检查或优化的过程，称为遍（pass）。不难想到，一个现代编译器是由很多遍扫描组成的，如 gcc 根据优化等级不同会有数百个不等的 pass。下面，我们将指出，step1 中我们是如何实现符号表构建 pass 和类型检查 pass 的，同学们可以选择去看相应的代码注释与实现细节。
 
@@ -107,7 +103,7 @@ main:             # 主函数入口符号
 
 ## 细节呢？
 
->  关于实现细节，对应的代码位置在下面给出，代码中提供注释供大家学习，但是应该有同学不想读冗长的代码，因此有了这部分。这部分看着长其实不长（大家还是读一下吧）。
+>  关于实现细节，对应的代码位置在下面给出，代码中提供注释供大家学习，但是应该有同学不想读冗长的代码，因此有了这部分。
 
 为了帮大家再快一点了解实验框架。我们进一步看一个例子，如果我们想把返回值从 `2022` 变成 `-2022`，则在这一步中你可能需要进行以下操作（实际上这些实现已经在框架里提供）：
 
@@ -174,7 +170,7 @@ Program
 
     这里其实就是上下文无关文法，大家要看懂文法和代码的对应关系，注意看这条生成规则`unary : Minus unary`，其中p[0]代表的就是第一个`unary`, p[1]则是`Minus`，p[2]为第二个`unary`。你会看到我们框架代码和这里不太一样，因为unary符号不止有减号，我们通过将lex解析得到的`-`通过`backward_search`对应到我们在代码中enum的`UnaryOp.Neg`（frontend/ast/node.py:40）。
 
-    **现在尝试运行 `python main.py --input example.c --parse` 看看效果吧。（记得修改`example.c`）**
+    现在尝试运行 `python main.py --input example.c --parse` 看看效果吧。（记得修改`example.c`）
 
 * 怎么从 AST 变为 TAC 的？
 
@@ -215,7 +211,7 @@ Program
 
     你可以不用关注pw是什么，假装它是一个容器，我们 visit 函数时带上这个容器，将翻译好的函数放进去。`visitMainFunc()`创建了一个这样的容器，并且放了一个`main`函数进去，现在我们开始正式遍历这棵AST树，对于main函数我们要将中间的函数体也遍历一遍，翻译函数体中的语句，因此调用了`mainFunc.body.accept(self, mv)` 而函数体首先在一个block中（花括号括起来的部分），因此会先进入 `visitBlock` 函数，这个函数对于在block中的所有子节点调用了`child.accept(self, mv)`，在这个例子中则会调用`Return` 语句对应的visitor，进入`visitReturn`。继续向下，`visitReturn` 又对于 return AST Node 中的 expr 调用了 `stmt.expr.accept(self, mv)` ，又进入了`visitUnary`，同理，`expr.operand.accept(self, mv)`会进入`visitIntLiteral`。
     
-    **到了此处出现了不同**，我们发现`visitIntLiteral`中第一次调用了mv的成员函数 `mv.visitLoad(expr.value)` 这里进入了`FuncVisitor.visitLoad`：
+    到了此处出现了不同，我们发现`visitIntLiteral`中第一次调用了mv的成员函数 `mv.visitLoad(expr.value)` 这里进入了`FuncVisitor.visitLoad`：
 
     ```python
     def visitLoad(self, value: Union[int, str]) -> Temp:
@@ -238,7 +234,7 @@ Program
     return _T1
     ```
 
-    **现在尝试运行 `python main.py --input example.c --tac` 看看效果吧。**
+    现在尝试运行 `python main.py --input example.c --tac` 看看效果吧。
 
 * 怎么从TAC到汇编代码
 
@@ -277,4 +273,16 @@ Program
 
     物理寄存器分配我们暂时跳过。至此我们已经完成了从源代码到汇编代码的翻译。
     
-    **现在尝试运行 `python main.py --input example.c --riscv` 看看效果吧。**
+    现在尝试运行 `python main.py --input example.c --riscv` 看看效果吧。
+
+## 思考题
+
+1. 在我们的框架中，从 AST 向 TAC 的转换经过了 `namer.transform`, `typer.transform`如果没有这两个步骤，以下代码能正常编译吗，为什么？
+
+```c
+int main(){
+    return 10;
+}
+```
+
+2. 我们的框架现在对于main函数没有返回值的情况是在哪一步处理的？报的是什么错？
