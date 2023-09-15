@@ -30,13 +30,7 @@ int func(int x, int y) { int x = 1; return x + y; }
 
 那么语义检查时应当报错。
 
-### Python 框架
-
-`frontend/symbol/funcsymbol.py` 里实现了函数符号。
-
-### C++ 框架
-
-`symb/symbol.hpp` 中 Function 类表示函数符号。`scope/scope.hpp` 中，FuncScope 表示函数作用域。
+函数符号的实现在 `frontend/symbol/funcsymbol.py` 中。
 
 ## 中间代码生成
 
@@ -82,9 +76,6 @@ main:
 ```
 
 同学们可以使用这种参考的实现形式，也可以自行思考传参的处理方法。
-
-> 在 step9 之后，C++ 框架中出现了新的三地址码指令（PARAM、CALL等），因此你需要参考 `tac/dataflow.cpp` 文件开始的注释修改相应指令的数据流信息，具体的修改方式取决于你定义的三地址码指令的输入和输出特点。
->
 
 ## 目标代码生成
 
@@ -180,60 +171,6 @@ main_exit:
 ### 提示
 关于测试样例：
 我们的测试脚本会将你的编译器生成的汇编代码与我们提供的运行时框架一起通过 gcc 链接得到可执行文件，检查运行结果。你可以查看测试文件夹中的 `runtime.c`,`runtime.h`,`runtime.s` 来查看我们预定义的函数。
-
-C++框架中：
-
-1. 框架中会在生成的汇编中在函数名前面加上下划线 `_`，如果链接时出现问题请检查是不是下划线导致的。
-
-2. 由于调用时涉及将参数放到寄存器中，如果原来的寄存器中已经分配给了其他虚拟寄存器，那么你需要将寄存器先保存（spill）到栈上，但是这个过程你需要小心地处理Liveout集合，以下面三地址码为例:
-    ```assembly
-    func:
-        _T2 = ADD _T0, _T1
-        return _T2        # 参数 x 和 y 分别对应 _T0, _T1
-    main:
-        _T0 = 1
-        PARAM _T0         # 将 _T0 的值作为参数 x 放入a0寄存器
-        _T1 = 2
-        PARAM _T1         # 将 _T1 的值作为参数 y 放入a1寄存器
-        _T3 = CALL func   # 调用函数
-        return _T3
-    ```
-    在PARAM _T0这一行，我们要将虚拟寄存器T0作为参数x放入物理寄存器a0，假设此时T0在栈中，并且物理寄存器a0中存放了另一个虚拟寄存器T2，那么要先将T2 spill到栈中。
-    即此时需要：
-    1. 将T2放入栈中（即：spill T2）
-    2. 从栈中将T0取出放入a0寄存器中
-
-    但是我们的框架在spill一个寄存器时会考虑当前位置的liveout集合，假设T0在此后不再被用到，那么T0就不在当前位置的liveout集合中，也就是说在spill寄存器时T0可以被覆盖掉，这可能导致T2被spill到了T0所在的位置，覆盖了T0。
-    ```c++
-    void RiscvDesc::spillReg(int i, LiveSet *live) {
-        std::ostringstream oss;
-        Temp v = _reg[i]->var;
-        if ((NULL != v) && _reg[i]->dirty && live->contains(v)) {
-            RiscvReg *base = _reg[RiscvReg::FP];
-            if (!v->is_offset_fixed) {
-                _frame->getSlotToWrite(v, live);   // 此处选择了一个栈上的位置用于保存寄存器
-            }
-            ... ...
-        }
-        ... ...
-    }
-    ```
-    因此如果你遇到需要将参数放到某个物理寄存器中并且原来物理寄存器中含有其他虚拟寄存器，那么你可以按照下面的方式做：
-    ```c++
-    void RiscvDesc::setRegParam(Tac *t, int cnt) {
-        // 此处助教使用Tac的op0来存放需要当作参数的虚拟寄存器
-        // 先将op0加入当前的LiveOut集合，这可以保证spillReg时候不会将op0覆盖
-        t->LiveOut->add(t->op0.var);
-        spillReg(RiscvReg::A0 + cnt, t->LiveOut);
-        int i = lookupReg(t->op0.var);
-        if(i < 0) {
-            // 处理在栈上的情况
-        } else {
-            // 处理在其他寄存器中的情况
-        }
-    }
-    ```
-
 
 # 思考题
 1. MiniDecaf 的函数调用时参数求值的顺序是未定义行为。试写出一段 MiniDecaf 代码，使得不同的参数求值顺序会导致不同的返回结果。

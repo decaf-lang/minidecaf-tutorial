@@ -139,12 +139,12 @@ bool parse_ident(char* &ident);			// 解析一个标识符，结果通过 ident 
 
 如果你想要自己的编译器在发生错误时停止，可以这样。
 
-````c++
+```c++
 Function *function() {
     assert(parse_reserved("int"));
     // ...
 }
-````
+```
 
 当然，也可以输出一些错误信息。如果你想得到报错位置，可以令 `parse_xxx()`返回 token 位置信息。
 
