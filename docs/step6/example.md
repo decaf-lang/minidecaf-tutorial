@@ -88,9 +88,20 @@ main:
 
 不需要新增新的中间代码指令。
 
-### Python 框架
+代码框架需要同学们对寄存器分配相关的 CFG 的内容进行细微修改。具体来说，需要在 `backend/dataflow/cfg.py` 中添加基本块是否可达的判断。在寄存器分配算法 `backend/reg/bruteregalloc.py` 的注释中，我们给出了提示，如果一个基本块不可达，那么无须为它分配寄存器。
 
-Python 框架比较特殊，需要同学们对寄存器分配相关的 CFG 的内容进行细微修改。具体来说，需要在 `backend/dataflow/cfg.py` 中添加基本块是否可达的判断。在寄存器分配算法 `backend/reg/bruteregalloc.py` 的注释中，我们给出了提示，如果一个基本块不可达，那么无须为它分配寄存器。
+
+# 实现提示
+
+1. 在 step5 中，namer/typer 遍历时的上下文信息(参数 ctx)是单一的作用域。到了 step 6，你需要按照实验指导书中描述，**把上下文信息改成“作用域栈”**。也即定义 `class Namer(Visitor[Scope, None]` 应改为 `class Namer(Visitor[YourType, None]`，其中 `YourType` 是你的作用域栈类型，你可以任意命名它。我们推荐把这个类的定义放在 `frontend/scope/` 下。class Typer 也需要如上改动。
+ 
+2. 之前 step5 的全局唯一的作用域可以被当作“函数作用域使用”，在 visitFunction 入栈。然后在新的 visitBlock 中，再进一步将局部作用域压栈。最后，在所有这些方法的末尾，不要忘了把对应作用域退栈。
+
+3. 当只有一个作用域时，“不可以定义新变量a”就意味着当前“可以获取变量a的值”，反之亦然，所以“定义变量”和“获取变量”的检查都可以用 `Scope.lookup` 实现。但有了多个作用域之后，就出现了“既可以拿到a的值，也可以重新定义一个a”的情况。这需要重新考虑 Typer / Namer 中的每一个 `Scope.lookup` ，看她们是否需要换成新函数。
+
+4. 后续 stage-4 时，你需要一个机制来检查 break/continue 语句是否在一个循环内。这可以通过修改 namer/typer 中的对应结点来实现。另外，别忘了循环本身也是一个作用域！
+
+5. 后续如果你选做“全局变量”部分，可以在 Namer 和 Typer 的 transform 方法中先将全局作用域加入栈底，再往上才是 visitFunction 的函数作用域。
 
 # 思考题
 1. 请画出下面 MiniDecaf 代码的控制流图。

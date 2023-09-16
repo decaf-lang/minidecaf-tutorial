@@ -11,7 +11,7 @@ A：如果你安装了多版本的 python，使用 pip 命令未必会对应 3.9
 
 &nbsp;
 
-Q：Python 框架无法正确输出三地址码？
+Q：代码框架无法正确输出三地址码？
 
 A：非常抱歉，框架中输出时有一个小错误。在 `main.py` 中，输出三地址码时，请使用 `prog.printTo()` 语句；此外，想要输出带有缩进格式的抽象语法树，请使用如下语句：
 ```python
@@ -21,14 +21,14 @@ printer.work(prog)
 
 &nbsp;
 
-Q： Python框架 step7 中，由 multi_nesting.c 生成的以下中间代码无法成功生成目标代码。
+Q： 代码框架 step7 中，由 multi_nesting.c 生成的以下中间代码无法成功生成目标代码。
 
 经过使用 print 法调试，发现是 `_T1` 所对应的寄存器在 `return _T1` 前就被释放了，后端会尝试到栈中寻找 `_T1` 并且不会找到，出现报错：
 `utils.error.IllegalArgumentException: error: encounter a non-returned basic block`
 
 请问是后端实现上有问题，还是这一部分本来就需要我们自己修改呢？
 
-A：Python 框架的后端除了要修改指令选择部分之外，还需要修改基本块 CFG，可以参见 BruteRegAlloc 的注释里给出的提示。
+A：代码框架的后端除了要修改指令选择部分之外，还需要修改基本块 CFG，可以参见 BruteRegAlloc 的注释里给出的提示。
 
 &nbsp;
 
@@ -56,7 +56,7 @@ A：
 
 &nbsp;
 
-Q：Python 框架寄存器分配中 allocRegFor 函数实现有错误？
+Q：代码框架寄存器分配中 allocRegFor 函数实现有错误？
 
 A：请修改 bruteregalloc.py 中第 119 行处随机数生成的范围，将上界改为 `len(...) - 1`，避免溢出。感谢孟本源同学！
 
