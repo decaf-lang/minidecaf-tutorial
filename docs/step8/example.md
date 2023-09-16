@@ -14,11 +14,13 @@ for (int i = 0; i < 5; i = i + 1)
 
 | 节点 | 成员 | 含义 |
 | --- | --- | --- |
-| `For` | 初始语句 `init`，循环条件 `cond`，更新语句 `update`，循环体 `body` | for 循环语句 |
 | `While` | 循环条件 `cond`，循环体 `body` | while 循环语句 |
+| `For` | 初始语句 `init`，循环条件 `cond`，更新语句 `update`，循环体 `body` | for 循环语句 |
 | `Break` | 无 | break 语句 |
 | `Continue` | 无 | continue 语句 |
 
+其中，while 和 break 语句的实现已经在框架中给出，同学们可以参考并实现 for 和 continue 语句。
+git 
 ## 语义分析
 
 本步骤语义分析阶段的处理方式和 Step7 中的 if 语句相类似，但是请额外注意以下两点：
