@@ -52,7 +52,7 @@ Program
 
 在 step1 语义分析步骤中，我们要遍历 AST，检验是否存在如下的语义错误：
 
-* main 函数是否存在。（`frontend/typecheck/namer.py:35`）
+* main 函数是否存在。（`frontend/typecheck/namer.py:39`）
 
 在实际操作中，我们遍历 AST 所用的方法就是的 [Visitor 模式](./visitor.md)，通过 Visitor 模式，我们可以从抽象语法树的根结点开始，遍历整颗树的所有语法结点，并针对特定的语法结点作出相应的操作，如名称检查和类型检查等。在编译器中，这种基于 Visitor 的对语法树进行一次遍历，完成某种检查或优化的过程，称为遍（pass）。不难想到，一个现代编译器是由很多遍扫描组成的，如 gcc 根据优化等级不同会有数百个不等的 pass。下面，我们将指出，step1 中我们是如何实现符号表构建 pass 和类型检查 pass 的，同学们可以选择去看相应的代码注释与实现细节。
 
@@ -192,38 +192,32 @@ Program
                         |- (expr) IntLiteral(2022)
     ```
 
-    继续看上述例子，我们先关注只有 `main` 函数的 Minidecaf 程序， `TACGen.transform` 会先visit `main`函数，代码贴了一些在这里：
+    继续看上述例子，我们先关注只有 `main` 函数的 Minidecaf 程序，我们将`TACGen.transform`代码贴了一些在这里：
     
     ```python
     def transform(self, program: Program) -> TACProg:
-        mainFunc = program.mainFunc()
-        pw = ProgramWriter(["main"])
-        # The function visitor of 'main' is special.
-        mv = pw.visitMainFunc()
+        # handle global variables here if necessary.
 
-        mainFunc.body.accept(self, mv)
-        # Remember to call mv.visitEnd after the translation a function.
-        mv.visitEnd()
-
-        # Remember to call pw.visitEnd before finishing the translation phase.
-        return pw.visitEnd()
+        tac_funcs = []
+        for func_name, function in program.functions().items():
+            emitter = TACFuncEmitter(self.label_man)
+            function.body.accept(self, emitter)
+            tac_funcs.append(emitter.finish(func_name, 0))
+        return TACProg(tac_funcs)
     ```
 
-    你可以不用关注pw是什么，假装它是一个容器，我们 visit 函数时带上这个容器，将翻译好的函数放进去。`visitMainFunc()`创建了一个这样的容器，并且放了一个`main`函数进去，现在我们开始正式遍历这棵AST树，对于main函数我们要将中间的函数体也遍历一遍，翻译函数体中的语句，因此调用了`mainFunc.body.accept(self, mv)` 而函数体首先在一个block中（花括号括起来的部分），因此会先进入 `visitBlock` 函数，这个函数对于在block中的所有子节点调用了`child.accept(self, mv)`，在这个例子中则会调用`Return` 语句对应的visitor，进入`visitReturn`。继续向下，`visitReturn` 又对于 return AST Node 中的 expr 调用了 `stmt.expr.accept(self, mv)` ，又进入了`visitUnary`，同理，`expr.operand.accept(self, mv)`会进入`visitIntLiteral`。
+    现在我们开始正式遍历 AST 树，`transform` 会先遍历每一个函数进行代码翻译，因为我们目前只有一个函数`main`，我们只考虑没有参数的函数，我们需要对函数体进行翻译，函数体首先在一个block中（花括号括起来的部分），因此会先进入 `visit_block` 函数，`visit_block` 函数对于在block中的所有子节点调用了`child.accept(self, mv)`，在这个例子中则会调用`Return` 语句对应的visitor，进入`visit_return`。继续向下，`visit_return` 又对于 return AST Node 中的 expr 调用了 `stmt.expr.accept(self, mv)` ，又进入了`visit_unary`，同理，`expr.operand.accept(self, mv)`会进入`visit_int_literal`。
     
-    到了此处出现了不同，我们发现`visitIntLiteral`中第一次调用了mv的成员函数 `mv.visitLoad(expr.value)` 这里进入了`FuncVisitor.visitLoad`：
+    到了此处出现了不同，我们发现`visit_int_literal`中第一次调用了mv的成员函数 `mv.emit_load_imm(expr.value)` 这里进入了`TACFuncEmitter.emit_load_imm`：
 
     ```python
-    def visitLoad(self, value: Union[int, str]) -> Temp:
-        temp = self.freshTemp()
-        if isinstance(value, int):
-            self.func.add(LoadImm4(temp, value))
-        else:
-            self.func.add(LoadStrConst(temp, value))
-        return temp
+    def emit_load_imm(self, value: int) -> Temp:
+        dst = self.new_temp()
+        self.emit(tacinstr.LoadImm32(dst, value))
+        return dst
     ```
 
-    `self.freshTemp()`分配了一个虚拟寄存器 `temp` ，并且产生了一条load语句通过`self.func.add`加入到了`func`中（其实就是`main`函数中）。至此，我们翻译出了第一条语句，将2022 load到一个虚拟寄存器 `temp` 中。剩下的部分，对着代码和上面的AST看一下相信大家也知道发生了什么了。
+    `self.new_temp()`分配了一个虚拟寄存器 `temp` ，并且产生了一条load语句（你可以认为现在的所有指令就是用一个大数组存放了起来）。至此，我们翻译出了第一条语句，将2022 load到一个虚拟寄存器 `temp` 中。剩下的部分，对着代码和上面的AST看一下相信大家也知道发生了什么了。
 
     到此为止我们得到的TAC代码如下：
 
@@ -279,10 +273,10 @@ Program
 
 1. 在我们的框架中，从 AST 向 TAC 的转换经过了 `namer.transform`, `typer.transform`如果没有这两个步骤，以下代码能正常编译吗，为什么？
 
-```c
-int main(){
-    return 10;
-}
-```
+    ```c
+    int main(){
+        return 10;
+    }
+    ```
 
 2. 我们的框架现在对于main函数没有返回值的情况是在哪一步处理的？报的是什么错？
