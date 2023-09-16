@@ -27,7 +27,7 @@
 
 在我们的框架里，因为语法非常简单，所以没有进一步计算 PS 预测集合，而是直接用 if 语句结合 First/Follow 集合直接进行判断（用 if 语句枚举判断输入的 token 是否属于集合中的元素）。
 
-代码框架中通过**装饰器模式**（decorator pattern）定义了每个产生式左端非终结符的 First 集合，例如 `p_declaration` 函数开头的 `@first("Int")` 表示 `declaration` 的 First 集只包含 token `'Int'`。Python 框架里没有显式定义 Follow 集合。事实上，需要同学们完善的部分里并不需要用到 First/Follow 集合，直接使用 if 语句判断即可。
+代码框架中通过**装饰器模式**（decorator pattern）定义了每个产生式左端非终结符的 First 集合，例如 `p_declaration` 函数开头的 `@first("Int")` 表示 `declaration` 的 First 集只包含 token `'Int'`。代码框架里没有显式定义 Follow 集合。事实上，需要同学们完善的部分里并不需要用到 First/Follow 集合，直接使用 if 语句判断即可。
 
 ### p_Multiplicative
 
