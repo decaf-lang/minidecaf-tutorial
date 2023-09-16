@@ -26,12 +26,3 @@
 ## [Java-ANTLR](./java-xxy.md)
 * 地址 https://github.com/decaf-lang/minidecaf/tree/md-xxy
 * clone 命令：`git clone https://github.com/decaf-lang/minidecaf.git -b md-xxy`
-
-## C++-ANTLR
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-zj
-* clone 命令：`git clone https://github.com/decaf-lang/minidecaf.git -b md-zj`
-
-## C++-manual
-* 地址 https://github.com/decaf-lang/minidecaf/tree/md-zyr
-* clone 命令：`git clone https://github.com/decaf-lang/minidecaf.git -b md-zyr`
-

@@ -8,13 +8,11 @@
 
 ### lookahead 函数
 
-C++ 框架：`Token lookahead(TokenType t)` 
+`def lookahead(self, type: Optional[str] = None) -> Any`
 
-Python 框架：`def lookahead(self, type: Optional[str] = None) -> Any`
+词法分析器 lex 将程序字符串转换为一串 token， 用 `next(lexer)` 获取词法分析器提供的下一个 token。
 
-词法分析器 lex 将程序字符串转换为一串 token，C++ 框架用 `yylex()` 获取词法分析器提供的下一个 token，python 框架用 `next(lexer)` 获取词法分析器提供的下一个 token。
-
-为了实现递归下降语法分析中的 "lookahead" 机制，我们需要**看下一个 token 是什么，但却不能消耗这个 token**，为此我们用一个变量 `next_token` （C++ 框架：全局变量 next_token，python 框架：Parser.next_token）暂存将要被解析的下一个 token。通过判断 `next_token` 的类型，来判断将要使用哪一条产生式。
+为了实现递归下降语法分析中的 "lookahead" 机制，我们需要**看下一个 token 是什么，但却不能消耗这个 token**，为此我们用一个变量 `next_token` （Parser.next_token）暂存将要被解析的下一个 token。通过判断 `next_token` 的类型，来判断将要使用哪一条产生式。
 
 而 `lookahead()` 函数有两个重载的版本。一个版本不带参数，直接读取一个 token；
 另一个版本传入了一个 token 类型做参数，表示希望读取一个特定类型的 token，如果类型不符则报错。每次执行 `lookahead()` 函数，都会**消耗**当前的 `next_token` 并从词法分析器获得新的 token 赋值给 `next_token` 变量。
@@ -29,13 +27,11 @@ Python 框架：`def lookahead(self, type: Optional[str] = None) -> Any`
 
 在我们的框架里，因为语法非常简单，所以没有进一步计算 PS 预测集合，而是直接用 if 语句结合 First/Follow 集合直接进行判断（用 if 语句枚举判断输入的 token 是否属于集合中的元素）。
 
-C++ 框架里定义的 isFirst 数组和 isFollow 数组，表示的是左端为某个非终结符的所有产生式的 First 集合的总和。例如，`isFirst[SymbolType::Binary][TokenType::IDENTIFIER]` 表示的是左侧为 `Binary` （产生式左端的非终结符）对应的所有产生式中，能否产生第一个 token 为 `IDENTIFIER` 的 token 序列。如果能，`isFirst` 数组对应元素的值则为 true，否则为 false。如果同学们在实现中需要用到 isFirst 数组和 isFollow 数组，需要自行补充完整数组的内容。
-
-Python 框架中通过**装饰器模式**（decorator pattern）定义了每个产生式左端非终结符的 First 集合，例如 `p_declaration` 函数开头的 `@first("Int")` 表示 `declaration` 的 First 集只包含 token `'Int'`。Python 框架里没有显式定义 Follow 集合。事实上，需要同学们完善的部分里并不需要用到 First/Follow 集合，直接使用 if 语句判断即可。
+代码框架中通过**装饰器模式**（decorator pattern）定义了每个产生式左端非终结符的 First 集合，例如 `p_declaration` 函数开头的 `@first("Int")` 表示 `declaration` 的 First 集只包含 token `'Int'`。Python 框架里没有显式定义 Follow 集合。事实上，需要同学们完善的部分里并不需要用到 First/Follow 集合，直接使用 if 语句判断即可。
 
 ### p_Multiplicative
 
-我们使用 C++ 框架的 `p_Multiplicative()` 函数和 Python 框架中的 `p_multiplicative()` 函数介绍框架里是如何使用与语法规范等价的 EBNF 文法及其解析方法。这两个函数都希望从当前的 token 流中，解析出一个 `multiplicative` 表达式，并返回其语法树结点。
+我们使用代码框架中的 `p_multiplicative()` 函数介绍框架里是如何使用与语法规范等价的 EBNF 文法及其解析方法。这两个函数都希望从当前的 token 流中，解析出一个 `multiplicative` 表达式，并返回其语法树结点。
 
 `multiplicative` 对应的语法为：
 
@@ -87,13 +83,7 @@ binary(*) [
 
 实验框架中标记有 `TODO` 的函数需要我们填写。填写正确后，合并 stage2 的中端、后端，要求**通过 step1-6 的测例**。
 
-C++ 框架需要完成的函数：
-```
-p_Type p_StmtList p_Statement p_VarDecl p_Return p_If
-p_Expression  p_Assignment p_LogicalAnd p_Relational
-```
-
-Python 框架需要完成的函数：
+需要完成的函数：
 ```
 p_relational p_logical_and p_assignment p_expression p_statement
 p_declaration p_block p_if p_return p_type 
