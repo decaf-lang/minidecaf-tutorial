@@ -20,7 +20,7 @@ for (int i = 0; i < 5; i = i + 1)
 | `Continue` | 无 | continue 语句 |
 
 其中，while 和 break 语句的实现已经在框架中给出，同学们可以参考并实现 for 和 continue 语句。
-git 
+
 ## 语义分析
 
 本步骤语义分析阶段的处理方式和 Step7 中的 if 语句相类似，但是请额外注意以下两点：
@@ -31,7 +31,7 @@ git
 
 ## 中间代码生成
 
-本步骤中没有需要新增的 TAC 指令。不过为了实现循环语句，需要仔细地考虑如何将 MiniDecaf 循环语句翻译成 TAC 的分支跳转指令。由于 while 循环、do-while 循环都可以看作 for 循环的特例，我们选择了 for 循环作为示例。
+本步骤中没有需要新增的 TAC 指令。不过为了实现循环语句，需要仔细地考虑如何将 MiniDecaf 循环语句翻译成 TAC 的分支跳转指令。由于 while 循环可以看作 for 循环的特例，我们选择了 for 循环作为示例。
 让我们先来看看示例对应的 TAC 代码：
 
 ```assembly
@@ -60,9 +60,9 @@ _L3:                          # break label
 
 请注意，示例给出的只是一种循环语句**参考实现**，同学们也可以设计自己的实现方法。
 
-由于循环语句可以嵌套，所以 TAC 语句生成过程中需要动态维护 loop 标签和 break 标签，这样才能确定每一条 continue 和 break 语句跳转到何处。因此，在 TAC 生成时，需要使用栈结构维护从内到外所有的 loop 标签和 break 标签。
+由于循环语句可以嵌套，所以 TAC 语句生成过程中需要动态维护 loop 标签和 break 标签，这样才能确定每一条 break 和 continue 语句跳转到何处。因此，在 TAC 生成时，需要使用栈结构维护从内到外所有的 loop 标签和 break 标签。
 
-`utils/tac/funcvisitor.py` 里的 FuncVisitor 类里实现了维护 TAC 生成时需要的上下文信息的功能。同学们可以在这个类中增加对循环所需的 continue/break 标签的维护。
+`utils/tac/funcvisitor.py` 里的 FuncVisitor 类里实现了维护 TAC 生成时需要的上下文信息的功能。同学们可以在这个类中增加对循环所需的 break/continue 标签的维护。
 
 ## 目标代码生成
 
