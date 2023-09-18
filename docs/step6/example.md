@@ -93,7 +93,7 @@ main:
 
 # 实现提示
 
-1. 在 step5 中，namer/typer 遍历时的上下文信息(参数 ctx)是单一的作用域。到了 step 6，你需要按照实验指导书中描述，**把上下文信息改成“作用域栈”**。也即定义 `class Namer(Visitor[Scope, None]` 应改为 `class Namer(Visitor[YourType, None]`，其中 `YourType` 是你的作用域栈类型，你可以任意命名它。我们推荐把这个类的定义放在 `frontend/scope/` 下。class Typer 也需要如上改动。
+1. 在 step5 中，namer/typer 遍历时的上下文信息(参数 ctx)是单一的作用域。到了 step 6，你需要按照实验指导书中描述，**把上下文信息改成“作用域栈”**。也即定义 `class Namer(Visitor[Scope, None])` 应改为 `class Namer(Visitor[YourType, None])`，其中 `YourType` 是你的作用域栈类型，你可以任意命名它。我们推荐把这个类的定义放在 `frontend/scope/` 下。class Typer 也需要如上改动。
  
 2. 之前 step5 的全局唯一的作用域可以被当作“函数作用域使用”，在 visitFunction 入栈。然后在新的 visitBlock 中，再进一步将局部作用域压栈。最后，在所有这些方法的末尾，不要忘了把对应作用域退栈。
 
