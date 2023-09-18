@@ -61,7 +61,7 @@
   * [通过例子学习](docs/step8/example.md)
   * [规范](docs/step8/spec.md)
 
-## Stage5：函数和全局变量
+## Stage5：函数
 * step9：函数
   * [任务概述](docs/step9/intro.md)
   * [通过例子学习](docs/step9/example.md)
