@@ -248,9 +248,23 @@ Program
         return self.emitter.emitEnd()
     ```
 
-    我们先忽略`LivenessAnalyzer`和`CFG`以及寄存器分配的部分（助教写了一个非常简单暴力的寄存器分配，如果你觉得它不够好，你可以在后面的step换掉它），实际上，我们这里最主要的是`selectInstr`，`selectInstr`函数中，我们也采用了visitor模式遍历指令序列，对于`_T0 = 2023`和`_T1 = - _T0`两句比较直接，我们也能较为容易的想到一个简单的汇编指令对应，这两句的翻译我们不在赘述，主要讲讲`return _T1`翻译过程发生了什么。
+    我们先忽略`LivenessAnalyzer`和`CFG`以及寄存器分配的部分（助教写了一个非常简单暴力的寄存器分配，如果你觉得它不够好，你可以在后面的step换掉它），实际上，我们这里最主要的是`selectInstr`，`selectInstr`函数中，我们也采用了visitor模式遍历指令序列， `_T0 = 2023` 这句比较直接，我们也能较为容易的想到一个简单的汇编指令对应，这句的翻译我们不在赘述，主要讲讲和`_T1 = - _T0` 和 `return _T1`翻译过程发生了什么。
+    
+    先看`visitUnary`函数：
 
-    直接看`visitReturn`函数，我们这里的`return`是一个带返回值函数的`return`
+    ```python
+    def visitUnary(self, instr: Unary) -> None:
+        op = {
+            TacUnaryOp.NEG: RvUnaryOp.NEG,
+            # You can add binary operations here.
+        }[instr.op]
+        self.seq.append(Riscv.Unary(op, instr.dst, instr.operand))
+    ```
+    这里将中端的`TacUnaryOp.NEG`翻译为了后端的`RvUnaryOp.NEG`，在后端输出汇编时，我们直接将`RvUnaryOp.NEG`转换为小写字符串取了11位以后的字符，直接输出为`neg`（参考`Unary.__str__`函数），因此后续希望添加其他后端的符号时，你应该直接在`RvUnaryOp`中增加对应的同名的enum字段。
+
+    **你可以试试，将`RvUnaryOp.NEG`中名字改为`RvUnaryOp.XXX`看看输出的汇编代码会发生什么变化吧。**
+
+    再看`visitReturn`函数，我们这里的`return`是一个带返回值函数的`return`
     
     ```python
     def visitReturn(self, instr: Return) -> None:
@@ -263,7 +277,7 @@ Program
 
     这里会进入第一个分支，由于 Risc-V 的调用约定将A0寄存器定为存放返回值的寄存器，因此在返回时我们产生了一条Move指令，这里的`instr.value`则是返回值对应的表达式使用的寄存器。
 
-    你可能会觉得，这一步不就是将 TAC 一一对应为一个汇编指令序列嘛，有什么必要吗？其实这一步是必要的，首先有的中间表示可能无法由一条汇编指令完成，比如`T2 = T1 && T0`，这里的逻辑与需要将T1、T0通过汇编指令先转换为True或False，再进行与操作，否则不符合逻辑与操作的语义。为什么这一步不在产生 TAC 时就处理了？因为我们希望中间表示是和平台无关的代码，在特定架构下，指令选择是有巨大差异的，中间表示有一定抽象能力能简化整体编译器的设计。
+    你可能会觉得，这一步不就是将 TAC 一一对应为一个汇编指令序列嘛，有什么必要吗？其实这一步是必要的，首先有的中间表示可能无法由一条汇编指令完成，比如`T2 = T1 || T0`，这里的逻辑与需要将T1、T0进行或操作后，再判断其值是否为`1`。为什么这一步不在产生 TAC 时就处理了？因为我们希望中间表示是和平台无关的代码，在特定架构下，指令选择是有巨大差异的，中间表示有一定抽象能力能简化整体编译器的设计。
 
     物理寄存器分配我们暂时跳过。至此我们已经完成了从源代码到汇编代码的翻译。
     
@@ -280,3 +294,5 @@ Program
     ```
 
 2. 我们的框架现在对于main函数没有返回值的情况是在哪一步处理的？报的是什么错？
+
+3. 为什么框架定义了 `frontend/ast/tree.py:Unary`、`utils/tac/tacop.py:TacUnaryOp`、`utils/riscv.py:RvUnaryOp` 三种不同的一元运算符类型？
