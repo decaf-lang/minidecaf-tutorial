@@ -6,9 +6,11 @@
 
 1. python >= 3.9
 
+   助教**强烈建议**使用类似 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) 或venv的系统管理不同的Python环境。你可以方便地使用miniconda安装最新的Python版本，安装好之后使用pip安装依赖即可。
+
    框架本身在 python 3.9 下进行开发，使用了 python 3.9 的新特性，请保证你所使用的 python 版本高于此版本。
 
-   Linux 环境下安装 Python 3 可以尝试如下命令：
+   如果你**没有**使用虚拟环境，可以参考下面的指导。Linux 环境下安装 Python 3 可以尝试如下命令：
    ```bash
    > sudo add-apt-repository ppa:deadsnakes/ppa
    > sudo apt update
@@ -34,6 +36,6 @@
 
    ply是一个自动生成词法分析器和语法分析器的工具，其中ply.lex为词法分析相关的模块而ply.yacc为语法分析相关。我们提供了 ply 的[文档](https://www.dabeaz.com/ply/ply.html)。
 
-助教推荐使用类似 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) 的系统以最小化出现奇怪依赖问题的风险。助教推荐在项目中使用 [type hints](https://www.python.org/dev/peps/pep-0483/)，如果你习惯在 vscode 中进行开发的话同时推荐使用 [pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) 这一插件。
+助教在项目中使用 [type hints](https://www.python.org/dev/peps/pep-0483/)，如果你习惯在 vscode 中进行开发的话同时推荐使用 [pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) 这一插件。
 
 由于 python 的跨平台性，理论上也可以在 Windows 下进行开发。但**不保证Windows和在线测试环境下程序行为的一致性**。
