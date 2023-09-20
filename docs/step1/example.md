@@ -70,9 +70,9 @@ main:           # main 函数入口标签
 
 > 下面，我们同样也指出了在代码中我们是怎样实现这个中间代码生成 pass 的，大家可以参考注释和代码了解实现细节。
 
-`frontend/tacgen/tacgen.py` 中通过一遍 AST 扫描完成 TAC 生成。和语义分析一样，这部分也使用了 Visitor 模式。
+`frontend/utils/tac` 目录下实现了生成 TAC 所需的底层类。其中 `tacinstr.py` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。
 
-`frontend/utils/tac` 目录下实现了生成 TAC 所需的底层类。其中 `tacinstr.py` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。提供给生成 TAC 程序流程的主要接口在 `funcvisitor.py` 中，若你增加了 TAC 指令，则需要在 `FuncVisitor` 类中增加生成该指令的接口。在本框架中，TAC 程序的生成是以函数为单位，对每个函数（step1-8 中只有 main 函数）分别使用一个 `FuncVisitor` 来生成对应的 TAC 程序。除此之外的 TAC 底层类，同学们可以不作修改，也可以按照自己的想法进行修改。
+`frontend/tacgen/tacgen.py` 中通过一遍 AST 扫描完成 TAC 生成。和语义分析一样，这部分也使用了 Visitor 模式。这个文件里除了类型`TACGen`之外还有一个辅助类`TACFuncEmitter`，它用于处理产生TAC代码过程中一些相对底层的细节。在本框架中，TAC 程序的生成以函数为单位，对每个函数（step1-8 中只有 main 函数）分别使用一个 `TACFuncEmitter` 来生成对应的 TAC 函数代码。如果你增加了 TAC 指令，则可能需要在 `TACFuncEmitter` 类中增加生成相应指令的代码。
 
 ## 目标代码生成
 
@@ -178,7 +178,7 @@ Program
 
     这一步就是 `TACGen.transform` 函数(frontend/tacgen/tacgen.py)做的事了， `TACGen.transform` 接受一个AST树输入，输出一个TAC表示，请确保你已经对[Visitor 模式](./visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
 
-    **下面的描述中一定要记得区分accept和直接对于mv.visitorXXX的调用，前者是在遍历AST时调用的，后者是在 FuncVisitor 类中调用的。并且希望大家一定要对着代码看。**
+    **下面的描述中一定要记得区分accept和直接对于mv.visitXXX的调用，前者是在遍历AST时调用的，后者是在 TACFuncEmitter 类中调用的。并且希望大家一定要对着代码看。**
     
     ```
     Program
@@ -217,7 +217,7 @@ Program
         return temp
     ```
 
-    `self.new_temp()`分配了一个虚拟寄存器 `temp` ，并且产生了一条load语句（你可以认为现在的所有指令就是用一个大数组存放了起来）。至此，我们翻译出了第一条语句，将2023 load到一个虚拟寄存器 `temp` 中。剩下的部分，对着代码和上面的AST看一下相信大家也知道发生了什么了。
+    `self.freshTemp()`分配了一个虚拟寄存器 `temp` ，并且产生了一条立即数加载语句（你可以认为现在的所有指令就是用一个大数组存放了起来）。至此，我们翻译出了第一条语句，将2023 load到一个虚拟寄存器 `temp` 中。剩下的部分，对着代码和上面的AST看一下相信大家也知道发生了什么了。
 
     到此为止我们得到的TAC代码如下：
 

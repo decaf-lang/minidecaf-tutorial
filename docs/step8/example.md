@@ -62,7 +62,7 @@ _L3:                          # break label
 
 由于循环语句可以嵌套，所以 TAC 语句生成过程中需要动态维护 loop 标签和 break 标签，这样才能确定每一条 break 和 continue 语句跳转到何处。因此，在 TAC 生成时，需要使用栈结构维护从内到外所有的 loop 标签和 break 标签。
 
-`utils/tac/funcvisitor.py` 里的 FuncVisitor 类里实现了维护 TAC 生成时需要的上下文信息的功能。同学们可以在这个类中增加对循环所需的 break/continue 标签的维护。
+`utils/tacgen/tacgen.py` 里的 `TACFuncEmitter` 类里实现了维护 TAC 生成时需要的上下文信息的功能。同学们可以在这个类中增加对循环所需的 break/continue 标签的维护。
 
 ## 目标代码生成
 
@@ -93,4 +93,14 @@ _L3:                          # break label
 8. `bnez BEGINLOOP_LABEL`：本轮迭代完成，条件满足时进行下一次迭代
 9. `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
 
-从执行的指令的条数这个角度（`label` 指令不计算在内，假设循环体至少执行了一次），请评价这两种翻译方式哪一种更好？
+从执行的指令的条数这个角度（`label` 不算做指令，假设循环体至少执行了一次），请评价这两种翻译方式哪一种更好？
+
+2. 我们目前的 TAC IR 中条件分支指令采用了单分支目标（标签）的设计，即该指令的操作数中只有一个是标签；如果相应的分支条件不满足，则执行流会继续向下执行。在其它 IR 中存在双目标分支（标签）的条件分支指令，其形式如下：
+
+```assembly
+br cond, false_target, true_target
+```
+
+其中`cond`是一个临时变量，`false_target`和`true_target`是标签。其语义为：如果`cond`的值为0（假），则跳转到`false_target`处；若`cond`非0（真），则跳转到`true_target`处。它与我们的条件分支指令的区别在于执行流总是会跳转到两个标签中的一个。
+
+你认为中间表示的哪种条件分支指令设计（单目标 vs 双目标）更合理？为什么？（言之有理即可）
