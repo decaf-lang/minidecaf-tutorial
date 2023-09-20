@@ -285,7 +285,7 @@ Program
 
 ## 思考题
 
-1. 在我们的框架中，从 AST 向 TAC 的转换经过了 `namer.transform`, `typer.transform`如果没有这两个步骤，以下代码能正常编译吗，为什么？
+1. 在我们的框架中，从 AST 向 TAC 的转换经过了 `namer.transform`, `typer.transform`两个步骤，如果没有这两个步骤，以下代码能正常编译吗，为什么？
 
     ```c
     int main(){
