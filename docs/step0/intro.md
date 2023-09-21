@@ -21,3 +21,5 @@
 2. 建议配置 ssh 免密登录，方便大家使用服务器，然后在服务器上运行。你可以参考[这里](https://blog.csdn.net/qq_51447496/article/details/132089964)。
 
 3. vscode 也是可以使用ssh远程写代码的，参考[这里](https://code.visualstudio.com/docs/remote/ssh)。
+
+### 如果你使用我们提供的服务器，你可以跳过这一章的其他部分。
