@@ -74,24 +74,24 @@ _L3:                          # break label
 
 第一种（即实验指导中的翻译方式）：
 
-1. `label BEGINLOOP_LABEL`：开始下一轮迭代
-2. `cond 的 IR`
-3. `beqz BREAK_LABEL`：条件不满足就终止循环
-4. `body 的 IR`
-5. `label CONTINUE_LABEL`：continue 跳到这
-6. `br BEGINLOOP_LABEL`：本轮迭代完成
-7. `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
++ `label BEGINLOOP_LABEL`：开始下一轮迭代
++ `cond 的 IR`
++ `beqz BREAK_LABEL`：条件不满足就终止循环
++ `body 的 IR`
++ `label CONTINUE_LABEL`：continue 跳到这
++ `br BEGINLOOP_LABEL`：本轮迭代完成
++ `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
 
 第二种：
 
-1. `cond 的 IR`
-2. `beqz BREAK_LABEL`：条件不满足就终止循环
-3. `label BEGINLOOP_LABEL`：开始下一轮迭代
-4. `body 的 IR`
-6. `label CONTINUE_LABEL`：continue 跳到这
-7. `cond 的 IR`
-8. `bnez BEGINLOOP_LABEL`：本轮迭代完成，条件满足时进行下一次迭代
-9. `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
++ `cond 的 IR`
++ `beqz BREAK_LABEL`：条件不满足就终止循环
++ `label BEGINLOOP_LABEL`：开始下一轮迭代
++ `body 的 IR`
++ `label CONTINUE_LABEL`：continue 跳到这
++ `cond 的 IR`
++ `bnez BEGINLOOP_LABEL`：本轮迭代完成，条件满足时进行下一次迭代
++ `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
 
 从执行的指令的条数这个角度（`label` 不算做指令，假设循环体至少执行了一次），请评价这两种翻译方式哪一种更好？
 
