@@ -154,6 +154,10 @@ main_exit:
 
 首先你需要参考之前步骤中实现的方法，**翻译本步骤中新增的中间代码指令**。
 
+### 后端
+
+这部分你需要着重关注后端代码生成部分，相关代码包括`utils/riscv.py`,`backend/riscv/riscvasmemitter.py`,`backend/reg/bruteregalloc.py`。
+
 ### 函数调用
 
 程序代码里的一个函数调用，包含了下面一系列的操作：
