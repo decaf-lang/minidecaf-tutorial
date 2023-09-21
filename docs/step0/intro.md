@@ -22,4 +22,4 @@
 
 3. vscode 也是可以使用ssh远程写代码的，参考[这里](https://code.visualstudio.com/docs/remote/ssh)。
 
-### 如果你使用我们提供的服务器，你可以跳过这一章的其他部分。
+**如果你使用我们提供的服务器，你可以直接来看[运行实验框架](testing.md)。**
