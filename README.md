@@ -84,7 +84,7 @@ stage7 为进阶关卡，如果你依然学有余力，你可以在这里实现�
 `prepare.sh` 是在测试前会运行的准备脚本，包括安装所需的依赖（python）及编译（c++），如果你想添加新的依赖或者修改编译流程，请修改此文件。
 在 CI 中会检查是否通过所有测例及是否有提交报告，只有通过所有测例且提交报告，才会被视为通过 CI。
 
-我们只接受 pdf 格式的实验报告，其提交方式是放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 1 的实验报告需要放在 `stage-1` 这个 branch 下的 `./reports/stage-1.pdf`。
+我们只接受 pdf 格式的实验报告。你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 1 的实验报告需要放在 `stage-1` 这个 branch 下的 `./reports/stage-1.pdf`。
 实验报告中需要包括：
 * 你的学号姓名
 * 简要叙述，为了完成这个 stage 你做了哪些工作（即你的实验内容）

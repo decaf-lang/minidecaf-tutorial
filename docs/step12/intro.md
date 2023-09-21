@@ -21,6 +21,7 @@ step12 的目标是支持数组的初始化和传参：
 <span class="SpecRuleIndicator">    :</span> <span class="SpecOperator">(</span><span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span> <span class="SpecOperator">(</span><span class="SpecToken">','</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier ('[' ']')?(('['Integer']')*)?</span><span class="SpecOperator">)*)?</span>
 </div></pre>
 
+我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 6 的实验报告需要放在 `stage-6` 这个 branch 下的 `./reports/stage-6.pdf`。整个 stage 6 只需要提交一份报告，你不需要单独为 step 12 准备报告。
 
 你需要：
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。

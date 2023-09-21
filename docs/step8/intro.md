@@ -17,6 +17,8 @@ step8 我们要增加对循环语句，以及 break/continue 的支持：
 
 循环语句的语义和 C 语言相同，注意检查 break/continue 不能出现在循环外。
 
+我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 4 的实验报告需要放在 `stage-4` 这个 branch 下的 `./reports/stage-4.pdf`。整个 stage 4 只需要提交一份报告，你不需要单独为 step 8 准备报告。
+
 你需要：
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
 2. 完成实验报告（具体要求请看实验指导书的首页）。实验报告中需要包括：
