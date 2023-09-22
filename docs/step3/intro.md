@@ -30,7 +30,7 @@ step3 我们要增加的是：加 `+`、减 `-`、乘 `*`、整除 `/`、模 `%`
 1. 和 [C17 标准草案](../../REFERENCE.md)保持一致
 2. 把优先级和结合性信息直接编码入语法里，见[优先级和结合性](./precedence.md)一节。
 
-我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 1 的实验报告需要放在 `stage-1` 这个 branch 下的 `./reports/stage-1.pdf`。整个 stage 1 只需要提交一份报告，你不需要单独为 step 3 准备报告。
+我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 1 的实验报告需要放在 `stage-1` 这个 branch 下的 `./reports/stage-1.pdf`。整个 stage 1 只需要提交一份报告，你不需要单独为 step 3 准备报告。**stage 1 的报告还需要额外包含 step 1 的思考题**。
 
 你需要：
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
