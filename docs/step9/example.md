@@ -3,9 +3,13 @@
 本实验指导使用的例子为：
 
 ```C
-int func(int x, int y);
-int main() { return func(1, 2); }
-int func(int x, int y) { return x + y; }
+int func(int x, int y) { 
+    return x + y; 
+}
+
+int main() { 
+    return func(1, 2); 
+}
 ```
 
 ## 词法语法分析
