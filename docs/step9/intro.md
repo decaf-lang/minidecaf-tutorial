@@ -31,8 +31,6 @@ step9 开始，我们要支持多函数了。
 
 语义检查部分，我们需要检查函数的重复定义、检查调用函数的实参（argment）和形参（parameter）的个数类型一致。我们不支持 void 返回类型，这可以通过忽略函数的 int 返回值实现。
 
-**注意**：从 step 9 开始，MiniDecaf 会引入 runtime，部分函数在源代码中只有声明，其定义在 runtime 编译得到的链接库中。因此我们并不需要检查函数只声明、未定义的情况。
-
 我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 5 的实验报告需要放在 `stage-5` 这个 branch 下的 `./reports/stage-5.pdf`。注意报告的标题是 `stage-5` 而不是 `step-9`。
 
 你需要：
