@@ -1,6 +1,6 @@
 * [实验简介](README.md)
 * [勘误表](docs/step0/errate.md)
-
+* [RISC-V 参考资料](docs/ref/riscv.md)
 ## 前置准备
 
 * 配环境、跑测试
