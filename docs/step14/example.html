@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>实验要求 · GitBook</title>
+        <title>实验指导 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -107,8 +107,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="example.html" />
+    <link rel="next" href="../../REFERENCE.html" />
     
+    
+    <link rel="prev" href="intro.html" />
     
 
     </head>
@@ -443,9 +445,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="3.2.1" data-path="intro.html">
+        <li class="chapter " data-level="3.2.1" data-path="../step3/intro.html">
             
-                <a href="intro.html">
+                <a href="../step3/intro.html">
             
                     
                     实验要求
@@ -456,9 +458,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.2" data-path="example.html">
+        <li class="chapter " data-level="3.2.2" data-path="../step3/example.html">
             
-                <a href="example.html">
+                <a href="../step3/example.html">
             
                     
                     通过例子学习
@@ -469,9 +471,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="precedence.html">
+        <li class="chapter " data-level="3.2.3" data-path="../step3/precedence.html">
             
-                <a href="precedence.html">
+                <a href="../step3/precedence.html">
             
                     
                     优先级和结合性
@@ -482,9 +484,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="spec.html">
+        <li class="chapter " data-level="3.2.4" data-path="../step3/spec.html">
             
-                <a href="spec.html">
+                <a href="../step3/spec.html">
             
                     
                     规范
@@ -1136,9 +1138,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="9.2.1" data-path="../step14/intro.html">
+        <li class="chapter " data-level="9.2.1" data-path="intro.html">
             
-                <a href="../step14/intro.html">
+                <a href="intro.html">
             
                     
                     实验要求
@@ -1149,9 +1151,9 @@
             
         </li>
     
-        <li class="chapter " data-level="9.2.2" data-path="../step14/example.html">
+        <li class="chapter active" data-level="9.2.2" data-path="example.html">
             
-                <a href="../step14/example.html">
+                <a href="example.html">
             
                     
                     实验指导
@@ -1217,7 +1219,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >实验要求</a>
+        <a href="../.." >实验指导</a>
     </h1>
 </div>
 
@@ -1235,52 +1237,68 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step3&#xFF1A;&#x52A0;&#x51CF;&#x4E58;&#x9664;&#x6A21;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step3&#xFF1A;&#x52A0;&#x51CF;&#x4E58;&#x9664;&#x6A21;</h1>
-<p>step3 &#x6211;&#x4EEC;&#x8981;&#x589E;&#x52A0;&#x7684;&#x662F;&#xFF1A;&#x52A0; <code>+</code>&#x3001;&#x51CF; <code>-</code>&#x3001;&#x4E58; <code>*</code>&#x3001;&#x6574;&#x9664; <code>/</code>&#x3001;&#x6A21; <code>%</code> &#x4EE5;&#x53CA;&#x62EC;&#x53F7; <code>(</code> <code>)</code>&#x3002;</p>
-<p>&#x8BED;&#x6CD5;&#x4E0A;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x4FEE;&#x6539; <code>expression</code>&#xFF0C;&#x53D8;&#x6210;</p>
-<pre id="vimCodeElement"><code></code><div class="changed">
-<span class="SpecRuleStart">expression</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">additive</span>
-
-<span class="SpecRuleStart">additive</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">multiplicative</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">additive</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;+&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">multiplicative</span>
-
-<span class="SpecRuleStart">multiplicative</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">unary</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">multiplicative</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;*&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;/&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;%&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
-
-<span class="SpecRuleStart">unary</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">primary</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;~&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;!&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
-
-<span class="SpecRuleStart">primary</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span>
-</div></pre>
-
-<p>&#x65B0;&#x7279;&#x6027;&#x7684;&#x8BED;&#x4E49;&#x3001;&#x4F18;&#x5148;&#x7EA7;&#x3001;&#x7ED3;&#x5408;&#x6027;&#x548C; C &#x4EE5;&#x53CA;&#x5E38;&#x8BC6;&#x76F8;&#x540C;&#xFF0C;&#x4F8B;&#x5982; <code>1+2*(4/2+1) == 7</code>&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x8FD9;&#x79CD;&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;&#x5199;&#x6CD5;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x7E41;&#x7410;&#xFF0C;&#x4F46;&#x5B83;&#x6709;&#x51E0;&#x4E2A;&#x597D;&#x5904;&#xFF1A;</p>
-<ol>
-<li>&#x548C; <a href="../../REFERENCE.html">C17 &#x6807;&#x51C6;&#x8349;&#x6848;</a>&#x4FDD;&#x6301;&#x4E00;&#x81F4;</li>
-<li>&#x628A;&#x4F18;&#x5148;&#x7EA7;&#x548C;&#x7ED3;&#x5408;&#x6027;&#x4FE1;&#x606F;&#x76F4;&#x63A5;&#x7F16;&#x7801;&#x5165;&#x8BED;&#x6CD5;&#x91CC;&#xFF0C;&#x89C1;<a href="precedence.html">&#x4F18;&#x5148;&#x7EA7;&#x548C;&#x7ED3;&#x5408;&#x6027;</a>&#x4E00;&#x8282;&#x3002;</li>
-</ol>
-<p>&#x6211;&#x4EEC;&#x53EA;&#x63A5;&#x53D7; pdf &#x683C;&#x5F0F;&#x7684;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x62A5;&#x544A;&#x653E;&#x5728;&#x4ED3;&#x5E93;&#x7684; <code>./reports/&lt;branch-name&gt;.pdf</code>&#xFF0C;&#x6BD4;&#x5982; stage 1 &#x7684;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#x9700;&#x8981;&#x653E;&#x5728; <code>stage-1</code> &#x8FD9;&#x4E2A; branch &#x4E0B;&#x7684; <code>./reports/stage-1.pdf</code>&#x3002;&#x6574;&#x4E2A; stage 1 &#x53EA;&#x9700;&#x8981;&#x63D0;&#x4EA4;&#x4E00;&#x4EFD;&#x62A5;&#x544A;&#xFF0C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x5355;&#x72EC;&#x4E3A; step 3 &#x51C6;&#x5907;&#x62A5;&#x544A;&#x3002;<strong>stage 1 &#x7684;&#x62A5;&#x544A;&#x8FD8;&#x9700;&#x8981;&#x989D;&#x5916;&#x5305;&#x542B; step 1 &#x7684;&#x601D;&#x8003;&#x9898;</strong>&#x3002;</p>
-<p>&#x4F60;&#x9700;&#x8981;&#xFF1A;</p>
-<ol>
-<li>&#x6539;&#x8FDB;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x652F;&#x6301;&#x672C;&#x8282;&#x5F15;&#x5165;&#x7684;&#x65B0;&#x7279;&#x6027;&#xFF0C;&#x901A;&#x8FC7;&#x76F8;&#x5173;&#x6D4B;&#x8BD5;&#x3002;</li>
-<li>&#x5B8C;&#x6210;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#xFF08;&#x5177;&#x4F53;&#x8981;&#x6C42;&#x8BF7;&#x770B;&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;&#x4E66;&#x7684;&#x9996;&#x9875;&#xFF09;&#x3002;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#x4E2D;&#x9700;&#x8981;&#x5305;&#x62EC;&#xFF1A;<ul>
-<li>&#x4F60;&#x7684;&#x5B66;&#x53F7;&#x59D3;&#x540D;</li>
-<li>&#x7B80;&#x8981;&#x53D9;&#x8FF0;&#xFF0C;&#x4E3A;&#x4E86;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A; stage &#x4F60;&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x5DE5;&#x4F5C;&#xFF08;&#x5373;&#x4F60;&#x7684;&#x5B9E;&#x9A8C;&#x5185;&#x5BB9;&#xFF09;</li>
-<li>&#x6307;&#x5BFC;&#x4E66;&#x4E0A;&#x7684;&#x601D;&#x8003;&#x9898;</li>
-<li>&#x5982;&#x679C;&#x4F60;&#x590D;&#x7528;&#x501F;&#x9274;&#x4E86;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x6216;&#x5176;&#x4ED6;&#x8D44;&#x6E90;&#xFF0C;&#x8BF7;&#x660E;&#x786E;&#x5199;&#x51FA;&#x4F60;&#x501F;&#x9274;&#x4E86;&#x54EA;&#x4E9B;&#x5185;&#x5BB9;&#x3002;<em>&#x5E76;&#x4E14;&#xFF0C;&#x5373;&#x4F7F;&#x4F60;&#x58F0;&#x660E;&#x4E86;&#x4EE3;&#x7801;&#x501F;&#x9274;&#xFF0C;&#x4F60;&#x4E5F;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x72EC;&#x7ACB;&#x8BA4;&#x771F;&#x5B8C;&#x6210;&#x5B9E;&#x9A8C;&#x3002;</em></li>
-<li>&#x5982;&#x6709;&#x4EE3;&#x7801;&#x4EA4;&#x7ED9;&#x5176;&#x4ED6;&#x540C;&#x5B66;&#x53C2;&#x8003;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x5728;&#x62A5;&#x544A;&#x4E2D;&#x58F0;&#x660E;&#xFF0C;&#x544A;&#x77E5;&#x7ED9;&#x54EA;&#x4E9B;&#x540C;&#x5B66;&#x62F7;&#x8D1D;&#x8FC7;&#x4EE3;&#x7801;&#xFF08;&#x5305;&#x62EC;&#x53EF;&#x80FD;&#x901A;&#x8FC7;&#x95F4;&#x63A5;&#x6E20;&#x9053;&#x4F20;&#x64AD;&#x7ED9;&#x5176;&#x4ED6;&#x540C;&#x5B66;&#xFF09;&#x3002;</li>
-</ul>
-</li>
-</ol>
-<h2 id="&#x5982;&#x4F55;&#x68C0;&#x67E5;&#x6211;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x81EA;&#x52A8;&#x6D4B;&#x8BD5;ci">&#x5982;&#x4F55;&#x68C0;&#x67E5;&#x6211;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x81EA;&#x52A8;&#x6D4B;&#x8BD5;(CI)</h2>
-<p>&#x5728; <code>git.tsinghua</code> &#x4E0A;&#x6253;&#x5F00;&#x4F60;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5728;&#x754C;&#x9762;&#x7684;&#x53F3;&#x4FA7;&#xFF0C;Clone &#x6309;&#x94AE;&#x7684;&#x4E0B;&#x65B9;&#xFF0C;<code>commit id</code> &#x7684;&#x5DE6;&#x4FA7;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x753B;&#x5708;&#x7684; <code>&#xD7;</code> &#x6216;&#x8005; <code>&#x221A;</code> &#x7684;&#x56FE;&#x6807;&#xFF0C;&#x4EE3;&#x8868;&#x5F53;&#x524D; commit &#x662F;&#x5426;&#x901A;&#x8FC7; CI &#x6D4B;&#x8BD5;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x83B7;&#x53D6;&#x8BE6;&#x7EC6;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#xFF0C;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x8FD9;&#x4E2A;&#x753B;&#x5708;&#x7684; <code>&#xD7;</code> &#x6216;&#x8005; <code>&#x221A;</code> &#x7684;&#x56FE;&#x6807;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x7F51;&#x9875;&#x5DE6;&#x4FA7;&#x9009;&#x62E9; <code>CI/CD</code> &#x4E00;&#x680F;&#x7684; <code>Jobs</code>&#xFF0C;&#x7136;&#x540E;&#x9009;&#x62E9;&#x5E0C;&#x671B;&#x67E5;&#x770B;&#x7684;&#x8BC4;&#x6D4B;&#x7ED3;&#x679C;&#x5373;&#x53EF;&#x3002;&#x5982;&#x679C;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#x65E0;&#x6CD5;&#x663E;&#x793A;&#xFF0C;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x8F93;&#x51FA;&#x6846;&#x53F3;&#x4E0A;&#x89D2;&#x56DB;&#x4E2A;&#x6309;&#x94AE;&#x4E2D;&#x6700;&#x5DE6;&#x8FB9;&#x7684;&#x4E00;&#x4E2A;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x5F53;&#x524D;&#x5730;&#x5740;(&#x5982;<code>.../jobs/123456</code>)&#x7684;&#x540E;&#x9762;&#x52A0;&#x4E0A;<code>/raw</code>(&#x5982;<code>.../jobs/123456/raw</code>)&#xFF0C;&#x5373;&#x53EF;&#x83B7;&#x53D6;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#x3002;</p>
+                                <h3 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step14&#xFF1A;&#x9759;&#x6001;&#x5355;&#x8D4B;&#x503C;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step14&#xFF1A;&#x9759;&#x6001;&#x5355;&#x8D4B;&#x503C;</h3>
+<p>&#x672C;&#x8282;&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;&#x4F7F;&#x7528;&#x7684;&#x4F8B;&#x5B50;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-C"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">int</span> cond = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">if</span> (cond &gt; <span class="hljs-number">0</span>) {
+    x = <span class="hljs-number">1</span>;
+  } <span class="hljs-keyword">else</span> {
+    x = <span class="hljs-number">-1</span>;
+  }
+  <span class="hljs-keyword">return</span> x;
+}
+</code></pre>
+<h4 id="&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;">&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;</h4>
+<p>mem2reg &#x5C5E;&#x4E8E;&#x5728;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x57FA;&#x7840;&#x4E0A;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x56E0;&#x6B64;&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x90E8;&#x5206;&#x6CA1;&#x6709;&#x989D;&#x5916;&#x589E;&#x52A0;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h4 id="&#x8BED;&#x4E49;&#x5206;&#x6790;">&#x8BED;&#x4E49;&#x5206;&#x6790;</h4>
+<p>mem2reg &#x5C5E;&#x4E8E;&#x5728;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x57FA;&#x7840;&#x4E0A;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x56E0;&#x6B64;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x90E8;&#x5206;&#x6CA1;&#x6709;&#x989D;&#x5916;&#x589E;&#x52A0;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h4 id="&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x751F;&#x6210;">&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x751F;&#x6210;</h4>
+<p>mem2reg &#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x751F;&#x6210;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x4F7F;&#x7528; Alloc&#x3001;Load &#x548C; Store &#x7684;&#x7EC4;&#x5408;&#x9488;&#x5BF9;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x751F;&#x6210;&#x7B26;&#x5408; SSA &#x8981;&#x6C42;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x672C;&#x8282;&#x5B9E;&#x9A8C;&#x7528;&#x4F8B;&#xFF0C;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x7684;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x8868;&#x793A;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-assembly">main:
+  _T0 = ALLOC 4
+  _T1 = ALLOC 4
+  STORE _T0, 1
+  LOAD _T2, _T0
+  _T4 = GT _T2, 0
+  BEQZ _T4, _L2
+  STORE _T2, 1
+_L1:
+  LOAD _T5, _T2
+  return _T5
+_L2:
+  _T6 = SUB 0, 1
+  STORE _T2, _T6
+  JUMP _L1
+</code></pre>
+<p>&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x8FDB;&#x884C; mem2reg &#x8F6C;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-assembly">main:
+  _T0 = GT 1, 0
+  BEGZ _T0, _L2
+_L1:
+  _T2 = phi [1, main], [_T3, _L2]
+  return _T2
+_L2:
+  _T3 = SUB 0, 1
+  JUMP _L1
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6240;&#x6709;&#x7684; Phi &#x6307;&#x4EE4;&#x5E94;&#x5F53;&#x5728;&#x57FA;&#x672C;&#x5757;&#x7684;&#x5F00;&#x5934;&#x540C;&#x65F6;&#x652F;&#x6301;&#x5E76;&#x884C;&#x6267;&#x884C;&#xFF08;&#x5373; Phi &#x6307;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x5BF9;&#x7ED3;&#x679C;&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#xFF09;&#x3002;</p>
+<p>&#x5728;&#x5B9E;&#x73B0; mem2reg &#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x9996;&#x5148;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x6D41;&#x5206;&#x6790;&#xFF0C;&#x8BA1;&#x7B97;&#x63A7;&#x5236;&#x6D41;&#x56FE;&#x4E2D;&#x7684;&#x652F;&#x914D;&#x5173;&#x7CFB;&#x548C;&#x6BCF;&#x4E2A;&#x57FA;&#x672C;&#x5757;&#x7684;&#x652F;&#x914D;&#x8FB9;&#x754C;&#x3002;</p>
+<blockquote>
+<p>&#x76F8;&#x5173;&#x7684;&#x89E3;&#x91CA;&#x548C;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;
+&#x5982;&#x4F55;&#x6784;&#x5EFA; SSA &#x5F62;&#x5F0F;&#x7684; CFG&#xFF1A;<a href="https://szp15.com/post/how-to-construct-ssa/" target="_blank">https://szp15.com/post/how-to-construct-ssa/</a></p>
+</blockquote>
+<p>&#x968F;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5B9E;&#x73B0; SSA &#x6784;&#x9020;&#x7B97;&#x6CD5;&#x3002;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x7B97;&#x6CD5;&#x662F;&#x5C06;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5206;&#x4E3A;&#xFF1A;&#x63D2;&#x5165; phi &#x51FD;&#x6570;&#x548C;&#x53D8;&#x91CF;&#x91CD;&#x547D;&#x540D;&#xFF0C;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#x3002;</p>
+<p>&#x5728;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#xFF0C;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x76F8;&#x5173;&#x7684; Alloc &#x548C; Store &#x6307;&#x4EE4;&#xFF0C;&#x5E76;&#x7531;&#x6B64;&#x5728;&#x57FA;&#x672C;&#x5757;&#x7684;&#x5F00;&#x5934;&#x63D2;&#x5165; Phi &#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x5728;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#xFF0C;&#x904D;&#x5386;&#x6240;&#x6709;&#x57FA;&#x672C;&#x5757;&#xFF0C;&#x5BF9;&#x5176;&#x4E2D;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x76F8;&#x5173;&#x7684; Alloc&#xFF0C;Load &#x548C; Store &#x6307;&#x4EE4;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x7A0B;&#x5E8F;&#x8BED;&#x4E49;&#x7684;&#x6B63;&#x786E;&#x6027;&#x3002;&#x5728;&#x904D;&#x5386;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;&#x7684;&#x6240;&#x6709;&#x6307;&#x4EE4;&#x540E;&#xFF0C;&#x7EF4;&#x62A4;&#x8BE5;&#x57FA;&#x672C;&#x5757;&#x7684;&#x6240;&#x6709;&#x540E;&#x7EE7;&#x57FA;&#x672C;&#x5757;&#x4E2D;&#x7684; Phi &#x6307;&#x4EE4;&#x3002;</p>
+<blockquote>
+<p>&#x76F8;&#x5173;&#x7684;&#x89E3;&#x91CA;&#x548C;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;</p>
+<p>Static Single Assignment Book &#x7684; Chapter3&#xFF1A;<a href="https://pfalcon.github.io/ssabook/latest/" target="_blank">https://pfalcon.github.io/ssabook/latest/</a></p>
+</blockquote>
+<h4 id="&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x751F;&#x6210;">&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x751F;&#x6210;</h4>
+<p>&#x5C06; Phi &#x6307;&#x4EE4;&#x7FFB;&#x8BD1;&#x4E3A;&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x7684;&#x8FC7;&#x7A0B;&#x76F8;&#x5BF9;&#x590D;&#x6742;&#xFF0C;&#x672C;&#x8282;&#x5B9E;&#x9A8C;&#x4E0D;&#x5BF9;&#x8FD9;&#x90E8;&#x5206;&#x505A;&#x8981;&#x6C42;&#x3002;</p>
 
                                 
                                 </section>
@@ -1324,8 +1342,12 @@
 
             
                 
+                <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page: 实验要求">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="example.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 通过例子学习">
+                
+                <a href="../../REFERENCE.html" class="navigation navigation-next " aria-label="Next page: 参考资料">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1336,7 +1358,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实验要求","level":"3.2.1","depth":2,"next":{"title":"通过例子学习","level":"3.2.2","depth":2,"path":"docs/step3/example.md","ref":"docs/step3/example.md","articles":[]},"previous":{"title":"step3：加减乘除模","level":"3.2","depth":1,"ref":"","articles":[{"title":"实验要求","level":"3.2.1","depth":2,"path":"docs/step3/intro.md","ref":"docs/step3/intro.md","articles":[]},{"title":"通过例子学习","level":"3.2.2","depth":2,"path":"docs/step3/example.md","ref":"docs/step3/example.md","articles":[]},{"title":"优先级和结合性","level":"3.2.3","depth":2,"path":"docs/step3/precedence.md","ref":"docs/step3/precedence.md","articles":[]},{"title":"规范","level":"3.2.4","depth":2,"path":"docs/step3/spec.md","ref":"docs/step3/spec.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step3/intro.md","mtime":"2023-10-28T05:20:00.044Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-10-28T05:20:58.617Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实验指导","level":"9.2.2","depth":2,"next":{"title":"参考资料","level":"10.1","depth":1,"path":"REFERENCE.md","ref":"REFERENCE.md","articles":[]},"previous":{"title":"实验要求","level":"9.2.1","depth":2,"path":"docs/step14/intro.md","ref":"docs/step14/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step14/example.md","mtime":"2023-10-28T05:20:00.044Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-10-28T05:20:58.617Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

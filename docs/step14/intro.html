@@ -443,9 +443,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="3.2.1" data-path="intro.html">
+        <li class="chapter " data-level="3.2.1" data-path="../step3/intro.html">
             
-                <a href="intro.html">
+                <a href="../step3/intro.html">
             
                     
                     实验要求
@@ -456,9 +456,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.2" data-path="example.html">
+        <li class="chapter " data-level="3.2.2" data-path="../step3/example.html">
             
-                <a href="example.html">
+                <a href="../step3/example.html">
             
                     
                     通过例子学习
@@ -469,9 +469,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="precedence.html">
+        <li class="chapter " data-level="3.2.3" data-path="../step3/precedence.html">
             
-                <a href="precedence.html">
+                <a href="../step3/precedence.html">
             
                     
                     优先级和结合性
@@ -482,9 +482,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="spec.html">
+        <li class="chapter " data-level="3.2.4" data-path="../step3/spec.html">
             
-                <a href="spec.html">
+                <a href="../step3/spec.html">
             
                     
                     规范
@@ -1136,9 +1136,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="9.2.1" data-path="../step14/intro.html">
+        <li class="chapter active" data-level="9.2.1" data-path="intro.html">
             
-                <a href="../step14/intro.html">
+                <a href="intro.html">
             
                     
                     实验要求
@@ -1149,9 +1149,9 @@
             
         </li>
     
-        <li class="chapter " data-level="9.2.2" data-path="../step14/example.html">
+        <li class="chapter " data-level="9.2.2" data-path="example.html">
             
-                <a href="../step14/example.html">
+                <a href="example.html">
             
                     
                     实验指导
@@ -1235,52 +1235,108 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step3&#xFF1A;&#x52A0;&#x51CF;&#x4E58;&#x9664;&#x6A21;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step3&#xFF1A;&#x52A0;&#x51CF;&#x4E58;&#x9664;&#x6A21;</h1>
-<p>step3 &#x6211;&#x4EEC;&#x8981;&#x589E;&#x52A0;&#x7684;&#x662F;&#xFF1A;&#x52A0; <code>+</code>&#x3001;&#x51CF; <code>-</code>&#x3001;&#x4E58; <code>*</code>&#x3001;&#x6574;&#x9664; <code>/</code>&#x3001;&#x6A21; <code>%</code> &#x4EE5;&#x53CA;&#x62EC;&#x53F7; <code>(</code> <code>)</code>&#x3002;</p>
-<p>&#x8BED;&#x6CD5;&#x4E0A;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x4FEE;&#x6539; <code>expression</code>&#xFF0C;&#x53D8;&#x6210;</p>
-<pre id="vimCodeElement"><code></code><div class="changed">
-<span class="SpecRuleStart">expression</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">additive</span>
-
-<span class="SpecRuleStart">additive</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">multiplicative</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">additive</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;+&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">multiplicative</span>
-
-<span class="SpecRuleStart">multiplicative</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">unary</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">multiplicative</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;*&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;/&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;%&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
-
-<span class="SpecRuleStart">unary</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">primary</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecOperator">(</span><span class="SpecToken">&apos;-&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;~&apos;</span><span class="SpecOperator">|</span><span class="SpecToken">&apos;!&apos;</span><span class="SpecOperator">)</span> <span class="SpecRule">unary</span>
-
-<span class="SpecRuleStart">primary</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecToken">Integer</span>
-<span class="SpecRuleIndicator">    |</span> <span class="SpecToken">&apos;(&apos;</span> <span class="SpecRule">expression</span> <span class="SpecToken">&apos;)&apos;</span>
-</div></pre>
-
-<p>&#x65B0;&#x7279;&#x6027;&#x7684;&#x8BED;&#x4E49;&#x3001;&#x4F18;&#x5148;&#x7EA7;&#x3001;&#x7ED3;&#x5408;&#x6027;&#x548C; C &#x4EE5;&#x53CA;&#x5E38;&#x8BC6;&#x76F8;&#x540C;&#xFF0C;&#x4F8B;&#x5982; <code>1+2*(4/2+1) == 7</code>&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x8FD9;&#x79CD;&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;&#x5199;&#x6CD5;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x7E41;&#x7410;&#xFF0C;&#x4F46;&#x5B83;&#x6709;&#x51E0;&#x4E2A;&#x597D;&#x5904;&#xFF1A;</p>
-<ol>
-<li>&#x548C; <a href="../../REFERENCE.html">C17 &#x6807;&#x51C6;&#x8349;&#x6848;</a>&#x4FDD;&#x6301;&#x4E00;&#x81F4;</li>
-<li>&#x628A;&#x4F18;&#x5148;&#x7EA7;&#x548C;&#x7ED3;&#x5408;&#x6027;&#x4FE1;&#x606F;&#x76F4;&#x63A5;&#x7F16;&#x7801;&#x5165;&#x8BED;&#x6CD5;&#x91CC;&#xFF0C;&#x89C1;<a href="precedence.html">&#x4F18;&#x5148;&#x7EA7;&#x548C;&#x7ED3;&#x5408;&#x6027;</a>&#x4E00;&#x8282;&#x3002;</li>
-</ol>
-<p>&#x6211;&#x4EEC;&#x53EA;&#x63A5;&#x53D7; pdf &#x683C;&#x5F0F;&#x7684;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x62A5;&#x544A;&#x653E;&#x5728;&#x4ED3;&#x5E93;&#x7684; <code>./reports/&lt;branch-name&gt;.pdf</code>&#xFF0C;&#x6BD4;&#x5982; stage 1 &#x7684;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#x9700;&#x8981;&#x653E;&#x5728; <code>stage-1</code> &#x8FD9;&#x4E2A; branch &#x4E0B;&#x7684; <code>./reports/stage-1.pdf</code>&#x3002;&#x6574;&#x4E2A; stage 1 &#x53EA;&#x9700;&#x8981;&#x63D0;&#x4EA4;&#x4E00;&#x4EFD;&#x62A5;&#x544A;&#xFF0C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x5355;&#x72EC;&#x4E3A; step 3 &#x51C6;&#x5907;&#x62A5;&#x544A;&#x3002;<strong>stage 1 &#x7684;&#x62A5;&#x544A;&#x8FD8;&#x9700;&#x8981;&#x989D;&#x5916;&#x5305;&#x542B; step 1 &#x7684;&#x601D;&#x8003;&#x9898;</strong>&#x3002;</p>
+                                <h3 id="&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;-step14&#xFF1A;&#x9759;&#x6001;&#x5355;&#x8D4B;&#x503C;">&#x5B9E;&#x9A8C;&#x6307;&#x5BFC; step14&#xFF1A;&#x9759;&#x6001;&#x5355;&#x8D4B;&#x503C;</h3>
+<blockquote>
+<p> &#x672C;&#x8282;&#x9009;&#x505A;&#x5B9E;&#x9A8C;&#x6539;&#x7F16;&#x81EA;&#xFF1A;
+<a href="https://buaa-se-compiling.github.io/miniSysY-tutorial/challenge/mem2reg/help.html" target="_blank">https://buaa-se-compiling.github.io/miniSysY-tutorial/challenge/mem2reg/help.html</a>
+&#x5728;&#x6B64;&#x8868;&#x793A;&#x611F;&#x8C22;&#xFF01;</p>
+</blockquote>
+<p>&#x9759;&#x6001;&#x5355;&#x8D4B;&#x503C;&#xFF08;Static Single Assignment, SSA&#xFF09;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x4E2D;&#x95F4;&#x8868;&#x793A;&#xFF08;IR&#xFF09;&#x9636;&#x6BB5;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x6982;&#x5FF5;&#xFF0C;&#x5B83;&#x8981;&#x6C42;&#x7A0B;&#x5E8F;&#x4E2D;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x5728;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x53EA;&#x88AB;&#x8D4B;&#x503C;&#x4E00;&#x6B21;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x8003;&#x8651;&#x4F7F;&#x7528; IR &#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x8BA1;&#x7B97; 1 + 2 + 3 &#x7684;&#x503C;&#xFF0C;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x7684;&#x5199;&#x6CD5;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-assembly">_T0 = 1
+_T1 = 2
+_T2 = 3
+_T3 = ADD _T0, _T1
+_T3 = ADD _T3, _T2
+return _T3
+</code></pre>
+<p>&#x5F88;&#x9057;&#x61BE;&#xFF0C;&#x4E0A;&#x8FF0;&#x7A0B;&#x5E8F;&#x5E76;&#x4E0D;&#x7B26;&#x5408; SSA &#x7684;&#x8981;&#x6C42;&#xFF0C;&#x56E0;&#x4E3A;&#x5176;&#x4E2D;&#x53D8;&#x91CF; _T4 &#x88AB;&#x8D4B;&#x503C;&#x4E86;&#x4E24;&#x6B21;&#x3002;&#x6B63;&#x786E;&#x7684;&#x5199;&#x6CD5;&#x5E94;&#x8BE5;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-assembly">_T0 = 1
+_T1 = 2
+_T2 = 3
+_T3 = ADD _T0, _T1
+_T4 = ADD _T3, _T2
+return _T4
+</code></pre>
+<h4 id="&#x6211;&#x4EEC;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#x5462;&#xFF1F;">&#x6211;&#x4EEC;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#x5462;&#xFF1F;</h4>
+<p>&#x56E0;&#x4E3A; SSA &#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8FDB;&#x800C;&#x7B80;&#x5316;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x8003;&#x8651;&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4F2A;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-assembly">y := 1
+y := 2
+x := y
+</code></pre>
+<p>&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x5176;&#x4E2D;&#x53D8;&#x91CF; y &#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x8D4B;&#x503C;&#x662F;&#x4E0D;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x53D8;&#x91CF; y &#x88AB;&#x4F7F;&#x7528;&#x524D;&#xFF0C;&#x7ECF;&#x5386;&#x4E86;&#x7B2C;&#x4E8C;&#x6B21;&#x8D4B;&#x503C;&#x3002;&#x5BF9;&#x4E8E;&#x7F16;&#x8BD1;&#x5668;&#x800C;&#x8A00;&#xFF0C;&#x786E;&#x5B9A;&#x8FD9;&#x4E00;&#x5173;&#x7CFB;&#x5E76;&#x4E0D;&#x5BB9;&#x6613;&#xFF0C;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x5B9A;&#x4E49;&#x5206;&#x6790;&#xFF08;Reaching Definition Analysis&#xFF09;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5728;&#x5F88;&#x591A;&#x63A7;&#x5236;&#x6D41;&#x590D;&#x6742;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0A;&#x8FF0;&#x8FC7;&#x7A0B;&#x5C06;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x56F0;&#x96BE;&#x3002;</p>
+<p>&#x4F46;&#x5982;&#x679C;&#x5C06;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x53D8;&#x4E3A; SSA &#x5F62;&#x5F0F;&#xFF1A;</p>
+<pre><code class="lang-assembly">y1 := 1
+y2 := 2
+x1 := y2
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x5173;&#x7CFB;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF0C;&#x7531;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x53EA;&#x88AB;&#x8D4B;&#x503C;&#x4E00;&#x6B21;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x5730;&#x5F97;&#x5230; x1 &#x7684;&#x503C;&#x6765;&#x81EA;&#x4E8E; y2 &#x8FD9;&#x4E00;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x6B63;&#x56E0;&#x5982;&#x6B64;&#xFF0C;&#x8BB8;&#x591A;&#x7F16;&#x8BD1;&#x5668;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#x90FD;&#x5EFA;&#x7ACB;&#x5728; SSA &#x7684;&#x57FA;&#x7840;&#x4E4B;&#x4E0A;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x6B7B;&#x4EE3;&#x7801;&#x6D88;&#x9664;&#xFF08;dead code elimination&#xFF09;&#x3001;&#x5E38;&#x91CF;&#x4F20;&#x64AD;&#xFF08;constant propagation&#xFF09;&#x3001;&#x503C;&#x57DF;&#x4F20;&#x64AD;&#xFF08;value range propagation&#xFF09;&#x7B49;&#x3002;</p>
+<h4 id="&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x5B9E;&#x73B0;-ssa-&#x5462;&#xFF1F;">&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x5B9E;&#x73B0; SSA &#x5462;&#xFF1F;</h4>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x8003;&#x8651;&#x4F7F;&#x7528; IR &#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;&#x5FAA;&#x73AF;&#x8BA1;&#x7B97; 5 &#x7684;&#x9636;&#x4E58;&#x3002;</p>
+<p>&#x6309;&#x7167; C &#x8BED;&#x8A00;&#x7684;&#x601D;&#x8DEF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x7ED9;&#x51FA;&#x5982;&#x4E0B;&#x5199;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-assembly">_L0:
+  _T0 = 0
+  _T1 = 1
+  _T2 = 2
+  _T3 = ADD _T0, _T1  # int temp = 1
+  _T4 = ADD _T0, _T2  # int i = 2
+  _T5 = 5
+_L1:
+  _T6 = LT _T4, _T5   # i &lt; 5
+  BEQZ _T6, _L3
+_L2:                  # loop label
+  _T3 = MUL _T3, _T4  # temp = temp * i
+  _T4 = ADD _T4, _T1  # i = i + 1
+  JUMP _L1
+_L3:                  # break label
+  return _T3
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x5230;&#xFF0C;&#x53D8;&#x91CF; _T3 &#x548C; _T4 &#x7531;&#x4E8E;&#x5FAA;&#x73AF;&#x4F53;&#x7684;&#x5B58;&#x5728;&#x53EF;&#x80FD;&#x88AB;&#x8D4B;&#x503C;&#x591A;&#x6B21;&#xFF0C;&#x56E0;&#x6B64;&#x4E0A;&#x8FF0;&#x5199;&#x6CD5;&#x5E76;&#x4E0D;&#x7B26;&#x5408; SSA &#x7684;&#x8981;&#x6C42;&#x3002;</p>
+<p>&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x7684;&#x65B9;&#x6848;&#x662F;&#x4F7F;&#x7528; Phi &#x6307;&#x4EE4;&#x3002;Phi &#x6307;&#x4EE4;&#x7684;&#x8BED;&#x6CD5;&#x662F; <code>&lt;result&gt; = PHI [&lt;val0&gt;, &lt;label0&gt;], [&lt;val1&gt;, &lt;label1&gt;] ...</code> &#x3002;&#x5B83;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x8FDB;&#x5165;&#x5F53;&#x524D;&#x57FA;&#x672C;&#x5757;&#x4E4B;&#x524D;&#x6267;&#x884C;&#x7684;&#x662F;&#x54EA;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;&#x7684;&#x4EE3;&#x7801;&#x6765;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x7531;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6539;&#x5199;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-assembly">_L0:
+  _T0 = 2
+  _T1 = 1
+_L1:
+  _T2 = PHI [_T0, _L0], [_T6, _L2]  # int i = 2
+  _T3 = PHI [_T1, _L0], [_T7, _L2]  # int temp = 1
+  _T4 = 5
+  _T5 = LT T2, _T4                  # i &lt; 5
+  BEQZ _T5, _L3
+_L2:                                # loop label
+  _T7 = MUL _T3, _T2                # temp = temp * i
+  _T6 = ADD _T2, _T1                # i = i + 1
+  JUMP _L1
+_L3:                                # break label
+  return _T7
+</code></pre>
+<p>&#x7531;&#x6B64;&#xFF0C;&#x4E0A;&#x8FF0;&#x7A0B;&#x5E8F;&#x4E2D;&#x6BCF;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x53EA;&#x88AB;&#x8D4B;&#x503C;&#x4E86;&#x4E00;&#x6B21;&#xFF0C;&#x6EE1;&#x8DB3;&#x4E86; SSA &#x7684;&#x8981;&#x6C42;&#x3002;&#xFF08;&#x6CE8;&#x610F;&#xFF0C;SSA &#x4EC5;&#x8981;&#x6C42;&#x53D8;&#x91CF;&#x5728;&#x9759;&#x6001;&#x9636;&#x6BB5;&#x88AB;&#x5355;&#x4E00;&#x8D4B;&#x503C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4EC5;&#x88AB;&#x8D4B;&#x503C;&#x4E00;&#x6B21;&#xFF09;</p>
+<p>&#x53E6;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x7684;&#x65B9;&#x6848;&#x662F;&#x4F7F;&#x7528; Alloca&#x3001;Load &#x548C; Store &#x7684;&#x7EC4;&#x5408;&#x3002;SSA &#x8981;&#x6C42;&#x4E2D;&#x95F4;&#x8868;&#x793A;&#x9636;&#x6BB5;&#x865A;&#x62DF;&#x5BC4;&#x5B58;&#x5668;&#x6EE1;&#x8DB3;&#x5355;&#x4E00;&#x8D4B;&#x503C;&#x8981;&#x6C42;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x8981;&#x6C42;&#x5185;&#x5B58;&#x5730;&#x5740;&#x5982;&#x6B64;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x524D;&#x7AEF;&#x751F;&#x6210;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x5C06;&#x6BCF;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x90FD;&#x6309;&#x7167;&#x6808;&#x7684;&#x65B9;&#x5F0F;&#x4F7F;&#x7528; Alloca &#x6307;&#x4EE4;&#x5206;&#x914D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x4E4B;&#x540E;&#x6BCF;&#x6B21;&#x8BBF;&#x95EE;&#x53D8;&#x91CF;&#x90FD;&#x901A;&#x8FC7; Load &#x6216; Store &#x6307;&#x4EE4;&#x663E;&#x5F0F;&#x5730;&#x8BFB;&#x5199;&#x5185;&#x5B58;&#x3002;&#x4F7F;&#x7528;&#x4E0A;&#x8FF0;&#x65B9;&#x6848;&#x7F16;&#x5199;&#x7684;&#x7A0B;&#x5E8F;&#x6EE1;&#x8DB3; SSA &#x7684;&#x8981;&#x6C42;&#xFF0C;&#x4E14;&#x907F;&#x514D;&#x4E86;&#x7E41;&#x7410;&#x5730;&#x6784;&#x9020; Phi &#x6307;&#x4EE4;&#xFF0C;&#x4F46;&#x9891;&#x7E41;&#x5730;&#x8BBF;&#x95EE;&#x5185;&#x5B58;&#x5C06;&#x5BFC;&#x81F4;&#x4E25;&#x91CD;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002;</p>
+<h4 id="&#x6709;&#x6CA1;&#x6709;&#x66F4;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5462;&#xFF1F;">&#x6709;&#x6CA1;&#x6709;&#x66F4;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5462;&#xFF1F;</h4>
+<p>&#x6709;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x4E24;&#x79CD;&#x65B9;&#x6848;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x5728;&#x524D;&#x7AEF;&#x751F;&#x6210;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x4F7F;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6848;&#x5229;&#x7528; Alloca&#x3001;Load&#x3001;Store &#x6307;&#x4EE4;&#x5FEB;&#x901F;&#x5730;&#x6784;&#x5EFA;&#x6EE1;&#x8DB3; SSA &#x8981;&#x6C42;&#x7684;&#x4EE3;&#x7801;&#x3002;
+&#x968F;&#x540E;&#xFF0C;&#x5728;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C; &#x5C06;&#x5176;&#x4E2D;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x53D8;&#x91CF;&#x8F6C;&#x5316;&#x4E3A;&#x865A;&#x62DF;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5E76;&#x5728;&#x5408;&#x9002;&#x7684;&#x5730;&#x65B9;&#x63D2;&#x5165; Phi &#x6307;&#x4EE4;&#x3002;
+&#x8FD9;&#x4E00;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x4E5F;&#x88AB;&#x79F0;&#x4E3A; mem2reg &#x6280;&#x672F;&#x3002;</p>
+<p>&#x5728;&#x672C;&#x6B21;&#x9009;&#x505A;&#x5B9E;&#x9A8C;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x540C;&#x5B66;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x6280;&#x672F;&#xFF0C;&#x9488;&#x5BF9;&#x5C40;&#x90E8;&#x7684; int &#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x751F;&#x6210;&#x7B26;&#x5408; SSA &#x8981;&#x6C42;&#x7684;&#x4E2D;&#x95F4;&#x8868;&#x793A;&#x4EE3;&#x7801;&#x3002;</p>
 <p>&#x4F60;&#x9700;&#x8981;&#xFF1A;</p>
 <ol>
-<li>&#x6539;&#x8FDB;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x652F;&#x6301;&#x672C;&#x8282;&#x5F15;&#x5165;&#x7684;&#x65B0;&#x7279;&#x6027;&#xFF0C;&#x901A;&#x8FC7;&#x76F8;&#x5173;&#x6D4B;&#x8BD5;&#x3002;</li>
+<li>&#x6539;&#x8FDB;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x652F;&#x6301;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684; mem2reg &#x6280;&#x672F;&#x3002;&#x9664;&#x5B8C;&#x6210;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x5916;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#xFF1A;<ul>
+<li>&#x4E3A;&#x4EE3;&#x7801;&#x6DFB;&#x52A0;&#x5408;&#x7406;&#x7684;&#x6CE8;&#x91CA;&#x4EE5;&#x4FBF;&#x6279;&#x9605;&#x3002;</li>
+<li>&#x8BBE;&#x8BA1;&#x5408;&#x9002;&#x7684;&#x6D4B;&#x4F8B;&#x5E76;&#x5C55;&#x793A;&#x751F;&#x6210;&#x7684;&#x4E2D;&#x95F4;&#x8868;&#x793A;&#xFF0C;&#x4EE5;&#x8BC1;&#x660E;&#x4F60;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</li>
+</ul>
+</li>
 <li>&#x5B8C;&#x6210;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#xFF08;&#x5177;&#x4F53;&#x8981;&#x6C42;&#x8BF7;&#x770B;&#x5B9E;&#x9A8C;&#x6307;&#x5BFC;&#x4E66;&#x7684;&#x9996;&#x9875;&#xFF09;&#x3002;&#x5B9E;&#x9A8C;&#x62A5;&#x544A;&#x4E2D;&#x9700;&#x8981;&#x5305;&#x62EC;&#xFF1A;<ul>
 <li>&#x4F60;&#x7684;&#x5B66;&#x53F7;&#x59D3;&#x540D;</li>
 <li>&#x7B80;&#x8981;&#x53D9;&#x8FF0;&#xFF0C;&#x4E3A;&#x4E86;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A; stage &#x4F60;&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x5DE5;&#x4F5C;&#xFF08;&#x5373;&#x4F60;&#x7684;&#x5B9E;&#x9A8C;&#x5185;&#x5BB9;&#xFF09;</li>
-<li>&#x6307;&#x5BFC;&#x4E66;&#x4E0A;&#x7684;&#x601D;&#x8003;&#x9898;</li>
+<li>&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x7684;&#x8FD0;&#x884C;&#x903B;&#x8F91;</li>
+<li>&#x4F60;&#x8BBE;&#x8BA1;&#x7684;&#x6D4B;&#x4F8B;&#x548C;&#x5BF9;&#x5E94;&#x751F;&#x6210;&#x7684;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x9002;&#x5F53;&#x7684;&#x5206;&#x6790;&#x3002;</li>
 <li>&#x5982;&#x679C;&#x4F60;&#x590D;&#x7528;&#x501F;&#x9274;&#x4E86;&#x53C2;&#x8003;&#x4EE3;&#x7801;&#x6216;&#x5176;&#x4ED6;&#x8D44;&#x6E90;&#xFF0C;&#x8BF7;&#x660E;&#x786E;&#x5199;&#x51FA;&#x4F60;&#x501F;&#x9274;&#x4E86;&#x54EA;&#x4E9B;&#x5185;&#x5BB9;&#x3002;<em>&#x5E76;&#x4E14;&#xFF0C;&#x5373;&#x4F7F;&#x4F60;&#x58F0;&#x660E;&#x4E86;&#x4EE3;&#x7801;&#x501F;&#x9274;&#xFF0C;&#x4F60;&#x4E5F;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x72EC;&#x7ACB;&#x8BA4;&#x771F;&#x5B8C;&#x6210;&#x5B9E;&#x9A8C;&#x3002;</em></li>
 <li>&#x5982;&#x6709;&#x4EE3;&#x7801;&#x4EA4;&#x7ED9;&#x5176;&#x4ED6;&#x540C;&#x5B66;&#x53C2;&#x8003;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x5728;&#x62A5;&#x544A;&#x4E2D;&#x58F0;&#x660E;&#xFF0C;&#x544A;&#x77E5;&#x7ED9;&#x54EA;&#x4E9B;&#x540C;&#x5B66;&#x62F7;&#x8D1D;&#x8FC7;&#x4EE3;&#x7801;&#xFF08;&#x5305;&#x62EC;&#x53EF;&#x80FD;&#x901A;&#x8FC7;&#x95F4;&#x63A5;&#x6E20;&#x9053;&#x4F20;&#x64AD;&#x7ED9;&#x5176;&#x4ED6;&#x540C;&#x5B66;&#xFF09;&#x3002;</li>
 </ul>
 </li>
 </ol>
-<h2 id="&#x5982;&#x4F55;&#x68C0;&#x67E5;&#x6211;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x81EA;&#x52A8;&#x6D4B;&#x8BD5;ci">&#x5982;&#x4F55;&#x68C0;&#x67E5;&#x6211;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x81EA;&#x52A8;&#x6D4B;&#x8BD5;(CI)</h2>
-<p>&#x5728; <code>git.tsinghua</code> &#x4E0A;&#x6253;&#x5F00;&#x4F60;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5728;&#x754C;&#x9762;&#x7684;&#x53F3;&#x4FA7;&#xFF0C;Clone &#x6309;&#x94AE;&#x7684;&#x4E0B;&#x65B9;&#xFF0C;<code>commit id</code> &#x7684;&#x5DE6;&#x4FA7;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x753B;&#x5708;&#x7684; <code>&#xD7;</code> &#x6216;&#x8005; <code>&#x221A;</code> &#x7684;&#x56FE;&#x6807;&#xFF0C;&#x4EE3;&#x8868;&#x5F53;&#x524D; commit &#x662F;&#x5426;&#x901A;&#x8FC7; CI &#x6D4B;&#x8BD5;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x83B7;&#x53D6;&#x8BE6;&#x7EC6;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#xFF0C;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x8FD9;&#x4E2A;&#x753B;&#x5708;&#x7684; <code>&#xD7;</code> &#x6216;&#x8005; <code>&#x221A;</code> &#x7684;&#x56FE;&#x6807;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x7F51;&#x9875;&#x5DE6;&#x4FA7;&#x9009;&#x62E9; <code>CI/CD</code> &#x4E00;&#x680F;&#x7684; <code>Jobs</code>&#xFF0C;&#x7136;&#x540E;&#x9009;&#x62E9;&#x5E0C;&#x671B;&#x67E5;&#x770B;&#x7684;&#x8BC4;&#x6D4B;&#x7ED3;&#x679C;&#x5373;&#x53EF;&#x3002;&#x5982;&#x679C;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#x65E0;&#x6CD5;&#x663E;&#x793A;&#xFF0C;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x8F93;&#x51FA;&#x6846;&#x53F3;&#x4E0A;&#x89D2;&#x56DB;&#x4E2A;&#x6309;&#x94AE;&#x4E2D;&#x6700;&#x5DE6;&#x8FB9;&#x7684;&#x4E00;&#x4E2A;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x5F53;&#x524D;&#x5730;&#x5740;(&#x5982;<code>.../jobs/123456</code>)&#x7684;&#x540E;&#x9762;&#x52A0;&#x4E0A;<code>/raw</code>(&#x5982;<code>.../jobs/123456/raw</code>)&#xFF0C;&#x5373;&#x53EF;&#x83B7;&#x53D6;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#x3002;</p>
 
                                 
                                 </section>
@@ -1325,7 +1381,7 @@
             
                 
                 
-                <a href="example.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 通过例子学习">
+                <a href="example.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 实验指导">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1336,7 +1392,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"实验要求","level":"3.2.1","depth":2,"next":{"title":"通过例子学习","level":"3.2.2","depth":2,"path":"docs/step3/example.md","ref":"docs/step3/example.md","articles":[]},"previous":{"title":"step3：加减乘除模","level":"3.2","depth":1,"ref":"","articles":[{"title":"实验要求","level":"3.2.1","depth":2,"path":"docs/step3/intro.md","ref":"docs/step3/intro.md","articles":[]},{"title":"通过例子学习","level":"3.2.2","depth":2,"path":"docs/step3/example.md","ref":"docs/step3/example.md","articles":[]},{"title":"优先级和结合性","level":"3.2.3","depth":2,"path":"docs/step3/precedence.md","ref":"docs/step3/precedence.md","articles":[]},{"title":"规范","level":"3.2.4","depth":2,"path":"docs/step3/spec.md","ref":"docs/step3/spec.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step3/intro.md","mtime":"2023-10-28T05:20:00.044Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-10-28T05:20:58.617Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"实验要求","level":"9.2.1","depth":2,"next":{"title":"实验指导","level":"9.2.2","depth":2,"path":"docs/step14/example.md","ref":"docs/step14/example.md","articles":[]},"previous":{"title":"step14：SSA","level":"9.2","depth":1,"ref":"","articles":[{"title":"实验要求","level":"9.2.1","depth":2,"path":"docs/step14/intro.md","ref":"docs/step14/intro.md","articles":[]},{"title":"实验指导","level":"9.2.2","depth":2,"path":"docs/step14/example.md","ref":"docs/step14/example.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/step14/intro.md","mtime":"2023-10-28T05:20:00.044Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-10-28T05:20:58.617Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
