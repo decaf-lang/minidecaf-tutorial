@@ -84,5 +84,15 @@
   * [通过例子学习](docs/step12/example.md)
   * [规范](docs/step12/spec.md)
 
+## Stage7（升级）：寄存器分配与代码优化
+
+* step13：寄存器分配算法改进
+  * [实验要求](docs/step13/intro.md)
+  * [实验指导](docs/step13/example.md)
+
+* step14：SSA
+  * [实验要求](docs/step14/intro.md)
+  * [实验指导](docs/step14/example.md)
+
 ## 参考资料
 * [参考资料](REFERENCE.md)
