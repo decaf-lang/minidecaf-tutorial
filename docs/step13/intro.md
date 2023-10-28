@@ -4,7 +4,7 @@ step13 的目标是实现论文 [*TOPLAS'1996: Iterated Register Coalescing*](ht
 
 语法上没有改动。
 
-我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 7 的实验报告需要放在 `stage-7` 这个 branch 下的 `./reports/stage-6.pdf`。整个 stage 7 只需要提交一份报告。
+我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 7 的实验报告需要放在 `stage-7` 这个 branch 下的 `./reports/stage-7.pdf`。整个 stage 7 只需要提交一份报告。
 
 你需要：
 
