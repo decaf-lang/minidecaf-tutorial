@@ -72,35 +72,35 @@ _L3:                          # break label
 
 1. 将循环语句翻译成 IR 有许多可行的翻译方法，例如 while 循环可以有以下两种翻译方式：
 
-第一种（即实验指导中的翻译方式）：
-
-+ `label BEGINLOOP_LABEL`：开始下一轮迭代
-+ `cond 的 IR`
-+ `beqz BREAK_LABEL`：条件不满足就终止循环
-+ `body 的 IR`
-+ `label CONTINUE_LABEL`：continue 跳到这
-+ `br BEGINLOOP_LABEL`：本轮迭代完成
-+ `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
-
-第二种：
-
-+ `cond 的 IR`
-+ `beqz BREAK_LABEL`：条件不满足就终止循环
-+ `label BEGINLOOP_LABEL`：开始下一轮迭代
-+ `body 的 IR`
-+ `label CONTINUE_LABEL`：continue 跳到这
-+ `cond 的 IR`
-+ `bnez BEGINLOOP_LABEL`：本轮迭代完成，条件满足时进行下一次迭代
-+ `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
-
-从执行的指令的条数这个角度（`label` 不算做指令，假设循环体至少执行了一次），请评价这两种翻译方式哪一种更好？
+    第一种（即实验指导中的翻译方式）：
+    
+    + `label BEGINLOOP_LABEL`：开始下一轮迭代
+    + `cond 的 IR`
+    + `beqz BREAK_LABEL`：条件不满足就终止循环
+    + `body 的 IR`
+    + `label CONTINUE_LABEL`：continue 跳到这
+    + `br BEGINLOOP_LABEL`：本轮迭代完成
+    + `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
+    
+    第二种：
+    
+    + `cond 的 IR`
+    + `beqz BREAK_LABEL`：条件不满足就终止循环
+    + `label BEGINLOOP_LABEL`：开始下一轮迭代
+    + `body 的 IR`
+    + `label CONTINUE_LABEL`：continue 跳到这
+    + `cond 的 IR`
+    + `bnez BEGINLOOP_LABEL`：本轮迭代完成，条件满足时进行下一次迭代
+    + `label BREAK_LABEL`：条件不满足，或者 break 语句都会跳到这儿
+    
+    从执行的指令的条数这个角度（`label` 不算做指令，假设循环体至少执行了一次），请评价这两种翻译方式哪一种更好？
 
 2. 我们目前的 TAC IR 中条件分支指令采用了单分支目标（标签）的设计，即该指令的操作数中只有一个是标签；如果相应的分支条件不满足，则执行流会继续向下执行。在其它 IR 中存在双目标分支（标签）的条件分支指令，其形式如下：
-
-```assembly
-br cond, false_target, true_target
-```
-
-其中`cond`是一个临时变量，`false_target`和`true_target`是标签。其语义为：如果`cond`的值为0（假），则跳转到`false_target`处；若`cond`非0（真），则跳转到`true_target`处。它与我们的条件分支指令的区别在于执行流总是会跳转到两个标签中的一个。
-
-你认为中间表示的哪种条件分支指令设计（单目标 vs 双目标）更合理？为什么？（言之有理即可）
+    
+    ```assembly
+    br cond, false_target, true_target
+    ```
+    
+    其中`cond`是一个临时变量，`false_target`和`true_target`是标签。其语义为：如果`cond`的值为0（假），则跳转到`false_target`处；若`cond`非0（真），则跳转到`true_target`处。它与我们的条件分支指令的区别在于执行流总是会跳转到两个标签中的一个。
+    
+    你认为中间表示的哪种条件分支指令设计（单目标 vs 双目标）更合理？为什么？（言之有理即可）
