@@ -162,15 +162,59 @@ main_exit:
 
 这部分你需要着重关注后端代码生成部分，相关代码包括`utils/riscv.py`,`backend/riscv/riscvasmemitter.py`,`backend/reg/bruteregalloc.py`。
 
+下面，我们对后端的关键代码进行简要介绍。
+
+后端翻译是Asm类开始的：
+
+```python
+class Asm:
+    def __init__(self, emitter: RiscvAsmEmitter, regAlloc: BruteRegAlloc) -> None:
+        self.emitter = emitter
+        self.regAlloc = regAlloc
+
+    def transform(self, prog: TACProg):
+        analyzer = LivenessAnalyzer()
+
+        for func in prog.funcs:
+            pair = self.emitter.selectInstr(func)
+            builder = CFGBuilder()
+            cfg: CFG = builder.buildFrom(pair[0])
+            analyzer.accept(cfg)
+            self.regAlloc.accept(cfg, pair[1])
+
+        return self.emitter.emitEnd()
+```
+
+这里代码的转换有三个阶段：
+
+中端TACInstr -> 后端TACInstr -> NativeInstr
+
+`self.emitter.selectInstr(func)`这里对每个函数调用了 selectInstr进行函数内的**指令选择**，这部分将 中端TACInstr 翻译为了 后端TACInstr 指令，`RiscvInstrSelector`进行指令选择后将生成的 后端TACInstr 放在了 `RiscvInstrSelector`类的`seq`成员中，其实就是一个列表，此处还**没有进行寄存器分配**，仅将TAC换为了 中端TACInstr 。
+
+`self.regAlloc.accept(cfg, pair[1])`函数进行了寄存器分配，`BruteRegAlloc`类将 中端TACInstr 转化为了 NativeInstr，`RiscvSubroutineEmitter`类将这些 NativeInstr 放在了 buffer 中，最后全部在emitEnd()函数中输出.
+
+- 框架中的 后端TACInstr 和 NativeInstr 指令有什么不同？
+  
+  后端TACInstr 是**没有经过寄存器分配的指令**，其参数依然是临时变量（或称为虚拟寄存器），但是你可能发现部分指令中含有物理寄存器，因为有的指令需要使用指定的寄存器，比如`x0`寄存器，或者修改栈指针`sp`寄存器，物理寄存器和虚拟寄存器混合出现在一条指令中的情况是必然存在的。
+  
+  NativeInstr 指令是 **经过寄存器分配后的 中端TACInstr**，其所有参数都是Riscv的实际寄存器。
+
+  我们要先进行指令选择后才能确定每条指令需要的寄存器情况，因此这里需要两个步骤。
+
+- 为什么指令要先放在buffer中，最后再一次性输出？
+  
+  因为寄存器分配过程中我们才能知道有哪些变量需要spill到栈上，分配完所有指令需要的寄存器计算出需要的栈空间大小，因此类似函数开头开辟栈空间的指令`add sp, sp, -56`这样的指令会放在prologue部分。
+
+
 ### 函数调用
 
 程序代码里的一个函数调用，包含了下面一系列的操作：
 
-1. 准备参数，完成传参。
-2. （汇编）保存 caller-saved 寄存器。
+1. （汇编）保存 caller-saved 寄存器。
+2. 准备参数，完成传参。
 3. 执行汇编中的函数调用指令，开始执行子函数直至其返回。
-4. （汇编）恢复 caller-saved 寄存器。
-5. 拿到函数调用的返回值，作为函数调用表达式的值。
+4. 拿到函数调用的返回值，作为函数调用表达式的值。
+5. （汇编）恢复 caller-saved 寄存器。
 
 上述步骤 1-5 称为调用序列（calling sequence）。然而，调用序列中有一些问题需要解决：如何进行参数传递？如何获取函数返回值？调用者（caller）和被调用者（callee）需要保存哪些寄存器，如何保存？调用者和被调用者通常对以上问题约定解决方式，并同时遵守这些约定。这些调用者与被调用者共同遵守的约定称为**调用约定**（calling convention）。调用约定通常在汇编层级使用，汇编语言课上也有涉及。因为汇编语言是低级语言，缺乏对函数的语言特性支持，只有标号、地址、寄存器，所以需要调用约定，规定如何用汇编的语言机制实现函数调用。
 
