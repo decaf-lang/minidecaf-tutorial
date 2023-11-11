@@ -4,6 +4,10 @@
 
 &nbsp;
 
+Q: `RiscvAsmEmitter` 下 `selectInstr` 函数的返回值类型`tuple[list[str],SubroutineInfo]`貌似不太合理，返回第一个元素实际上是`list[TACInstr]`
+A: 感谢同学指出框架问题，请同学们将`backend/asmemitter.py`下的`AsmEmitter`抽象类和`backend/riscv/riscvasmemitter.py`下的`RiscvAsmEmitter`类中的`selectInstr`函数返回值标注改为`tuple[list[TACInstr], SubroutineInfo]`。
+
+&nbsp;
 
 Q：使用 `pip install -r ./requirements.txt` 命令无法正确安装依赖？
 
@@ -56,7 +60,7 @@ A：
 
 &nbsp;
 
-Q：代码框架寄存器分配中 allocRegFor 函数实现有错误？
+Q：代码框架寄存器分配中 allocRegFor 函数实现有错误？(已经在2023-2024年编译课程中修复)
 
 A：请修改 bruteregalloc.py 中第 119 行处随机数生成的范围，将上界改为 `len(...) - 1`，避免溢出。感谢孟本源同学！
 
@@ -66,6 +70,6 @@ reg = self.emitter.allocatableRegs[
 ]
 ```
 
-Q: Parser Stage中的`test-parser-stage.sh`无法正常使用?
+Q: Parser Stage中的`test-parser-stage.sh`无法正常使用?（Parser Stage已经在2023-2024年编译课程移除）
 
 A: 发布作业时打包有失误，请使用原有的`minidecaf-tests`中的`check.sh`测试脚本，将parser-stage的前端接入到原先的中后端来进行测试。
