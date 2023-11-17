@@ -205,6 +205,35 @@ class Asm:
   
   因为寄存器分配过程中我们才能知道有哪些变量需要spill到栈上，分配完所有指令需要的寄存器计算出需要的栈空间大小，因此类似函数开头开辟栈空间的指令`add sp, sp, -56`这样的指令会放在prologue部分。
 
+#### 寄存器分配部分
+这部分代码主要集中在`backend/reg/bruteregalloc.py`。
+
+首先我们介绍一下`BruteRegAlloc`类中的对象和函数都干了什么：
+`bindings`用来记录每个临时变量和物理寄存器的对应关系，比如临时变量`T4`如果存放在寄存器`A0`中，那么`bindings`中就会记录
+`T0: A0`。你可以通过使用`bind()`, `unbind()`函数来控制绑定关系。
+
+
+`accept()`，也就是寄存器分配的起点：
+```python
+def accept(self, graph: CFG, info: SubroutineInfo) -> None:
+    subEmitter = self.emitter.emitSubroutine(info)
+    for bb in graph.iterator():
+        # you need to think more here
+        # maybe we don't need to alloc regs for all the basic blocks
+        if bb.label is not None:
+            subEmitter.emitLabel(bb.label)
+        self.localAlloc(bb, subEmitter)
+    subEmitter.emitEnd()
+```
+这里对于控制流图（CFG）中的每一个基本块分配了寄存器。
+
+`localAlloc()`用来给每个基本块指令分配寄存器。我们的实验框架采用了非常简单暴力的寄存器分配：每个基本快前后我们认为所有变量都在栈上，所以你可以在代码中看到`localAlloc()`函数开头我们使用了`self.bindings.clear()`来清除寄存器和栈上变量之间的绑定关系，在分配完每个基本块的寄存器后，我们通过对于所有活跃的寄存器调用`emitStoreToStack`保存到了栈上。
+
+因此，在实现Step 9时候，我们虽然使用了寄存器传参，但是我们应该要认为在进入每个基本块的时候，所有变量还是在栈上的。因此我们在生成代码的时候，就应该提前先把变量放到栈上，我们可以通过修改`RiscvSubroutineEmitter`中的`offsets`的来把临时变量和栈上位置对应起来。然后怎么把寄存器放到栈上呢？我们可以看`RiscvSubroutineEmitter.emitEnd`函数，我们会在翻译完所有代码后先把代码保存到buffer里面，先打印一些函数头的信息，然后输出这个buffer中的东西，所以我们就可以在函数头这里把在寄存器中的东西放到栈上。
+
+`allocForLoc()`为每条指令具体分配寄存器。每条指令都有可能要读和写部分临时变量，但是这些临时变量可能不在物理寄存器中，在栈上，因此这个函数为每个需要读的寄存器进行检查是否能在`bindings`中找到绑定关系，如果不在则通过`allocRegFor()`函数来将这些寄存器拿到栈上。对于写来说，也是类似的道理。
+
+`allocRegFor()`为每个临时变量分配寄存器。对于`allocForLoc()`中发现的如果有的寄存器在当前指令中需要用到，并且不在物理寄存器中，那么则需要将其从栈上拿出来，并且这个函数判断了物理寄存器是否已经被占用，如果所有物理寄存器都被占用，那么就需要将一些暂时不用的寄存器放到栈上。
 
 ### 函数调用
 
