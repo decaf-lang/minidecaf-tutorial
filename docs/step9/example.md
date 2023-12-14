@@ -189,9 +189,9 @@ class Asm:
 
 中端TACInstr -> 后端TACInstr -> NativeInstr
 
-`self.emitter.selectInstr(func)`这里对每个函数调用了 selectInstr进行函数内的**指令选择**，这部分将 中端TACInstr 翻译为了 后端TACInstr 指令，`RiscvInstrSelector`进行指令选择后将生成的 后端TACInstr 放在了 `RiscvInstrSelector`类的`seq`成员中，其实就是一个列表，此处还**没有进行寄存器分配**，仅将TAC换为了 中端TACInstr 。
+`self.emitter.selectInstr(func)`这里对每个函数调用了 selectInstr进行函数内的**指令选择**，这部分将 中端TACInstr 翻译为了 后端TACInstr 指令，`RiscvInstrSelector`进行指令选择后将生成的 后端TACInstr 放在了 `RiscvInstrSelector`类的`seq`成员中，其实就是一个列表，此处还**没有进行寄存器分配**，仅将 中端TACInstr 换为了 后端TACInstr 。
 
-`self.regAlloc.accept(cfg, pair[1])`函数进行了寄存器分配，`BruteRegAlloc`类将 中端TACInstr 转化为了 NativeInstr，`RiscvSubroutineEmitter`类将这些 NativeInstr 放在了 buffer 中，最后全部在emitEnd()函数中输出.
+`self.regAlloc.accept(cfg, pair[1])`函数进行了寄存器分配，`BruteRegAlloc`类将 后端TACInstr 转化为了 NativeInstr，`RiscvSubroutineEmitter`类将这些 NativeInstr 放在了 buffer 中，最后全部在emitEnd()函数中输出.
 
 - 框架中的 后端TACInstr 和 NativeInstr 指令有什么不同？
   
@@ -227,7 +227,7 @@ def accept(self, graph: CFG, info: SubroutineInfo) -> None:
 ```
 这里对于控制流图（CFG）中的每一个基本块分配了寄存器。
 
-`localAlloc()`用来给每个基本块指令分配寄存器。我们的实验框架采用了非常简单暴力的寄存器分配：每个基本快前后我们认为所有变量都在栈上，所以你可以在代码中看到`localAlloc()`函数开头我们使用了`self.bindings.clear()`来清除寄存器和栈上变量之间的绑定关系，在分配完每个基本块的寄存器后，我们通过对于所有活跃的寄存器调用`emitStoreToStack`保存到了栈上。
+`localAlloc()`用来给每个基本块指令分配寄存器。我们的实验框架采用了非常简单暴力的寄存器分配：每个基本块前后我们认为所有变量都在栈上，所以你可以在代码中看到`localAlloc()`函数开头我们使用了`self.bindings.clear()`来清除寄存器和栈上变量之间的绑定关系，在分配完每个基本块的寄存器后，我们通过对于所有活跃的寄存器调用`emitStoreToStack`保存到了栈上。
 
 因此，在实现Step 9时候，我们虽然使用了寄存器传参，但是我们应该要认为在进入每个基本块的时候，所有变量还是在栈上的。因此我们在生成代码的时候，就应该提前先把变量放到栈上，我们可以通过修改`RiscvSubroutineEmitter`中的`offsets`的来把临时变量和栈上位置对应起来。然后怎么把寄存器放到栈上呢？我们可以看`RiscvSubroutineEmitter.emitEnd`函数，我们会在翻译完所有代码后先把代码保存到buffer里面，先打印一些函数头的信息，然后输出这个buffer中的东西，所以我们就可以在函数头这里把在寄存器中的东西放到栈上。
 
