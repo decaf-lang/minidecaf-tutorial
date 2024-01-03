@@ -94,7 +94,7 @@ _L2:                                # loop label
   _T6 = ADD _T2, _T1                # i = i + 1
   JUMP _L1
 _L3:                                # break label
-  return _T7
+  return _T3
 ```
 由此，上述程序中每一个变量只被赋值了一次，满足了 SSA 的要求。（注意，SSA 仅要求变量在静态阶段被单一赋值，而不是在运行时仅被赋值一次）
 
