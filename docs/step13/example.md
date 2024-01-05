@@ -1,6 +1,6 @@
 # step13 实验指导
 
-本节实验要求实现论文 [TOPLAS'1996: *Iterated Register Coalescing*](https://dl.acm.org/doi/pdf/10.1145/229542.229546) 提出的寄存器分配算法。推荐大家完整读一遍论文，并通过[论文作者的讲解课件](https://people.cs.rutgers.edu/~zz124/cs516_spring2015/lectures/IteratedRegisterCoalescing.pdf)辅助理解。论文文末的附录有完整的伪代码，你可以在它的基础上完成本次实验。
+本节实验要求实现论文 [TOPLAS'1996: *Iterated Register Coalescing*](https://dl.acm.org/doi/pdf/10.1145/229542.229546) 提出的寄存器分配算法。推荐大家完整读一遍论文，并通过[论文作者的讲解课件](https://people.cs.rutgers.edu/~zz124/cs516_spring2015/lectures/IteratedRegisterCoalescing.pdf)，（如果前面的链接失效了，可以打开[这个链接](https://pdfs.semanticscholar.org/1a58/9e3ff9e594597b4373d93ec030c09c880377.pdf)）辅助理解。论文文末的附录有完整的伪代码，你可以在它的基础上完成本次实验。
 
 下面简要介绍一些你可能需要的预备知识。
 
