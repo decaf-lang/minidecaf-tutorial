@@ -57,7 +57,7 @@ Program
 
 在`frontend/parser/ply_parser.py`文件中，你可以看到我们是如何定义语法规则的，文件的最末尾有`parser = yacc.yacc(start="program")`代表了parser的入口点是`program`，而`program`的定义在`p_program`函数中，你可以看到这个函数的docstring中定义了`program`的语法规则。**注意docstring在这里并非注释，而是用来定义语法规则的**。
 
-```python
+```
 def p_program(p):
     """
     program : function
@@ -178,7 +178,7 @@ Program
 
     在 `frontend/parser/ply_parser.py` 里加入新的 grammar rule：
 
-    ```python
+    ```
     def p_expression_precedence(p): # 定义的新语法规则名。可以随便起，但必须以 `p_` 开头以被 ply 识别。
         """
         expression : unary
