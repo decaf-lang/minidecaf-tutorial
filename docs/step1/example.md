@@ -30,9 +30,18 @@ MiniDecaf 源文件 --------> 字节流 -----------> AST -----------------------
 
 当程序读入程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
 
-`Int Identifier("main") LParen RParen LBrace Return Integer(2023) Comma RBrace`
+`Int Identifier("main") LParen RParen LBrace Return Integer(2023) Semi RBrace`
 
-并被 yacc 生成的 LALR(1) parser 转化为如下形式的 AST：
+在`frontend/lexer/lex.py`文件中你可以看到每个 Token 是如何定义的，每个`token`都会以`t_`开头。如`t_Semi = ";"`代表分号被解析以后会转化为 `Semi` 这个Token。而对于一些复杂的 Token，我们需要在`lexer`中定义一个正则表达式来匹配它，lex中通过定义一个函数来实现正则匹配。以匹配整数为例，函数的第一行`r"[0-9]+" `代表匹配用到的正则表达式，而函数的参数`t`则是被匹配得到的字符串，我们通过python中的类型转换将其变为一个整数，你可以在文件中看到以下代码：
+    
+```python
+def t_Integer(t):
+    r"[0-9]+"  # can be accessed from `t_Interger.__doc__`
+    t.value = int(t.value)
+    return t
+```
+
+之后，这些 token 会被 yacc 生成的 LALR(1) parser 转化为如下形式的 AST：
 
 ```
 Program
@@ -44,7 +53,25 @@ Program
                 |- (expr) IntLiteral(2023)
 ```
 
-得到的这个 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
+得到的 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
+
+在`frontend/parser/ply_parser.py`文件中，你可以看到我们是如何定义语法规则的，文件的最末尾有`parser = yacc.yacc(start="program")`代表了parser的入口点是`program`，而`program`的定义在`p_program`函数中，你可以看到这个函数的docstring中定义了`program`的语法规则。**注意docstring在这里并非注释，而是用来定义语法规则的**。
+
+```python
+def p_program(p):
+    """
+    program : function
+    """
+    p[0] = Program(p[1])
+
+def p_function_def(p):
+    """
+    function : type Identifier LParen RParen LBrace block RBrace
+    """
+    p[0] = Function(p[1], p[2], p[6])
+```
+
+我们先看`p_program`函数，我们定义的语法规则是`program`由一个`function`组成，对应的上下文无关表达式就是`program -> function`，同时代码中的`p[0] = Program(p[1])`代表了构建AST的计算过程，这里的`p[0]`代表的是当前语法规则的左部，`p[1]`代表的是当前语法规则的右部第一个符号（即`function`），`p[2]`代表的是当前语法规则的右部第二个符号（这里没有），以此类推。这样递归下去，就能解析完整个程序。`p[0] = Program(p[1])`最后就会变为`p[0] = Program(Function(...))`，这里`Program`、`Function`类的定义在`frontend/ast/tree.py`文件中，你可以看到`Function`这个类的构造函数接受了三个参数，分别是返回值类型、函数名和函数体。
 
 尝试运行 `python main.py --input example.c --parse` 你应该就能看到类似的输出。（记得自己写一个`example.c`）
 
