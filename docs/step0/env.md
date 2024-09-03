@@ -34,7 +34,7 @@
 
 3. ply
 
-   ply是一个自动生成词法分析器和语法分析器的工具，其中ply.lex为词法分析相关的模块而ply.yacc为语法分析相关。我们提供了 ply 的[文档](https://www.dabeaz.com/ply/ply.html)。
+   ply是一个自动生成词法分析器和语法分析器的工具，其中ply.lex为词法分析相关的模块而ply.yacc为语法分析相关。可以参考 ply 的[文档](https://www.dabeaz.com/ply/ply.html)。
 
 助教在项目中使用 [type hints](https://www.python.org/dev/peps/pep-0483/)，如果你习惯在 vscode 中进行开发的话同时推荐使用 [pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) 这一插件。
 

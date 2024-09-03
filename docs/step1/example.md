@@ -97,7 +97,7 @@ main:           # main 函数入口标签
 
 > 下面，我们同样也指出了在代码中我们是怎样实现这个中间代码生成 pass 的，大家可以参考注释和代码了解实现细节。
 
-`frontend/utils/tac` 目录下实现了生成 TAC 所需的底层类。其中 `tacinstr.py` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。
+`utils/tac` 目录下实现了生成 TAC 所需的底层类。其中 `tacinstr.py` 下实现了各种 TAC 指令，同学们可以在必要时修改或增加 TAC 指令。
 
 `frontend/tacgen/tacgen.py` 中通过一遍 AST 扫描完成 TAC 生成。和语义分析一样，这部分也使用了 Visitor 模式。这个文件里除了类型`TACGen`之外还有一个辅助类`TACFuncEmitter`，它用于处理产生TAC代码过程中一些相对底层的细节。在本框架中，TAC 程序的生成以函数为单位，对每个函数（step1-8 中只有 main 函数）分别使用一个 `TACFuncEmitter` 来生成对应的 TAC 函数代码。如果你增加了 TAC 指令，则可能需要在 `TACFuncEmitter` 类中增加生成相应指令的代码。
 
