@@ -1,6 +1,7 @@
 * [实验简介](README.md)
 * [勘误表](docs/step0/errate.md)
 * [RISC-V 参考资料](docs/ref/riscv.md)
+
 ## 前置准备
 
 * 配环境、跑测试
@@ -22,6 +23,7 @@
   * [规范](docs/step1/spec.md)
 
 ## Stage1：常量表达式
+
 * step2：一元操作
   * [实验要求](docs/step2/intro.md)
   * [通过例子学习](docs/step2/example.md)
@@ -39,12 +41,14 @@
   * [规范](docs/step4/spec.md)
 
 ## Stage2：变量
+
 * step5：局部变量和赋值
   * [实验要求](docs/step5/intro.md)
   * [通过例子学习](docs/step5/example.md)
   * [规范](docs/step5/spec.md)
 
 ## Stage3：作用域
+
 * step6：作用域和块语句
   * [实验要求](docs/step6/intro.md)
   * [通过例子学习](docs/step6/example.md)
@@ -52,6 +56,7 @@
   * [规范](docs/step6/spec.md)
 
 ## Stage4：条件和循环
+
 * step7：条件语句
   * [实验要求](docs/step7/intro.md)
   * [通过例子学习](docs/step7/example.md)
@@ -63,12 +68,14 @@
   * [规范](docs/step8/spec.md)
 
 ## Stage5：函数
+
 * step9：函数
   * [实验要求](docs/step9/intro.md)
   * [通过例子学习](docs/step9/example.md)
   * [规范](docs/step9/spec.md)
 
 ## Stage6（升级）：全局变量和数组
+
 * step10：全局变量
   * [实验要求](docs/step10/intro.md)
   * [通过例子学习](docs/step10/example.md)
@@ -92,9 +99,6 @@
   * [实验要求](docs/step13/intro.md)
   * [实验指导](docs/step13/example.md)
 
-* step14：SSA
-  * [实验要求](docs/step14/intro.md)
-  * [实验指导](docs/step14/example.md)
-
 ## 参考资料
+
 * [参考资料](REFERENCE.md)
