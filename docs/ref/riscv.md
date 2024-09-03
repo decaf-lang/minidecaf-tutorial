@@ -34,7 +34,7 @@ int mod(int x, int y) {
 
 ### 本地编译器
 
-关于目标代码生成有一个小技巧，如果你实在不知道某个运算符应该翻译成怎样的汇编代码，可以参考 gcc 的输出结果。例如，你可以通过 gcc 编译如下程序来了解如何翻译逻辑非运算符到 RISC-V 汇编 riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 foo.c -S -O3 -o foo.s（**记得加 -O3 或者 -O2 选项**）：
+你可以通过 gcc 编译如下程序来了解如何翻译逻辑非运算符到 RISC-V 汇编 riscv64-unknown-elf-gcc -march=rv32im -mabi=ilp32 foo.c -S -O3 -o foo.s（**记得加 -O3 或者 -O2 选项**）：
 ```c++
 int foo(int x) {
     return !x;
