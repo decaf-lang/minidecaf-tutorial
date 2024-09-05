@@ -126,7 +126,7 @@ Program
 
 * 怎么从 AST 变为 TAC 的？
 
-    什么是 [TAC](./arch.md#三地址码) ，如果你没读前面的章节，你可以快速看看这一部分。
+    什么是 [TAC](../step1/arch.md#三地址码) ，如果你没读前面的章节，你可以快速看看这一部分。
 
     这一步就是 `TACGen.transform` 函数(frontend/tacgen/tacgen.py)做的事了， `TACGen.transform` 接受一个AST树输入，输出一个TAC表示，请确保你已经对[Visitor 模式](./visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
 
