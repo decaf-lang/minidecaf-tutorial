@@ -99,6 +99,16 @@
   * [实验要求](docs/step13/intro.md)
   * [实验指导](docs/step13/example.md)
 
+## 大实验参考文档
+
+* 大实验（文档正在编写中）
+  * [大实验简介](docs/contest/intro.md)
+  * [中端设计](docs/contest/midend/midend.md)
+    * [静态单赋值](docs/contest/midend/ssa.md)
+    * [复写传播](docs/contest/midend/rp.md)
+    * [常量传播](docs/contest/midend/cp.md)
+    * [死代码消除](docs/contest/midend/dce.md)
+
 ## 参考资料
 
 * [参考资料](REFERENCE.md)
