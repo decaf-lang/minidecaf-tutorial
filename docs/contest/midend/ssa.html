@@ -107,7 +107,7 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="rp.html" />
+    <link rel="next" href="rp.md" />
     
     
     <link rel="prev" href="midend.html" />
@@ -1204,9 +1204,9 @@
             
         </li>
     
-        <li class="chapter " data-level="11.3.2" data-path="rp.html">
+        <li class="chapter " data-level="11.3.2" data-path="rp.md">
             
-                <a href="rp.html">
+                <span>
             
                     
                     复写传播
@@ -1355,15 +1355,15 @@ ret _T4
 <h4 id="&#x6211;&#x4EEC;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#x5462;&#xFF1F;">&#x6211;&#x4EEC;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x6837;&#x505A;&#x5462;&#xFF1F;</h4>
 <p>&#x56E0;&#x4E3A; SSA &#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8FDB;&#x800C;&#x7B80;&#x5316;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x3002;</p>
 <p>&#x4F8B;&#x5982;&#xFF0C;&#x8003;&#x8651;&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4F2A;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-assembly">y := 1
-y := 2
-x := y
+<pre><code class="lang-assembly">y = 1
+y = 2
+x = y
 </code></pre>
 <p>&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x5176;&#x4E2D;&#x53D8;&#x91CF; y &#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x8D4B;&#x503C;&#x662F;&#x4E0D;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x53D8;&#x91CF; y &#x88AB;&#x4F7F;&#x7528;&#x524D;&#xFF0C;&#x7ECF;&#x5386;&#x4E86;&#x7B2C;&#x4E8C;&#x6B21;&#x8D4B;&#x503C;&#x3002;&#x5BF9;&#x4E8E;&#x7F16;&#x8BD1;&#x5668;&#x800C;&#x8A00;&#xFF0C;&#x786E;&#x5B9A;&#x8FD9;&#x4E00;&#x5173;&#x7CFB;&#x5E76;&#x4E0D;&#x5BB9;&#x6613;&#xFF0C;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x5B9A;&#x4E49;&#x5206;&#x6790;&#xFF08;Reaching Definition Analysis&#xFF09;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5728;&#x5F88;&#x591A;&#x63A7;&#x5236;&#x6D41;&#x590D;&#x6742;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0A;&#x8FF0;&#x8FC7;&#x7A0B;&#x5C06;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x56F0;&#x96BE;&#x3002;</p>
 <p>&#x4F46;&#x5982;&#x679C;&#x5C06;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x53D8;&#x4E3A; SSA &#x5F62;&#x5F0F;&#xFF1A;</p>
-<pre><code class="lang-assembly">y1 := 1
-y2 := 2
-x1 := y2
+<pre><code class="lang-assembly">y1 = 1
+y2 = 2
+x1 = y2
 </code></pre>
 <p>&#x4E0A;&#x8FF0;&#x5173;&#x7CFB;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF0C;&#x7531;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x53EA;&#x88AB;&#x8D4B;&#x503C;&#x4E00;&#x6B21;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x5730;&#x5F97;&#x5230; x1 &#x7684;&#x503C;&#x6765;&#x81EA;&#x4E8E; y2 &#x8FD9;&#x4E00;&#x4FE1;&#x606F;&#x3002;</p>
 <p>&#x6B63;&#x56E0;&#x5982;&#x6B64;&#xFF0C;&#x8BB8;&#x591A;&#x7F16;&#x8BD1;&#x5668;&#x4F18;&#x5316;&#x7B97;&#x6CD5;&#x90FD;&#x5EFA;&#x7ACB;&#x5728; SSA &#x7684;&#x57FA;&#x7840;&#x4E4B;&#x4E0A;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x6B7B;&#x4EE3;&#x7801;&#x6D88;&#x9664;&#xFF08;dead code elimination&#xFF09;&#x3001;&#x5E38;&#x91CF;&#x4F20;&#x64AD;&#xFF08;constant propagation&#xFF09;&#x3001;&#x503C;&#x57DF;&#x4F20;&#x64AD;&#xFF08;value range propagation&#xFF09;&#x7B49;&#x3002;</p>
@@ -1503,7 +1503,7 @@ _L2:
                 </a>
                 
                 
-                <a href="rp.html" class="navigation navigation-next " aria-label="Next page: 复写传播">
+                <a href="rp.md" class="navigation navigation-next " aria-label="Next page: 复写传播">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1514,7 +1514,7 @@ _L2:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"静态单赋值","level":"11.3.1","depth":2,"next":{"title":"复写传播","level":"11.3.2","depth":2,"path":"docs/contest/midend/rp.md","ref":"docs/contest/midend/rp.md","articles":[]},"previous":{"title":"中端设计","level":"11.3","depth":1,"path":"docs/contest/midend/midend.md","ref":"docs/contest/midend/midend.md","articles":[{"title":"静态单赋值","level":"11.3.1","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},{"title":"复写传播","level":"11.3.2","depth":2,"path":"docs/contest/midend/rp.md","ref":"docs/contest/midend/rp.md","articles":[]},{"title":"常量传播","level":"11.3.3","depth":2,"path":"docs/contest/midend/cp.md","ref":"docs/contest/midend/cp.md","articles":[]},{"title":"死代码消除","level":"11.3.4","depth":2,"path":"docs/contest/midend/dce.md","ref":"docs/contest/midend/dce.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/midend/ssa.md","mtime":"2024-09-06T06:19:25.201Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-06T06:20:06.568Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"静态单赋值","level":"11.3.1","depth":2,"next":{"title":"复写传播","level":"11.3.2","depth":2,"path":"docs/contest/midend/rp.md","ref":"docs/contest/midend/rp.md","articles":[]},"previous":{"title":"中端设计","level":"11.3","depth":1,"path":"docs/contest/midend/midend.md","ref":"docs/contest/midend/midend.md","articles":[{"title":"静态单赋值","level":"11.3.1","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},{"title":"复写传播","level":"11.3.2","depth":2,"path":"docs/contest/midend/rp.md","ref":"docs/contest/midend/rp.md","articles":[]},{"title":"常量传播","level":"11.3.3","depth":2,"path":"docs/contest/midend/cp.md","ref":"docs/contest/midend/cp.md","articles":[]},{"title":"死代码消除","level":"11.3.4","depth":2,"path":"docs/contest/midend/dce.md","ref":"docs/contest/midend/dce.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/midend/ssa.md","mtime":"2024-09-06T08:02:36.038Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-06T08:03:14.733Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
