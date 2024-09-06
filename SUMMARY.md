@@ -1,4 +1,5 @@
 * [实验简介](README.md)
+* [实验进度安排](docs/misc/schedule.md)
 * [勘误表](docs/step0/errate.md)
 * [RISC-V 参考资料](docs/ref/riscv.md)
 
