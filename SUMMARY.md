@@ -94,7 +94,7 @@
 
 ## Stage7（升级）：寄存器分配与代码优化
 
-* [选作二说明](docs/step13/readme.md)
+* [选做二说明](docs/step13/readme.md)
 
 * step13：寄存器分配算法改进
   * [实验要求](docs/step13/intro.md)
