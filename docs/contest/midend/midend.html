@@ -1383,27 +1383,38 @@ _L2:
 <pre><code class="lang-C"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
     <span class="hljs-keyword">int</span> a = <span class="hljs-number">2</span>;
     <span class="hljs-keyword">int</span> b = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">if</span>(a){
+    <span class="hljs-keyword">if</span>(a)
         b = <span class="hljs-number">1</span>;
-    } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">else</span>
         b = <span class="hljs-number">-1</span>;
-    }
     <span class="hljs-keyword">return</span> b;
 }
 </code></pre>
 <p>&#x751F;&#x6210;&#x7684;AST&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>program 
-|  function type(int) identifier(main)
-|  block 
-|  |  int identifier(a) = int(2)
-|  |  int identifier(b) = int(0)
-|  |  if identifier(a)
-|  |  |  block 
-|  |  |  |  identifier(b) = int(1)
-|  |  else
-|  |  |  block 
-|  |  |  |  identifier(b) = int(-1)
-|  |  return identifier(b)
+<pre><code>Program
+    |- (children[0]) Function
+        |- (ret_t) TInt
+        |- (ident) Identifier(&quot;main&quot;)
+        |- (body) Block
+            |- (children[0]) VarDecl
+                |- (type) TInt
+                |- (ident) Identifier(&quot;a&quot;)
+                |- (init) IntLiteral(2)
+            |- (children[1]) VarDecl
+                |- (type) TInt
+                |- (ident) Identifier(&quot;b&quot;)
+                |- (init) IntLiteral(0)
+            |- (children[2]) If
+                |- (cond) Identifier(&quot;a&quot;)
+                |- (children[0]) Assign
+                    |- (lhs) Identifier(&quot;b&quot;)
+                    |- (rhs) IntLiteral(1)
+                |- (children[1]) Assign
+                    |- (lhs) Identifier(&quot;b&quot;)
+                    |- (rhs) UnaryOp(NEG)
+                        |- (expr) IntLiteral(1)
+            |- (children[3]) Return
+                |- (expr) Identifier(&quot;b&quot;)
 </code></pre><p>&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x904D;&#x5386;AST&#x7684;&#x8282;&#x70B9;&#x6765;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;IR&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x4F60;&#x9047;&#x5230;&#x4E00;&#x4E2A;<code>if</code>&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5148;&#x751F;&#x6210;&#x4E09;&#x4E2A;&#x6807;&#x7B7E;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x8868;&#x793A;<code>if</code>&#x8BED;&#x53E5;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x8868;&#x793A;<code>else</code>&#x8BED;&#x53E5;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x8868;&#x793A;&#x6574;&#x4E2A;<code>if</code>&#x8BED;&#x53E5;&#x7684;&#x7ED3;&#x675F;&#x3002;&#x5148;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x751F;&#x6210;if&#x6761;&#x4EF6;&#x6EE1;&#x8DB3;&#x5BF9;&#x5E94;&#x7684;&#x6807;&#x7B7E;&#x4EE5;&#x53CA;&#x4EE3;&#x7801;&#xFF0C;&#x6700;&#x540E;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x8DF3;&#x8F6C;&#x8BED;&#x53E5;&#xFF0C;&#x8DF3;&#x8FC7;else&#x5757;&#x3002;&#x7136;&#x540E;&#x5728;&#x751F;&#x6210;else&#x5757;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x4EE3;&#x7801;&#x3002;</p>
 <p>&#x4F8B;&#x5982;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x8F6C;&#x5316;&#x4E3A;IR&#x540E;&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-asm">_main:
@@ -1520,7 +1531,7 @@ ret _T5
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"中端设计","level":"11.3","depth":1,"next":{"title":"静态单赋值","level":"11.3.1","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},"previous":{"title":"前端设计","level":"11.2","depth":1,"path":"docs/contest/frontend.md","ref":"docs/contest/frontend.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/midend/midend.md","mtime":"2024-09-06T16:54:01.755Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-06T16:54:43.474Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"中端设计","level":"11.3","depth":1,"next":{"title":"静态单赋值","level":"11.3.1","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},"previous":{"title":"前端设计","level":"11.2","depth":1,"path":"docs/contest/frontend.md","ref":"docs/contest/frontend.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/midend/midend.md","mtime":"2024-09-06T18:08:54.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-06T18:09:37.267Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
