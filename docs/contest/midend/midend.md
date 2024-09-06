@@ -65,44 +65,57 @@ TAC 指令与汇编指令比较类似，每条 TAC 指令由操作码和操作�
 
 ## 中间代码生成
 
-前端解析后，我们会得到一棵抽象语法树，接下来我们需要将这棵抽象语法树转换为中间代码。依据你设计的IR，你需要在保证语义的情况下，将AST用你的IR表示出来。
+前端解析后，我们会得到一棵抽象语法树，接下来我们需要将这棵抽象语法树转换为中间代码。依据你设计的IR，你需要在保证语义的情况下，将AST用你的IR表示出来。可以参考基础实验框架中`frontend/tacgen/`的代码。
 
 如以下是一个简单的例子：
 
 ```C
 int main(){
-    if(1){
-        return 1;
+    int a = 2;
+    int b = 0;
+    if(a){
+        b = 1;
     } else {
-        return 0;
+        b = -1;
     }
+    return b;
 }
 ```
 
 生成的AST可能如下：
 ```
-program [
-  function [
-    type(int)
-    identifier(main)
-    block [
-      if [
-        int(1)
-        block [
-          return [
-            int(1)
-          ]
-        ]
-        block [
-          return [
-            int(0)
-          ]
-        ]
-      ]
-    ]
-  ]
-]
+program 
+|  function type(int) identifier(main)
+|  block 
+|  |  int identifier(a) = int(2)
+|  |  int identifier(b) = int(0)
+|  |  if identifier(a)
+|  |  |  block 
+|  |  |  |  identifier(b) = int(1)
+|  |  else
+|  |  |  block 
+|  |  |  |  identifier(b) = int(-1)
+|  |  return identifier(b)
 ```
+
+你需要通过遍历AST的节点来将其转换为IR。例如，当你遇到一个`if`节点时，你可以先生成三个标签，一个用于表示`if`语句的开始，一个用于表示`else`语句的开始，一个用于表示整个`if`语句的结束。先生成一个判断语句，在生成if条件满足对应的标签以及代码，最后生成一个跳转语句，跳过else块。然后在生成else块的标签和代码。
+
+例如上述代码转化为IR后可能如下：
+
+```asm
+_main:
+_T0 = 2  # 代表a = 2
+_T1 = 0  # 代表b = 0
+bnez _T0, _L0, _L1 # 如果a != 0，跳转到_L0，否则跳转到_L1
+_L0:
+    _T2 = 1  # 代表b = 1
+    jump _L2 # 跳转到_L2，跳过else块
+_L1:
+    _T2 = -1 # 代表b = -1
+    jump _L2 # 跳转到_L2
+_L2:
+    ret _T2
+``` 
 
 ## 中端优化
 
