@@ -55,7 +55,7 @@ Program
 
 得到的 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
 
-在`frontend/parser/ply_parser.py`文件中，你可以看到我们是如何定义语法规则的，文件的最末尾有`parser = yacc.yacc(start="program")`代表了parser的入口点是`program`，而`program`的定义在`p_program`函数中，你可以看到这个函数的docstring中定义了`program`的语法规则。**注意docstring在这里并非注释，而是用来定义语法规则的**。
+在`frontend/parser/ply_parser.py`文件中，你可以看到我们是如何定义语法规则的，文件的最末尾有`parser = yacc.yacc(start="program")`代表了parser的入口点是`program`，而`program`的定义在`p_program`函数中，你可以看到这个函数的docstring中定义了`program`的语法规则。**注意docstring（即三个引号之间的内容）在这里并非注释，而是用于定义语法规则。**
 
 ```
 def p_program(p):
@@ -126,7 +126,7 @@ main:             # 主函数入口符号
     ret           # 返回
 ```
 
-实验框架中关于目标代码生成的文件主要集中 `backend` 文件夹下，step1 中你只需要关注 `backend/riscv` 文件夹中的 `riscvasmemitter.py` 以及 `utils/riscv.py` 即可。具体来说 `backend/asm.py` 中会先调用 `riscvasmemitter.py` 中的 `selectInstr` 方法对每个函数内的 TAC 指令选择相应的 RISC-V 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成真正的汇编指令（即所有操作数都已经分配好寄存器的指令），最后通过 `RiscvSubroutineEmitter` 的 `emitEnd` 方法生成每个函数的 RISC-V 汇编。
+实验框架中关于目标代码生成的文件主要集中 `backend` 文件夹下，step1 中你只需要关注 `backend/riscv` 文件夹中的 `riscvasmemitter.py` 以及 `utils/riscv.py` 即可。具体来说 `backend/asm.py` 中会先调用 `riscvasmemitter.py` 中的 `selectInstr` 方法对每个函数内的 TAC 指令选择相应的 RISC-V 指令，然后会进行数据流分析、寄存器分配等流程，在寄存器分配结束后生成真正的汇编指令（即所有操作数都已经分配好寄存器的指令），最后通过 `RiscvSubroutineEmitter` 的 `emitFunc` 方法生成每个函数的 RISC-V 汇编。
 
 ## 思考题
 
