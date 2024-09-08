@@ -4,24 +4,9 @@
 
 &nbsp;
 
-Q: `RiscvAsmEmitter` 下 `selectInstr` 函数的返回值类型`tuple[list[str],SubroutineInfo]`貌似不太合理，返回第一个元素实际上是`list[TACInstr]`
-A: 感谢同学指出框架问题，请同学们将`backend/asmemitter.py`下的`AsmEmitter`抽象类和`backend/riscv/riscvasmemitter.py`下的`RiscvAsmEmitter`类中的`selectInstr`函数返回值标注改为`tuple[list[TACInstr], SubroutineInfo]`。
-
-&nbsp;
-
 Q：使用 `pip install -r ./requirements.txt` 命令无法正确安装依赖？
 
 A：如果你安装了多版本的 python，使用 pip 命令未必会对应 3.9 版本的包管理器。请尝试使用 `python3.9 -m pip install -r ./requirements.txt` 安装依赖。
-
-&nbsp;
-
-Q：代码框架无法正确输出三地址码？
-
-A：非常抱歉，框架中输出时有一个小错误。在 `main.py` 中，输出三地址码时，请使用 `prog.printTo()` 语句；此外，想要输出带有缩进格式的抽象语法树，请使用如下语句：
-```python
-printer = TreePrinter(indentLen=<缩进空格数>)
-printer.work(prog)
-```
 
 &nbsp;
 
@@ -38,13 +23,7 @@ A：代码框架的后端除了要修改指令选择部分之外，还需要修�
 
 Q：我怎样才能知道我的提交通过了所有测试用例？
 
-A：在 **2021.10.5 更新评测脚本**之后，现在通过 CI 结果可以直接判断是否通过了本阶段测例（不过你需要确保你的提交在对应的 branch 上，如 stage1 对应 stage-1 分支）。本地测试不受此次更新影响，因此更新本地的测试仓库 submodule 不是必须的。
-
-&nbsp;
-
-Q：实验指导书中step4的目标代码生成部分，给出的IR对应汇编指令不正确，修改了原有寄存器的值？
-
-A：原先的汇编指令确实有问题，我们已经修正。感谢彭晋钧和郭昊同学！
+A：可以通过本地测试或者通过 CI 结果可以判断是否通过了本阶段测例（不过你需要确保你的提交在对应的 branch 上，如 stage1 对应 stage-1 分支）。
 
 &nbsp;
 
@@ -57,19 +36,3 @@ A：
 2. 最新的 CI 会检查是否通过所有测例及是否有提交报告，只有通过所有测例且正确地提交报告，才会算作 pass。
 
 3. 如果关于报告提交有任何问题，请及时联系助教。
-
-&nbsp;
-
-Q：代码框架寄存器分配中 allocRegFor 函数实现有错误？(已经在2023-2024年编译课程中修复)
-
-A：请修改 bruteregalloc.py 中第 119 行处随机数生成的范围，将上界改为 `len(...) - 1`，避免溢出。感谢孟本源同学！
-
-```python
-reg = self.emitter.allocatableRegs[
-    random.randint(0, len(self.emitter.allocatableRegs) - 1)
-]
-```
-
-Q: Parser Stage中的`test-parser-stage.sh`无法正常使用?（Parser Stage已经在2023-2024年编译课程移除）
-
-A: 发布作业时打包有失误，请使用原有的`minidecaf-tests`中的`check.sh`测试脚本，将parser-stage的前端接入到原先的中后端来进行测试。
