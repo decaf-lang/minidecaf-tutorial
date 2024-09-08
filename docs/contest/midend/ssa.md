@@ -1,5 +1,5 @@
 
-#### 静态单赋值
+# 静态单赋值
 
 > 静态单赋值这一小节参考并改编自北航的编译课程实验文档：
 > https://buaa-se-compiling.github.io/miniSysY-tutorial/challenge/mem2reg/help.html
@@ -88,11 +88,11 @@ _L1:
   _T2 = PHI [_T0, _L0], [_T6, _L2]  # int i = 2
   _T3 = PHI [_T1, _L0], [_T7, _L2]  # int temp = 1
   _T4 = 5
-  _T5 = LT T2, _T4                  # i < 5
+  _T5 = _T2 < _T4                   # i < 5
   beqz _T5, _L3
 _L2:                                # loop label
-  _T7 = MUL _T3, _T2                # temp = temp * i
-  _T6 = ADD _T2, _T1                # i = i + 1
+  _T7 = _T3 * _T2                   # temp = temp * i
+  _T6 = _T2 + _T1                   # i = i + 1
   jump _L1
 _L3:                                # break label
   ret _T3
@@ -115,34 +115,34 @@ mem2reg 使得我们可以在生成中间代码时，使用 Alloc、Load 和 Sto
 
 ```assembly
 main:
-  _T0 = ALLOC 4
-  _T1 = ALLOC 4
-  STORE _T0, 1
-  LOAD _T2, _T0
-  _T4 = GT _T2, 0
-  BEQZ _T4, _L2
-  STORE _T2, 1
+  _T0 = alloc 4
+  _T1 = alloc 4
+  store _T0, 1
+  load _T2, _T0
+  _T4 = _T2 > 0
+  beqz _T4, _L2
+  store _T2, 1
 _L1:
-  LOAD _T5, _T2
-  return _T5
+  load _T5, _T2
+  ret _T5
 _L2:
-  _T6 = SUB 0, 1
-  STORE _T2, _T6
-  JUMP _L1
+  _T6 = 0 - 1
+  store _T2, _T6
+  jump _L1
 ```
 
 在此基础上，进行 mem2reg 转化：
 
 ```assembly
 main:
-  _T0 = GT 1, 0
-  BEGZ _T0, _L2
+  _T0 = 1 > 0
+  beqz _T0, _L2
 _L1:
   _T2 = phi [1, main], [_T3, _L2]
-  return _T2
+  ret _T2
 _L2:
-  _T3 = SUB 0, 1
-  JUMP _L1
+  _T3 = 0 - 1
+  jump _L1
 ```
 
 需要注意的是，所有的 Phi 指令应当在基本块的开头同时支持并行执行（即在同一个基本块内的 Phi 指令的顺序对结果没有影响）。
