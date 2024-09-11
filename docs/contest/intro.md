@@ -100,7 +100,7 @@
 
     评测将会在我们提供的服务器上进行，通过QEMU模拟RISC-V或者ARM架构的CPU运行你的程序。经过测试QEMU与真实硬件的性能相对差值是比较恒定的（如比较gcc`-O1`与`-O2`）。
 
-    实验评测仓库在[TODO: 这里](TODO)。
+    实验评测仓库在[这里](https://github.com/decaf-lang/minidecaf-additional-test)。
 
     你也可以选择参加期末考，那么你的成绩将会是评分方案一、二取最高的一个。
 
