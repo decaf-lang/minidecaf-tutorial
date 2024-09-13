@@ -16,7 +16,7 @@ Antlr (Another Tool for Language Recognition) 是一个功能强大的解析器�
 
 ## 第一部分:依赖环境准备
 
-ANTLR 工具需要 JVM 才能执行；另一方面，为了方便使用 grun，你需要一个能够编译 java 源文件的环境。因此，你需要一个完整的 Java Development Kit。
+ANTLR 工具需要 JVM 才能执行。
 
 直接使用包管理器安装：
 
@@ -28,49 +28,22 @@ sudo apt install openjdk-19-jdk
 
 你需要从 [ANTLR Download](https://www.antlr.org/download.html) 下载 `antlr-4.13.2-complete.jar`(截至文档写作时此为最新版)。
 
-然后，你需要将该 jar 包的路径加入到环境变量 `CLASSPATH` 中，注意将下面 `/path/to/your/` 改为你的路径：
-
-```
-export CLASSPATH=".:/path/to/your/antlr-4.13.2-complete.jar:$CLASSPATH"
-```
-
-> 最好将它加到 `~/.bashrc` 中（对于 bash）,以避免每次打开终端时需要重新配置。
-
-##### 检查
-
-在命令行中输入
+使用以下命令（记得把`/path/to/antlr-4.9.2-complete.jar`替换成你的 antlr 路径）测试是否能正常使用：
 
 ```bash
-java org.antlr.v4.Tool
+java -jar /path/to/antlr-4.9.2-complete.jar
 ```
 
-你应该可以看见 `ANTLR Parser Generator  Version 4.13.2` 以及一些帮助信息,这说明可以正确使用 Antlr 了。
-
-### 2. antlr4 和 grun 工具
-
-可以定义别名 `antlr4` 表示 ANTLR 工具，即
+你应该能看到类似以下的输出：
 
 ```bash
-alias antlr4='java org.antlr.v4.Tool'
+ANTLR Parser Generator  Version 4.13.2
+ -o ___              specify output directory where all output is generated
+ -lib ___            specify location of grammars, tokens files
+ -atn                generate rule augmented transition network diagrams
+ -encoding ___       specify grammar file encoding; e.g., euc-jp
+... ...
 ```
-
-这样，你可以直接使用 `antlr4 your.g4` 来为 your.g4 生成解析器源码。
-
-ANTLR 的运行时库中还提供了一个灵活的测试工具 `TestRig`，它可以显示解析器如何匹配输入的许多相关信息。`TestRig`使用 Java 的反射机制来调用编译过的解析器。为了方便用户使用，ANTLR 提供了一个 `grun` 工具来使用 `TestRig`。
-
-`grun` 本质上是一个别名，可以定义如下：
-
-```bash
-alias grun='java org.antlr.v4.runtime.misc.TestRig'
-```
-
-或
-
-```bash
-alias grun='java org.antlr.v4.gui.TestRig'
-```
-
-同样的，你可以将这些别名命令加入到 `~/.bashrc`，以节省你配置和使用的时间。
 
 ### 3. ANTLR 运行时的编译链接
 
@@ -265,7 +238,7 @@ DIV: '/' ;
 在确认环境配置无误后，我们可以使用 ANTLR 和文法文件生成所需的 lexer & parser，只需要执行
 
 ```bash
-antlr4 -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer_parser simpleC.g4
+java -jar /path/to/antlr-4.9.2-complete.jar -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer_parser simpleC.g4
 ```
 
 `-no-listener` 和 `-visitor` 选项分别用于禁止生成 listener（默认是激活的）和激活 visitor 模式。如果你还不知道 visitor 是什么，不用担心，我们稍后会看到。
