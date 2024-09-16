@@ -1344,8 +1344,8 @@
 </code></pre>
 <h3 id="1-&#x83B7;&#x53D6;-antlr">1. &#x83B7;&#x53D6; ANTLR</h3>
 <p>&#x4F60;&#x9700;&#x8981;&#x4ECE; <a href="https://www.antlr.org/download.html" target="_blank">ANTLR Download</a> &#x4E0B;&#x8F7D; <code>antlr-4.13.2-complete.jar</code>(&#x622A;&#x81F3;&#x6587;&#x6863;&#x5199;&#x4F5C;&#x65F6;&#x6B64;&#x4E3A;&#x6700;&#x65B0;&#x7248;)&#x3002;</p>
-<p>&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF08;&#x8BB0;&#x5F97;&#x628A;<code>/path/to/antlr-4.9.2-complete.jar</code>&#x66FF;&#x6362;&#x6210;&#x4F60;&#x7684; antlr &#x8DEF;&#x5F84;&#xFF09;&#x6D4B;&#x8BD5;&#x662F;&#x5426;&#x80FD;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#xFF1A;</p>
-<pre><code class="lang-bash">java -jar /path/to/antlr-4.9.2-complete.jar
+<p>&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF08;&#x8BB0;&#x5F97;&#x628A;<code>/path/to/antlr-4.13.2-complete.jar</code>&#x66FF;&#x6362;&#x6210;&#x4F60;&#x7684; antlr &#x8DEF;&#x5F84;&#xFF09;&#x6D4B;&#x8BD5;&#x662F;&#x5426;&#x80FD;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-bash">java -jar /path/to/antlr-4.13.2-complete.jar
 </code></pre>
 <p>&#x4F60;&#x5E94;&#x8BE5;&#x80FD;&#x770B;&#x5230;&#x7C7B;&#x4F3C;&#x4EE5;&#x4E0B;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
 <pre><code class="lang-bash">ANTLR Parser Generator  Version 4.13.2
@@ -1439,23 +1439,23 @@ file(GLOB_RECURSE ANTLR4_SRC <span class="hljs-string">&quot;*.cpp&quot;</span>)
 </code></pre>
 </li>
 <li><p><code>parse tree</code></p>
-<pre><code>parse tree: 
-(program 
-        (funcDeclaration int main ( ) { 
-            (statements 
-                (statement int a = 
-                    (expression 1) ;) 
-                (statement int b = 
-                    (expression 
-                        (expression a) + 
-                        (expression 2)) ;) 
-                (statement int c = 
-                    (expression 
-                        (expression 
-                            (expression a) + 
-                            (expression b)) + 
-                        (expression 1)) ;) 
-                (statement return 
+<pre><code>parse tree:
+(program
+        (funcDeclaration int main ( ) {
+            (statements
+                (statement int a =
+                    (expression 1) ;)
+                (statement int b =
+                    (expression
+                        (expression a) +
+                        (expression 2)) ;)
+                (statement int c =
+                    (expression
+                        (expression
+                            (expression a) +
+                            (expression b)) +
+                        (expression 1)) ;)
+                (statement return
                     (expression c) ;)) }))
 </code></pre></li>
 </ul>
@@ -1525,7 +1525,7 @@ DIV: &apos;/&apos; ;
 <p>&#x901A;&#x8FC7;&#x7F16;&#x5199; <code>.g4</code> &#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x4E3A; ANTLR &#x63D0;&#x4F9B;&#x8DB3;&#x591F;&#x7684;&#x4FE1;&#x606F;&#x6765;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x80FD;&#x591F;&#x7406;&#x89E3;&#x548C;&#x5904;&#x7406;&#x7279;&#x5B9A;&#x8BED;&#x8A00;&#x7684;&#x89E3;&#x6790;&#x5668;&#x3002;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x7684;&#x6587;&#x6CD5;&#x5B9A;&#x4E49;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x8BBE;&#x8BA1;&#x548C;&#x8BED;&#x8A00;&#x5DE5;&#x5177;&#x5F00;&#x53D1;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
 <h3 id="2-&#x4F7F;&#x7528;&#x6587;&#x6CD5;&#x6587;&#x4EF6;&#x751F;&#x6210;-lexer--parser">2. &#x4F7F;&#x7528;&#x6587;&#x6CD5;&#x6587;&#x4EF6;&#x751F;&#x6210; lexer &amp; parser</h3>
 <p>&#x5728;&#x786E;&#x8BA4;&#x73AF;&#x5883;&#x914D;&#x7F6E;&#x65E0;&#x8BEF;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; ANTLR &#x548C;&#x6587;&#x6CD5;&#x6587;&#x4EF6;&#x751F;&#x6210;&#x6240;&#x9700;&#x7684; lexer &amp; parser&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x6267;&#x884C;</p>
-<pre><code class="lang-bash">java -jar /path/to/antlr-4.9.2-complete.jar -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer_parser simpleC.g4
+<pre><code class="lang-bash">java -jar /path/to/antlr-4.13.2-complete.jar -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer_parser simpleC.g4
 </code></pre>
 <p><code>-no-listener</code> &#x548C; <code>-visitor</code> &#x9009;&#x9879;&#x5206;&#x522B;&#x7528;&#x4E8E;&#x7981;&#x6B62;&#x751F;&#x6210; listener&#xFF08;&#x9ED8;&#x8BA4;&#x662F;&#x6FC0;&#x6D3B;&#x7684;&#xFF09;&#x548C;&#x6FC0;&#x6D3B; visitor &#x6A21;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x4F60;&#x8FD8;&#x4E0D;&#x77E5;&#x9053; visitor &#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#xFF0C;&#x6211;&#x4EEC;&#x7A0D;&#x540E;&#x4F1A;&#x770B;&#x5230;&#x3002;</p>
 <p>-o &#x9009;&#x9879;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5728; <code>src/frontend/lexer_parser</code> &#x76EE;&#x5F55;&#x4E2D;&#x8F93;&#x51FA;&#x751F;&#x6210;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
@@ -1572,31 +1572,189 @@ DIV: &apos;/&apos; ;
 <p>&#x73B0;&#x5728;&#xFF0C;&#x4F7F;&#x7528; cmake &#x6784;&#x5EFA;&#x5E76;&#x8FD0;&#x884C;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x4F60;&#x5C06;&#x4F1A;&#x770B;&#x5230; <code>test.c</code> &#x5BF9;&#x5E94;&#x7684; parse tree &#x88AB;&#x8F93;&#x51FA;&#x5230;&#x7EC8;&#x7AEF;&#x4E2D;&#x3002;</p>
 <pre><code class="lang-bash">./my_compiler test.c
 </code></pre>
-<p>&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x5229;&#x7528; ANTLR &#x5B9E;&#x73B0;&#x4E86;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x5206;&#x6790;&#x8F93;&#x5165;&#xFF08;&#x5373;&#x5B57;&#x7B26;&#xFF09;&#x5E76;&#x4EA7;&#x751F; token&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x6790;&#x5668;&#x5206;&#x6790; token &#x4EE5;&#x4EA7;&#x751F; parser tree&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x628A;&#x4E00;&#x4E2A;&#x770B;&#x4F3C;&#x88AB;&#x590D;&#x6742;&#x5730;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#x7684;&#x6587;&#x672C;&#x8F6C;&#x5316;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x201C;&#x6811;&#x201D;&#xFF0C;&#x6709;&#x4E86;&#x201C;&#x6811;&#x201D;&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5404;&#x79CD;&#x82B1;&#x5F0F;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6811;&#x5E76;&#x5BF9;&#x8FD9;&#x4E2A;&#x6811;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x4F55;&#x904D;&#x5386;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x7528;&#x5230;&#x4E86; visitor &#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x5229;&#x7528; ANTLR &#x5B9E;&#x73B0;&#x4E86;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x5206;&#x6790;&#x8F93;&#x5165;&#xFF08;&#x5373;&#x5B57;&#x7B26;&#xFF09;&#x5E76;&#x4EA7;&#x751F; token&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x6790;&#x5668;&#x5206;&#x6790; token &#x4EE5;&#x4EA7;&#x751F; parser tree&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x628A;&#x4E00;&#x4E2A;&#x770B;&#x4F3C;&#x88AB;&#x590D;&#x6742;&#x5730;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#x7684;&#x6587;&#x672C;&#x8F6C;&#x5316;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x201C;&#x6811;&#x201D;&#xFF0C;&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; visitor &#x6A21;&#x5F0F;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6811;&#x5E76;&#x5BF9;&#x8FD9;&#x4E2A;&#x6811;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x3002;</p>
 <h2 id="&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#xFF1A;ast-&#x7684;&#x751F;&#x6210;">&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#xFF1A;AST &#x7684;&#x751F;&#x6210;</h2>
-<h3 id="visitor-&#x6A21;&#x5F0F;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#x65B9;&#x6CD5;">Visitor &#x6A21;&#x5F0F;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#x65B9;&#x6CD5;</h3>
-<p>&#x5728;&#x7F16;&#x5199;&#x7F16;&#x8BD1;&#x5668;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4F7F;&#x7528; Visitor &#x6A21;&#x5F0F;&#x6765;&#x904D;&#x5386;&#x548C;&#x5904;&#x7406; AST&#x3002;Visitor &#x6A21;&#x5F0F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x89E3;&#x8026;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x8282;&#x70B9;&#x4E0A;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x3002;&#x901A;&#x8FC7;&#x5B9A;&#x4E49; Visitor &#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E; AST &#x7684;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x6267;&#x884C;&#x7279;&#x5B9A;&#x7684;&#x903B;&#x8F91;&#x64CD;&#x4F5C;&#x3002;</p>
-<p>&#x5728; Antlr &#x4E2D;&#xFF0C;Visitor &#x7C7B;&#x4F1A;&#x6839;&#x636E;&#x8BED;&#x6CD5;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
-<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MiniDecafVisitor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MiniDecafBaseVisitor</span>&lt;<span class="hljs-title">Void</span>&gt; </span>{
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Void <span class="hljs-title">visitAddSub</span><span class="hljs-params">(MiniDecafParser.AddSubContext ctx)</span> </span>{
-        <span class="hljs-comment">// &#x5904;&#x7406;&#x52A0;&#x6CD5;&#x548C;&#x51CF;&#x6CD5;&#x64CD;&#x4F5C;</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-    }
-}
+<p>&#x5728;&#x751F;&#x6210; AST &#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x662F;&#x5728;&#x89E3;&#x6790;&#x6811;&#xFF08;parse tree&#xFF09;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x901A;&#x8FC7;&#x63D0;&#x53D6;&#x8BED;&#x6CD5;&#x7684;&#x6838;&#x5FC3;&#x7ED3;&#x6784;&#xFF0C;&#x751F;&#x6210;&#x66F4;&#x52A0;&#x7CBE;&#x7B80;&#x7684;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#xFF08;AST&#xFF09;&#x3002;AST &#x7684;&#x8282;&#x70B9;&#x901A;&#x5E38;&#x53EA;&#x5305;&#x542B;&#x4E0E;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x76F8;&#x5173;&#x7684;&#x6838;&#x5FC3;&#x4FE1;&#x606F;&#xFF0C;&#x53BB;&#x9664;&#x4E86;&#x5197;&#x4F59;&#x7684;&#x8BED;&#x6CD5;&#x4FE1;&#x606F;&#x3002;</p>
+<h3 id="1-&#x5B9A;&#x4E49;-ast-&#x7ED3;&#x70B9;">1. &#x5B9A;&#x4E49; AST &#x7ED3;&#x70B9;</h3>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E3A; AST &#x5B9A;&#x4E49;&#x7ED3;&#x70B9;&#x7C7B;&#x578B;&#x3002;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x5BF9;&#x5E94;&#x4E8E;&#x4E00;&#x79CD;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#xFF0C;&#x6BD4;&#x5982;&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x3001;&#x5FAA;&#x73AF;&#x3001;&#x8868;&#x8FBE;&#x5F0F;&#x7B49;&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; <code>If</code> &#x8BED;&#x53E5;&#x7ED3;&#x70B9;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> IfNode : <span class="hljs-keyword">public</span> ASTNode {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; cond;   <span class="hljs-comment">// &#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; then;   <span class="hljs-comment">// then &#x8BED;&#x53E5;&#x5757;</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; other;  <span class="hljs-comment">// optional &#x7684; else &#x8BED;&#x53E5;&#x5757;</span>
+    <span class="hljs-keyword">bool</span> has_otherwise;
+    IfNode(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; cond, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; then,
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; other = <span class="hljs-literal">nullptr</span>)
+    : cond(<span class="hljs-built_in">std</span>::move(cond)), then(<span class="hljs-built_in">std</span>::move(then)), other(<span class="hljs-built_in">std</span>::move(other)),
+      has_otherwise(other != <span class="hljs-literal">nullptr</span>) {}
+};
 </code></pre>
-<p>&#x901A;&#x8FC7;&#x8986;&#x5199;<code>BaseVisitor</code>&#x4E2D;&#x7684;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5BF9;<code>parse tree</code>&#x7684;&#x9012;&#x5F52;&#x904D;&#x5386;&#x548C;&#x5904;&#x7406;&#xFF0C;&#x751F;&#x6210;AST&#x6216;&#x6267;&#x884C;&#x9759;&#x6001;&#x68C0;&#x67E5;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A; <code>IfNode</code> &#x7ED3;&#x70B9;&#x5305;&#x542B;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;<code>cond</code>&#x3001;<code>then</code> &#x8BED;&#x53E5;&#x5757;&#x548C;&#x53EF;&#x9009;&#x7684; <code>else</code> &#x8BED;&#x53E5;&#x5757;&#x3002;</p>
+<h3 id="2-&#x4F7F;&#x7528;-visitor-&#x6A21;&#x5F0F;&#x751F;&#x6210;-ast">2. &#x4F7F;&#x7528; Visitor &#x6A21;&#x5F0F;&#x751F;&#x6210; AST</h3>
+<p>&#x5728;&#x751F;&#x6210; AST &#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x904D;&#x5386;&#x89E3;&#x6790;&#x6811;&#xFF08;parse tree&#xFF09;&#x5E76;&#x6839;&#x636E;&#x5176;&#x7ED3;&#x6784;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684; AST &#x7ED3;&#x70B9;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Visitor &#x6A21;&#x5F0F;&#xFF0C;&#x9488;&#x5BF9;&#x89E3;&#x6790;&#x6811;&#x7684;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x6765;&#x751F;&#x6210;&#x5408;&#x9002;&#x7684; AST &#x7ED3;&#x70B9;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x89E3;&#x6790;&#x6811; <code>IfContext</code>&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-antlr">ifStatement
+    : &apos;if&apos; &apos;(&apos; expr &apos;)&apos; statement (&apos;else&apos; statement)?
+    ;
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F; ANTLR &#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684; BaseVisitor &#x51FD;&#x6570;&#xFF0C;&#x4E3A; <code>IfContext</code> &#x5B9E;&#x73B0; Visitor &#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x751F;&#x6210; <code>IfNode</code>&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> ASTBuilderVisitor : <span class="hljs-keyword">public</span> SimpleCBaseVisitor&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt;&gt; {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// &#x8BBF;&#x95EE; ifStatement &#x8282;&#x70B9;</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; visitIfStatement(SimpleCParser::IfStatementContext *ctx) override {
+        <span class="hljs-comment">// &#x8BBF;&#x95EE;&#x5E76;&#x751F;&#x6210;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x7684; AST &#x7ED3;&#x70B9;</span>
+        <span class="hljs-keyword">auto</span> cond = visit(ctx-&gt;expr());
+
+        <span class="hljs-comment">// &#x8BBF;&#x95EE;&#x5E76;&#x751F;&#x6210; then &#x8BED;&#x53E5;&#x7684; AST &#x7ED3;&#x70B9;</span>
+        <span class="hljs-keyword">auto</span> thenBranch = visit(ctx-&gt;statement(<span class="hljs-number">0</span>));
+
+        <span class="hljs-comment">// &#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709; else &#x5206;&#x652F;&#xFF0C;&#x5E76;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684; AST &#x7ED3;&#x70B9;</span>
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;ASTNode&gt; elseBranch = <span class="hljs-literal">nullptr</span>;
+        <span class="hljs-keyword">if</span> (ctx-&gt;statement(<span class="hljs-number">1</span>)) {
+            elseBranch = visit(ctx-&gt;statement(<span class="hljs-number">1</span>));
+        }
+
+        <span class="hljs-comment">// &#x6784;&#x5EFA; IfNode&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::make_unique&lt;IfNode&gt;(<span class="hljs-built_in">std</span>::move(cond), <span class="hljs-built_in">std</span>::move(thenBranch), <span class="hljs-built_in">std</span>::move(elseBranch));
+    }
+};
+</code></pre>
+<p>&#x8FD9;&#x4E2A; <code>ASTBuilderVisitor</code> &#x7C7B;&#x7684; <code>visitIfStatement</code> &#x65B9;&#x6CD5;&#x904D;&#x5386;&#x89E3;&#x6790;&#x6811;&#x4E2D;&#x7684; <code>ifStatement</code> &#x7ED3;&#x70B9;&#xFF0C;&#x751F;&#x6210; <code>IfNode</code> &#x5E76;&#x586B;&#x5145;&#x5176;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x3001;then &#x548C; else &#x5206;&#x652F;&#x3002;&#x901A;&#x8FC7; Visitor &#x6A21;&#x5F0F;&#xFF0C;&#x4EE3;&#x7801;&#x53D8;&#x5F97;&#x7ED3;&#x6784;&#x6E05;&#x6670;&#x4E14;&#x4FBF;&#x4E8E;&#x6269;&#x5C55;&#x3002;</p>
+<h3 id="&#x751F;&#x6210;-ast-&#x7684;&#x5B8C;&#x6574;&#x6D41;&#x7A0B;">&#x751F;&#x6210; AST &#x7684;&#x5B8C;&#x6574;&#x6D41;&#x7A0B;</h3>
+<ol>
+<li>&#x7F16;&#x5199; Antlr &#x8BED;&#x6CD5;&#x6587;&#x4EF6;&#xFF0C;&#x5B9A;&#x4E49;&#x6E90;&#x8BED;&#x8A00;&#x7684;&#x89E3;&#x6790;&#x89C4;&#x5219;&#x3002;</li>
+<li>&#x4F7F;&#x7528; Antlr &#x751F;&#x6210;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x548C;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x89E3;&#x6790;&#x6E90;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x89E3;&#x6790;&#x6811;&#x3002;</li>
+<li>&#x5B9E;&#x73B0; Visitor &#x6A21;&#x5F0F;&#x7684;&#x904D;&#x5386;&#x4EE3;&#x7801;&#xFF0C;&#x9010;&#x4E2A;&#x89E3;&#x6790;&#x6811;&#x7ED3;&#x70B9;&#x5904;&#x7406;&#x5E76;&#x751F;&#x6210; AST &#x7ED3;&#x70B9;&#x3002;</li>
+<li>&#x5229;&#x7528; AST &#x7ED3;&#x70B9;&#x6784;&#x5EFA;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#xFF0C;&#x6700;&#x7EC8;&#x751F;&#x6210;&#x4E2D;&#x95F4;&#x8868;&#x793A;&#x6216;&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x3002;</li>
+</ol>
+<p>&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x5C06;&#x89E3;&#x6790;&#x6811;&#x8F6C;&#x6362;&#x4E3A;&#x7CBE;&#x7B80;&#x7684;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#xFF08;AST&#xFF09;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x7684;&#x4E2D;&#x7AEF;&#x548C;&#x540E;&#x7AEF;&#x5904;&#x7406;&#x63D0;&#x4F9B;&#x57FA;&#x7840;&#x3002;</p>
 <h2 id="&#x7B2C;&#x56DB;&#x90E8;&#x5206;&#xFF1A;&#x8BED;&#x4E49;&#x5206;&#x6790;">&#x7B2C;&#x56DB;&#x90E8;&#x5206;&#xFF1A;&#x8BED;&#x4E49;&#x5206;&#x6790;</h2>
+<p>&#x8BED;&#x4E49;&#x5206;&#x6790;&#x7684;&#x76EE;&#x6807;&#x662F;&#x68C0;&#x67E5;&#x7A0B;&#x5E8F;&#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF0C;&#x786E;&#x4FDD;&#x7A0B;&#x5E8F;&#x7B26;&#x5408;&#x8BED;&#x8A00;&#x7684;&#x8BED;&#x4E49;&#x89C4;&#x5219;&#x3002;&#x5728;&#x5927;&#x4F5C;&#x4E1A;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x7684;&#x5B9E;&#x9645;&#x4F5C;&#x7528;&#x4E3B;&#x8981;&#x662F;&#x68C0;&#x6D4B;&#x51FA; MiniDecaf &#x7684;&#x9519;&#x8BEF;&#x6D4B;&#x4F8B;&#x5E76;&#x62A5;&#x544A;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;&#x8FD9;&#x4E00;&#x6B65;&#x5305;&#x62EC;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#xFF08;&#x540D;&#x79F0;&#x7ED1;&#x5B9A;&#xFF09;&#x548C;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x53D8;&#x91CF;&#x3001;&#x51FD;&#x6570;&#x7B49;&#x7B26;&#x53F7;&#x88AB;&#x6B63;&#x786E;&#x5730;&#x5B9A;&#x4E49;&#x3001;&#x5F15;&#x7528;&#x548C;&#x4F7F;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x64CD;&#x4F5C;&#x7B26;&#x548C;&#x64CD;&#x4F5C;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x7C7B;&#x578B;&#x5339;&#x914D;&#x3002;</p>
 <h3 id="&#x7B26;&#x53F7;&#x89E3;&#x6790;&#xFF08;namer&#xFF09;">&#x7B26;&#x53F7;&#x89E3;&#x6790;&#xFF08;namer&#xFF09;</h3>
+<p>&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x7684;&#x4EFB;&#x52A1;&#x662F;&#x5C06;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#xFF08;&#x5982;&#x53D8;&#x91CF;&#x540D;&#x3001;&#x51FD;&#x6570;&#x540D;&#x7B49;&#xFF09;&#x4E0E;&#x5B83;&#x4EEC;&#x7684;&#x5B9A;&#x4E49;&#x7ED1;&#x5B9A;&#x8D77;&#x6765;&#x3002;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x4F1A;&#x904D;&#x5386;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#xFF08;AST&#xFF09;&#xFF0C;&#x5E76;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x7684;&#x7B26;&#x53F7;&#x5B9A;&#x4E49;&#x3002;&#x5F53;&#x5728;&#x540C;&#x4E00;&#x4F5C;&#x7528;&#x57DF;&#x6216;&#x5D4C;&#x5957;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x9047;&#x5230;&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x89E3;&#x6790;&#x5668;&#x80FD;&#x591F;&#x6B63;&#x786E;&#x5730;&#x627E;&#x5230;&#x8BE5;&#x7B26;&#x53F7;&#x7684;&#x5B9A;&#x4E49;&#x6216;&#x8005;&#x62A5;&#x9519;&#x3002;</p>
+<h4 id="&#x7B26;&#x53F7;&#x8868;">&#x7B26;&#x53F7;&#x8868;</h4>
+<p>&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x7684;&#x6838;&#x5FC3;&#x5DE5;&#x5177;&#x662F;&#x7B26;&#x53F7;&#x8868;&#xFF08;symbol table&#xFF09;&#x3002;&#x7B26;&#x53F7;&#x8868;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x540D;&#x5B57;&#x53CA;&#x5176;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF08;&#x5982;&#x7C7B;&#x578B;&#x3001;&#x4F5C;&#x7528;&#x57DF;&#x3001;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#x7B49;&#xFF09;&#x3002;&#x901A;&#x5E38;&#x7B26;&#x53F7;&#x8868;&#x4F1A;&#x968F;&#x7740;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5D4C;&#x5957;&#x800C;&#x5F62;&#x6210;&#x5C42;&#x7EA7;&#x7ED3;&#x6784;&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;&#x4E0D;&#x540C;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x95F4;&#x6B63;&#x786E;&#x89E3;&#x6790;&#x7B26;&#x53F7;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> SymbolTable {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Symbol&gt;&gt; table;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;SymbolTable&gt; parent; <span class="hljs-comment">// &#x6307;&#x5411;&#x7236;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x7B26;&#x53F7;&#x8868;</span>
+
+    SymbolTable(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;SymbolTable&gt; parent = <span class="hljs-literal">nullptr</span>)
+        : parent(parent) {}
+
+    <span class="hljs-comment">// &#x5728;&#x5F53;&#x524D;&#x4F5C;&#x7528;&#x57DF;&#x67E5;&#x627E;&#x7B26;&#x53F7;</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Symbol&gt; lookup(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name){
+      <span class="hljs-comment">//&#xB7;&#xB7;&#xB7;</span>
+    }
+
+    <span class="hljs-comment">// &#x5411;&#x7B26;&#x53F7;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x65B0;&#x7684;&#x7B26;&#x53F7;</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Symbol&gt; symbol)</span> </span>{
+      <span class="hljs-comment">//&#xB7;&#xB7;&#xB7;</span>
+    }
+};
+</code></pre>
+<p>&#x5728;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x4E3A;&#x6BCF;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x5E76;&#x968F;&#x7740;&#x8FDB;&#x5165;&#x548C;&#x9000;&#x51FA;&#x4F5C;&#x7528;&#x57DF;&#x5BF9;&#x7B26;&#x53F7;&#x8868;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x9047;&#x5230;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x65F6;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5C40;&#x90E8;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x5F53;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6216;&#x53D8;&#x91CF;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x4F1A;&#x67E5;&#x627E;&#x7B26;&#x53F7;&#x8868;&#x4EE5;&#x786E;&#x4FDD;&#x8BE5;&#x7B26;&#x53F7;&#x5DF2;&#x5B9A;&#x4E49;&#x4E14;&#x5728;&#x6B63;&#x786E;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x3002;</p>
+<h4 id="&#x4F5C;&#x7528;&#x57DF;&#x7BA1;&#x7406;">&#x4F5C;&#x7528;&#x57DF;&#x7BA1;&#x7406;</h4>
+<p>&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x8FD8;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x4F5C;&#x7528;&#x57DF;&#x3002;&#x901A;&#x5E38;&#x5728;&#x9047;&#x5230;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x65F6;&#xFF08;&#x5982;&#x51FD;&#x6570;&#x3001;&#x4EE3;&#x7801;&#x5757;&#x3001;&#x5FAA;&#x73AF;&#x7B49;&#xFF09;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x5E76;&#x5728;&#x9000;&#x51FA;&#x8BE5;&#x4F5C;&#x7528;&#x57DF;&#x65F6;&#x9500;&#x6BC1;&#x5B83;&#x3002;&#x5728;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x786E;&#x4FDD;&#x6BCF;&#x4E2A;&#x7B26;&#x53F7;&#x5728;&#x5176;&#x53EF;&#x89C1;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x5185;&#x88AB;&#x6B63;&#x786E;&#x89E3;&#x6790;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> SemanticAnalyzer {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;SymbolTable&gt; currentScope;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">enterScope</span><span class="hljs-params">()</span> </span>{
+        currentScope = <span class="hljs-built_in">std</span>::make_shared&lt;SymbolTable&gt;(currentScope);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exitScope</span><span class="hljs-params">()</span> </span>{
+        currentScope = currentScope-&gt;parent;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">declareVariable</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Symbol&gt; &amp;symbol)</span> </span>{
+        currentScope-&gt;insert(name, symbol);
+    }
+
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Symbol&gt; resolveVariable(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name) {
+        <span class="hljs-keyword">return</span> currentScope-&gt;lookup(name);
+    }
+};
+</code></pre>
+<p>&#x901A;&#x8FC7; <code>enterScope()</code> &#x548C; <code>exitScope()</code> &#x6765;&#x7BA1;&#x7406;&#x4F5C;&#x7528;&#x57DF;&#x5D4C;&#x5957;&#xFF0C;&#x5F53;&#x5904;&#x7406;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF08;&#x5982;&#x51FD;&#x6570;&#x6216;&#x4EE3;&#x7801;&#x5757;&#xFF09;&#x65F6;&#xFF0C;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x7B26;&#x53F7;&#x8868;&#x5E76;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x3002;</p>
 <h3 id="&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#xFF08;typer&#xFF09;">&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#xFF08;typer&#xFF09;</h3>
+<p>&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x7684;&#x4EFB;&#x52A1;&#x662F;&#x786E;&#x4FDD;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7B26;&#x548C;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x517C;&#x5BB9;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x7B97;&#x672F;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#xFF0C;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x4F1A;&#x786E;&#x4FDD;&#x8FD0;&#x7B97;&#x7B26;&#x4F5C;&#x7528;&#x4E8E;&#x6B63;&#x786E;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x64CD;&#x4F5C;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x7C7B;&#x578B;&#x4E00;&#x81F4;&#x3002;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x907F;&#x514D;&#x4E0D;&#x5408;&#x6CD5;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x5BF9;&#x6574;&#x6570;&#x8FDB;&#x884C;&#x9664;&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x8FD0;&#x7B97;&#x3002;</p>
+<h4 id="&#x7C7B;&#x578B;&#x7CFB;&#x7EDF;">&#x7C7B;&#x578B;&#x7CFB;&#x7EDF;</h4>
+<p>&#x7F16;&#x8BD1;&#x5668;&#x901A;&#x5E38;&#x9700;&#x8981;&#x652F;&#x6301;&#x4E00;&#x5957;&#x7C7B;&#x578B;&#x7CFB;&#x7EDF;&#x3002;&#x7C7B;&#x578B;&#x7CFB;&#x7EDF;&#x5305;&#x542B;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF08;&#x5982;&#x6574;&#x578B;&#x3001;&#x6D6E;&#x70B9;&#x578B;&#x3001;&#x5E03;&#x5C14;&#x578B;&#x7B49;&#xFF09;&#x548C;&#x590D;&#x6742;&#x7C7B;&#x578B;&#xFF08;&#x5982;&#x6307;&#x9488;&#x3001;&#x6570;&#x7EC4;&#x3001;&#x7ED3;&#x6784;&#x4F53;&#x7B49;&#xFF09;&#x3002;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x5668;&#x4F1A;&#x6839;&#x636E;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x7CFB;&#x7EDF;&#x5BF9;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x3001;&#x8D4B;&#x503C;&#x548C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x5668;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> TypeCheckerVisitor : <span class="hljs-keyword">public</span> ASTVisitor {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Type&gt; visitBinaryExpr(BinaryExprNode *node) override {
+        <span class="hljs-keyword">auto</span> leftType = visit(node-&gt;left); <span class="hljs-comment">// &#x68C0;&#x67E5;&#x5DE6;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x7C7B;&#x578B;</span>
+        <span class="hljs-keyword">auto</span> rightType = visit(node-&gt;right); <span class="hljs-comment">// &#x68C0;&#x67E5;&#x53F3;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x7C7B;&#x578B;</span>
+
+        <span class="hljs-comment">// &#x68C0;&#x67E5;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x5339;&#x914D;</span>
+        <span class="hljs-keyword">if</span> (!leftType-&gt;equals(rightType)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::runtime_error(<span class="hljs-string">&quot;Type mismatch in binary expression.&quot;</span>);
+        }
+
+        <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7C7B;&#x578B;</span>
+        <span class="hljs-keyword">return</span> leftType;
+    }
+
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Type&gt; visitVariableDecl(VariableDeclNode *node) override {
+        <span class="hljs-comment">// &#x68C0;&#x67E5;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x6B63;&#x786E;</span>
+        <span class="hljs-keyword">auto</span> varType = node-&gt;type;
+        <span class="hljs-keyword">if</span> (!isValidType(varType)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::runtime_error(<span class="hljs-string">&quot;Invalid type for variable.&quot;</span>);
+        }
+
+        <span class="hljs-keyword">return</span> varType;
+    }
+
+    <span class="hljs-comment">// &#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x903B;&#x8F91;...</span>
+};
+</code></pre>
+<p>&#x5728;&#x8BE5;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x5668;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x904D;&#x5386; AST &#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x68C0;&#x67E5;&#x5176;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x6B63;&#x786E;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x4E8C;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x68C0;&#x67E5;&#x5DE6;&#x53F3;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x5339;&#x914D;&#xFF0C;&#x5E76;&#x4E14;&#x786E;&#x4FDD;&#x8FD0;&#x7B97;&#x7B26;&#x53EF;&#x4EE5;&#x4F5C;&#x7528;&#x4E8E;&#x8BE5;&#x7C7B;&#x578B;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5BF9;&#x4E8E;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#x548C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7B49;&#x5176;&#x4ED6;&#x7ED3;&#x6784;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x68C0;&#x67E5;&#x5B83;&#x4EEC;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
+<h4 id="&#x7C7B;&#x578B;&#x8F6C;&#x6362;"><em>&#x7C7B;&#x578B;&#x8F6C;&#x6362;</em></h4>
+<blockquote>
+<p>&#x7531;&#x4E8E; MiniDecaf &#x53EA;&#x652F;&#x6301;&#x6709;&#x9650;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x7684;&#x90E8;&#x5206;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x5B9E;&#x9645;&#x5B9E;&#x73B0;&#x3002;</p>
+</blockquote>
+<p>&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x6709;&#x65F6;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5C06;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x4E0E;&#x6D6E;&#x70B9;&#x6570;&#x8FDB;&#x884C;&#x52A0;&#x6CD5;&#x8FD0;&#x7B97;&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5C06;&#x6574;&#x6570;&#x63D0;&#x5347;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x9690;&#x5F0F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x6765;&#x5B8C;&#x6210;&#x8FD9;&#x7C7B;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x5FC5;&#x987B;&#x9075;&#x5FAA;&#x4E00;&#x5B9A;&#x7684;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x89C4;&#x5219;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> TypeCheckerVisitor : <span class="hljs-keyword">public</span> ASTVisitor {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Type&gt; visitBinaryExpr(BinaryExprNode *node) override {
+        <span class="hljs-keyword">auto</span> leftType = visit(node-&gt;left);
+        <span class="hljs-keyword">auto</span> rightType = visit(node-&gt;right);
+
+        <span class="hljs-comment">// &#x8FDB;&#x884C;&#x9690;&#x5F0F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</span>
+        <span class="hljs-keyword">if</span> (leftType-&gt;isInteger() &amp;&amp; rightType-&gt;isFloat()) {
+            leftType = floatType(); <span class="hljs-comment">// &#x5C06;&#x6574;&#x6570;&#x63D0;&#x5347;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;</span>
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (leftType-&gt;isFloat() &amp;&amp; rightType-&gt;isInteger()) {
+            rightType = floatType();
+        }
+
+        <span class="hljs-keyword">if</span> (!leftType-&gt;equals(rightType)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::runtime_error(<span class="hljs-string">&quot;Type mismatch in binary expression.&quot;</span>);
+        }
+
+        <span class="hljs-keyword">return</span> leftType;
+    }
+};
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x68C0;&#x67E5;&#x548C;&#x5904;&#x7406;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;&#x6211;&#x4EEC;&#x786E;&#x4FDD;&#x7A0B;&#x5E8F;&#x7684;&#x7C7B;&#x578B;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x51FA;&#x73B0;&#x4E0D;&#x53EF;&#x9884;&#x77E5;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<h3 id="&#x9884;&#x671F;&#x76EE;&#x6807;">&#x9884;&#x671F;&#x76EE;&#x6807;</h3>
+<p>&#x5B8C;&#x6210;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x548C;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x540E;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#xFF1A;</p>
+<ol>
+<li>&#x901A;&#x8FC7;&#x7B26;&#x53F7;&#x8868;&#x89E3;&#x6790;&#x6240;&#x6709;&#x7684;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#xFF0C;&#x786E;&#x4FDD;&#x5B83;&#x4EEC;&#x5728;&#x6B63;&#x786E;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x88AB;&#x5F15;&#x7528;&#xFF1B;</li>
+<li>&#x68C0;&#x67E5;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x548C;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x5339;&#x914D;&#xFF1B;</li>
+<li>&#x62A5;&#x544A;&#x8BED;&#x4E49;&#x9519;&#x8BEF;&#xFF0C;&#x5982;&#x672A;&#x5B9A;&#x4E49;&#x7684;&#x7B26;&#x53F7;&#x3001;&#x7C7B;&#x578B;&#x4E0D;&#x5339;&#x914D;&#x7B49;&#x3002;</li>
+</ol>
+<p>&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x6B65;&#x9AA4;&#xFF0C;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x80FD;&#x591F;&#x786E;&#x4FDD;&#x6E90;&#x4EE3;&#x7801;&#x7B26;&#x5408;&#x8BED;&#x8A00;&#x7684;&#x8BED;&#x4E49;&#x89C4;&#x5219;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x7684;&#x4E2D;&#x7AEF;&#x4F18;&#x5316;&#x548C;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x6253;&#x4E0B;&#x575A;&#x5B9E;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
 <h2 id="&#x524D;&#x7AEF;&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x524D;&#x7AEF;&#x53C2;&#x8003;&#x8D44;&#x6599;</h2>
 <ul>
 <li><a href="https://www.antlr.org/" target="_blank">Antlr &#x5B98;&#x65B9;&#x6587;&#x6863;</a></li>
 <li><a href="https://decaf-lang.github.io/" target="_blank">MiniDecaf &#x6559;&#x7A0B;</a></li>
 <li><a href="https://www.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811" target="_blank">&#x7F16;&#x8BD1;&#x539F;&#x7406;&#x7ECF;&#x5178;&#x4E66;&#x7C4D; Dragon Book</a></li>
 </ul>
-<h2 id="&#x9884;&#x671F;&#x76EE;&#x6807;">&#x9884;&#x671F;&#x76EE;&#x6807;</h2>
-<p>&#x5B8C;&#x6210;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x540E;&#xFF0C;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x901A;&#x8FC7; Antlr &#x751F;&#x6210;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x548C;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x5E76;&#x80FD;&#x591F;&#x5C06; MiniDecaf &#x7A0B;&#x5E8F;&#x89E3;&#x6790;&#x4E3A;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#xFF08;AST&#xFF09;&#x3002;</p>
+<h2 id="&#x524D;&#x7AEF;&#x9884;&#x671F;&#x76EE;&#x6807;">&#x524D;&#x7AEF;&#x9884;&#x671F;&#x76EE;&#x6807;</h2>
+<p>&#x5B8C;&#x6210;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x540E;&#xFF0C;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x901A;&#x8FC7; Antlr &#x751F;&#x6210;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x548C;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x80FD;&#x591F;&#x5C06; MiniDecaf &#x7A0B;&#x5E8F;&#x89E3;&#x6790;&#x4E3A;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#xFF08;AST&#xFF09;&#xFF0C;&#x5E76;&#x5B8C;&#x6210;&#x5BF9; MiniDecaf &#x7A0B;&#x5E8F;&#x7684;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x3002;</p>
 
                                 
                                 </section>
@@ -1656,7 +1814,7 @@ DIV: &apos;/&apos; ;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"前端设计","level":"11.2","depth":1,"next":{"title":"中端设计","level":"11.3","depth":1,"path":"docs/contest/midend/midend.md","ref":"docs/contest/midend/midend.md","articles":[{"title":"静态单赋值","level":"11.3.1","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},{"title":"常量传播","level":"11.3.2","depth":2,"path":"docs/contest/midend/cp.md","ref":"docs/contest/midend/cp.md","articles":[]},{"title":"死代码消除","level":"11.3.3","depth":2,"path":"docs/contest/midend/dce.md","ref":"docs/contest/midend/dce.md","articles":[]}]},"previous":{"title":"大实验简介","level":"11.1","depth":1,"path":"docs/contest/intro.md","ref":"docs/contest/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/frontend.md","mtime":"2024-09-14T08:47:57.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-14T08:48:38.641Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"前端设计","level":"11.2","depth":1,"next":{"title":"中端设计","level":"11.3","depth":1,"path":"docs/contest/midend/midend.md","ref":"docs/contest/midend/midend.md","articles":[{"title":"静态单赋值","level":"11.3.1","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},{"title":"常量传播","level":"11.3.2","depth":2,"path":"docs/contest/midend/cp.md","ref":"docs/contest/midend/cp.md","articles":[]},{"title":"死代码消除","level":"11.3.3","depth":2,"path":"docs/contest/midend/dce.md","ref":"docs/contest/midend/dce.md","articles":[]}]},"previous":{"title":"大实验简介","level":"11.1","depth":1,"path":"docs/contest/intro.md","ref":"docs/contest/intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/frontend.md","mtime":"2024-09-16T07:25:18.461Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-16T07:26:02.966Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
