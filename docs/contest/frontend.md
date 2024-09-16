@@ -28,10 +28,10 @@ sudo apt install openjdk-19-jdk
 
 你需要从 [ANTLR Download](https://www.antlr.org/download.html) 下载 `antlr-4.13.2-complete.jar`(截至文档写作时此为最新版)。
 
-使用以下命令（记得把`/path/to/antlr-4.9.2-complete.jar`替换成你的 antlr 路径）测试是否能正常使用：
+使用以下命令（记得把`/path/to/antlr-4.13.2-complete.jar`替换成你的 antlr 路径）测试是否能正常使用：
 
 ```bash
-java -jar /path/to/antlr-4.9.2-complete.jar
+java -jar /path/to/antlr-4.13.2-complete.jar
 ```
 
 你应该能看到类似以下的输出：
@@ -83,34 +83,34 @@ ANTLR 运行时库是解析器生成的代码在运行时所依赖的代码。�
   ```cmake
   # 指定 CMake 的最小版本要求
   cmake_minimum_required(VERSION 3.10)
-  
+
   # 设置项目名称和使用的语言（CXX 代表 C++）
   project(my_compiler CXX)
-  
+
   # 设置 C++ 标准为 C++17
   set(CMAKE_CXX_STANDARD 17)
-  
+
   # 设置 C++ 编译器标志，这里没有额外添加，使用默认
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-  
+
   # 设置调试模式下的编译器标志，开启 DEBUG 宏
   set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
-  
+
   # 使用 GLOB_RECURSE 模式递归查找 src 目录下所有的 .cpp 文件
   file(GLOB_RECURSE SRC "src/*.cpp")
-  
+
   # 添加项目的 src 目录到头文件搜索路径
   include_directories(src)
-  
+
   # 添加第三方库目录 antlr4-runtime 到头文件搜索路径
   include_directories(3rd_party/antlr4-runtime)
-  
+
   # 添加 antlr4-runtime 子目录作为子项目进行构建
   add_subdirectory(3rd_party/antlr4-runtime)
-  
+
   # 创建名为 my_compiler 的可执行文件，将所有源文件编译链接到这个可执行文件中
   add_executable(my_compiler ${SRC})
-  
+
   # 将 antlr4_runtime 库与 my_compiler 可执行文件链接
   target_link_libraries(my_compiler antlr4_runtime)
   ```
@@ -142,27 +142,27 @@ add_library(antlr4_runtime STATIC ${ANTLR4_SRC})
 - `parse tree`
 
   ```
-  parse tree: 
-  (program 
-          (funcDeclaration int main ( ) { 
-              (statements 
-                  (statement int a = 
-                      (expression 1) ;) 
-                  (statement int b = 
-                      (expression 
-                          (expression a) + 
-                          (expression 2)) ;) 
-                  (statement int c = 
-                      (expression 
-                          (expression 
-                              (expression a) + 
-                              (expression b)) + 
-                          (expression 1)) ;) 
-                  (statement return 
+  parse tree:
+  (program
+          (funcDeclaration int main ( ) {
+              (statements
+                  (statement int a =
+                      (expression 1) ;)
+                  (statement int b =
+                      (expression
+                          (expression a) +
+                          (expression 2)) ;)
+                  (statement int c =
+                      (expression
+                          (expression
+                              (expression a) +
+                              (expression b)) +
+                          (expression 1)) ;)
+                  (statement return
                       (expression c) ;)) }))
   ```
 
-  
+
 
 ### 1. 编写simpleC.g4
 
@@ -238,7 +238,7 @@ DIV: '/' ;
 在确认环境配置无误后，我们可以使用 ANTLR 和文法文件生成所需的 lexer & parser，只需要执行
 
 ```bash
-java -jar /path/to/antlr-4.9.2-complete.jar -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer_parser simpleC.g4
+java -jar /path/to/antlr-4.13.2-complete.jar -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer_parser simpleC.g4
 ```
 
 `-no-listener` 和 `-visitor` 选项分别用于禁止生成 listener（默认是激活的）和激活 visitor 模式。如果你还不知道 visitor 是什么，不用担心，我们稍后会看到。
@@ -296,33 +296,227 @@ main(int argc, const char* argv[])
 ./my_compiler test.c
 ```
 
-总的来说，我们现在利用 ANTLR 实现了词法分析器分析输入（即字符）并产生 token，然后解析器分析 token 以产生 parser tree。这样，我们就把一个看似被复杂地组织起来的文本转化成了一个“树”，有了“树”之后我们就可以各种花式遍历这个树并对这个树的每个节点进行一些操作，如何遍历呢？我们用到了 visitor 模式。
+总的来说，我们现在利用 ANTLR 实现了词法分析器分析输入（即字符）并产生 token，然后解析器分析 token 以产生 parser tree。这样，我们就把一个看似被复杂地组织起来的文本转化成了一个“树”，之后我们就可以使用 visitor 模式遍历这个树并对这个树的每个节点进行一些操作。
 
 ## 第三部分：AST 的生成
 
-### Visitor 模式代码的编写方法
+在生成 AST 时，我们通常是在解析树（parse tree）的基础上，通过提取语法的核心结构，生成更加精简的抽象语法树（AST）。AST 的节点通常只包含与程序执行相关的核心信息，去除了冗余的语法信息。
 
-在编写编译器时，我们通常使用 Visitor 模式来遍历和处理 AST。Visitor 模式提供了一种解耦的方式来在不同的节点上执行操作。通过定义 Visitor 类，我们可以根据 AST 的不同节点执行特定的逻辑操作。
+### 1. 定义 AST 结点
 
-在 Antlr 中，Visitor 类会根据语法文件中的每个语法规则生成对应的函数，例如：
+首先，我们需要为 AST 定义结点类型。每个结点对应于一种语法结构，比如条件语句、循环、表达式等。以下是一个简单的 `If` 语句结点的定义：
 
-```java
-public class MiniDecafVisitor extends MiniDecafBaseVisitor<Void> {
-    @Override
-    public Void visitAddSub(MiniDecafParser.AddSubContext ctx) {
-        // 处理加法和减法操作
-        return null;
-    }
-}
+```cpp
+class IfNode : public ASTNode {
+public:
+    std::unique_ptr<ASTNode> cond;   // 条件表达式
+    std::unique_ptr<ASTNode> then;   // then 语句块
+    std::unique_ptr<ASTNode> other;  // optional 的 else 语句块
+    bool has_otherwise;
+    IfNode(std::unique_ptr<ASTNode> cond, std::unique_ptr<ASTNode> then,
+        std::unique_ptr<ASTNode> other = nullptr)
+    : cond(std::move(cond)), then(std::move(then)), other(std::move(other)),
+      has_otherwise(other != nullptr) {}
+};
 ```
 
-通过覆写`BaseVisitor`中的这些函数，我们可以实现对`parse tree`的递归遍历和处理，生成AST或执行静态检查。
+这个 `IfNode` 结点包含条件表达式`cond`、`then` 语句块和可选的 `else` 语句块。
+
+### 2. 使用 Visitor 模式生成 AST
+
+在生成 AST 时，我们需要遍历解析树（parse tree）并根据其结构生成对应的 AST 结点。这里我们可以使用 Visitor 模式，针对解析树的不同节点调用对应的处理函数，来生成合适的 AST 结点。
+
+假设我们有一个解析树 `IfContext`，对应的语法规则如下：
+
+```antlr
+ifStatement
+    : 'if' '(' expr ')' statement ('else' statement)?
+    ;
+```
+
+我们可以继承 ANTLR 自动生成的 BaseVisitor 函数，为 `IfContext` 实现 Visitor 函数，以生成 `IfNode`：
+
+```cpp
+class ASTBuilderVisitor : public SimpleCBaseVisitor<std::unique_ptr<ASTNode>> {
+public:
+    // 访问 ifStatement 节点
+    std::unique_ptr<ASTNode> visitIfStatement(SimpleCParser::IfStatementContext *ctx) override {
+        // 访问并生成条件表达式的 AST 结点
+        auto cond = visit(ctx->expr());
+
+        // 访问并生成 then 语句的 AST 结点
+        auto thenBranch = visit(ctx->statement(0));
+
+        // 检查是否有 else 分支，并生成对应的 AST 结点
+        std::unique_ptr<ASTNode> elseBranch = nullptr;
+        if (ctx->statement(1)) {
+            elseBranch = visit(ctx->statement(1));
+        }
+
+        // 构建 IfNode，并返回
+        return std::make_unique<IfNode>(std::move(cond), std::move(thenBranch), std::move(elseBranch));
+    }
+};
+```
+
+这个 `ASTBuilderVisitor` 类的 `visitIfStatement` 方法遍历解析树中的 `ifStatement` 结点，生成 `IfNode` 并填充其条件表达式、then 和 else 分支。通过 Visitor 模式，代码变得结构清晰且便于扩展。
+
+### 生成 AST 的完整流程
+
+1. 编写 Antlr 语法文件，定义源语言的解析规则。
+2. 使用 Antlr 生成词法分析器和语法分析器，解析源代码生成解析树。
+3. 实现 Visitor 模式的遍历代码，逐个解析树结点处理并生成 AST 结点。
+4. 利用 AST 结点构建抽象语法树，最终生成中间表示或目标代码。
+
+通过这种方式，我们能够将解析树转换为精简的抽象语法树（AST），为后续的中端和后端处理提供基础。
 
 ## 第四部分：语义分析
 
+语义分析的目标是检查程序的合法性，确保程序符合语言的语义规则。在大作业中，这一部分的实际作用主要是检测出 MiniDecaf 的错误测例并报告编译错误。这一步包括符号解析（名称绑定）和类型检查，以保证变量、函数等符号被正确地定义、引用和使用，并且操作符和操作数之间的类型匹配。
+
 ### 符号解析（namer）
 
+符号解析的任务是将程序中使用的标识符（如变量名、函数名等）与它们的定义绑定起来。具体来说，符号解析会遍历抽象语法树（AST），并记录每个作用域中的符号定义。当在同一作用域或嵌套作用域中遇到符号引用时，解析器能够正确地找到该符号的定义或者报错。
+
+#### 符号表
+
+符号解析的核心工具是符号表（symbol table）。符号表是一个数据结构，用来存储标识符的名字及其相关信息（如类型、作用域、存储位置等）。通常符号表会随着作用域的嵌套而形成层级结构，以便在不同作用域之间正确解析符号。
+
+```cpp
+class SymbolTable {
+public:
+    std::unordered_map<std::string, std::shared_ptr<Symbol>> table;
+    std::shared_ptr<SymbolTable> parent; // 指向父作用域的符号表
+
+    SymbolTable(std::shared_ptr<SymbolTable> parent = nullptr)
+        : parent(parent) {}
+
+    // 在当前作用域查找符号
+    std::shared_ptr<Symbol> lookup(const std::string &name){
+      //···
+    }
+
+    // 向符号表中插入新的符号
+    void insert(const std::string &name, std::shared_ptr<Symbol> symbol) {
+      //···
+    }
+};
+
+```
+
+在符号解析过程中，我们会为每个作用域生成一个符号表，并随着进入和退出作用域对符号表进行管理。例如，在遇到函数定义时会创建一个新的局部符号表，当函数调用或变量引用时，会查找符号表以确保该符号已定义且在正确的作用域中。
+
+#### 作用域管理
+
+符号解析还需要管理作用域。通常在遇到新的作用域时（如函数、代码块、循环等），创建一个新的符号表，并在退出该作用域时销毁它。在解析过程中，确保每个符号在其可见的作用域内被正确解析。
+
+```cpp
+class SemanticAnalyzer {
+public:
+    std::shared_ptr<SymbolTable> currentScope;
+
+    void enterScope() {
+        currentScope = std::make_shared<SymbolTable>(currentScope);
+    }
+
+    void exitScope() {
+        currentScope = currentScope->parent;
+    }
+
+    void declareVariable(const std::string &name, const std::shared_ptr<Symbol> &symbol) {
+        currentScope->insert(name, symbol);
+    }
+
+    std::shared_ptr<Symbol> resolveVariable(const std::string &name) {
+        return currentScope->lookup(name);
+    }
+};
+```
+
+通过 `enterScope()` 和 `exitScope()` 来管理作用域嵌套，当处理一个新的作用域（如函数或代码块）时，会创建新的符号表并进行相应的符号解析。
+
 ### 类型检查（typer）
+
+类型检查的任务是确保程序中的所有操作符和操作数的类型兼容。例如，在算术表达式中，类型检查会确保运算符作用于正确的类型，并且操作数之间的类型一致。类型检查可以有效避免不合法的操作，如对整数进行除以字符串的运算。
+
+#### 类型系统
+
+编译器通常需要支持一套类型系统。类型系统包含基本类型（如整型、浮点型、布尔型等）和复杂类型（如指针、数组、结构体等）。类型检查器会根据这些类型系统对程序中的每个表达式、赋值和函数调用进行检查。
+
+以下是一个简单的类型检查器示例：
+
+```cpp
+class TypeCheckerVisitor : public ASTVisitor {
+public:
+    std::shared_ptr<Type> visitBinaryExpr(BinaryExprNode *node) override {
+        auto leftType = visit(node->left); // 检查左操作数的类型
+        auto rightType = visit(node->right); // 检查右操作数的类型
+
+        // 检查操作数的类型是否匹配
+        if (!leftType->equals(rightType)) {
+            throw std::runtime_error("Type mismatch in binary expression.");
+        }
+
+        // 返回表达式的类型
+        return leftType;
+    }
+
+    std::shared_ptr<Type> visitVariableDecl(VariableDeclNode *node) override {
+        // 检查变量声明的类型是否正确
+        auto varType = node->type;
+        if (!isValidType(varType)) {
+            throw std::runtime_error("Invalid type for variable.");
+        }
+
+        return varType;
+    }
+
+    // 其他类型检查逻辑...
+};
+```
+
+在该类型检查器中，我们遍历 AST 中的每个节点，检查其类型是否正确。例如，在二元表达式中，我们会检查左右操作数的类型是否匹配，并且确保运算符可以作用于该类型。此外，对于变量声明和函数调用等其他结构，也需要检查它们的类型。
+
+#### *类型转换*
+
+> 由于 MiniDecaf 只支持有限的数据类型，所以类型转换的部分可能并不需要实际实现。
+
+类型检查的过程中，编译器有时需要进行类型转换。例如，将一个整数与浮点数进行加法运算时，编译器可能需要将整数提升为浮点数。编译器可以通过隐式类型转换来完成这类操作，但必须遵循一定的类型转换规则。
+
+```cpp
+class TypeCheckerVisitor : public ASTVisitor {
+public:
+    std::shared_ptr<Type> visitBinaryExpr(BinaryExprNode *node) override {
+        auto leftType = visit(node->left);
+        auto rightType = visit(node->right);
+
+        // 进行隐式类型转换
+        if (leftType->isInteger() && rightType->isFloat()) {
+            leftType = floatType(); // 将整数提升为浮点数
+        } else if (leftType->isFloat() && rightType->isInteger()) {
+            rightType = floatType();
+        }
+
+        if (!leftType->equals(rightType)) {
+            throw std::runtime_error("Type mismatch in binary expression.");
+        }
+
+        return leftType;
+    }
+};
+```
+
+通过检查和处理类型转换，我们确保程序的类型一致性，避免在运行时出现不可预知的错误。
+
+### 预期目标
+
+完成符号解析和类型检查后，编译器应该能够：
+
+1. 通过符号表解析所有的变量和函数定义，确保它们在正确的作用域中被引用；
+2. 检查所有的操作数和运算符的类型是否匹配；
+3. 报告语义错误，如未定义的符号、类型不匹配等。
+
+通过这些步骤，语义分析能够确保源代码符合语言的语义规则，为后续的中端优化和代码生成打下坚实的基础。
 
 ## 前端参考资料
 
@@ -330,6 +524,6 @@ public class MiniDecafVisitor extends MiniDecafBaseVisitor<Void> {
 - [MiniDecaf 教程](https://decaf-lang.github.io/)
 - [编译原理经典书籍 Dragon Book](https://www.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811)
 
-## 预期目标
+## 前端预期目标
 
-完成这部分内容后，你的编译器应该能够通过 Antlr 生成词法分析器和语法分析器，并能够将 MiniDecaf 程序解析为抽象语法树（AST）。
+完成这部分内容后，你的编译器应该能够通过 Antlr 生成词法分析器和语法分析器，能够将 MiniDecaf 程序解析为抽象语法树（AST），并完成对 MiniDecaf 程序的语义分析。
