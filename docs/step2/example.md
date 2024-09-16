@@ -189,10 +189,10 @@ return _T1
 ```python
 def transform(self, prog: TACProg):
     analyzer = LivenessAnalyzer()
-    emitter = RiscvAsmEmitter(Riscv.AllocatableRegs, Riscv.CallerSaved)
     reg_alloc = BruteRegAlloc(emitter)
     
     for func in prog.funcs:
+        emitter = RiscvAsmEmitter(Riscv.AllocatableRegs, Riscv.CallerSaved)
         pair = emitter.selectInstr(func)
         builder = CFGBuilder()
         cfg: CFG = builder.buildFrom(pair[0])
@@ -200,7 +200,6 @@ def transform(self, prog: TACProg):
         reg_alloc.accept(cfg, pair[1])
 
     return emitter.emitEnd()
-
 ```
 
 我们先忽略`LivenessAnalyzer`和`Control Flow Graph(CFG)`以及寄存器分配的部分（助教写了一个非常简单暴力的寄存器分配，如果你觉得它不够好，你可以在后面的step换掉它），实际上，我们这里最主要的是指令选择（`selectInstr`），指令选择将中端TAC代码转换为riscv汇编代码，`selectInstr`函数中，我们也采用了visitor模式遍历指令序列， `_T0 = 1` 这句比较直接，我们也能较为容易的想到一个简单的汇编指令对应（`li _T0, 1`），主要讲讲和`_T1 = - _T0` 和 `return _T1`翻译过程发生了什么。
