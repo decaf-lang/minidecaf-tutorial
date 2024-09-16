@@ -107,7 +107,7 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ssa.html" />
+    <link rel="next" href="irgen.html" />
     
     
     <link rel="prev" href="midend.html" />
@@ -1217,7 +1217,20 @@
             
         </li>
     
-        <li class="chapter " data-level="11.3.2" data-path="ssa.html">
+        <li class="chapter " data-level="11.3.2" data-path="irgen.html">
+            
+                <a href="irgen.html">
+            
+                    
+                    中间代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.3" data-path="ssa.html">
             
                 <a href="ssa.html">
             
@@ -1230,7 +1243,7 @@
             
         </li>
     
-        <li class="chapter " data-level="11.3.3" data-path="cp.html">
+        <li class="chapter " data-level="11.3.4" data-path="cp.html">
             
                 <a href="cp.html">
             
@@ -1243,7 +1256,7 @@
             
         </li>
     
-        <li class="chapter " data-level="11.3.4" data-path="dce.html">
+        <li class="chapter " data-level="11.3.5" data-path="dce.html">
             
                 <a href="dce.html">
             
@@ -1353,9 +1366,17 @@
     _T3 = NEG _T0      # &#x53D6;&#x8D1F;&#x64CD;&#x4F5C; _T3 = -_T0
     return _T2         # &#x51FD;&#x6570;&#x8FD4;&#x56DE;
 </code></pre>
-<blockquote>
-<p>&#x4EE5;&#x4E0A;&#x7ED9;&#x51FA;&#x4E86;&#x4E00;&#x4EFD; TAC &#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#x3002;&#x8BF7;&#x6CE8;&#x610F; TAC &#x4EE3;&#x7801;&#x53EA;&#x662F;&#x4E00;&#x79CD;&#x4E2D;&#x95F4;&#x8868;&#x793A;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x50CF;&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#x90A3;&#x6837;&#x6709;&#x4E25;&#x683C;&#x7684;&#x8BED;&#x6CD5;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x9009;&#x62E9;&#x8F93;&#x51FA; TAC &#x4EE3;&#x7801;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x53EA;&#x8981;&#x65B9;&#x4FBF;&#x81EA;&#x5DF1;&#x8C03;&#x8BD5;&#x5373;&#x53EF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06; _T2 = ADD _T0, _T1 &#x8F93;&#x51FA;&#x6210; _T2 = _T0 + _T1&#x3002;</p>
-</blockquote>
+<p>&#x4EE5;&#x4E0A;&#x7ED9;&#x51FA;&#x4E86;&#x4E00;&#x4EFD; TAC &#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#x3002;&#x8BF7;&#x6CE8;&#x610F; TAC &#x4EE3;&#x7801;&#x53EA;&#x662F;&#x4E00;&#x79CD;&#x4E2D;&#x95F4;&#x8868;&#x793A;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x50CF;&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#x90A3;&#x6837;&#x6709;&#x4E25;&#x683C;&#x7684;&#x8BED;&#x6CD5;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x9009;&#x62E9;&#x8F93;&#x51FA; TAC &#x4EE3;&#x7801;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x53EA;&#x8981;&#x65B9;&#x4FBF;&#x81EA;&#x5DF1;&#x8C03;&#x8BD5;&#x5373;&#x53EF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06; _T2 = ADD _T0, _T1 &#x8F93;&#x51FA;&#x6210; _T2 = _T0 + _T1&#x3002;&#x4E0B;&#x9762;&#x662F;&#x53E6;&#x4E00;&#x4E2A;IR&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-asm">i32 main() {
+_B0:
+    i32 _T0 = 1
+    i32 _T1 = _T0
+    i32 _T2 = _T0 + _T1
+    i32 _T3 = -_T0
+    return i32 _T2
+}
+</code></pre>
+<p>&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x8FD9;&#x79CD;IR&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E9B;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x66F4;&#x52A0;&#x6613;&#x8BFB;&#x3002;</p>
 <p>TAC &#x6307;&#x4EE4;&#x4E0E;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x6BD4;&#x8F83;&#x7C7B;&#x4F3C;&#xFF0C;&#x6BCF;&#x6761; TAC &#x6307;&#x4EE4;&#x7531;&#x64CD;&#x4F5C;&#x7801;&#x548C;&#x64CD;&#x4F5C;&#x6570;&#xFF08;&#x6700;&#x591A;3&#x4E2A;&#xFF0C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x9664;&#x5916;&#xFF0C;&#x7531;&#x4E8E;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x4F7F;&#x7528;&#x4E25;&#x683C;&#x7684;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x53CD;&#x800C;&#x4F1A;&#x4F7F;&#x5F97;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x66F4;&#x4E3A;&#x590D;&#x6742;&#xFF09;&#x6784;&#x6210;&#x3002;&#x64CD;&#x4F5C;&#x6570;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#xFF1A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x3001;&#x5E38;&#x91CF;&#x3001;&#x6807;&#x7B7E;&#xFF08;&#x53EF;&#x7406;&#x89E3;&#x4E3A;&#x5E38;&#x91CF;&#x5730;&#x5740;&#xFF09;&#x548C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x6765;&#x601D;&#x8003;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5B8C;&#x6574;&#x63CF;&#x8FF0;&#x6E90;&#x7A0B;&#x5E8F;&#x7684;&#x8BED;&#x4E49;&#xFF0C;&#x9700;&#x8981;&#x54EA;&#x4E9B;&#x8BED;&#x53E5;&#xFF1F;</p>
 <ul>
@@ -1535,7 +1556,7 @@ _T3 = ADD _T0, 2
                 </a>
                 
                 
-                <a href="ssa.html" class="navigation navigation-next " aria-label="Next page: 静态单赋值">
+                <a href="irgen.html" class="navigation navigation-next " aria-label="Next page: 中间代码生成">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1546,7 +1567,7 @@ _T3 = ADD _T0, 2
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"中间表示设计","level":"11.3.1","depth":2,"next":{"title":"静态单赋值","level":"11.3.2","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},"previous":{"title":"中端设计","level":"11.3","depth":1,"path":"docs/contest/midend/midend.md","ref":"docs/contest/midend/midend.md","articles":[{"title":"中间表示设计","level":"11.3.1","depth":2,"path":"docs/contest/midend/ir.md","ref":"docs/contest/midend/ir.md","articles":[]},{"title":"静态单赋值","level":"11.3.2","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},{"title":"常量传播","level":"11.3.3","depth":2,"path":"docs/contest/midend/cp.md","ref":"docs/contest/midend/cp.md","articles":[]},{"title":"死代码消除","level":"11.3.4","depth":2,"path":"docs/contest/midend/dce.md","ref":"docs/contest/midend/dce.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/midend/ir.md","mtime":"2024-09-16T07:46:31.382Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-16T07:47:18.569Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"中间表示设计","level":"11.3.1","depth":2,"next":{"title":"中间代码生成","level":"11.3.2","depth":2,"path":"docs/contest/midend/irgen.md","ref":"docs/contest/midend/irgen.md","articles":[]},"previous":{"title":"中端设计","level":"11.3","depth":1,"path":"docs/contest/midend/midend.md","ref":"docs/contest/midend/midend.md","articles":[{"title":"中间表示设计","level":"11.3.1","depth":2,"path":"docs/contest/midend/ir.md","ref":"docs/contest/midend/ir.md","articles":[]},{"title":"中间代码生成","level":"11.3.2","depth":2,"path":"docs/contest/midend/irgen.md","ref":"docs/contest/midend/irgen.md","articles":[]},{"title":"静态单赋值","level":"11.3.3","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},{"title":"常量传播","level":"11.3.4","depth":2,"path":"docs/contest/midend/cp.md","ref":"docs/contest/midend/cp.md","articles":[]},{"title":"死代码消除","level":"11.3.5","depth":2,"path":"docs/contest/midend/dce.md","ref":"docs/contest/midend/dce.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/midend/ir.md","mtime":"2024-09-16T08:04:04.109Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-16T08:04:45.051Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

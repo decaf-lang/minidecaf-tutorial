@@ -1,0 +1,1763 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>中间代码生成 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-click-reveal/click_reveal.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ssa.html" />
+    
+    
+    <link rel="prev" href="ir.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    实验简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../misc/schedule.html">
+            
+                <a href="../../misc/schedule.html">
+            
+                    
+                    实验进度安排
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../step0/errate.html">
+            
+                <a href="../../step0/errate.html">
+            
+                    
+                    勘误表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../ref/riscv.html">
+            
+                <a href="../../ref/riscv.html">
+            
+                    
+                    RISC-V 参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">前置准备</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    配环境、跑测试
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../step0/intro.html">
+            
+                <a href="../../step0/intro.html">
+            
+                    
+                    实验环境简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../step0/riscv_env.html">
+            
+                <a href="../../step0/riscv_env.html">
+            
+                    
+                    RISC-V 环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../step0/riscv.html">
+            
+                <a href="../../step0/riscv.html">
+            
+                    
+                    RISC-V 的工具链使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../step0/env.html">
+            
+                <a href="../../step0/env.html">
+            
+                    
+                    实验框架环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../../step0/testing.html">
+            
+                <a href="../../step0/testing.html">
+            
+                    
+                    运行实验框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage0：第一个编译器</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../step1/arch.html">
+            
+                <a href="../../step1/arch.html">
+            
+                    
+                    MiniDecaf 编译器结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../step1/provided.html">
+            
+                <a href="../../step1/provided.html">
+            
+                    
+                    已提供的语法特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    step1：仅一个 return 的 main 函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../../step1/intro.html">
+            
+                <a href="../../step1/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../../step1/example.html">
+            
+                <a href="../../step1/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../../step1/visitor.html">
+            
+                <a href="../../step1/visitor.html">
+            
+                    
+                    Visitor 模式速成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../../step1/spec.html">
+            
+                <a href="../../step1/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage1：常量表达式</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    step2：一元操作
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../step2/intro.html">
+            
+                <a href="../../step2/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../step2/example.html">
+            
+                <a href="../../step2/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../step2/spec.html">
+            
+                <a href="../../step2/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <span>
+            
+                    
+                    step3：加减乘除模
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../step3/intro.html">
+            
+                <a href="../../step3/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../step3/example.html">
+            
+                <a href="../../step3/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../step3/precedence.html">
+            
+                <a href="../../step3/precedence.html">
+            
+                    
+                    优先级和结合性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../step3/spec.html">
+            
+                <a href="../../step3/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <span>
+            
+                    
+                    step4：比较和逻辑表达式
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../step4/intro.html">
+            
+                <a href="../../step4/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../step4/example.html">
+            
+                <a href="../../step4/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../step4/spec.html">
+            
+                <a href="../../step4/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage2：变量</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    step5：局部变量和赋值
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../../step5/intro.html">
+            
+                <a href="../../step5/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../../step5/example.html">
+            
+                <a href="../../step5/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../../step5/spec.html">
+            
+                <a href="../../step5/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage3：作用域</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    step6：作用域和块语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../../step6/intro.html">
+            
+                <a href="../../step6/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../../step6/example.html">
+            
+                <a href="../../step6/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../../step6/dataflow.html">
+            
+                <a href="../../step6/dataflow.html">
+            
+                    
+                    数据流分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../../step6/spec.html">
+            
+                <a href="../../step6/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage4：条件和循环</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" >
+            
+                <span>
+            
+                    
+                    step7：条件语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../step7/intro.html">
+            
+                <a href="../../step7/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../../step7/example.html">
+            
+                <a href="../../step7/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../../step7/spec.html">
+            
+                <a href="../../step7/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" >
+            
+                <span>
+            
+                    
+                    step8：循环语句
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../../step8/intro.html">
+            
+                <a href="../../step8/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../../step8/example.html">
+            
+                <a href="../../step8/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../../step8/spec.html">
+            
+                <a href="../../step8/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage5：函数</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" >
+            
+                <span>
+            
+                    
+                    step9：函数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../../step9/intro.html">
+            
+                <a href="../../step9/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../../step9/example.html">
+            
+                <a href="../../step9/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../../step9/spec.html">
+            
+                <a href="../../step9/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage6（升级）：全局变量和数组</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" >
+            
+                <span>
+            
+                    
+                    step10：全局变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../../step10/intro.html">
+            
+                <a href="../../step10/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../../step10/example.html">
+            
+                <a href="../../step10/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../../step10/spec.html">
+            
+                <a href="../../step10/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" >
+            
+                <span>
+            
+                    
+                    step11：数组
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.2.1" data-path="../../step11/intro.html">
+            
+                <a href="../../step11/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.2" data-path="../../step11/example.html">
+            
+                <a href="../../step11/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2.3" data-path="../../step11/spec.html">
+            
+                <a href="../../step11/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <span>
+            
+                    
+                    step12：为数组添加更多支持
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.3.1" data-path="../../step12/intro.html">
+            
+                <a href="../../step12/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.2" data-path="../../step12/example.html">
+            
+                <a href="../../step12/example.html">
+            
+                    
+                    通过例子学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3.3" data-path="../../step12/spec.html">
+            
+                <a href="../../step12/spec.html">
+            
+                    
+                    规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stage7（升级）：寄存器分配与代码优化</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../../step13/readme.html">
+            
+                <a href="../../step13/readme.html">
+            
+                    
+                    选做二说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" >
+            
+                <span>
+            
+                    
+                    step13：寄存器分配算法改进
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.2.1" data-path="../../step13/intro.html">
+            
+                <a href="../../step13/intro.html">
+            
+                    
+                    实验要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.2" data-path="../../step13/example.html">
+            
+                <a href="../../step13/example.html">
+            
+                    
+                    实验指导
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">大实验参考文档</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../intro.html">
+            
+                <a href="../intro.html">
+            
+                    
+                    大实验简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../frontend.html">
+            
+                <a href="../frontend.html">
+            
+                    
+                    前端设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="midend.html">
+            
+                <a href="midend.html">
+            
+                    
+                    中端设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.3.1" data-path="ir.html">
+            
+                <a href="ir.html">
+            
+                    
+                    中间表示设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="11.3.2" data-path="irgen.html">
+            
+                <a href="irgen.html">
+            
+                    
+                    中间代码生成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.3" data-path="ssa.html">
+            
+                <a href="ssa.html">
+            
+                    
+                    静态单赋值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.4" data-path="cp.html">
+            
+                <a href="cp.html">
+            
+                    
+                    常量传播
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3.5" data-path="dce.html">
+            
+                <a href="dce.html">
+            
+                    
+                    死代码消除
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../backend.html">
+            
+                <a href="../backend.html">
+            
+                    
+                    后端设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">参考资料</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../../../REFERENCE.html">
+            
+                <a href="../../../REFERENCE.html">
+            
+                    
+                    参考资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >中间代码生成</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x751F;&#x6210;">&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x751F;&#x6210;</h1>
+<h2 id="&#x4ECB;&#x7ECD;">&#x4ECB;&#x7ECD;</h2>
+<p>&#x524D;&#x7AEF;&#x89E3;&#x6790;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x68F5;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x8FD9;&#x68F5;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;&#x8F6C;&#x6362;&#x4E3A;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x3002;&#x4F9D;&#x636E;&#x4F60;&#x8BBE;&#x8BA1;&#x7684;IR&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5728;&#x4FDD;&#x8BC1;&#x8BED;&#x4E49;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5C06;AST&#x7528;&#x4F60;&#x7684;IR&#x8868;&#x793A;&#x51FA;&#x6765;&#x3002;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x57FA;&#x7840;&#x5B9E;&#x9A8C;&#x6846;&#x67B6;&#x4E2D;<code>frontend/tacgen/</code>&#x7684;&#x4EE3;&#x7801;&#x3002;<strong>&#x63A8;&#x8350;&#x5728;&#x751F;&#x6210;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x65F6;&#x5C31;&#x5148;&#x5229;&#x7528; Alloca&#x3001;Load&#x3001;Store &#x6307;&#x4EE4;&#x6765;&#x7B80;&#x5355;&#x5730;&#x5B9E;&#x73B0; SSA &#x5F62;&#x5F0F;&#x7684;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#xFF0C;&#x65B9;&#x4FBF;&#x4E4B;&#x540E;&#x7528;<code>mem2reg</code>&#x8FDB;&#x4E00;&#x6B65;&#x4F18;&#x5316;</strong>&#xFF08;&#x4F60;&#x53EF;&#x4EE5;&#x5148;&#x9605;&#x8BFB;<a href="ssa.html">&#x9759;&#x6001;&#x5355;&#x8D4B;&#x503C;</a>&#x7B80;&#x5355;&#x4E86;&#x89E3;&#x4EC0;&#x4E48;&#x662F;SSA&#xFF09;&#x3002;</p>
+<h2 id="&#x90E8;&#x5206;&#x5904;&#x7406;&#x601D;&#x8DEF;">&#x90E8;&#x5206;&#x5904;&#x7406;&#x601D;&#x8DEF;</h2>
+<p>&#x6574;&#x4F53;&#x601D;&#x8DEF;&#x662F;&#x901A;&#x8FC7;&#x904D;&#x5386;AST&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x6839;&#x636E;&#x8282;&#x70B9;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x3002;&#x63A8;&#x8350;&#x5148;&#x6839;&#x636E;AST&#x7684;&#x904D;&#x5386;&#x987A;&#x5E8F;&#x5199;&#x4E00;&#x4E2A;&#x6846;&#x67B6;&#xFF0C;&#x518D;&#x586B;&#x5145;&#x5177;&#x4F53;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x6BCF;&#x4E2A;&#x7EC4;&#x7684;AST&#x548C;IR&#x8BBE;&#x8BA1;&#x4E0D;&#x5C3D;&#x76F8;&#x540C;&#xFF0C;&#x672C;&#x90E8;&#x5206;&#x4EC5;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x91CD;&#x70B9;&#x7684;&#x5904;&#x7406;&#x601D;&#x8DEF;&#x548C;&#x5177;&#x4F53;&#x793A;&#x4F8B;&#xFF0C;&#x7ED3;&#x5408;&#x5C0F;&#x5B9E;&#x9A8C;&#x6587;&#x6863;&#x98DF;&#x7528;&#x6548;&#x679C;&#x66F4;&#x4F73;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<ul>
+<li><strong>&#x672C;&#x90E8;&#x5206;&#x4EC5;&#x4F9B;&#x53C2;&#x8003;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x8BBE;&#x8BA1;&#x7684;AST&#x548C;IR&#x8FDB;&#x884C;&#x8C03;&#x6574;&#x3002;</strong></li>
+<li>&#x5728;&#x904D;&#x5386;AST&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;<strong>&#x8981;&#x8BB0;&#x5F97;&#x7EF4;&#x62A4;&#x4E00;&#x4E9B;&#x6570;&#x636E;</strong>&#xFF0C;&#x6BD4;&#x5982;&#x5F53;&#x524D;&#x6240;&#x5728;&#x51FD;&#x6570;&#x3001;&#x5F53;&#x524D;&#x6240;&#x5728;&#x57FA;&#x672C;&#x5757;&#x3001;&#x51FD;&#x6570;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x91CF;&#x3001;&#x51FD;&#x6570;&#x7684;&#x57FA;&#x672C;&#x5757;&#x6570;&#x91CF;&#x3001;&#x524D;&#x7AEF;&#x53D8;&#x91CF;&#x5230;IR&#x7684;<code>Data</code>&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x8868;&#x7B49;&#x3002;</li>
+</ul>
+<h3 id="program">program</h3>
+<p>&#x5BF9;&#x4E8E;<code>program</code>&#x8282;&#x70B9;&#xFF0C;&#x5148;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;IR&#x7684;<code>Program</code>&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x518D;&#x904D;&#x5386;&#x5B50;&#x8282;&#x70B9;&#x3002;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x5B50;&#x8282;&#x70B9;&#x662F;<code>function</code>&#xFF0C;&#x5C31;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;IR&#x7684;<code>Function</code>&#x5BF9;&#x8C61;&#xFF0C;&#x518D;&#x8BBF;&#x95EE;&#x8BE5;<code>function</code>&#x8282;&#x70B9;&#xFF0C;&#x4ECE;&#x800C;&#x5C06;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x524D;&#x7AEF;&#x4FE1;&#x606F;&#x5B58;&#x5165;<code>Function</code>&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x5176;&#x52A0;&#x5165;&#x5230;&#x5F53;&#x524D;<code>Program</code>&#x5BF9;&#x8C61;&#x4E2D;&#x7684;<code>functions</code>&#x5217;&#x8868;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5B50;&#x8282;&#x70B9;&#x662F;<code>declaration</code>&#xFF0C;&#x8BF4;&#x660E;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x5C31;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;<code>Data</code>&#x5BF9;&#x8C61;&#xFF0C;&#x518D;&#x8BBF;&#x95EE;&#x8BE5;<code>declaration</code>&#x8282;&#x70B9;&#xFF0C;&#x4ECE;&#x800C;&#x5C06;&#x8BE5;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x524D;&#x7AEF;&#x4FE1;&#x606F;&#x5B58;&#x5165;<code>Data</code>&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x5176;&#x52A0;&#x5165;&#x5230;&#x5F53;&#x524D;<code>Program</code>&#x5BF9;&#x8C61;&#x4E2D;&#x7684;<code>global_data</code>&#x5217;&#x8868;&#x3002;</li>
+</ul>
+<h3 id="parameterlist">parameter_list</h3>
+<p>&#x5BF9;&#x4E8E;<code>parameter_list</code>&#x8282;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x524D;&#x51E0;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x7F16;&#x53F7;&#x5206;&#x914D;&#x7ED9;&#x53C2;&#x6570;&#x3002;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x662F;&#x6807;&#x91CF;&#x53C2;&#x6570;&#xFF0C;&#x8981;&#x53E6;&#x5916;&#x5728;&#x6808;&#x4E0A;&#x5F00;&#x7A7A;&#x95F4;&#x3002;&#xFF08;&#x8FD9;&#x662F;&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3; SSA &#x5F62;&#x5F0F;&#xFF09;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FDD;&#x5B58;&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;</li>
+</ul>
+<h3 id="declaration">declaration</h3>
+<p>&#x5BF9;&#x4E8E;<code>declaration</code>&#x8282;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x662F;&#x5426;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3001;&#x662F;&#x5426;&#x4E3A;&#x6570;&#x7EC4;&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;<strong>&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3; SSA &#x5F62;&#x5F0F;&#xFF0C;&#x54EA;&#x6015;&#x662F;&#x5C40;&#x90E8;&#x6807;&#x91CF;&#xFF0C;&#x4E5F;&#x8981;&#x7528;<code>Alloca</code>&#x6307;&#x4EE4;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#xFF0C;&#x540E;&#x7EED;&#x5C31;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x6765;&#x5BF9;&#x8BE5;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;</strong>&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6709;&#x521D;&#x59CB;&#x5316;&#xFF0C;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x6807;&#x91CF;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;<code>expression</code>&#x8282;&#x70B9;&#x5E76;&#x83B7;&#x53D6;&#x5176;<strong>&#x8FD0;&#x7B97;&#x7ED3;&#x679C;</strong>&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x65B0;&#x589E;<code>Store</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x5C06;&#x5F97;&#x5230;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#x5B58;&#x5165;&#x8BE5;&#x6807;&#x91CF;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x5740;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E;&#x6570;&#x7EC4;&#x5219;&#x9700;&#x8981;&#x904D;&#x5386;<code>Integer</code>&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x5206;&#x522B;&#x4F7F;&#x7528;<code>Store</code>&#x6307;&#x4EE4;&#x5C06;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x5B58;&#x5165;&#x6570;&#x7EC4;&#x7684;&#x76F8;&#x5E94;&#x5730;&#x5740;&#xFF0C;&#x5BF9;&#x4E8E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x662F;&#x5426;&#x52A0;&#x5165;<code>.bss</code>&#x6BB5;&#x3002;</li>
+</ul>
+<h3 id="lvalue">lvalue</h3>
+<p><code>lvalue</code>&#x8282;&#x70B9;&#x8868;&#x793A;&#x7684;&#x662F;&#x5DE6;&#x503C;&#xFF0C;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;&#x5730;&#x65B9;&#x4E3A;&#xFF1A;<code>assignment</code>&#x7684;&#x7B49;&#x53F7;&#x5DE6;&#x8FB9;&#x90E8;&#x5206;&#x3001;<code>expression</code>&#x7684;&#x67D0;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x540E;&#x8005;&#x4E14;&#x8BE5;&#x8282;&#x70B9;&#x8868;&#x793A;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;<strong>&#x5B58;&#x6709;&#x8BE5;&#x503C;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x5176;<strong>&#x5BF9;&#x5E94;&#x5730;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;&#xFF08;&#x4E0B;&#x9762;&#x4F1A;&#x5BF9;&#x201C;&#x8868;&#x793A;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#x201D;&#x8FDB;&#x884C;&#x89E3;&#x91CA;&#xFF09;</p>
+<ul>
+<li>&#x5148;&#x901A;&#x8FC7;&#x524D;&#x7AEF;&#x53D8;&#x91CF;&#x5230;IR&#x7684;<code>Data</code>&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x8868;&#xFF0C;&#x627E;&#x5230;&#x8BE5;&#x8282;&#x70B9;&#x6240;&#x8868;&#x793A;&#x7684;&#x524D;&#x7AEF;&#x53D8;&#x91CF;&#x5BF9;&#x5E94;&#x7684;<code>Data</code>&#x5BF9;&#x8C61;&#x3002;<ul>
+<li>&#x5982;&#x679C;&#x8FD9;&#x662F;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x5219;&#x65B0;&#x589E;<code>LoadAddr</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x83B7;&#x53D6;<strong>&#x5BF9;&#x5E94;&#x5730;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;</li>
+<li>&#x5982;&#x679C;&#x8FD9;&#x662F;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x901A;&#x8FC7;<code>Data</code>&#x5BF9;&#x8C61;&#x83B7;&#x53D6;<strong>&#x5BF9;&#x5E94;&#x5730;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;</li>
+</ul>
+</li>
+<li>&#x5982;&#x679C;&#x8FD9;&#x662F;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x90A3;&#x4E48;&#x524D;&#x7AEF;&#x8282;&#x70B9;&#x5E94;&#x8BE5;&#x4F1A;&#x8BB0;&#x5F55;&#x4E0B;&#x6807;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E0B;&#x6807;&#x90FD;&#x662F;<code>expression</code>&#x8282;&#x70B9;&#xFF0C;&#x6545;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x6BCF;&#x4E2A;&#x4E0B;&#x6807;&#x8282;&#x70B9;&#xFF0C;&#x83B7;&#x53D6;&#x5176;<strong>&#x8FD0;&#x7B97;&#x7ED3;&#x679C;</strong>&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x8FD9;&#x4E9B;&#x5BC4;&#x5B58;&#x5668;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x6BD4;&#x5982;&#x5B58;&#x8FDB;<code>index_temps</code>&#x4E2D;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x5229;&#x7528;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x6765;&#x6784;&#x9020;&#x76F8;&#x5E94;&#x7684;<code>GetElementPtr</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x901A;&#x8FC7;&#x6570;&#x7EC4;&#x57FA;&#x5730;&#x5740;&#x548C;&#x4E0B;&#x6807;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x7684;<strong>&#x5730;&#x5740;</strong>&#x3002;</li>
+<li>&#x76EE;&#x524D;&#x4E0D;&#x7BA1;&#x662F;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x8FD8;&#x662F;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x6807;&#x91CF;&#x8FD8;&#x662F;&#x6570;&#x7EC4;&#xFF0C;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x7684;&#x90FD;&#x662F;&#x5B58;&#x6709;&#x5176;<strong>&#x5BF9;&#x5E94;&#x5730;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x5177;&#x4F53;&#x60C5;&#x51B5;&#x786E;&#x5B9A;&#x8FD4;&#x56DE;&#x5185;&#x5BB9;&#x3002;<ul>
+<li>&#x5982;&#x679C;&#x8BE5;<code>lvalue</code>&#x8282;&#x70B9;&#x662F;<code>expression</code>&#x7684;&#x67D0;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x4E14;&#x8868;&#x793A;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#xFF0C;&#x5219;&#x5148;&#x65B0;&#x589E;<code>Load</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x5C06;&#x5730;&#x5740;&#x91CC;&#x7684;&#x503C;&#x52A0;&#x8F7D;&#x5230;&#x4E00;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF0C;&#x6700;&#x540E;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#xFF1B;&#x5426;&#x5219;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5176;<strong>&#x5BF9;&#x5E94;&#x5730;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;</li>
+<li>&#x4EC0;&#x4E48;&#x662F;&#x201C;&#x8868;&#x793A;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#x201D;&#xFF1F;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x5DF2;&#x77E5;&#x6709;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;<code>a[2][3]</code>&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x8BE5;<code>lvalue</code>&#x8282;&#x70B9;&#x8868;&#x793A;&#x7684;&#x662F;<code>a[1][2]</code>&#xFF0C;&#x5219;&#x8868;&#x793A;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x8868;&#x793A;&#x7684;&#x662F;<code>a</code>&#x3001;<code>a[0]</code>&#xFF0C;&#x5219;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x4E2D;&#x573A;&#x4F11;&#x606F;">&#x4E2D;&#x573A;&#x4F11;&#x606F;</h3>
+<p>&#x770B;&#x4E86;&#x524D;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x611F;&#x89C9;&#x5F88;&#x62BD;&#x8C61;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x6025;&#x7740;&#x5F80;&#x540E;&#x5B66;&#xFF0C;&#x5148;&#x4F11;&#x606F;&#x4E00;&#x4E0B;&#xFF0C;&#x770B;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x7528;&#x5230;<code>parameter_list</code>, <code>declaration</code>, <code>lvalue</code>&#x8282;&#x70B9;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5E2E;&#x5230;&#x4F60;&#x3002;</p>
+<pre><code class="lang-c"><span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y[])</span> </span>{
+    <span class="hljs-keyword">return</span> x + y[<span class="hljs-number">1</span>];
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> b[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>] = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>};
+    <span class="hljs-keyword">return</span> foo(a, b[<span class="hljs-number">1</span>]);
+}
+</code></pre>
+<p>&#x751F;&#x6210;&#x7684;AST&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>```
+&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x8F6C;&#x5316;&#x4E3A;IR&#x540E;&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;
+```asm
+i32 foo(i32 _T0, i32* _T1) {
+_B0:
+  alloca i32* _T2 = 4
+  store *(i32* _T2 + 0) = i32 _T0
+  load i32 _T3 = *(i32* _T2 + 0)
+  i32 _T4 = 1
+  i32* _T5 = elementptr: i32* _T1[i32 _T4]
+  load i32 _T6 = *(i32* _T5 + 0)
+  i32 _T7 = i32 _T3 + i32 _T6
+  return i32 _T7
+}
+i32 main() {
+_B0:
+  alloca i32[3]* _T0 = 24
+  i32 _T1 = 1
+  store *(i32[3]* _T0 + 0) = i32 _T1
+  i32 _T2 = 2
+  store *(i32[3]* _T0 + 4) = i32 _T2
+  i32 _T3 = 3
+  store *(i32[3]* _T0 + 8) = i32 _T3
+  i32 _T4 = 4
+  store *(i32[3]* _T0 + 12) = i32 _T4
+  i32 _T5 = 5
+  store *(i32[3]* _T0 + 16) = i32 _T5
+  i32 _T6 = 6
+  store *(i32[3]* _T0 + 20) = i32 _T6
+  i32* _T7 = LoadAddr $a
+  load i32 _T8 = *(i32* _T7 + 0)
+  i32 _T9 = 1
+  i32* _T10 = elementptr: i32[3]* _T0[i32 _T9]
+  i32 _T11 = call foo(i32 _T8, i32* _T10)
+  return i32 _T11
+}
+</code></pre><p>&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;</p>
+<ul>
+<li><code>foo</code>&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4E3A;<code>_T0</code>, <code>_T1</code>&#x3002;&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3; SSA &#x5F62;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x6807;&#x91CF;<code>x</code>&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x53E6;&#x5916;&#x5728;&#x6808;&#x4E0A;&#x5F00;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD9;&#x6837;&#x4E4B;&#x540E;&#x5BF9;<code>x</code>&#x7684;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;<code>_T2</code>&#x6765;&#x8FDB;&#x884C;&#x3002;&#x5BF9;&#x4E8E;<code>y[1]</code>&#xFF0C;&#x5229;&#x7528;&#x4E0B;&#x6807;&#x548C;<code>getElementptr</code>&#x6307;&#x4EE4;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x5176;&#x5730;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>load</code>&#x6307;&#x4EE4;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x5176;&#x503C;&#x3002;&#xFF08;<code>getElementptr</code>&#x6307;&#x4EE4;&#x662F;&#x4E3A;&#x4E86;&#x5199;&#x8D77;&#x6765;&#x65B9;&#x4FBF;&#x5FEB;&#x6377;&#xFF1B;&#x8FD9;&#x91CC;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x57FA;&#x5730;&#x5740;<code>_T1</code>&#x548C;&#x4E0B;&#x6807;<code>1</code>&#xFF0C;&#x6784;&#x9020;&#x51FA;<code>_T1 + 1 * 4</code>&#x7684;&#x5F0F;&#x5B50;&#x6765;&#x8BA1;&#x7B97;&#x51FA;<code>y[1]</code>&#x7684;&#x5730;&#x5740;&#xFF09;</li>
+<li><code>main</code>&#x51FD;&#x6570;&#x4E2D;&#x5BF9;&#x4E8E;&#x6570;&#x7EC4;<code>b</code>&#xFF0C;&#x5148;&#x4F7F;&#x7528;<code>Alloca</code>&#x6307;&#x4EE4;&#x83B7;&#x53D6;&#x5176;&#x6808;&#x4E0A;&#x5730;&#x5740;&#xFF0C;&#x518D;&#x5C06;&#x521D;&#x59CB;&#x503C;&#x5B58;&#x5230;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5730;&#x5740;&#x4E2D;&#x3002;&#x7531;&#x4E8E;<code>a</code>&#x662F;<code>foo</code>&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x53C2;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;<code>lvalue</code>&#x8282;&#x70B9;&#xFF0C;&#x540C;&#x65F6;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x5728;<code>LoadAddr</code>&#x6307;&#x4EE4;&#x83B7;&#x53D6;<code>a</code>&#x7684;&#x5730;&#x5740;&#x4E4B;&#x540E;&#xFF0C;&#x8FD8;&#x8981;&#x7528;<code>Load</code>&#x6307;&#x4EE4;&#x5C06;&#x5176;&#x503C;&#x52A0;&#x8F7D;&#x5230;&#x4E00;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;<code>b[1]</code>&#x5728;&#x8FD9;&#x91CC;&#x867D;&#x7136;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;<code>lvalue</code>&#x8282;&#x70B9;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x5B83;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5176;<strong>&#x5BF9;&#x5E94;&#x5730;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;</li>
+</ul>
+<h3 id="expression">expression</h3>
+<p>&#x8BBF;&#x95EE;<code>expression</code>&#x8282;&#x70B9;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x8FD4;&#x56DE;&#x5B58;&#x6709;&#x5176;<strong>&#x8FD0;&#x7B97;&#x7ED3;&#x679C;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x65B9;&#x4FBF;&#x540E;&#x7EED;&#x4F7F;&#x7528;&#x3002;&#x4EE5;&#x4E0B;&#x5206;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1A;</p>
+<ul>
+<li><code>unary &apos;=&apos; expression</code>&#xFF0C;&#x8868;&#x793A;&#x8D4B;&#x503C;&#x8868;&#x8FBE;&#x5F0F;&#x3002;<ul>
+<li>&#x5BF9;&#x4E8E;&#x7B49;&#x53F7;&#x5DE6;&#x8FB9;&#xFF0C;&#x8BBF;&#x95EE;&#x8BE5;<code>lvalue</code>&#x8282;&#x70B9;&#x5E76;&#x83B7;&#x53D6;&#x5176;<strong>&#x5BF9;&#x5E94;&#x5730;&#x5740;</strong>&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E;&#x7B49;&#x53F7;&#x53F3;&#x8FB9;&#xFF0C;&#x8BBF;&#x95EE;&#x8BE5;<code>expression</code>&#x8282;&#x70B9;&#x5E76;&#x83B7;&#x53D6;&#x5176;<strong>&#x8FD0;&#x7B97;&#x7ED3;&#x679C;</strong>&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;</li>
+<li>&#x6700;&#x540E;&#x65B0;&#x589E;<code>Store</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x5C06;&#x53F3;&#x8FB9;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x91CC;&#x7684;&#x503C;&#x5B58;&#x5165;&#x5DE6;&#x8FB9;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x91CC;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5DE6;&#x8FB9;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;</li>
+</ul>
+</li>
+<li><code>conditional</code>&#xFF0C;&#x8868;&#x793A;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x3002;<ul>
+<li>&#x5982;&#x679C;&#x8FD9;&#x662F;&#x4E2A;&#x4E09;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x53EF;&#x53C2;&#x8003;<code>if</code>&#x8282;&#x70B9;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x5BF9;&#x4E8E;<code>:?</code>&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;<code>then</code> &#x548C; <code>else</code> &#x662F;&#x4E24;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x8282;&#x70B9;&#xFF0C;&#x5BF9;&#x4E8E;<code>if</code>&#x8BED;&#x53E5;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x662F;&#x4E24;&#x4E2A;&#x8BED;&#x53E5;&#x8282;&#x70B9;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x8FD9;&#x662F;&#x4E2A;<code>logical_or</code>&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;<code>logical_or</code>&#x8282;&#x70B9;&#xFF0C;&#x7531;&#x4E8E;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x903B;&#x8F91;&#x77ED;&#x8DEF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x601D;&#x8003;&#x5982;&#x4F55;&#x65B0;&#x589E;<code>Branch</code>&#x6307;&#x4EE4;&#x6765;&#x8FDB;&#x884C;&#x5206;&#x652F;&#x8DF3;&#x8F6C;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="short_circuit.md">&#x77ED;&#x8DEF;&#x6C42;&#x503C;</a>&#x3002;</li>
+</ul>
+</li>
+<li>&#x5177;&#x4F53;&#x793A;&#x4F8B;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="short_circuit.md">&#x77ED;&#x8DEF;&#x6C42;&#x503C;</a>&#x3002;</li>
+</ul>
+<h3 id="if">if</h3>
+<ul>
+<li>&#x5148;&#x7ED9;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;<code>true_bb</code>&#x8868;&#x793A;<code>if</code>&#x8BED;&#x53E5;&#x7684;<code>true</code>&#x5206;&#x652F;&#x5165;&#x53E3;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x6709;<code>else</code>&#x90E8;&#x5206;&#xFF0C;&#x5219;&#x7ED9;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;<code>false_bb</code>&#x8868;&#x793A;<code>if</code>&#x8BED;&#x53E5;&#x7684;<code>false</code>&#x5206;&#x652F;&#x5165;&#x53E3;&#x3002;</li>
+<li>&#x7ED9;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;<code>next_bb</code>&#x8868;&#x793A;<code>if</code>&#x4E4B;&#x540E;&#x7684;&#x57FA;&#x672C;&#x5757;&#x3002;</li>
+<li>&#x5206;&#x652F;&#x6761;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;<code>expression</code>&#x8282;&#x70B9;&#xFF0C;&#x8BBF;&#x95EE;&#x8BE5;<code>expression</code>&#x8282;&#x70B9;&#x5E76;&#x83B7;&#x53D6;&#x5176;<strong>&#x8FD0;&#x7B97;&#x7ED3;&#x679C;</strong>&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;<ul>
+<li>&#x7531;&#x4E8E;<code>expression</code>&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x903B;&#x8F91;&#x77ED;&#x8DEF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x601D;&#x8003;&#x5982;&#x4F55;&#x65B0;&#x589E;<code>Branch</code>&#x6307;&#x4EE4;&#x6765;&#x8FDB;&#x884C;&#x5206;&#x652F;&#x8DF3;&#x8F6C;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="short_circuit.md">&#x77ED;&#x8DEF;&#x6C42;&#x503C;</a>&#x3002;</li>
+</ul>
+</li>
+<li>&#x5C06;&#x5F53;&#x524D;&#x57FA;&#x672C;&#x5757;&#x6539;&#x4E3A;<code>true_bb</code>&#xFF0C;&#x7136;&#x540E;&#x8BBF;&#x95EE;<code>true</code>&#x5206;&#x652F;&#x7684;&#x524D;&#x7AEF;&#x8282;&#x70B9;&#xFF0C;&#x518D;&#x65B0;&#x589E;&#x4E00;&#x4E2A;<code>Jump</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x4ECE;<code>true_bb</code>&#x8DF3;&#x8F6C;&#x5230;<code>next_bb</code>&#x3002;</li>
+<li>&#x5982;&#x679C;&#x6709;<code>else</code>&#x90E8;&#x5206;&#xFF0C;&#x5219;&#x5C06;&#x5F53;&#x524D;&#x57FA;&#x672C;&#x5757;&#x6539;&#x4E3A;<code>false_bb</code>&#xFF0C;&#x7136;&#x540E;&#x8BBF;&#x95EE;<code>false</code>&#x5206;&#x652F;&#x7684;&#x524D;&#x7AEF;&#x8282;&#x70B9;&#xFF0C;&#x518D;&#x65B0;&#x589E;&#x4E00;&#x4E2A;<code>Jump</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x4ECE;<code>false_bb</code>&#x8DF3;&#x8F6C;&#x5230;<code>next_bb</code>&#x3002;</li>
+<li>&#x6700;&#x540E;&#x5C06;&#x5F53;&#x524D;&#x57FA;&#x672C;&#x5757;&#x6539;&#x4E3A;<code>next_bb</code>&#x3002;</li>
+<li><p>&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-C">  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">int</span> a = <span class="hljs-number">2</span>;
+      <span class="hljs-keyword">int</span> b = <span class="hljs-number">0</span>;
+      <span class="hljs-keyword">if</span>(a)
+          b = <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">else</span>
+          b = <span class="hljs-number">-1</span>;
+      <span class="hljs-keyword">return</span> b;
+  }
+</code></pre>
+<p>  &#x751F;&#x6210;&#x7684;AST&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>  Program
+      |- (children[0]) Function
+          |- (ret_t) TInt
+          |- (ident) Identifier(&quot;main&quot;)
+          |- (body) Block
+              |- (children[0]) VarDecl
+                  |- (type) TInt
+                  |- (ident) Identifier(&quot;a&quot;)
+                  |- (init) IntLiteral(2)
+              |- (children[1]) VarDecl
+                  |- (type) TInt
+                  |- (ident) Identifier(&quot;b&quot;)
+                  |- (init) IntLiteral(0)
+              |- (children[2]) If
+                  |- (cond) Identifier(&quot;a&quot;)
+                  |- (children[0]) Assign
+                      |- (lhs) Identifier(&quot;b&quot;)
+                      |- (rhs) IntLiteral(1)
+                  |- (children[1]) Assign
+                      |- (lhs) Identifier(&quot;b&quot;)
+                      |- (rhs) UnaryOp(NEG)
+                          |- (expr) IntLiteral(1)
+              |- (children[3]) Return
+                  |- (expr) Identifier(&quot;b&quot;)
+</code></pre><p>  &#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x8F6C;&#x5316;&#x4E3A;IR&#x540E;&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-asm">  i32 main() {
+  _B0:
+      alloca i32* _T0 = 4
+      i32 _T1 = 2
+      store *(i32* _T0 + 0) = i32 _T1
+      alloca i32* _T2 = 4
+      i32 _T3 = 0
+      store *(i32* _T2 + 0) = i32 _T3
+      load i32 _T4 = *(i32* _T0 + 0)
+      if i32 _T4 == 0 jump _B2 else jump _B1
+  _B1:
+      i32 _T5 = 1
+      store *(i32* _T2 + 0) = i32 _T5
+      jump _B3
+  _B2:
+      i32 _T6 = 1
+      i32 _T7 = -i32 _T6
+      store *(i32* _T2 + 0) = i32 _T7
+      jump _B3
+  _B3:
+      load i32 _T8 = *(i32* _T2 + 0)
+      return i32 _T8
+  }
+</code></pre>
+<p>  &#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x751F;&#x6210;&#x4E86;<code>_B1</code>, <code>_B2</code>, <code>_B3</code>&#x4E09;&#x4E2A;&#x57FA;&#x672C;&#x5757;&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;<code>true</code>&#x5206;&#x652F;&#x5165;&#x53E3;&#x3001;<code>false</code>&#x5206;&#x652F;&#x5165;&#x53E3;&#x548C;<code>if</code>&#x4E4B;&#x540E;&#x7684;&#x57FA;&#x672C;&#x5757;&#x3002;<code>_B0</code>&#x7684;&#x7ED3;&#x5C3E;&#x662F;&#x4E00;&#x4E2A;<code>Branch</code>&#x6307;&#x4EE4;&#xFF0C;<code>_B1</code>, <code>_B2</code>&#x7ED3;&#x5C3E;&#x90FD;&#x662F;<code>Jump</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x4ECE;<code>true_bb</code>&#x3001;<code>false_bb</code>&#x8DF3;&#x8F6C;&#x5230;<code>next_bb</code>&#x3002;</p>
+</li>
+</ul>
+<h3 id="while">while</h3>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x7FFB;&#x8BD1;&#x65B9;&#x5F0F;&#x91C7;&#x7528;&#x7684;&#x662F;<a href="../../step8/example.html">step8&#x7684;&#x601D;&#x8003;&#x9898;</a>&#x4E2D;&#x7684;&#x7B2C;&#x4E8C;&#x79CD;&#x3002;<strong>&#x5728;&#x7FFB;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F60;&#x8FD8;&#x8981;&#x7EF4;&#x62A4;&#x597D;&#x5FAA;&#x73AF;&#x6240;&#x9700;&#x7684;<code>break/continue</code>&#x6807;&#x7B7E;&#x3002;</strong></p>
+<ul>
+<li>&#x7ED9;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;<code>body_bb</code>&#x8868;&#x793A;<code>while</code>&#x8BED;&#x53E5;&#x7684;&#x5FAA;&#x73AF;&#x4F53;&#x5165;&#x53E3;&#x3002;</li>
+<li>&#x7ED9;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;<code>body_cond_bb</code>&#x8868;&#x793A;&#x7B2C;&#x4E8C;&#x4E2A;<code>while</code>&#x8BED;&#x53E5;&#x7684;&#x6761;&#x4EF6;&#x90E8;&#x5206;&#x3002;</li>
+<li>&#x7ED9;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5757;<code>next_bb</code>&#x8868;&#x793A;<code>while</code>&#x4E4B;&#x540E;&#x7684;&#x57FA;&#x672C;&#x5757;&#x3002;</li>
+<li>&#x5F00;&#x59CB;&#x8BBF;&#x95EE;&#x7B2C;&#x4E00;&#x4E2A;<code>while</code>&#x8BED;&#x53E5;&#x7684;&#x6761;&#x4EF6;&#x90E8;&#x5206;&#xFF0C;&#x5206;&#x652F;&#x6761;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;<code>expression</code>&#x8282;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x8BE5;<code>expression</code>&#x8282;&#x70B9;&#x3002;<ul>
+<li>&#x7531;&#x4E8E;<code>expression</code>&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x903B;&#x8F91;&#x77ED;&#x8DEF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x601D;&#x8003;&#x5982;&#x4F55;&#x65B0;&#x589E;<code>Branch</code>&#x6307;&#x4EE4;&#x6765;&#x8FDB;&#x884C;&#x5206;&#x652F;&#x8DF3;&#x8F6C;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="short_circuit.md">&#x77ED;&#x8DEF;&#x6C42;&#x503C;</a>&#x8FDB;&#x884C;&#x5B66;&#x4E60;&#x3002;</li>
+</ul>
+</li>
+<li>&#x5C06;&#x5F53;&#x524D;&#x57FA;&#x672C;&#x5757;&#x6539;&#x4E3A;<code>body_bb</code>&#xFF0C;&#x7136;&#x540E;&#x8BBF;&#x95EE;<code>true</code>&#x5206;&#x652F;&#x7684;&#x524D;&#x7AEF;&#x8282;&#x70B9;&#xFF0C;&#x518D;&#x65B0;&#x589E;&#x4E00;&#x4E2A;<code>Jump</code>&#x6307;&#x4EE4;&#xFF0C;&#x8868;&#x793A;&#x4ECE;<code>body_bb</code>&#x8DF3;&#x8F6C;&#x5230;<code>body_cond_bb</code>&#x3002;</li>
+<li>&#x5C06;&#x5F53;&#x524D;&#x57FA;&#x672C;&#x5757;&#x6539;&#x4E3A;<code>body_cond_bb</code>&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;<code>while</code>&#x8BED;&#x53E5;&#x7684;&#x6761;&#x4EF6;&#x90E8;&#x5206;&#x662F;&#x4E00;&#x4E2A;<code>expression</code>&#x8282;&#x70B9;&#xFF0C;&#x8BBF;&#x95EE;&#x8BE5;<code>expression</code>&#x8282;&#x70B9;&#x5E76;&#x83B7;&#x53D6;&#x5176;<strong>&#x8FD0;&#x7B97;&#x7ED3;&#x679C;</strong>&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;<ul>
+<li>&#x7531;&#x4E8E;<code>expression</code>&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x903B;&#x8F91;&#x77ED;&#x8DEF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x601D;&#x8003;&#x5982;&#x4F55;&#x65B0;&#x589E;<code>Branch</code>&#x6307;&#x4EE4;&#x6765;&#x8FDB;&#x884C;&#x5206;&#x652F;&#x8DF3;&#x8F6C;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="short_circuit.md">&#x77ED;&#x8DEF;&#x6C42;&#x503C;</a>&#x8FDB;&#x884C;&#x5B66;&#x4E60;&#x3002;</li>
+</ul>
+</li>
+<li>&#x6700;&#x540E;&#x5C06;&#x5F53;&#x524D;&#x57FA;&#x672C;&#x5757;&#x6539;&#x4E3A;<code>next_bb</code>&#x3002;</li>
+<li>&#x4F8B;&#xFF1A;<pre><code class="lang-C">  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>;
+      <span class="hljs-keyword">while</span>(a &lt; <span class="hljs-number">10</span>){
+          <span class="hljs-keyword">if</span>(a == <span class="hljs-number">5</span>){
+              a = <span class="hljs-number">10</span>;
+              <span class="hljs-keyword">break</span>;
+          }
+          a = a + <span class="hljs-number">1</span>;
+      }
+      <span class="hljs-keyword">return</span> a;
+  }
+</code></pre>
+  &#x751F;&#x6210;&#x7684;AST&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;<pre><code> 
+</code></pre>  &#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x8F6C;&#x5316;&#x4E3A;IR&#x540E;&#x53EF;&#x80FD;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-asm">  i32 main() {
+  _B0:
+      alloca i32* _T0 = 4
+      i32 _T1 = 0
+      store *(i32* _T0 + 0) = i32 _T1
+      load i32 _T2 = *(i32* _T0 + 0)
+      i32 _T3 = 10
+      i32 _T4 = i32 _T2 &lt; i32 _T3
+      if i32 _T4 == 0 jump _B3 else jump _B1
+  _B1:
+      load i32 _T5 = *(i32* _T0 + 0)
+      i32 _T6 = 5
+      i32 _T7 = i32 _T5 == i32 _T6
+      if i32 _T7 == 0 jump _B5 else jump _B4
+  _B2:
+      load i32 _T12 = *(i32* _T0 + 0)
+      i32 _T13 = 10
+      i32 _T14 = i32 _T12 &lt; i32 _T13
+      if i32 _T14 == 0 jump _B3 else jump _B1
+  _B3:
+      load i32 _T15 = *(i32* _T0 + 0)
+      return i32 _T15
+  _B4:
+      i32 _T8 = 10
+      store *(i32* _T0 + 0) = i32 _T8
+      jump _B3
+  _B5:
+      load i32 _T9 = *(i32* _T0 + 0)
+      i32 _T10 = 1
+      i32 _T11 = i32 _T9 + i32 _T10
+      store *(i32* _T0 + 0) = i32 _T11
+      jump _B2
+  _B6:
+      jump _B5
+  }
+</code></pre>
+  &#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;<code>_B0</code>&#x7684;&#x6700;&#x540E;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;<code>while</code>&#x8BED;&#x53E5;&#x7684;&#x6761;&#x4EF6;&#x90E8;&#x5206;&#xFF0C;<code>while</code>&#x8BED;&#x53E5;&#x8FD8;&#x751F;&#x6210;&#x4E86;<code>_B1</code>, <code>_B2</code>, <code>_B3</code>&#x4E09;&#x4E2A;&#x57FA;&#x672C;&#x5757;&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;<code>while</code>&#x8BED;&#x53E5;&#x7684;&#x5FAA;&#x73AF;&#x4F53;&#x5165;&#x53E3;&#x3001;&#x7B2C;&#x4E8C;&#x4E2A;<code>while</code>&#x8BED;&#x53E5;&#x7684;&#x6761;&#x4EF6;&#x90E8;&#x5206;&#x548C;<code>while</code>&#x4E4B;&#x540E;&#x7684;&#x57FA;&#x672C;&#x5757;&#x3002;<code>if</code>&#x8BED;&#x53E5;&#x751F;&#x6210;&#x4E86;<code>_B4</code>, <code>_B5</code>&#x4E24;&#x4E2A;&#x57FA;&#x672C;&#x5757;&#x3002;&#x591A;&#x51FA;&#x6765;&#x7684;<code>_B6</code>&#x662F;&#x4E2A;&#x4E0D;&#x53EF;&#x8FBE;&#x57FA;&#x672C;&#x5757;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E4B;&#x540E;&#x751F;&#x6210;&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x65F6;&#x6D88;&#x6389;&#x3002;&#xFF08;&#x601D;&#x8003;&#x4E00;&#x4E0B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x751F;&#x6210;<code>_B6</code>&#xFF1F;&#x63D0;&#x793A;&#xFF1A;&#x5982;&#x679C;<code>break;</code>&#x8BED;&#x53E5;&#x540E;&#x9762;&#x52A0;&#x4E0A;<code>a = 1;</code>&#x8BED;&#x53E5;&#xFF0C;IR&#x4F1A;&#x5982;&#x4F55;&#x6539;&#x53D8;&#xFF1F;&#xFF09;</li>
+</ul>
+<h2 id="&#x9884;&#x671F;&#x76EE;&#x6807;">&#x9884;&#x671F;&#x76EE;&#x6807;</h2>
+<p>&#x5B8C;&#x6210;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x540E;&#xFF0C;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x5E94;&#x8BE5;&#x80FD;&#x5C06; MiniDecaf &#x7A0B;&#x5E8F;&#x7FFB;&#x8BD1;&#x6210;&#x6EE1;&#x8DB3; SSA &#x5F62;&#x5F0F;&#x7684; IR&#xFF0C;&#x5E76;&#x80FD;&#x591F;&#x8F93;&#x51FA; IR&#x3002;&#x8FDB;&#x4E00;&#x6B65;&#x5730;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x53C2;&#x52A0;&#x6027;&#x80FD;&#x8BC4;&#x6D4B;&#xFF0C;&#x4F60;&#x8FD8;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x4E9B;&#x4E2D;&#x7AEF;&#x4F18;&#x5316;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ir.html" class="navigation navigation-prev " aria-label="Previous page: 中间表示设计">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ssa.html" class="navigation navigation-next " aria-label="Next page: 静态单赋值">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"中间代码生成","level":"11.3.2","depth":2,"next":{"title":"静态单赋值","level":"11.3.3","depth":2,"path":"docs/contest/midend/ssa.md","ref":"docs/contest/midend/ssa.md","articles":[]},"previous":{"title":"中间表示设计","level":"11.3.1","depth":2,"path":"docs/contest/midend/ir.md","ref":"docs/contest/midend/ir.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hide-element","chapter-fold","katex","alerts","emphasize","mermaid-gb3","codeblock-label","code","search-pro","click-reveal","expandable-chapters-interactive","localized-footer","intopic-toc"],"pluginsConfig":{"chapter-fold":{},"emphasize":{},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"codeblock-label":{},"search-pro":{},"search":{},"localized-footer":{"filename":"gitalk.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"click-reveal":{},"highlight":{},"mermaid-gb3":{},"expandable-chapters-interactive":{},"alerts":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/contest/midend/irgen.md","mtime":"2024-09-16T08:04:04.109Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-16T08:04:45.051Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-click-reveal/click_reveal.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
