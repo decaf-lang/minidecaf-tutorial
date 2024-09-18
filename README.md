@@ -119,8 +119,6 @@ stage7 为进阶关卡，如果你依然学有余力，你可以在这里实现�
 - [实验指导书勘误表](https://decaf-lang.github.io/minidecaf-tutorial/docs/step0/errate.html)
 - [课程问答墙](https://docs.qq.com/doc/DY1hZWFV0T0N0VWph)
 - [实验思路指导与问答墙](https://docs.qq.com/doc/DY05QVmJFcGNWcllo)
-- [实验框架介绍视频](https://cloud.tsinghua.edu.cn/d/d1d80ebd16a44c179d44/)
-- [实验环境虚拟机下载链接（使用方法参见网络学堂公告）](https://cloud.tsinghua.edu.cn/d/5281023e65fd4032a69b/)
 
 ## 参考资料
 - [Writing a C Compiler: by Nora Sandler](https://norasandler.com/2017/11/29/Write-a-Compiler.html)
