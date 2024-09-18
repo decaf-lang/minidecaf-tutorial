@@ -75,7 +75,7 @@ stage7 为进阶关卡，如果你依然学有余力，你可以在这里实现�
 
 ## 实验提交
 
-大家在网络学堂提交 **git.tsinghua.edu.cn** 的帐号名后，助教会给每个人建立一个私有的仓库，URL 为 https://git.tsinghua.edu.cn/compiler/2024/minidecaf-你的学号 ，将作业提交到那个仓库即可。
+大家在网络学堂提交 **git.tsinghua.edu.cn** 的帐号名后，助教会给每个人建立一个私有的仓库，URL 为 https://git.tsinghua.edu.cn/compiler24/stu24/minidecaf-你的学号 ，将作业提交到那个仓库即可。
 每个 stage 会对应于一个 branch，当切换到一个新的 branch 上实现时，你可以用 `git checkout -b` 来创建一个新的分支。
 
 本学期我们使用清华大学代码托管服务（git.tsinghua）的 CI（持续集成）来**测试**大家的代码实现及**提交实验报告**。
