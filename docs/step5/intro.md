@@ -37,6 +37,8 @@
 
 我们要增加和变量相关的语义检查：变量不能重复声明，不能使用未声明的变量。
 
+**请将你的作业放置在分支`stage-2`下，你可以通过`git checkout -b stage-2`创建一个新的分支并继承当前分支的修改。**
+
 我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 2 的实验报告需要放在 `stage-2` 这个 branch 下的 `./reports/stage-2.pdf`。注意报告的标题是 `stage-2` 而不是 `step-5`。
 
 你需要：
