@@ -138,6 +138,6 @@ main:             # 主函数入口符号
     }
     ```
 
-2. 我们的框架现在对于main函数没有返回值的情况是在哪一步处理的？报的是什么错？
+2. 我们的框架现在对于 `return` 语句没有返回值的情况是在哪一步处理的？报的是什么错？
 
 3. 为什么框架定义了 `frontend/ast/tree.py:Unary`、`utils/tac/tacop.py:TacUnaryOp`、`utils/riscv.py:RvUnaryOp` 三种不同的一元运算符类型？
