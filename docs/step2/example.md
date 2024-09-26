@@ -81,7 +81,7 @@ Program
 
 ### 词法分析 & 语法分析
     
-在 `frontend/lex/lex.py` 里加入新的 lex token 定义，以便lexer可以解析 `-`：
+在 `frontend/lexer/lex.py` 里加入新的 lex token 定义，以便lexer可以解析 `-`：
 
 ```python
 t_Minus = "-"
