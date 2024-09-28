@@ -53,6 +53,56 @@ int main() {
 ```
 生成的AST可能如下：
 ```
+Program
+    |- (children[0]) Declaration
+        |- (spec) Specifier(TINT)
+        |- VarDecl
+            |- (type) TInt
+            |- (ident) Identifier("a")
+            |- (init) IntLiteral(1)
+    |- (children[1]) Function
+        |- (ret_t) TInt
+        |- (ident) Identifier("foo")
+        |- (params) ParameterList
+            |- (children[0]) Parameter
+                |- (spec) Specifier(TINT)
+                |- (decl) Declarator(Identifier("x"))
+            |- (children[1]) Parameter
+                |- (spec) Specifier(TINT)
+                |- (decl) Declarator(Identifier("y"), ArrayType())
+        |- (body) Block
+            |- (children[0]) Return
+                |- (expr) BinOp(ADD)
+                    |- (lhs) Identifier("x")
+                    |- (rhs) ArrayRef
+                        |- (array) Identifier("y")
+                        |- (index) IntLiteral(1)
+    |- (children[2]) Function
+        |- (ret_t) TInt
+        |- (ident) Identifier("main")
+        |- (params) ParameterList # Empty
+        |- (body) Block
+            |- (children[0]) Declaration
+                |- (spec) Specifier(TINT)
+                |- (decl) Declarator(Identifier("b"), ArrayType(2, ArrayType(3, TINT)))
+                |- (init) InitList
+                    |- (children[0]) InitList
+                        |- (children[0]) IntLiteral(1)
+                        |- (children[1]) IntLiteral(2)
+                        |- (children[2]) IntLiteral(3)
+                    |- (children[1]) InitList
+                        |- (children[0]) IntLiteral(4)
+                        |- (children[1]) IntLiteral(5)
+                        |- (children[2]) IntLiteral(6)
+            |- (children[1]) Return
+                |- (expr) Call
+                    |- (func) Identifier("foo")
+                    |- (args) ArgumentList
+                        |- (children[0]) Identifier("a")
+                        |- (children[1]) ArrayRef
+                            |- (array) Identifier("b")
+                            |- (index) IntLiteral(1)
+
 ```
 上述代码转化为IR后可能如下：
 ```asm
