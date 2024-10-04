@@ -260,6 +260,35 @@ _B0:
     ```
     生成的AST可能如下：
     ```
+    Program
+    |- (children[0]) Function
+        |- (ret_t) TInt
+        |- (ident) Identifier("main")
+        |- (body) Block
+            |- (children[0]) VarDecl
+                |- (type) TInt
+                |- (ident) Identifier("a")
+                |- (init) IntLiteral(0)
+            |- (children[1]) While
+                |- (cond) BinaryOp(LT)
+                    |- (lhs) Identifier("a")
+                    |- (rhs) IntLiteral(10)
+                |- (body) Block
+                    |- (children[0]) If
+                        |- (cond) BinaryOp(EQ)
+                            |- (lhs) Identifier("a")
+                            |- (rhs) IntLiteral(5)
+                        |- (children[0]) Assign
+                            |- (lhs) Identifier("a")
+                            |- (rhs) IntLiteral(10)
+                        |- (children[1]) Break
+                    |- (children[1]) Assign
+                        |- (lhs) Identifier("a")
+                        |- (rhs) BinaryOp(ADD)
+                            |- (lhs) Identifier("a")
+                            |- (rhs) IntLiteral(1)
+            |- (children[2]) Return
+                |- (expr) Identifier("a")
     ```
     上述代码转化为IR后可能如下：
     ```asm
