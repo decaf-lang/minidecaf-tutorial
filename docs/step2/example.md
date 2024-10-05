@@ -189,10 +189,10 @@ return _T1
 ```python
 def transform(self, prog: TACProg):
     analyzer = LivenessAnalyzer()
-    reg_alloc = BruteRegAlloc(emitter)
     
     for func in prog.funcs:
         emitter = RiscvAsmEmitter(Riscv.AllocatableRegs, Riscv.CallerSaved)
+        reg_alloc = BruteRegAlloc(emitter)
         pair = emitter.selectInstr(func)
         builder = CFGBuilder()
         cfg: CFG = builder.buildFrom(pair[0])
