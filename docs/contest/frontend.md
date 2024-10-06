@@ -87,6 +87,9 @@ ANTLR 运行时库是解析器生成的代码在运行时所依赖的代码。�
   # 设置项目名称和使用的语言（CXX 代表 C++）
   project(my_compiler CXX)
 
+  # 添加依赖 Threads 库
+  find_package(Threads REQUIRED)
+  
   # 设置 C++ 标准为 C++17
   set(CMAKE_CXX_STANDARD 17)
 
@@ -112,7 +115,7 @@ ANTLR 运行时库是解析器生成的代码在运行时所依赖的代码。�
   add_executable(my_compiler ${SRC})
 
   # 将 antlr4_runtime 库与 my_compiler 可执行文件链接
-  target_link_libraries(my_compiler antlr4_runtime)
+  target_link_libraries(my_compiler antlr4_runtime Threads::Threads)
   ```
 
 - **为 antlr4-runtime 添加一个相应的 `CMakeLists.txt`**
@@ -120,8 +123,9 @@ ANTLR 运行时库是解析器生成的代码在运行时所依赖的代码。�
 ```cmake
 # 3rd_party/antlr4-runtime/CMakeLists.txt
 file(GLOB_RECURSE ANTLR4_SRC "*.cpp")
-
+find_package(Threads REQUIRED)
 add_library(antlr4_runtime STATIC ${ANTLR4_SRC})
+target_link_libraries(antlr4_runtime Threads::Threads)
 ```
 
 ## 第二部分：文法文件的编写与 parse tree 的生成
@@ -164,7 +168,7 @@ add_library(antlr4_runtime STATIC ${ANTLR4_SRC})
 
 
 
-### 1. 编写simpleC.g4
+### 1. 编写SimpleC.g4
 
 `.g4` 文件是 ANTLR 使用的文法文件，用于定义语言的语法规则。它使用基于上下文的语法规则来描述语言的结构。一个典型的 `.g4` 文件包含以下几个部分：
 
@@ -238,12 +242,12 @@ DIV: '/' ;
 在确认环境配置无误后，我们可以使用 ANTLR 和文法文件生成所需的 lexer & parser，只需要执行
 
 ```bash
-java -jar /path/to/antlr-4.13.2-complete.jar -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer_parser simpleC.g4
+java -jar /path/to/antlr-4.13.2-complete.jar -Dlanguage=Cpp -no-listener -visitor -o src/frontend/lexer SimpleC.g4
 ```
 
 `-no-listener` 和 `-visitor` 选项分别用于禁止生成 listener（默认是激活的）和激活 visitor 模式。如果你还不知道 visitor 是什么，不用担心，我们稍后会看到。
 
--o 选项用于设置输出目录。我们将在 `src/frontend/lexer_parser` 目录中输出生成的代码。
+-o 选项用于设置输出目录。我们将在 `src/frontend/lexer` 目录中输出生成的代码。
 
 ### 3. 使用 lexer & parser
 
