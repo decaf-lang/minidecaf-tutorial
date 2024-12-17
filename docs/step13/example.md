@@ -109,3 +109,65 @@ int f() {
 - 如果不能合并，那么把 `a` 和 `b` 中间的虚线边改为实线，表示不再考虑二者合并的情况。
 
 上面的说明只是简要介绍了算法的原理，请阅读论文 [TOPLAS'1996: *Iterated Register Coalescing*](https://dl.acm.org/doi/pdf/10.1145/229542.229546) 获取更详细的说明。**别忘了论文末尾的附录有完整的伪代码实现。**
+
+## 如何比较新的寄存器分配算法有哪些提升
+
+下面是两个例子，分别是有大量活跃变量和大量分支语句，**助教以C的语法编写，不符合minidecaf语法**，你可以设计类似的测试样例来说明新的寄存器分配算法的效果，你可以比较运行时间以及生成的汇编代码：
+
+```c
+int test_many_branches() {
+    int a = 0, b = 1, c = 2, d = 3;
+    int result = 0;
+
+    for (int x = 0; x < 10000; x++) {
+        if (x % 2 == 0) {
+            a += 1;
+            if (x % 3 == 0) {
+                b += 2;
+            } else {
+                c += 3;
+            }
+        } else {
+            d += 4;
+            if (x % 5 == 0) {
+                a -= 1;
+            } else if (x % 7 == 0) {
+                b -= 2;
+            } else {
+                c -= 3;
+            }
+        }
+
+        result += a + b + c + d;
+
+        if (result % 100 == 0) {
+            d += 1;
+        }
+    }
+
+    return result;
+}
+```
+
+```c
+int test_many_live_variables() {
+    int a = 1, b = 2, c = 3, d = 4, e = 5;
+    int f = 6, g = 7, h = 8, i = 9, j = 10;
+    int k = 11, l = 12, m = 13, n = 14, o = 15;
+    int p = 16, q = 17, r = 18, s = 19, t = 20;
+
+    int result = 0;
+
+    for (int x = 0; x < 10000; x++) {
+        result += a + b + c + d + e + f + g + h + i + j
+                  + k + l + m + n + o + p + q + r + s + t;
+
+        a += 1; b += 2; c += 3; d += 4; e += 5;
+        f += 6; g += 7; h += 8; i += 9; j += 10;
+        k += 11; l += 12; m += 13; n += 14; o += 15;
+        p += 16; q += 17; r += 18; s += 19; t += 20;
+    }
+
+    return result;
+}
+```
