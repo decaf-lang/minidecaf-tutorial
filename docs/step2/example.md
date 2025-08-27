@@ -130,7 +130,7 @@ def p_unary_expression(p):
 
 这一步就是 `TACGen.transform` 函数(frontend/tacgen/tacgen.py)做的事了， `TACGen.transform` 接受一个AST树输入，输出一个TAC表示，请确保你已经对[Visitor 模式](./visitor.md)有所了解，或者假设你已经知道在遍历 AST 时 accept 函数会对不同类型的 AST Node 调用不同的visit 函数。例如，visit `(children[0]) Return` 时，遇到的子节点是 `(expr) Unary`，那么 `accept` 最终会调用`visitUnary`，你的lint工具应该是没法做到点一下就跳转到对应的位置，所以你需要自己判断我们在遍历某个节点的时候其子节点的类型。
 
-**下面的描述中一定要记得区分accept和直接对于mv.visitXXX的调用，前者是在遍历AST时调用的，后者是在 TACFuncEmitter 类中调用的。并且希望大家一定要对着代码看。**
+**下面的描述中一定要记得区分accept和直接对于mv.emitXXX的调用，前者是在遍历AST时调用的，后者是在 TACFuncEmitter 类中调用的。并且希望大家一定要对着代码看。**
 
 ```
 Program
@@ -154,16 +154,16 @@ def transform(self, program: Program) -> TACProg:
         # in step9, you need to use real parameter count
         emitter = TACFuncEmitter(FuncLabel(funcName), 0, labelManager)
         astFunc.body.accept(self, emitter)
-        tacFuncs.append(emitter.visitEnd())
+        tacFuncs.append(emitter.emitEnd())
     return TACProg(tacFuncs)
 ```
 
 现在我们开始正式遍历 AST 树，`transform` 会先遍历每一个函数进行代码翻译，因为我们目前只有一个函数`main`，我们只考虑没有参数的函数，我们需要对函数体进行翻译，函数体首先在一个block中（花括号括起来的部分），因此会先进入 `visitBlock` 函数，`visitBlock` 函数对于在block中的所有子节点调用了`child.accept(self, mv)`，在这个例子中则会调用`Return` 语句对应的visitor，进入`visitReturn`。继续向下，`visitReturn` 又对于 return AST Node 中的 expr 调用了 `stmt.expr.accept(self, mv)` ，又进入了`visitUnary`，同理，`expr.operand.accept(self, mv)`会进入`visitIntLiteral`。
 
-到了此处出现了不同，我们发现`visitIntLiteral`中第一次调用了mv的成员函数 `mv.visitLoad(expr.value)` 这里进入了`TACFuncEmitter.visitLoad`：
+到了此处出现了不同，我们发现`visitIntLiteral`中第一次调用了mv的成员函数 `mv.emitLoad(expr.value)` 这里进入了`TACFuncEmitter.emitLoad`：
 
 ```python
-def visitLoad(self, value: Union[int, str]) -> Temp:
+def emitLoad(self, value: Union[int, str]) -> Temp:
     temp = self.freshTemp()
     self.func.add(LoadImm4(temp, value))
     return temp
@@ -204,10 +204,10 @@ def transform(self, prog: TACProg):
 
 我们先忽略`LivenessAnalyzer`和`Control Flow Graph(CFG)`以及寄存器分配的部分（助教写了一个非常简单暴力的寄存器分配，如果你觉得它不够好，你可以在后面的step换掉它），实际上，我们这里最主要的是指令选择（`selectInstr`），指令选择将中端TAC代码转换为riscv汇编代码，`selectInstr`函数中，我们也采用了visitor模式遍历指令序列， `_T0 = 1` 这句比较直接，我们也能较为容易的想到一个简单的汇编指令对应（`li _T0, 1`），主要讲讲和`_T1 = - _T0` 和 `return _T1`翻译过程发生了什么。
 
-先看`visitUnary`函数：
+先看`emitUnary`函数：
 
 ```python
-def visitUnary(self, instr: Unary) -> None:
+def emitUnary(self, instr: Unary) -> None:
     op = {
         TacUnaryOp.NEG: RvUnaryOp.NEG,
         # You can add binary operations here.
@@ -218,10 +218,10 @@ def visitUnary(self, instr: Unary) -> None:
 
 **你可以试试，将`RvUnaryOp.NEG`中名字改为`RvUnaryOp.XXX`看看输出的汇编代码会发生什么变化吧。**
 
-再看`visitReturn`函数，我们这里的`return`是一个带返回值函数的`return`
+再看`emitReturn`函数，我们这里的`return`是一个带返回值函数的`return`
 
 ```python
-def visitReturn(self, instr: Return) -> None:
+def emitReturn(self, instr: Return) -> None:
     if instr.value is not None:
         self.seq.append(Riscv.Move(Riscv.A0, instr.value))
     else:
