@@ -6,7 +6,7 @@
 
 ```C
 int main() {
-    return 2024;
+    return 2025;
 }
 ```
 
@@ -30,7 +30,7 @@ MiniDecaf 源文件 --------> 字节流 -----------> AST -----------------------
 
 当程序读入程序的字符流之后，它首先会被 lexer 处理，并被转化为如下形式的一个 Token 流：
 
-`Int Identifier("main") LParen RParen LBrace Return Integer(2024) Semi RBrace`
+`Int Identifier("main") LParen RParen LBrace Return Integer(2025) Semi RBrace`
 
 在`frontend/lexer/lex.py`文件中你可以看到每个 Token 是如何定义的，每个`token`都会以`t_`开头。如`t_Semi = ";"`代表分号被解析以后会转化为 `Semi` 这个Token。而对于一些复杂的 Token，我们需要在`lexer`中定义一个正则表达式来匹配它，lex中通过定义一个函数来实现正则匹配。以匹配整数为例，函数的第一行`r"[0-9]+" `代表匹配用到的正则表达式，而函数的参数`t`则是被匹配得到的字符串，我们通过python中的类型转换将其变为一个整数，你可以在文件中看到以下代码：
     
@@ -50,7 +50,7 @@ Program
         |- (ident) Identifier("main")
         |- (body) Block
             |- (children[0]) Return
-                |- (expr) IntLiteral(2024)
+                |- (expr) IntLiteral(2025)
 ```
 
 得到的 AST 也就是 `main.py` 中 `step_parse` 这一函数里 `parser.parse(...)` 的输出。
@@ -91,7 +91,7 @@ def p_function_def(p):
 
 ```asm
 main:           # main 函数入口标签
-    _T0 = 2024  # 为立即数 2024 分配一个临时变量
+    _T0 = 2025  # 为立即数 2025 分配一个临时变量
     return _T0  # 返回
 ```
 
@@ -107,7 +107,7 @@ main:           # main 函数入口标签
 
 1. 如何将一个立即数装载到指定寄存器中？
 
-   RISC-V 提供了 li <reg> <imm32> 指令来支持加载一个 32 位立即数到指定寄存器中，其中 <reg> 表示寄存器名，<imm32> 表示立即数值，如：`li t0, 2024`，就是将立即数 2024 加载到寄存器 t0 中。
+   RISC-V 提供了 li <reg> <imm32> 指令来支持加载一个 32 位立即数到指定寄存器中，其中 <reg> 表示寄存器名，<imm32> 表示立即数值，如：`li t0, 2025`，就是将立即数 2025 加载到寄存器 t0 中。
 
 2. 如何设置返回值？
 
@@ -121,7 +121,7 @@ main:           # main 函数入口标签
     .text         # 代码段
     .global main  # 声明全局符号 main
 main:             # 主函数入口符号
-    li t0, 2024   # 加载立即数 2024 到 t0 寄存器中
+    li t0, 2025   # 加载立即数 2025 到 t0 寄存器中
     mv a0, t0     # 将返回值放到 a0 寄存器中
     ret           # 返回
 ```
