@@ -19,12 +19,11 @@
 
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
 <span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
+
 <span class="SpecRuleStart">declaration</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
-
-<span class="SpecRuleStart">expression</span>
-<span class="SpecRuleIndicator">    :</span> <span class="SpecRule">assignment</span>
 
 <span class="SpecRuleStart">assignment</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">conditional</span>

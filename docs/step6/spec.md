@@ -25,8 +25,10 @@
 
 <span class="SpecRuleStart">statement</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecToken">'return'</span> <span class="SpecRule">expression</span> <span class="SpecToken">';'</span>
+<span class="SpecRuleIndicator">    |</span> <span class="SpecRule">expression</span><span class="SpecOperator">?</span> <span class="SpecToken">';'</span>
 <div class="changed"><span class="SpecRuleIndicator">    |</span> <span class="SpecRule">compound_statement</span>
 </div>
+
 <span class="SpecRuleStart">declaration</span>
 <span class="SpecRuleIndicator">    :</span> <span class="SpecRule">type</span> <span class="SpecToken">Identifier</span> <span class="SpecOperator">(</span><span class="SpecToken">'='</span> <span class="SpecRule">expression</span><span class="SpecOperator">)?</span> <span class="SpecToken">';'</span>
 
