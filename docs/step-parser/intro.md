@@ -14,9 +14,9 @@ $ git switch parser-stage
 $ git merge stage-2
 ```
 
-（本步骤所需要的额外文件请在[此处](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)获取，在 python/ 下）
+（本步骤所需要的额外文件请在[此处](https://cloud.tsinghua.edu.cn/d/4d339f639f4743d6a555/)获取）
 
-在切换到 `parser-stage` 分支之后，从[链接](https://cloud.tsinghua.edu.cn/d/9b34fdf53a3c48b8bc52/)下载 python 目录下的文件，并使用 `frontend/parser/` 目录整个替换你 stage2 代码的对应目录，然后在整体框架上完成实验。
+在切换到 `parser-stage` 分支之后，从[链接](https://cloud.tsinghua.edu.cn/d/4d339f639f4743d6a555/)下载 python 目录下的文件，并使用 `frontend/parser/` 中的两个文件覆盖你 stage2 代码的对应文件，然后在整体框架上完成实验。
 
 **需要注意的是**，parser-stage 的实验相对于其他 stage 是独立的。在后续进行 stage3 的实验时，应从 stage2 所完成的代码开始，而不需要用 parser-stage 的代码。未来在进行 stage3 实验时，建议进行如下操作：
 
