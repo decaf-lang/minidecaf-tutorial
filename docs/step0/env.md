@@ -4,11 +4,11 @@
 
 关于操作系统，助教推荐使用 Linux 环境（如 Ubuntu，Debain 或 Windows 下的 WSL 等），当然你也可以在类 Unix 系统环境（Mac OS）中进行开发。助教不推荐直接在 Window 中搭建开发环境。你需要安装或保证如下软件满足我们的要求：
 
-1. python >= 3.9
+1. python >= 3.10
 
    助教**强烈建议**使用类似 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) 或venv的系统管理不同的Python环境。你可以方便地使用miniconda安装最新的Python版本，安装好之后使用pip安装依赖即可。
 
-   框架本身在 python 3.9 下进行开发，使用了 python 3.9 的新特性，请保证你所使用的 python 版本高于此版本。
+   框架本身在 python 3.10 下进行开发，使用了 python 3.10 的新特性，请保证你所使用的 python 版本高于此版本。
 
    如果你**没有**使用虚拟环境，可以参考下面的指导。Linux 环境下安装 Python 3 可以尝试如下命令：
    ```bash

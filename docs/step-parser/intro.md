@@ -6,24 +6,22 @@
 
 ## 准备工作
 
-
 parser-stage 不涉及中端、后端部分，所以请同学们将 stage2 中完成的中后端代码合并到 parser-stage 的实验框架上。具体的操作可以参考如下步骤：
 
+在 stage2 分支下，执行：
+
 ```bash
-$ git switch parser-stage
-$ git merge stage-2
+$ git checkout -b parser-stage
 ```
 
-（本步骤所需要的额外文件请在[此处](https://cloud.tsinghua.edu.cn/d/4d339f639f4743d6a555/)获取）
-
-在切换到 `parser-stage` 分支之后，从[链接](https://cloud.tsinghua.edu.cn/d/4d339f639f4743d6a555/)下载 python 目录下的文件，并使用 `frontend/parser/` 中的两个文件覆盖你 stage2 代码的对应文件，然后在整体框架上完成实验。
+在切换到 `parser-stage` 分支之后，从[链接](https://cloud.tsinghua.edu.cn/d/4d339f639f4743d6a555/)下载起始代码，并使用 `frontend/parser/` 中的两个文件覆盖你 stage2 代码的对应文件，然后在整体框架上完成实验。
 
 **需要注意的是**，parser-stage 的实验相对于其他 stage 是独立的。在后续进行 stage3 的实验时，应从 stage2 所完成的代码开始，而不需要用 parser-stage 的代码。未来在进行 stage3 实验时，建议进行如下操作：
 
 ```bash
-$ git switch stage-3
-# 注意不要从 parser-stage merge
-$ git merge stage-2
+$ git checkout stage-2
+# 注意不要从 parser-stage 直接 checkout
+$ git checkout -b stage-3
 ```
 
 ## 背景知识
