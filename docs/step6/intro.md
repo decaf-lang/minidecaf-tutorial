@@ -27,7 +27,7 @@ step6 我们要增加块语句的支持。
 语义检查我们也要修改了，只有在同一个作用域里，变量才不能重复声明。
 当然，如果变量在使用前还是必须先被声明。
 
-我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 3 的实验报告需要放在 `stage-3` 这个 branch 下的 `./reports/stage-3.pdf`。注意报告的标题是 `stage-3` 而不是 `step-6`。
+我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 2 的实验报告需要放在 `stage-2` 这个 branch 下的 `./reports/stage-2.pdf`。注意报告的标题是 `stage-2` 而不是 `step-6`。
 
 你需要：
 1. 改进你的编译器，支持本节引入的新特性，通过相关测试。
