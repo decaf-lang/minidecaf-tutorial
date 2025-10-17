@@ -23,7 +23,7 @@ step7 我们要支持条件语句，包括 if 语句和条件表达式（又称�
 
 if 语句的语义和 C 语言相同，注意条件表达式优先级只比赋值高。
 
-我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 4 的实验报告需要放在 `stage-4` 这个 branch 下的 `./reports/stage-4.pdf`。整个 stage 4 只需要提交一份报告，你不需要单独为 step 7 准备报告。
+我们只接受 pdf 格式的实验报告，你需要将报告放在仓库的 `./reports/<branch-name>.pdf`，比如 stage 3 的实验报告需要放在 `stage-3` 这个 branch 下的 `./reports/stage-3.pdf`。整个 stage 3 只需要提交一份报告，你不需要单独为 step 7 准备报告。
 
 
 你需要：
