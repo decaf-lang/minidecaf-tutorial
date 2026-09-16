@@ -8,7 +8,7 @@
 
 2. 助教已经为每位同学在 git.tsinghua.edu.cn 创建了一个仓库，其中 minidecaf 的[测例仓库](https://git.tsinghua.edu.cn/compiler26autumn/minidecaf-stu-tests)为其中的一个子模块，你可以通过以下指令来在克隆主仓库的同时克隆子模块 `git clone --recursive <repository>`。请注意，该测例仓库只是评测仓库的一个子集，仅供同学们验证所写代码的基础功能。请自行设计更多测例来充分验证代码正确性。
 
-> 注意：如果使用服务器，助教已经为每位同学将实验仓库克隆到了本地，但你需要将你的 ssh 公钥添加到你的 git.tsinghua 账号上，才能通过 git push 提交后续的更改。
+> 注意：如果使用服务器，助教已经为每位同学将实验仓库克隆到了本地，但你需要将你的 ssh 公钥添加到你的 git.tsinghua 账号上，才能通过 git push 提交后续的更改。为确保密钥安全性，请直接在服务器上生成新的密钥对（不要复制本地或其他服务器的密钥对到实验服务器上），并且在生成密钥对时设置密码（passphrase）。
 
 3. 按照[测例](https://git.tsinghua.edu.cn/compiler26autumn/minidecaf-stu-tests)的 README 运行测试 step1，实验框架给出的初始代码可以通过 step1 的所有测例。
 
